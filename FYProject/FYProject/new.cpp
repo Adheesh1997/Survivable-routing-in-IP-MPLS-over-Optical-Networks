@@ -12,27 +12,34 @@ class node
 {
 private:
     int id; //Save the id of the node that unique from other nodes
-    bool visited; //While searching or traveling state the this node is visited(true) or not(false)
+    bool visited; //While searching or traveling stat, this node will state whether node is visited(true) or not(false)
     int numOfLinks; //Number of links that connected to this node
-    struct link
+    
+    struct link  //Structure that save all the information of a link that connected to this node
     {
-        node* address;
-        int bandwith;
-        int numOfLightpaths;
+        node* address;  //Address of the other node that connected to link
+        int bandwith;  //Maximum bandwith of the link
+        int numOfLightpaths; //Maximum light-path that can be created within this link
     };
 
-    vector<link> links;
+    vector<link> links; //Vector of link (size = numOfLinks)
     
 public:
 
-    node(int i)
+    node(int i) //Constructor take id and assing to variable
     {
         visited = false;
         id = i;
     }
 
-    void addLinks(node* address, int bandwith, int numOfLightpaths = 1)
+    //To add new link to the node this should call
+    void addLinks(node* address, int bandwith, int numOfLightpaths = 40)
     {
+        /* 
+        Parameters_
+            1. address - address of the other node that connect through the link
+            2. bandwith - bandwith of the link
+        */
         link templink;
         templink.address = address;
         templink.bandwith = bandwith;
@@ -46,19 +53,24 @@ public:
         numOfLinks = n;
     }
 
+    void printId()
+    {
+        cout<<" id of the node  = "<<links[0].address<<endl;
+    }
+
 };
 
 class Graph
 {
 private:
-    vector<node> nodes;
+    vector<node> nodes; //Vector of node (size = numOfNodes)
     int numOfNodes;
 public:
     Graph(int n)
     {
         numOfNodes = n;
 
-        for(int i = 0; i < n ; i++)
+        for(int i = 0; i < n ; i++)//create nodes object and push into vector
         {
             node tempNode(i);
             nodes.push_back(tempNode);
@@ -66,6 +78,7 @@ public:
 
     }
 
+    //Function that build graph using adjacency matrix
     void constructGraph(vector<vector<int>> &adjacencyMetrix)
     {
         for(int i=0;i<numOfNodes;i++) 
@@ -73,7 +86,7 @@ public:
             int linksConnected = 0;
             for(int j=0;j<numOfNodes;j++)
             {
-               if(adjacencyMetrix[i][j])
+               if(adjacencyMetrix[i][j]) //If value is not zero then new link will added to the relevant node
                {
                    nodes[i].addLinks(&nodes[j],adjacencyMetrix[i][j]);
                    linksConnected++;
@@ -83,7 +96,11 @@ public:
             nodes[i].updateNumOfLinks(linksConnected);
         }
     }
-    
+
+    void testGraph()
+    {
+        nodes[0].printId();
+    }
 
 
 };
@@ -95,21 +112,19 @@ public:
 int main()
 {
     int numOfNodes; //Variable to store number of nodes in the network
+    vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
-    vector<vector<int>> adjacencyMetrix;    //Vector to store adjacency metrix that represent netork
-
-    string fileLocation = "Graph_inputs/03/graph03.csv"; //graph input file location
+    //graph input file location
+    string fileLocation = "Graph_inputs/03/graph03.csv"; 
     
-    if(readCSVFile(numOfNodes, adjacencyMetrix,fileLocation))//Read csv file and assign values to the matrix
+    //Read csv file and assign values to the matrix 
+    if(readCSVFile(numOfNodes, adjacencyMetrix,fileLocation))
     {
-        for(int i=0;i<numOfNodes;i++) //Print the adjacency metrix
-        {
-            for(int j=0;j<numOfNodes;j++)
-            {
-                cout<<adjacencyMetrix[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        //If there is no any error while reading file then graph is created
+        Graph graph1(numOfNodes);
+        graph1.constructGraph(adjacencyMetrix);
+        graph1.testGraph();
+
     }
     
 
@@ -118,22 +133,33 @@ int main()
 
 bool readCSVFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation)
 {
-    ifstream myFileStream(fileLocation);
+    /*
+    Parameters_
+        1. numOfNodes - number of nodes that network has,that taken from csv file
+        2. adjacencyMetrix - network input that taken from csv file
+        3. fileLocation - location of the csv file that contain network input
 
+    Return value_
+        If file was read successfully and no any error then return true,
+        If faild to read file return false 
+    */
+
+   ifstream myFileStream(fileLocation);//Create ifstream file object using file location
+
+    //Check whether file is open without any error
     if(myFileStream.is_open())
     {
-
-        string line1;
         
-        getline(myFileStream,line1);//Read first line of the csv file
+        string line1;  //String to take first line of csv(num.of nodes)
+        
+        getline(myFileStream,line1);  //Read first line of the csv file
 
-        numOfNodes = stoi(line1);//Assign the value to the variable
-        cout<<"Num of nodes = "<<numOfNodes<<endl<<endl;
+        numOfNodes = stoi(line1);  //Convert string into interger and assign the value to the variable
 
+        string rowOfMatrix;  //String to take line of the matrix
 
-        string rowOfMatrix;
-
-        while(getline(myFileStream,rowOfMatrix)) //Read line and copy to rowOfMatrix
+        //Read line and copy to rowOfMatrix
+        while(getline(myFileStream,rowOfMatrix)) 
         {
             vector<int> temp;
             stringstream line(rowOfMatrix); //rowOfMatrix stream into line 
@@ -148,7 +174,7 @@ bool readCSVFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fi
         }
         
         myFileStream.close(); //close the file
-        return true; //If file read complete then return true
+        return true; 
     }
 
     else    // If file does not open output error message and return from the function
