@@ -53,9 +53,18 @@ public:
         numOfLinks = n;
     }
 
-    void printId()
+    int getId()
     {
-        cout<<" id of the node  = "<<links[0].address<<endl;
+        return id;
+    }
+
+    void printLinks()
+    {
+        cout<<"Links = "<<numOfLinks<<" ->";
+        for(int i=0;i<numOfLinks;i++)
+        {
+            cout<<(links[i].address)->id<<", ";
+        }
     }
 
 };
@@ -97,9 +106,14 @@ public:
         }
     }
 
-    void testGraph()
+    void printGraph()
     {
-        nodes[0].printId();
+        for(int i=0;i<numOfNodes;i++)
+        {
+            cout<<endl<<endl<<"node "<<nodes[i].getId()<<endl;
+            nodes[i].printLinks();
+
+        }
     }
 
 
@@ -115,7 +129,7 @@ int main()
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
     //graph input file location
-    string fileLocation = "Graph_inputs/03/graph03.csv"; 
+    string fileLocation = "Graph_inputs/05/graph05.csv"; 
     
     //Read csv file and assign values to the matrix 
     if(readCSVFile(numOfNodes, adjacencyMetrix,fileLocation))
@@ -123,7 +137,7 @@ int main()
         //If there is no any error while reading file then graph is created
         Graph graph1(numOfNodes);
         graph1.constructGraph(adjacencyMetrix);
-        graph1.testGraph();
+        graph1.printGraph();
 
     }
     
