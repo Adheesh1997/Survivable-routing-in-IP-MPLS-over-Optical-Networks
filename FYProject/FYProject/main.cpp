@@ -3,9 +3,9 @@
 #include <vector>
 #include "readCSV.h"
 #include "graph.h"
+#include "LPrelease.h"
 
 using namespace std;
-
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
 
     }
     
-
+	cin.get();
     return 0;
 }
 
