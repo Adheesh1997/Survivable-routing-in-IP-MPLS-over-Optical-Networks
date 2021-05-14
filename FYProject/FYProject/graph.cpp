@@ -11,6 +11,7 @@ node::node(int i) //Constructor take id and assing to variable
     id = i;
 }
 
+
 void node::addLinks(node* address, int bandwith, int numOfLightpaths )
 {
     /* 
@@ -26,10 +27,13 @@ void node::addLinks(node* address, int bandwith, int numOfLightpaths )
     links.push_back(templink);
 }
 
+
+
 void node::updateNumOfLinks(int n)
 {
     numOfLinks = n;
 }
+
 
 int node::getId()
 {
@@ -45,6 +49,7 @@ void node::printLinks()
     }
 }
 
+
 Graph::Graph(int n)
 {
     numOfNodes = n;
@@ -57,6 +62,8 @@ Graph::Graph(int n)
 
 }
 
+
+//Connect all the nodes according to the adjacency metrix
 void Graph::constructGraph(vector<vector<int>> &adjacencyMetrix)
 {
     for(int i=0;i<numOfNodes;i++) 

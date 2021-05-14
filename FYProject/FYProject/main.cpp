@@ -16,7 +16,7 @@ int main()
     string fileLocation = "Graph_inputs/05/graph05.csv"; 
     
     //Read csv file and assign values to the matrix 
-    if(readCSVFile(numOfNodes, adjacencyMetrix,fileLocation))
+    if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     {
         //If there is no any error while reading file then graph is created
         Graph graph1(numOfNodes);

@@ -6,6 +6,6 @@
 
 using namespace std;
 
-bool readCSVFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation);
+bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation);
 
 #endif

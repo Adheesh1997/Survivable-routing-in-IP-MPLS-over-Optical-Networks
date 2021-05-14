@@ -7,11 +7,14 @@
 
 using namespace std;
 
+//Node (router ) to save all the data 
 class node
 {
 private:
     int id; //Save the id of the node that unique from other nodes
+
     bool visited; //While searching or traveling stat, this node will state whether node is visited(true) or not(false)
+    
     int numOfLinks; //Number of links that connected to this node
     
     struct link  //Structure that save all the information of a link that connected to this node
