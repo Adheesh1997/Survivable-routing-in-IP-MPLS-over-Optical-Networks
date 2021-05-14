@@ -17,7 +17,7 @@ int main()
     
     //Read csv file and assign values to the matrix 
     if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
-    {
+    { int a;
         //If there is no any error while reading file then graph is created
         Graph graph1(numOfNodes);
         graph1.constructGraph(adjacencyMetrix);
