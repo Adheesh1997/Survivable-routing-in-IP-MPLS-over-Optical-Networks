@@ -24,6 +24,8 @@ int main()
         graph1.printGraph();
 
     }
+
+	func();
     
 	cin.get();
     return 0;
