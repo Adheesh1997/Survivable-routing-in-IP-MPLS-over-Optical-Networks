@@ -23,14 +23,15 @@ int main()
         graph1.constructGraph(adjacencyMetrix);
         graph1.printGraph();
 
-        for(vector i :adjacencyMetrix)
+        /* cout<<endl<<endl;
+        for(vector<int> i: adjacencyMetrix)
         {
-            for(int j:i)
+            for( int j : i)
             {
                 cout<<j<<" ";
-            }
+            }       
             cout<<endl;
-        }
+        } */
 
     }
     
