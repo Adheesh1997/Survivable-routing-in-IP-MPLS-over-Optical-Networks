@@ -17,11 +17,20 @@ int main()
     
     //Read csv file and assign values to the matrix 
     if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
-    { int c;
-        //If there is no any error while reading file then graph is created
+    { 
+       //If there is no any error while reading file then graph is created
         Graph graph1(numOfNodes);
         graph1.constructGraph(adjacencyMetrix);
         graph1.printGraph();
+
+        for(vector i :adjacencyMetrix)
+        {
+            for(int j:i)
+            {
+                cout<<j<<" ";
+            }
+            cout<<endl;
+        }
 
     }
     
