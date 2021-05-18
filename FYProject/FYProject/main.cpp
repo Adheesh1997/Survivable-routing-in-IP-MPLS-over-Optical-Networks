@@ -3,9 +3,9 @@
 #include <vector>
 #include "readCSV.h"
 #include "graph.h"
+#include "LPrelease.h"
 
 using namespace std;
-
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
     //Read csv file and assign values to the matrix 
     if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
-       //If there is no any error while reading file then graph is created
+        //If there is no any error while reading file then graph is created
         Graph graph1(numOfNodes);
         graph1.constructGraph(adjacencyMetrix);
         graph1.printGraph();
@@ -35,7 +35,7 @@ int main()
 
     }
     
-
+	cin.get();
     return 0;
 }
 
