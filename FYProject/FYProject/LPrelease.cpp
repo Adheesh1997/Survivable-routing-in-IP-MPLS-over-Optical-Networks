@@ -17,7 +17,7 @@ void LightPaths()
 	cout << "\nHeloooooooo\n";
 }
 
-void searchFreeLightPaths()
+/* void searchFreeLightPaths()
 {
 	for (int i = 0; i < numOfNodes; i++)
 	{
@@ -25,4 +25,4 @@ void searchFreeLightPaths()
 		nodes[i].printLinks();
 
 	}
-}
+} */

@@ -4,6 +4,7 @@
 #include "readCSV.h"
 #include "graph.h"
 #include "LPrelease.h"
+#include "Dijkstra.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main()
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
     //graph input file location
-    string fileLocation = "Graph_inputs/05/graph05.csv"; 
+    string fileLocation = "graph_inputs/05/graph05.csv"; 
     
     //Read csv file and assign values to the matrix 
     if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
@@ -23,15 +24,17 @@ int main()
         graph1.constructGraph(adjacencyMetrix);
         graph1.printGraph();
 
-        /* cout<<endl<<endl;
-        for(vector<int> i: adjacencyMetrix)
-        {
-            for( int j : i)
-            {
-                cout<<j<<" ";
-            }       
-            cout<<endl;
-        } */
+
+        /*****For testin only******
+         
+        vector<int> shrtPath;
+        shrtPath = shortestPath(numOfNodes,adjacencyMetrix,1,13);
+
+        cout<<endl<<endl;
+        for(int i : shrtPath)
+            cout<<i-1<<"->"; 
+        
+        *******************/
 
     }
     
