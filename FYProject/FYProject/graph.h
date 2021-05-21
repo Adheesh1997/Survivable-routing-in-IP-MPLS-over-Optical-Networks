@@ -30,8 +30,6 @@ public:
     //To add new link to the node this should call
     void addLinks(node* address, int bandwith, int numOfLightpaths);
 
-    void updateNumOfLinks(int n);
-
     int getId();
 
     void printLinks();
@@ -66,7 +64,11 @@ private:
 public:
     waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID);
     vector<vector<int>> getMatrix();
+
+    //To remove a link from adjacency matrix
     void removeLink(int src, int dst);
+
+    //Add a new link to adjacency matrix
     void addLInk(int src, int dst);
 };
 

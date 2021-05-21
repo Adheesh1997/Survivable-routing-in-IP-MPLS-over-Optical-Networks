@@ -10,6 +10,7 @@ using namespace std;
 node::node(int i) //Constructor take id and assing to variable
 {
     id = i;
+    numOfLinks = 0;
 }
 
 
@@ -26,13 +27,8 @@ void node::addLinks(node* address, int bandwith, int numOfLightpaths )
     templink.numOfLightpaths = numOfLightpaths;
     
     links.push_back(templink);
-}
 
-
-
-void node::updateNumOfLinks(int n)
-{
-    numOfLinks = n;
+    numOfLinks++;
 }
 
 
@@ -74,17 +70,13 @@ void fiberLinkNetwork::setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetri
 {
     for(int i=0;i<numOfNodes;i++) 
     {
-        int linksConnected = 0;
         for(int j=0;j<numOfNodes;j++)
         {
             if(adjacencyMetrix[i][j]) //If value is not zero then new link will added to the relevant node
             {
                 nodes[i].addLinks(&nodes[j],maxWaveLengths,40);
-                linksConnected++;
             }
         }
-
-        nodes[i].updateNumOfLinks(linksConnected);
     }
 }
 
@@ -140,6 +132,7 @@ void waveLengthNetworks::addLInk(int src, int dst)
 /************* end of waveLengthNetworks *******************/
 
 
+// Seturp networks for different wavelengths
 vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int maxWaveLengths)
 {
     vector<waveLengthNetworks> temp;
