@@ -25,20 +25,8 @@ int main()
         graph1.setupFiberLinkNetwork(adjacencyMetrix);
         graph1.printGraph();
 
-
         // Adjacency matrices for different wave lengths save here
         vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix,40);
-
-        /*****For testin only******
-         
-        vector<int> shrtPath;
-        shrtPath = shortestPath(numOfNodes,adjacencyMetrix,1,13);
-
-        cout<<endl<<endl;
-        for(int i : shrtPath)
-            cout<<i-1<<"->"; 
-        
-        *******************/
 
     }
     
