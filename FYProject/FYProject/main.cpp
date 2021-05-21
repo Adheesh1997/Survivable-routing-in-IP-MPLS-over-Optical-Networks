@@ -16,14 +16,16 @@ int main()
     //graph input file location
     string fileLocation = "graph_inputs/05/graph05.csv"; 
     
+
     //Read csv file and assign values to the matrix 
     if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
         //If there is no any error while reading file then graph is created
-        Graph graph1(numOfNodes);
-        graph1.constructGraph(adjacencyMetrix);
+        fiberLinkNetwork graph1(numOfNodes);
+        graph1.setupFiberLinkNetwork(adjacencyMetrix);
         graph1.printGraph();
 
+        vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix,40);
 
         /*****For testin only******
          

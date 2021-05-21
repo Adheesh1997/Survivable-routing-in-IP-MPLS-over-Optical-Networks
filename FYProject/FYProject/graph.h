@@ -12,8 +12,6 @@ class node
 {
 private:
     int id; //Save the id of the node that unique from other nodes
-
-    bool visited; //While searching or traveling stat, this node will state whether node is visited(true) or not(false)
     
     int numOfLinks; //Number of links that connected to this node
     
@@ -41,20 +39,38 @@ public:
 };
 
 
-class Graph
+class fiberLinkNetwork
 {
 private:
     vector<node> nodes; //Vector of node (size = numOfNodes)
     int numOfNodes;
+
 public:
-    Graph(int n);
+    int maxWaveLengths;
+    fiberLinkNetwork(int n, int maxWavelegths = 40);
 
     //Function that build graph using adjacency matrix
-    void constructGraph(vector<vector<int>> &adjacencyMetrix);
+    void setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix);
 
     void printGraph();
 
 };
+
+
+class waveLengthNetworks
+{
+private:
+    int waveLengthId;
+    vector<vector<int>> waveAdjacancyMatrix;
+
+public:
+    waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID);
+    vector<vector<int>> getMatrix();
+    void removeLink(int src, int dst);
+    void addLInk(int src, int dst);
+};
+
+vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int maxWaveLengths);
 
 
 #endif

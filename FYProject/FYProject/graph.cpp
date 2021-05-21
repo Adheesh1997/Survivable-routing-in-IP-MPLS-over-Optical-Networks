@@ -5,9 +5,10 @@
 
 using namespace std;
 
+/******************* Begining of node class *******************************/
+
 node::node(int i) //Constructor take id and assing to variable
 {
-    visited = false;
     id = i;
 }
 
@@ -49,10 +50,15 @@ void node::printLinks()
     }
 }
 
+/*************** End of node class ***********************/
 
-Graph::Graph(int n)
+
+
+/***************** Begining of fiberLinkNetwork class *********************/
+fiberLinkNetwork::fiberLinkNetwork(int n,int maxWave)
 {
     numOfNodes = n;
+    maxWaveLengths = maxWave;
 
     for(int i = 0; i < n ; i++)//create nodes object and push into vector
     {
@@ -64,7 +70,7 @@ Graph::Graph(int n)
 
 
 //Connect all the nodes according to the adjacency metrix
-void Graph::constructGraph(vector<vector<int>> &adjacencyMetrix)
+void fiberLinkNetwork::setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix)
 {
     for(int i=0;i<numOfNodes;i++) 
     {
@@ -73,7 +79,7 @@ void Graph::constructGraph(vector<vector<int>> &adjacencyMetrix)
         {
             if(adjacencyMetrix[i][j]) //If value is not zero then new link will added to the relevant node
             {
-                nodes[i].addLinks(&nodes[j],adjacencyMetrix[i][j],40);
+                nodes[i].addLinks(&nodes[j],maxWaveLengths,40);
                 linksConnected++;
             }
         }
@@ -83,7 +89,7 @@ void Graph::constructGraph(vector<vector<int>> &adjacencyMetrix)
 }
 
 
-void Graph::printGraph()
+void fiberLinkNetwork::printGraph()
 {
     for(int i=0;i<numOfNodes;i++)
     {
@@ -92,3 +98,59 @@ void Graph::printGraph()
 
     }
 }
+
+/******************* End of fiberLinkNetwork Class ***********************/
+
+
+
+//***************** Begining of wave length network Class ******************/
+
+waveLengthNetworks::waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID)
+{
+    /* 
+    Parameter_
+        initAdjacencyMatrix - Initial adjacency matrix that taken from CSV file,
+        waveID - wave length number that this network represent
+    */
+    waveAdjacancyMatrix = initAdjacencyMatrix;
+    waveLengthId = waveID;
+}
+
+vector<vector<int>> waveLengthNetworks::getMatrix()
+{
+    return waveAdjacancyMatrix;
+}
+
+void waveLengthNetworks::removeLink(int src, int dst)
+{
+    /*
+    Parameter_
+        src - Source node connected to link
+        dst - Destinationo node connected to link
+    */
+    waveAdjacancyMatrix[src][dst] = 0;
+    
+}
+
+void waveLengthNetworks::addLInk(int src, int dst)
+{
+    waveAdjacancyMatrix[src][dst] = 40;
+}
+
+/************* end of waveLengthNetworks *******************/
+
+
+vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int maxWaveLengths)
+{
+    vector<waveLengthNetworks> temp;
+
+    for(int i =  0 ; i < maxWaveLengths ; i++)
+    {
+        waveLengthNetworks tempNetwork(initAdjacencyMatrix,i);
+        temp.push_back(tempNetwork);
+    }
+
+    return temp;
+}
+
+
