@@ -7,28 +7,23 @@ using namespace std;
 
 struct LightPathDetails
 {
-	node* sourceNode;
-	node* destinationNode;
-	vector<int> intermediateNodes;		
-	int wavelength;
-	int allocatedBandwidh;
-	int availableBandwidth;
-	int numberOfLSPs;
+	node* sourceNode;				//Source node of the lightpath
+	node* destinationNode;			//Destination node of the lightpath
+	vector<int> intermediateNodes;	//A vector to store the intermediated nodes of the lightpath
+	int wavelength;					//Wavlength of the lightpath
+	int allocatedBandwidh;			//Total capacity of the lightpath
+	int availableBandwidth;			//Available capacity of the lightpath
+	int numberOfLSPs;				//Total number of LSPs in the lightpath
 };
+
 
 class lightpathSetup
 {
 	private:
-		vector<LightPathDetails> lightPaths;
+		vector<LightPathDetails> lightPaths;	//All the lighpaths are stored in this vector
+		int numberOfLighpaths;					//Counter to count the number of established lightpaths
 
 	public:
-		void settingUpLightPaths(node* sourceNodeAddress, node* destinationNodeAddress, vector<int> interNodeList, string wavelengthSt);
-
+		lightpathSetup() : numberOfLighpaths(0) {};			//Constructor to set the above lighpath counter to zero
+		void establishLightpath(vector<int> interNodeList, string wavelengthSt);//function which establishes a lightpath
 };
-
-
-
-
-
-//void LightPaths();
-//void searchFreeLightPaths();
