@@ -9,8 +9,11 @@ struct LightPathDetails
 {
 	node* sourceNode;
 	node* destinationNode;
-	vector<node*> intermediateNodes;		
-
+	vector<int> intermediateNodes;		
+	int wavelength;
+	int allocatedBandwidh;
+	int availableBandwidth;
+	int numberOfLSPs;
 };
 
 class lightpathSetup
@@ -19,12 +22,9 @@ class lightpathSetup
 		vector<LightPathDetails> lightPaths;
 
 	public:
-		void settingUpLightPaths(node* sourceNodeAddress, node* destinationNodeAddress, vector<int> interNodeList);
+		void settingUpLightPaths(node* sourceNodeAddress, node* destinationNodeAddress, vector<int> interNodeList, string wavelengthSt);
 
 };
-
-
-
 
 
 
