@@ -7,20 +7,6 @@
 
 using namespace std;
 
-/***************** testing*****************/
-void func(vector<vector<int>> adjacencyMetrix)
-{
-
-    vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix,40);
-    waveLengthNetwork[0].waveAdjacancyMatrix;
-
-
-    cout<<waveLengthNetwork[0].waveAdjacancyMatrix[0][1]<<"befor\n";
-    waveLengthNetwork[0].removeLink(0,1);
-    cout<<waveLengthNetwork[0].waveAdjacancyMatrix[0][1]<<"after\n";
-
-}
-/************************************/
 
 int main()
 {
@@ -39,10 +25,6 @@ int main()
         graph1.setupFiberLinkNetwork(adjacencyMetrix);
         graph1.printGraph();
 
-
-        //testing
-        func(adjacencyMetrix);   
-    
     }
     
 	cin.get();
