@@ -20,13 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graph.cpp" />
-    <ClCompile Include="LPrelease.cpp" />
+    <ClCompile Include="lightpathSettingup.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="readCSV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h" />
-    <ClInclude Include="LPrelease.h" />
+    <ClInclude Include="lightpathSettingup.h" />
     <ClInclude Include="readCSV.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

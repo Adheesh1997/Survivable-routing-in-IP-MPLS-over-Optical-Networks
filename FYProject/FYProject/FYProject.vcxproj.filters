@@ -24,7 +24,7 @@
     <ClCompile Include="readCSV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LPrelease.cpp">
+    <ClCompile Include="lightpathSettingup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="readCSV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LPrelease.h">
+    <ClInclude Include="lightpathSettingup.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
