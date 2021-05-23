@@ -108,9 +108,9 @@ waveLengthNetworks::waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, 
     waveLengthId = waveID;
 }
 
-vector<vector<int>> waveLengthNetworks::getMatrix()
+int waveLengthNetworks::getID()
 {
-    return waveAdjacancyMatrix;
+    return waveLengthId;
 }
 
 void waveLengthNetworks::removeLink(int src, int dst)
