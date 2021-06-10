@@ -5,30 +5,37 @@
 #include "graph.h"
 using namespace std;
 
-struct lightpathNode
+class lightpathNodeID
 {
-	int id;
+	private:
+		int id;                                          //id of the node
+		vector<vector<int>> lightpathsForTheNode;        //List of lightpaths connected the above node
+
+	public:
+		void setID(int ID);                              //Give and ID value for id
+		void setTheListOfLightpaths(vector<int> v1);     //Establish the lighpath
+		void printTheListOfLP();                         //Print the list of lightpaths
 };
 
 struct LightPathDetails
 {
-	lightpathNode* sourceNode;				//Source node of the lightpath
-	lightpathNode* destinationNode;			//Destination node of the lightpath
-	vector<int> intermediateNodes;			//A vector to store the intermediated nodes of the lightpath
-	int wavelength;							//Wavlength of the lightpath
-	int allocatedBandwidh;					//Total capacity of the lightpath
-	int availableBandwidth;					//Available capacity of the lightpath
-	int numberOfLSPs;						//Total number of LSPs in the lightpath
+	lightpathNodeID* sourceNode;            //Source node of the lightpath
+	lightpathNodeID* destinationNode;       //Destination node of the lightpath
+	vector<int> LPnodeVector;               //A vector to store the nodes of the lightpath
+	int wavelength;                         //Wavlength of the lightpath
+	int allocatedBandwidh;                  //Total capacity of the lightpath
+	int availableBandwidth;                 //Available capacity of the lightpath
+	int numberOfLSPs;                       //Total number of LSPs in the lightpath
 };
 
 
 class lightpathSetup
 {
 	private:
-		vector<LightPathDetails> lightPaths;	//All the lighpaths are stored in this vector
-		int numberOfLighpaths;					//Counter to count the number of established lightpaths
+		vector<LightPathDetails> lightPaths;    //All the lighpaths are stored in this vector
+		int numberOfLighpaths;                  //Counter to count the number of established lightpaths
 
 	public:
-		lightpathSetup() : numberOfLighpaths(0) {};								//Constructor to set the above lighpath counter to zero
-		void establishLightpath(vector<int> interNodeList, string wavelengthSt);//function which establishes a lightpath
+		lightpathSetup() : numberOfLighpaths(0) {};                             //Constructor to set the above lighpath counter to zero
+		void establishLightpath(vector<int> nodeList, string wavelengthSt);     //function which establishes a lightpath
 };
