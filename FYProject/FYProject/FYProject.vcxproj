@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="lightpathSettingup.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="readCSV.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="lightpathSettingup.h" />
     <ClInclude Include="readCSV.h" />
