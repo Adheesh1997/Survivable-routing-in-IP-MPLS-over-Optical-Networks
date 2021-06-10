@@ -15,7 +15,7 @@ void lightpathNodeID :: setID(int ID)
 }
 
 
-void lightpathNodeID :: setTheListOfLightpaths(vector<int> v1)
+/*void lightpathNodeID :: setTheListOfLightpaths(vector<int> v1)
 {
 	lightpathsForTheNode.push_back(v1);
 }
@@ -31,14 +31,14 @@ void lightpathNodeID :: printTheListOfLP()
 		cout << endl;
 	}
 
-}
+}*/
 
 /************  End of the lightpathNodeID class  ************/
 
 
 
 
-/************  Begining of the LightPathDetails class  ************/
+/************  Begining of the lightpathSetup class  ************/
 
 void lightpathSetup::establishLightpath(vector<int> nodeList, string wavelengthSt)
 {
@@ -53,12 +53,13 @@ void lightpathSetup::establishLightpath(vector<int> nodeList, string wavelengthS
 
 	
 	sourceAndDestNodes[0].setID(newLightPath.LPnodeVector[0]);                   //Assigning the id of the source node
-	sourceAndDestNodes[0].setTheListOfLightpaths(newLightPath.LPnodeVector);     //Assigning the list of nodes in LP for source node
+	//sourceAndDestNodes[0].setTheListOfLightpaths(newLightPath.LPnodeVector);     //Assigning the list of nodes in LP for source node
+	setSearchVector(newLightPath.LPnodeVector[0], nodeList);
 	sourceAndDestNodes[1].setID(newLightPath.LPnodeVector[numberOfNodes - 1]);   //Assigning the id of the destination node
-	sourceAndDestNodes[1].setTheListOfLightpaths(newLightPath.LPnodeVector);     //Assigning the list of nodes in LP for destination node
-
-	sourceAndDestNodes[0].printTheListOfLP();                       //Print the list of lightpaths for the source node
-	sourceAndDestNodes[1].printTheListOfLP();                       //Print the list of lightpaths for the destination node
+	//sourceAndDestNodes[1].setTheListOfLightpaths(newLightPath.LPnodeVector);     //Assigning the list of nodes in LP for destination node
+	
+	//sourceAndDestNodes[0].printTheListOfLP();                       //Print the list of lightpaths for the source node
+	//sourceAndDestNodes[1].printTheListOfLP();                       //Print the list of lightpaths for the destination node
 	
 	newLightPath.sourceNode = &sourceAndDestNodes[0];               //Assining the address of source node
 	newLightPath.destinationNode = &sourceAndDestNodes[1];          //Assining the address of destination node
@@ -73,4 +74,13 @@ void lightpathSetup::establishLightpath(vector<int> nodeList, string wavelengthS
 	numberOfLighpaths++;                                            //Increment the lighpath counter
 }
 
-/************  End of the LightPathDetails class  ************/
+void lightpathSetup :: setSearchVector(int id, vector<int> temp)
+{
+	for (int i = 0; i < searchVector.size(); i++)
+	{
+		if (searchVector[i].id == id)
+			v1.push_back(temp);
+	}
+	searchVector;
+}
+/************  End of the lightpathSetup class  ************/

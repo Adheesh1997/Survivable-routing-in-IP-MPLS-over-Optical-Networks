@@ -9,12 +9,12 @@ class lightpathNodeID
 {
 	private:
 		int id;                                          //id of the node
-		vector<vector<int>> lightpathsForTheNode;        //List of lightpaths connected the above node
+		//vector<vector<int>> lightpathsForTheNode;        //List of lightpaths connected the above node
 
 	public:
 		void setID(int ID);                              //Give and ID value for id
-		void setTheListOfLightpaths(vector<int> v1);     //Establish the lighpath
-		void printTheListOfLP();                         //Print the list of lightpaths
+		//void setTheListOfLightpaths(vector<int> v1);     //Establish the lighpath
+		//void printTheListOfLP();                         //Print the list of lightpaths
 };
 
 struct LightPathDetails
@@ -28,14 +28,22 @@ struct LightPathDetails
 	int numberOfLSPs;                       //Total number of LSPs in the lightpath
 };
 
+struct lightpathsOfANode
+{
+	int id;
+	vector<vector<int>> v1;
+};
+
 
 class lightpathSetup
 {
 	private:
 		vector<LightPathDetails> lightPaths;    //All the lighpaths are stored in this vector
+		vector<lightpathsOfANode> searchVector;
 		int numberOfLighpaths;                  //Counter to count the number of established lightpaths
 
 	public:
 		lightpathSetup() : numberOfLighpaths(0) {};                             //Constructor to set the above lighpath counter to zero
 		void establishLightpath(vector<int> nodeList, string wavelengthSt);     //function which establishes a lightpath
+		void setSearchVector(int id, vector<int> temp);
 };
