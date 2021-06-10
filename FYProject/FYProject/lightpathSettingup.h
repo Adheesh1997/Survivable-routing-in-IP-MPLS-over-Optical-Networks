@@ -10,6 +10,7 @@ struct lightpathNode
 	int id;
 };
 
+
 struct LightPathDetails
 {
 	lightpathNode* sourceNode;				//Source node of the lightpath

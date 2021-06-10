@@ -42,7 +42,7 @@ int main()
         graph1.printGraph();
 
 
-        /**************** To find shortest path(testing)*********************/
+        /**************** To find shortest path(testing) *********************/
         vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
         int vexnum = 14;
