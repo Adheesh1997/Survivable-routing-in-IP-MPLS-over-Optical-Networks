@@ -41,9 +41,10 @@ class lightpathSetup
 		vector<LightPathDetails> lightPaths;    //All the lighpaths are stored in this vector
 		vector<lightpathsOfANode> searchVector;
 		int numberOfLighpaths;                  //Counter to count the number of established lightpaths
+		lightpathsOfANode obj1;
 
 	public:
-		lightpathSetup() : numberOfLighpaths(0) {};                             //Constructor to set the above lighpath counter to zero
-		void establishLightpath(vector<int> nodeList, string wavelengthSt);     //function which establishes a lightpath
-		void setSearchVector(int id, vector<int> temp);
+		lightpathSetup();                           //Constructor to set the above lighpath counter to zero
+		void establishLightpath(vector<int> nodeList, string wavelengthSt, lightpathSetup &Obj1);     //function which establishes a lightpath
+		void setSearchVector(int id, vector<int> temp, lightpathSetup &Obj1);
 };
