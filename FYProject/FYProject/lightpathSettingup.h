@@ -70,8 +70,8 @@ class lightNode
 		lightNode(int ID);
 		void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, lightNode &tempDesObj);
 		int returnId();
+		void viewLPlinks();
 		//void removeLPlink();
-		//void viewLPlinks();
 };
 
 class lightpathNetwork
@@ -82,8 +82,7 @@ class lightpathNetwork
 
 	public:
 		lightpathNetwork() : totalnumOfLighpaths(0){}
-		//void viewAllLighpaths();
+		void viewAllLighpaths();
 		void setANewLighpath(vector<int> shortestPath, string wavelength);
-		//int checkForAvaialableNodes(int val);
-
+		int checkForAvaialableNode(int val);
 };
