@@ -5,7 +5,7 @@
 #include "graph.h"
 using namespace std;
 
-class lightpathNodeID
+/*class lightpathNodeID
 {
 	private:
 		int id;                                          //id of the node
@@ -47,4 +47,43 @@ class lightpathSetup
 		lightpathSetup();                           //Constructor to set the above lighpath counter to zero
 		void establishLightpath(vector<int> nodeList, string wavelengthSt, lightpathSetup &Obj1);     //function which establishes a lightpath
 		void setSearchVector(int id, vector<int> temp, lightpathSetup &Obj1);
+};*/
+
+class lightNode
+{
+	private:
+		int id;
+		struct linkDetails
+		{
+			int wavelength;
+			int initialBandwidth;
+			int availableBandwidth;
+			vector<int> path;
+			int destinationID;
+			lightNode* destAddress;
+		};
+		int numOfLPLinksPerNode;
+		
+		vector<linkDetails> linkVector;
+
+	public:
+		lightNode(int ID);
+		void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, lightNode &tempDesObj);
+		int returnId();
+		//void removeLPlink();
+		//void viewLPlinks();
+};
+
+class lightpathNetwork
+{
+	private:
+		vector<lightNode> lighpaths;
+		int totalnumOfLighpaths;
+
+	public:
+		lightpathNetwork() : totalnumOfLighpaths(0){}
+		//void viewAllLighpaths();
+		void setANewLighpath(vector<int> shortestPath, string wavelength);
+		//int checkForAvaialableNodes(int val);
+
 };

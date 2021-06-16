@@ -9,29 +9,13 @@ using namespace std;
 
 /************  Begining of the lightpathNodeID class  ************/
 
-void lightpathNodeID :: setID(int ID)
+/*void lightpathNodeID :: setID(int ID)
 {
 	id = ID;
-}
-
-
-/*void lightpathNodeID :: setTheListOfLightpaths(vector<int> v1)
-{
-	lightpathsForTheNode.push_back(v1);
-}
-
-
-void lightpathNodeID :: printTheListOfLP()
-{
-
-	for (int i = 0; i < lightpathsForTheNode.size(); i++)
-	{
-		for (int j = 0; j < lightpathsForTheNode[i].size(); j++)
-			cout << lightpathsForTheNode[i][j] << " -> ";
-		cout << endl;
-	}
-
 }*/
+
+
+
 
 /************  End of the lightpathNodeID class  ************/
 
@@ -39,7 +23,7 @@ void lightpathNodeID :: printTheListOfLP()
 
 
 /************  Begining of the lightpathSetup class  ************/
-
+/*
 lightpathSetup::lightpathSetup()
 {
 	numberOfLighpaths = 0;
@@ -100,5 +84,80 @@ void lightpathSetup :: setSearchVector(int id, vector<int> temp, lightpathSetup 
 		Obj1.searchVector.push_back(tempObj2);
 	}
 	searchVector;
-}
+}*/
 /************  End of the lightpathSetup class  ************/
+
+lightNode::lightNode(int ID)
+{
+	id = ID;
+	numOfLPLinksPerNode = 0;
+}
+
+void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, lightNode &tempDesObj)
+{
+	linkDetails temporLink;
+	temporLink.wavelength = wavelengthVal;
+	temporLink.initialBandwidth = bandwidthVal;
+	temporLink.availableBandwidth = bandwidthVal;
+	temporLink.path = pathVec;
+	temporLink.destinationID = tempDesObj.returnId();
+	temporLink.destAddress = &tempDesObj;
+
+	linkVector.push_back(temporLink);
+	numOfLPLinksPerNode++;
+}
+
+int lightNode::returnId()
+{
+	return id;
+}
+
+void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string wavelengthSt)
+{
+	vector<int> shortestpathVec = shortestPath;
+	stringstream geek(wavelengthSt);
+
+	int lamda;
+	geek >> lamda;
+
+
+	int vecSize = shortestPath.size();
+	int bandwidth = 50;
+	int check1 = 0, check2 = 0;
+	//int check1 = checkForAvaialableNodes(shortestPath[0]);
+	//int check2 = checkForAvaialableNodes(shortestPath[vecSize-1]);
+
+	if (check1 == -1)
+	{
+		lightNode lpNodeS(shortestpathVec[0]);
+		
+
+		if (check2 == -1)
+		{
+			lightNode lpNodeD(shortestPath[vecSize-1]);
+
+			lpNodeD.addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS);
+			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lpNodeD);
+
+			lighpaths.push_back(lpNodeS);
+			lighpaths.push_back(lpNodeD);
+			//sort() lightpaths
+
+			totalnumOfLighpaths++;
+		}
+
+		else
+		{
+			lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS);
+			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2]);
+
+			lighpaths.push_back(lpNodeS);
+			//sort() lightpaths
+
+		}
+
+		
+
+	}
+
+}
