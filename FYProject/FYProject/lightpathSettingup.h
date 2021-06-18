@@ -5,16 +5,16 @@
 #include "graph.h"
 using namespace std;
 
-class lightpathNodeID
+/*class lightpathNodeID
 {
 	private:
 		int id;                                          //id of the node
-		vector<vector<int>> lightpathsForTheNode;        //List of lightpaths connected the above node
+		//vector<vector<int>> lightpathsForTheNode;        //List of lightpaths connected the above node
 
 	public:
 		void setID(int ID);                              //Give and ID value for id
-		void setTheListOfLightpaths(vector<int> v1);     //Establish the lighpath
-		void printTheListOfLP();                         //Print the list of lightpaths
+		//void setTheListOfLightpaths(vector<int> v1);     //Establish the lighpath
+		//void printTheListOfLP();                         //Print the list of lightpaths
 };
 
 
@@ -29,14 +29,61 @@ struct LightPathDetails
 	int numberOfLSPs;                       //Total number of LSPs in the lightpath
 };
 
+struct lightpathsOfANode
+{
+	int id;
+	vector<vector<int>> v1;
+};
+
 
 class lightpathSetup
 {
 	private:
 		vector<LightPathDetails> lightPaths;    //All the lighpaths are stored in this vector
+		vector<lightpathsOfANode> searchVector;
 		int numberOfLighpaths;                  //Counter to count the number of established lightpaths
+		lightpathsOfANode obj1;
 
 	public:
-		lightpathSetup() : numberOfLighpaths(0) {};                             //Constructor to set the above lighpath counter to zero
-		void establishLightpath(vector<int> nodeList, string wavelengthSt);     //function which establishes a lightpath
+		lightpathSetup();                           //Constructor to set the above lighpath counter to zero
+		void establishLightpath(vector<int> nodeList, string wavelengthSt, lightpathSetup &Obj1);     //function which establishes a lightpath
+		void setSearchVector(int id, vector<int> temp, lightpathSetup &Obj1);
+};*/
+
+class lightNode
+{
+	private:
+		int id;
+		struct linkDetails
+		{
+			int wavelength;
+			int initialBandwidth;
+			int availableBandwidth;
+			vector<int> path;
+			int destinationID;
+			lightNode* destAddress;
+		};
+		int numOfLPLinksPerNode;
+		
+		vector<linkDetails> linkVector;
+
+	public:
+		lightNode(int ID);
+		void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, lightNode &tempDesObj);
+		int returnId();
+		void viewLPlinks();
+		//void removeLPlink();
+};
+
+class lightpathNetwork
+{
+	private:
+		vector<lightNode> lighpaths;
+		int totalnumOfLighpaths;
+
+	public:
+		lightpathNetwork() : totalnumOfLighpaths(0){}
+		void viewAllLighpaths();
+		void setANewLighpath(vector<int> shortestPath, string wavelength);
+		int checkForAvaialableNode(int val);
 };
