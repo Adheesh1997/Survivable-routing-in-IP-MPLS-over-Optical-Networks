@@ -30,6 +30,9 @@
     <ClCompile Include="Dijkstra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lightpathSettingup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LSP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

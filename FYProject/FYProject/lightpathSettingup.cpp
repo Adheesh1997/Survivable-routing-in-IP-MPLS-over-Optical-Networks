@@ -45,6 +45,19 @@ void lightNode::viewLPlinks()
 	}
 }
 
+bool lightNode::serachLighpathNode(int nodeID)
+{
+	for (int i = 0; i < linkVector.size(); i++)
+		if (linkVector[i].destinationID == nodeID)
+			return true;
+	return false;
+}
+
+///////////////////////////////////
+lightNode* lightpathNetwork::adrressReturn(int val)
+{
+	lighpaths[val];
+}
 
 
 void lightpathNetwork::viewAllLighpaths()
@@ -136,4 +149,22 @@ int lightpathNetwork::checkForAvaialableNode(int val)
 			return i;
 
 	return -1;
+}
+
+bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
+{
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if (lighpaths[i].returnId() == node1id)
+		{
+			bool check = lighpaths[i].serachLighpathNode(node2id);
+			return check;
+		}
+		if (lighpaths[i].returnId() == node2id)
+		{
+			bool check = lighpaths[i].serachLighpathNode(node1id);
+			return check;
+		}
+	}
+	return false;
 }
