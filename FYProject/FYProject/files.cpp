@@ -3,11 +3,22 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "readCSV.h"
+#include <stdio.h>
+#include <time.h>
+
+#include "files.h"
 
 using namespace std;
 
-bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation)
+files::files()
+{
+    logFile.open(("log_files/"+outputFileName()),ios_base::app);
+
+    if(logFile.is_open())
+        logFile<<currentTime()<<" "<<"Log file is created\n";
+}
+
+bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation)
 {
     /*
     Parameters_
@@ -58,4 +69,60 @@ bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,st
         cout<<"Graph input file failed to open!!!"<<endl;
         return false;
     }
+}
+
+string files::currentTime() 
+{
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    //strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    strftime(buf, sizeof(buf), "[%X]", &tstruct);
+
+    return buf;
+
+}
+
+string files::currentDate() 
+{
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    //strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    strftime(buf, sizeof(buf), "%Y-%m-%d", &tstruct);
+
+    return buf;
+
+}
+
+string files::outputFileName() 
+{
+    string NowTime;
+    time_t now;
+
+    struct tm nowLocal;
+
+    now=time(NULL); // get the time from the OS
+
+    nowLocal=*localtime(&now);
+
+    NowTime =   to_string(nowLocal.tm_year+1900)+'-'+to_string(nowLocal.tm_mon+1)+'-'+to_string(nowLocal.tm_mday)+'_'+
+                to_string(nowLocal.tm_hour) + '.' + to_string(nowLocal.tm_min)+".txt";
+    
+    return NowTime;
+}
+
+void files::writeLog(string message = " ")
+{
+    if(logFile.is_open())
+    {
+        logFile<<currentTime()<<" "<<message<<endl;
+    }
+}
+
+files::~files()
+{
+    logFile.close();
 }
