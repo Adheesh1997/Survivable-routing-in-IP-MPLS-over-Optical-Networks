@@ -4,6 +4,7 @@
 #include <sstream>
 #include <algorithm>
 #include "graph.h"
+#include "LSP.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthV
 	temporLink.path = pathVec;
 	temporLink.destinationID = tempDesObj.returnId();
 	temporLink.destAddress = &tempDesObj;
+	temporLink.numberOfLSPs = 0;
 
 	linkVector.push_back(temporLink);
 	numOfLPLinksPerNode++;
@@ -53,10 +55,25 @@ bool lightNode::serachLighpathNode(int nodeID)
 	return false;
 }
 
-///////////////////////////////////
+int lightNode::searchDestination()
+{
+	return linkVector[0].destinationID;
+}
+
+lightNode* lightNode::searchAddress(int temp)
+{
+	for (int i = 0; i < linkVector.size(); i++)
+		if (linkVector[i].destinationID == temp)
+			return linkVector[i].destAddress;
+}
+
+//////////////////////////////////
 lightNode* lightpathNetwork::adrressReturn(int val)
 {
-	lighpaths[val];
+	int pos = lighpaths[val].searchDestination();
+	int temp = lighpaths[val].returnId();
+	lightNode* selfAddress = lighpaths[pos].searchAddress(temp);
+	return selfAddress;
 }
 
 
@@ -82,8 +99,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 	int vecSize = shortestPath.size();
 	int bandwidth = 50;
 	
-	int check1 = checkForAvaialableNode(shortestPath[0]);
-	int check2 = checkForAvaialableNode(shortestPath[vecSize-1]);
+	int check1 = checkForAvaialableLPNode(shortestPath[0]);
+	int check2 = checkForAvaialableLPNode(shortestPath[vecSize-1]);
 
 	if (check1 == -1)
 	{
@@ -106,8 +123,9 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 		else
 		{
+			lightNode* temp = adrressReturn(check2);
 			lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS);
-			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2]);
+			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, *temp);
 
 			lighpaths.push_back(lpNodeS);
 			//sort() lightpaths
@@ -142,7 +160,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 	}
 }
 
-int lightpathNetwork::checkForAvaialableNode(int val)
+int lightpathNetwork::checkForAvaialableLPNode(int val)
 {
 	for (int i = 0; i < lighpaths.size(); i++)
 		if (lighpaths[i].returnId() == val)
@@ -158,22 +176,35 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 		if (lighpaths[i].returnId() == node1id)
 		{
 			bool check = lighpaths[i].serachLighpathNode(node2id);
-			if (check)
+			/*if (check)
 				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
 			else
-				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
 			return check;
 		}
 		if (lighpaths[i].returnId() == node2id)
 		{
 			bool check = lighpaths[i].serachLighpathNode(node1id);
-			if (check)
+			/*if (check)
 				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
 			else
-				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
 			return check;
 		}
 	}
-	cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
+	//cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 	return false;
+}
+
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj)
+{
+	int LSPbandwidth;
+	stringstream change(wavelengthLSPstr);
+	int intLSPwavelength;
+	vector<int> v1 = shortestPathLSP;
+
+	change >> intLSPwavelength;
+
+	LSP ObjLSP;
+	ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth, obj);
 }

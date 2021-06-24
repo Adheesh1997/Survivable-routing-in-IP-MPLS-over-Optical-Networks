@@ -2,10 +2,21 @@
 #include "graph.h"
 #include "lightpathSettingup.h"
 
-class LSPnetwork
+
+
+class LSP
 {
 	private:
-
+		struct LSPnode
+		{
+			lightNode* prev;
+			lightNode* next;
+		};
+		vector<LSPnode> LSPnodeVec;
+		int bandwidthOfLSP;
 	public:
-		LSPnetwork(int num);
+		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth, lightpathNetwork &obj);
+		//void viewAllLSPs();
+		//bool checkForAvailableLSP();
+
 };

@@ -1,5 +1,61 @@
 ﻿  lightpathSettingup.cpp
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(118): warning C4018: '<': signed/unsigned mismatch
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(132): warning C4018: '<': signed/unsigned mismatch
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(213): warning C4018: '<': signed/unsigned mismatch
-  FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(18): error C2061: syntax error: identifier 'lightpathNetwork'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(82): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(165): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(174): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(209): error C2660: 'LSP::establishANewLSP': function does not take 4 arguments
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(18): note: see declaration of 'LSP::establishANewLSP'
+  LSP.cpp
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(18): error C2061: syntax error: identifier 'lightpathNetwork'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(6): error C2511: 'void LSP::establishANewLSP(std::vector<int,std::allocator<_Ty>>,int,int,lightpathNetwork &)': overloaded member function not found in 'LSP'
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(7): note: see declaration of 'LSP'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(7): error C2597: illegal reference to non-static member 'LSP::bandwidthOfLSP'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(14): error C2039: 'prev': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(16): error C2039: 'next': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(19): error C2039: 'next': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(21): error C2039: 'prev': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(34): error C2039: 'prev': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(36): error C2039: 'next': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(44): error C2039: 'prev': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(47): error C2039: 'next': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(53): error C2039: 'prev': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(55): error C2039: 'next': is not a member of 'LSP::LSPnode'
+  c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(10): note: see declaration of 'LSP::LSPnode'
+  main.cpp
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(12): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2143: syntax error: missing ';' before '*'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(13): error C2238: unexpected token(s) preceding ';'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.h(18): error C2061: syntax error: identifier 'lightpathNetwork'
+c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\main.cpp(17): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
