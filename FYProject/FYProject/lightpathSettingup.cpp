@@ -158,13 +158,22 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 		if (lighpaths[i].returnId() == node1id)
 		{
 			bool check = lighpaths[i].serachLighpathNode(node2id);
+			if (check)
+				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
+			else
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 			return check;
 		}
 		if (lighpaths[i].returnId() == node2id)
 		{
 			bool check = lighpaths[i].serachLighpathNode(node1id);
+			if (check)
+				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
+			else
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 			return check;
 		}
 	}
+	cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 	return false;
 }
