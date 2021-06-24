@@ -57,6 +57,10 @@ int main()
 
         printShortestPath(shortest_path); //print shortest path
 
+        lightpathNetwork testNetwork;
+        testNetwork.setANewLighpath(shortest_path, "20");
+        testNetwork.viewAllLighpaths();
+
         /*********************************************************************/
     }
     
