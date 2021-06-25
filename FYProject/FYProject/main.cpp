@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "readCSV.h"
+
+#include "files.h"
 #include "graph.h"
 #include "lightpathSettingup.h"
 #include "Dijkstra.h"
@@ -26,6 +27,7 @@ void printShortestPath(vector<int> sp) {
 
 int main()
 {
+    files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
@@ -34,15 +36,18 @@ int main()
     
 
     //Read csv file and assign values to the matrix 
-    if(readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
+    if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
+        myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork graph1(numOfNodes, 40);
         graph1.setupFiberLinkNetwork(adjacencyMetrix);
+
+        myfile.writeLog("Physical network is created.");
         graph1.printGraph();
 
 
-        /**************** To find shortest path(testing)*********************/
+        /**************** To find shortest path(testing) *********************/
         vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
         int vexnum = 14;
@@ -56,6 +61,10 @@ int main()
         cout << waveLengthnumber << endl;
 
         printShortestPath(shortest_path); //print shortest path
+
+        lightpathNetwork testNetwork;
+        testNetwork.setANewLighpath(shortest_path, "20");
+        testNetwork.viewAllLighpaths();
 
         /*********************************************************************/
     }
