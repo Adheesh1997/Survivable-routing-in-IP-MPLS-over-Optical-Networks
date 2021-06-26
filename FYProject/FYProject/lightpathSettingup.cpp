@@ -196,9 +196,9 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr)
 {
-	int LSPbandwidth;
+	int LSPbandwidth = 10;
 	stringstream change(wavelengthLSPstr);
 	int intLSPwavelength;
 	vector<int> v1 = shortestPathLSP;
@@ -206,5 +206,5 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 	change >> intLSPwavelength;
 
 	LSP ObjLSP;
-	ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth, obj);
+	ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth);
 }

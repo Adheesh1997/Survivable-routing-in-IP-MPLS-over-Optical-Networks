@@ -3,10 +3,12 @@
 #include "lightpathSettingup.h"
 
 
-
 class LSP
 {
 	private:
+		friend class lightNode;
+		friend class lightpathNetwork;
+
 		struct LSPnode
 		{
 			lightNode* prev;
@@ -14,8 +16,10 @@ class LSP
 		};
 		vector<LSPnode> LSPnodeVec;
 		int bandwidthOfLSP;
+
+		
 	public:
-		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth, lightpathNetwork &obj);
+		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth);
 		//void viewAllLSPs();
 		//bool checkForAvailableLSP();
 

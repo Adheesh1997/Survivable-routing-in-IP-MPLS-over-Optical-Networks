@@ -10,6 +10,8 @@ using namespace std;
 class lightNode                            //A node is created when establishing lightpaths
 {
 	private:
+		friend class LSP;
+
 		int id;                              //ID of the established node
 		struct linkDetails                   //This structure has all the details of a lightpath
 		{
@@ -25,6 +27,7 @@ class lightNode                            //A node is created when establishing
 		int numOfLPLinksPerNode;             //Counter to record the number of lightpaths connected per a node
 		vector<linkDetails> linkVector;      //Vector to hold the details of the lighpaths
 
+		
 	public:
 		lightNode(int ID);                   //This constructor gives the ID value for a node
 		void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, lightNode &tempDesObj);//Lightpaths are added to the nodes
@@ -42,6 +45,7 @@ class lightpathNetwork                       //Object of this class has to be cr
 		vector<lightNode> lighpaths;         //This vector stores all the lightpaths 
 		int totalnumOfLighpaths;             //The total number of lightpaths within the network
 
+		friend class LSP;
 	public:
 		lightpathNetwork() : totalnumOfLighpaths(0){}                      //The number of lightpaths before creating the network is zero
 		lightNode* adrressReturn(int val);                                 //Return the address of a node
@@ -50,6 +54,6 @@ class lightpathNetwork                       //Object of this class has to be cr
 		int checkForAvaialableLPNode(int val);                               //Check whether a node is available within the network
 		bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 		
-		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
+		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr);
 
 };
