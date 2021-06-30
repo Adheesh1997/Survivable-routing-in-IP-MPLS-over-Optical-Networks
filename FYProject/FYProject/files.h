@@ -14,16 +14,16 @@ class files
 private:
     ofstream logFile;
 
-    string currentTime();
-    string currentDate();
-    string outputFileName();
+    //string currentTime();
+    //string currentDate();
+    //string outputFileName();
 
 
 public:
     files();
 
     bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation);
-    void writeLog(string message);
+    //void writeLog(string message);
 
     ~files();
 };

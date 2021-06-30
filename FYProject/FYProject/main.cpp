@@ -38,12 +38,12 @@ int main()
     //Read csv file and assign values to the matrix 
     if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
-        myfile.writeLog((fileLocation + " Graph is imported."));
+        //myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork graph1(numOfNodes, 40);
         graph1.setupFiberLinkNetwork(adjacencyMetrix);
 
-        myfile.writeLog("Physical network is created.");
+        //myfile.writeLog("Physical network is created.");
         graph1.printGraph();
 
 

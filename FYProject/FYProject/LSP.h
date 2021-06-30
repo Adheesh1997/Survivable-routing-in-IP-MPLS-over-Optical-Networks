@@ -19,7 +19,8 @@ class LSP
 
 		
 	public:
-		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth);
+		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth, lightpathNetwork obj);
+		//void viewLSPsInALightpath();
 		//void viewAllLSPs();
 		//bool checkForAvailableLSP();
 
