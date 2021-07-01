@@ -2,14 +2,12 @@
 #include "lightpathSettingup.h"
 #include "LSP.h"
 
-void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth, lightpathNetwork obj)
+void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpathNetwork obj)
 {
-	bandwidthOfLSP = LSPbandwidth;
-
+	
 	if (shortestPathLSP.size() == 2)
 	{
 		LSPnode tempNode;
-
 
 		tempNode.prev = NULL;
 		int positionOfNextLPnode = obj.checkForAvaialableLPNode(shortestPathLSP[1]);
@@ -55,6 +53,9 @@ void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPb
 		tempNode2.next = NULL;
 		LSPnodeVec.push_back(tempNode2);  //Final node of LSP
 	}
+
+
+
 }
 
 /*void LSP::viewLSPsInALightpath() 

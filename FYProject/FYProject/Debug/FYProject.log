@@ -1,11 +1,11 @@
-﻿  lightpathSettingup.cpp
+﻿  LSP.cpp
+  lightpathSettingup.cpp
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(52): warning C4018: '<': signed/unsigned mismatch
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(64): warning C4018: '<': signed/unsigned mismatch
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(72): warning C4018: '<': signed/unsigned mismatch
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(82): warning C4018: '<': signed/unsigned mismatch
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(167): warning C4018: '<': signed/unsigned mismatch
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(176): warning C4018: '<': signed/unsigned mismatch
-  LSP.cpp
   main.cpp
 c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\main.cpp(18): warning C4018: '<': signed/unsigned mismatch
   Generating Code...

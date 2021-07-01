@@ -1,9 +1,10 @@
 #pragma once
+#include <vector>
 #include "graph.h"
 #include "lightpathSettingup.h"
 
 
-class LSP
+class LSP: public lightNode, public lightpathNetwork
 {
 	private:
 		friend class lightNode;
@@ -19,7 +20,7 @@ class LSP
 
 		
 	public:
-		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, int LSPbandwidth, lightpathNetwork obj);
+		void establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpathNetwork obj);
 		//void viewLSPsInALightpath();
 		//void viewAllLSPs();
 		//bool checkForAvailableLSP();

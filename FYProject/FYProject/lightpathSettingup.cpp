@@ -74,6 +74,16 @@ lightNode* lightNode::searchAddress(int temp)
 			return linkVector[i].destAddress;
 }
 
+void lightNode::insertLSPtoVec(LSP temp, int id)
+{
+	for (int i = 0; i < linkVector.size(); i++)
+	{
+		if (id == linkVector[i].destinationID)
+			linkVector[i].vecLSP.push_back(temp);
+	}
+
+}
+
 //////////////////////////////////
 
 
@@ -171,7 +181,7 @@ int lightpathNetwork::checkForAvaialableLPNode(int val)
 	return -1;
 }
 
-bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
+auto lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 {
 	for (int i = 0; i < lighpaths.size(); i++)
 	{
@@ -198,7 +208,7 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork obj)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj)
 {
 	int LSPbandwidth = 10;
 	stringstream change(wavelengthLSPstr);
@@ -208,5 +218,14 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 	change >> intLSPwavelength;
 
 	LSP ObjLSP;
-	ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth, obj);
+	ObjLSP.establishANewLSP(v1, intLSPwavelength, obj);
+
+	ObjLSP.bandwidthOfLSP = LSPbandwidth;
+
+	int pos1 = checkForAvaialableLPNode(v1[0]);
+	int pos2 = checkForAvaialableLPNode(v1[v1.size() - 1]);
+
+	obj.lighpaths[pos1].insertLSPtoVec(ObjLSP, v1[v1.size() - 1]);
+	obj.lighpaths[pos2].insertLSPtoVec(ObjLSP, v1[0]);
+
 }
