@@ -20,18 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dijkstra.cpp" />
+    <ClCompile Include="files.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="lightpathSettingup.cpp" />
     <ClCompile Include="LSP.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="readCSV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="files.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="lightpathSettingup.h" />
     <ClInclude Include="LSP.h" />
-    <ClInclude Include="readCSV.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

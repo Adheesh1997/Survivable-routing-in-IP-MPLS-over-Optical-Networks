@@ -39,12 +39,12 @@ int main()
     //Read csv file and assign values to the matrix 
     if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
-        myfile.writeLog((fileLocation + " Graph is imported."));
+        //myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork physicalLinkNetwork(numOfNodes, 40);
         physicalLinkNetwork.setupFiberLinkNetwork(adjacencyMetrix);
 
-        myfile.writeLog("Physical network is created.");
+        //myfile.writeLog("Physical network is created.");
         physicalLinkNetwork.printGraph();
 
         lightpathNetwork waveLengthNetwork;
@@ -53,9 +53,9 @@ int main()
         lspRequest lspReq;
         
         lspReq = lspReqGen.generateRequest();
-        myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
+        /* myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
                         +to_string(lspReq.DstNode)+", id = "+to_string(lspReq.id)+", request = "+to_string(lspReq.request)));
-
+ */
 
         if(waveLengthNetwork.checkForAvilableLightpath(lspReq.srcNode,lspReq.DstNode))
         {
