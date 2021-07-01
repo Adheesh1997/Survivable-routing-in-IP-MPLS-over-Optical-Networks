@@ -1,4 +1,7 @@
 #pragma once
+#ifndef LIGHTPATH_H
+#define LIGHTPATH_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,7 +12,7 @@ using namespace std;
 
 class lightNode                            //A node is created when establishing lightpaths
 {
-	protected:
+	private:
 		friend class LSP;
 		friend class lightpathNetwork;
 
@@ -61,3 +64,28 @@ class lightpathNetwork                       //Object of this class has to be cr
 		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
 
 };
+
+class LSP
+{
+private:
+	friend class lightNode;
+	friend class lightpathNetwork;
+
+	struct LSPnode
+	{
+		lightNode* prev;
+		lightNode* next;
+	};
+	vector<LSPnode> LSPnodeVec;
+	int bandwidthOfLSP;
+
+
+public:
+	void establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpathNetwork obj);
+	//void viewLSPsInALightpath(lightpathNetwork obj);
+	//void viewAllLSPs();
+	//bool checkForAvailableLSP();
+
+};
+
+#endif

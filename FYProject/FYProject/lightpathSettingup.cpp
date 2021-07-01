@@ -49,11 +49,11 @@ int lightNode::returnId()
 
 void lightNode::viewLPlinks()
 {
-	for (int i = 0; i < linkVector.size(); i++)
+	for (size_t i = 0; i < linkVector.size(); i++)
 	{
 		int pathSize = linkVector[i].path.size();
 
-		for (int j = 0; j < (pathSize - 1); j++)
+		for (size_t j = 0; j < (pathSize - 1); j++)
 			cout << linkVector[i].path[j] << " -> ";
 		cout << linkVector[i].path[pathSize - 1] << endl;
 	}
@@ -61,7 +61,7 @@ void lightNode::viewLPlinks()
 
 bool lightNode::serachLighpathNode(int nodeID)
 {
-	for (int i = 0; i < linkVector.size(); i++)
+	for (size_t i = 0; i < linkVector.size(); i++)
 		if (linkVector[i].destinationID == nodeID)
 			return true;
 	return false;
@@ -69,14 +69,14 @@ bool lightNode::serachLighpathNode(int nodeID)
 
 lightNode* lightNode::searchAddress(int temp)
 {
-	for (int i = 0; i < linkVector.size(); i++)
+	for (size_t i = 0; i < linkVector.size(); i++)
 		if (linkVector[i].destinationID == temp)
 			return linkVector[i].destAddress;
 }
 
 void lightNode::insertLSPtoVec(LSP temp, int id)
 {
-	for (int i = 0; i < linkVector.size(); i++)
+	for (size_t i = 0; i < linkVector.size(); i++)
 	{
 		if (id == linkVector[i].destinationID)
 			linkVector[i].vecLSP.push_back(temp);
@@ -89,7 +89,7 @@ void lightNode::insertLSPtoVec(LSP temp, int id)
 
 void lightpathNetwork::viewAllLighpaths()
 {
-	for (int i = 0; i < lighpaths.size(); i++)
+	for (size_t i = 0; i < lighpaths.size(); i++)
 	{
 		cout << "Lighpath node id - " << lighpaths[i].returnId() << endl;
 		lighpaths[i].viewLPlinks();
@@ -174,7 +174,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 int lightpathNetwork::checkForAvaialableLPNode(int val)
 {
-	for (int i = 0; i < lighpaths.size(); i++)
+	for (size_t i = 0; i < lighpaths.size(); i++)
 		if (lighpaths[i].returnId() == val)
 			return i;
 
@@ -183,7 +183,7 @@ int lightpathNetwork::checkForAvaialableLPNode(int val)
 
 auto lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 {
-	for (int i = 0; i < lighpaths.size(); i++)
+	for (size_t i = 0; i < lighpaths.size(); i++)
 	{
 		if (lighpaths[i].returnId() == node1id)
 		{

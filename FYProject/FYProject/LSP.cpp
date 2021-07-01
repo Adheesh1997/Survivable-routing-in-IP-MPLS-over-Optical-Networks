@@ -36,7 +36,7 @@ void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpat
 
 
 		LSPnode tempNode2;
-		for (int i = 1; i <= numOfIntermediate; i++)
+		for (size_t i = 1; i <= numOfIntermediate; i++)
 		{
 			int positionOfPrevLPnode = obj.checkForAvaialableLPNode(shortestPathLSP[i - 1]);
 			tempNode2.prev = obj.lighpaths[positionOfPrevLPnode].returnSelfAddress();
@@ -58,7 +58,7 @@ void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpat
 
 }
 
-/*void LSP::viewLSPsInALightpath() 
+/*void LSP::viewLSPsInALightpath(lightpathNetwork obj)
 {
 	int node1id, node2id;
 
