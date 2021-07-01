@@ -67,7 +67,7 @@ lightNode* lightNode::searchAddress(int temp)
 			return linkVector[i].destAddress;
 }
 
-//////////////////////////////////
+////////////////////////////////// 
 lightNode* lightpathNetwork::adrressReturn(int val)
 {
 	int pos = lighpaths[val].searchDestination();
@@ -205,6 +205,6 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 
 	change >> intLSPwavelength;
 
-	LSP ObjLSP;
-	ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth);
+	//LSP ObjLSP;
+	//ObjLSP.establishANewLSP(v1, intLSPwavelength, LSPbandwidth);
 }

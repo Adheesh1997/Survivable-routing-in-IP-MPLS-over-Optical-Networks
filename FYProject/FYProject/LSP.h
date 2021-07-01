@@ -2,7 +2,7 @@
 #include "graph.h"
 #include "lightpathSettingup.h"
 
-
+/* 
 class LSP
 {
 	private:
@@ -23,4 +23,4 @@ class LSP
 		//void viewAllLSPs();
 		//bool checkForAvailableLSP();
 
-};
+}; */

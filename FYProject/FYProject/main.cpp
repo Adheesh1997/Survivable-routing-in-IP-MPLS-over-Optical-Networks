@@ -6,11 +6,12 @@
 #include "graph.h"
 #include "lightpathSettingup.h"
 #include "Dijkstra.h"
+#include "lspRequestGenarator.h"
 
 using namespace std;
 
 /**************** Testing **********************/
-void printShortestPath(vector<int> sp) {
+/* void printShortestPath(vector<int> sp) {
     if (sp[0] == -1) {
         cout << "There is no shortest path" << endl;
     }
@@ -21,7 +22,7 @@ void printShortestPath(vector<int> sp) {
         }
         cout << endl;
     }
-}
+} */
 /************************************/
 
 
@@ -40,15 +41,28 @@ int main()
     { 
         myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
-        fiberLinkNetwork graph1(numOfNodes, 40);
-        graph1.setupFiberLinkNetwork(adjacencyMetrix);
+        fiberLinkNetwork physicalLinkNetwork(numOfNodes, 40);
+        physicalLinkNetwork.setupFiberLinkNetwork(adjacencyMetrix);
 
         myfile.writeLog("Physical network is created.");
-        graph1.printGraph();
+        physicalLinkNetwork.printGraph();
+
+        lightpathNetwork waveLengthNetwork;
+
+        lspRequestGenarator lspReqGen(numOfNodes);
+        lspRequest lspReq;
+        
+        lspReq = lspReqGen.generateRequest();
+        myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
+                        +to_string(lspReq.DstNode)+", id = "+to_string(lspReq.id)+", request = "+to_string(lspReq.request)));
 
 
+        if(waveLengthNetwork.checkForAvilableLightpath(lspReq.srcNode,lspReq.DstNode))
+        {
+            
+        }
         /**************** To find shortest path(testing) *********************/
-        vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix, 40);
+        /* vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
         int vexnum = 14;
         int source = 0;
@@ -64,8 +78,7 @@ int main()
 
         lightpathNetwork testNetwork;
         testNetwork.setANewLighpath(shortest_path, "20");
-        testNetwork.viewAllLighpaths();
-
+        testNetwork.viewAllLighpaths(); */
         /*********************************************************************/
     }
     

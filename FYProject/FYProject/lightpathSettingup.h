@@ -22,7 +22,7 @@ class lightNode                            //A node is created when establishing
 			int destinationID;               //Desination ID of the lightpath
 			lightNode* destAddress;          //Address of the destination ID
 			int numberOfLSPs;
-			vector<LSP> vecLSP;
+			//vector<LSP> vecLSP;
 		};
 		int numOfLPLinksPerNode;             //Counter to record the number of lightpaths connected per a node
 		vector<linkDetails> linkVector;      //Vector to hold the details of the lighpaths
