@@ -196,6 +196,7 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
                 if (validate == true) {
                     backUpSPOutput = mapIt->second;            
                     waveLengthNumber = mapIt->first;
+                    minVal = mapIt->second.size();
                 }
             }
         }

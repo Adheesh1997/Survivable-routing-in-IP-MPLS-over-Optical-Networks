@@ -1,1 +1,3 @@
-﻿  FYProject.vcxproj -> D:\Final_year\Adheesh1997\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+﻿main.obj : error LNK2019: unresolved external symbol "public: __thiscall lspRequestGenarator::lspRequestGenarator(int)" (??0lspRequestGenarator@@QAE@H@Z) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "public: struct lspRequest __thiscall lspRequestGenarator::generateRequest(void)" (?generateRequest@lspRequestGenarator@@QAE?AUlspRequest@@XZ) referenced in function _main
+D:\Final_year\Adheesh1997\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe : fatal error LNK1120: 2 unresolved externals
