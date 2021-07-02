@@ -16,7 +16,7 @@ using namespace std;
         cout << "There is no shortest path" << endl;
     }
     else {
-        for (int j = 0; j < sp.size(); j++)
+        for (size_t j = 0; j < sp.size(); j++)
         {
             cout << sp[j] << " --> ";
         }

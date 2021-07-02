@@ -1,4 +1,7 @@
 #pragma once
+#ifndef LIGHTPATH_H
+#define LIGHTPATH_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -6,14 +9,18 @@
 #include "LSP.h"
 using namespace std;
 
+class lightNode;
+class lightpathNetwork;
+class LSP;
 
 class lightNode                            //A node is created when establishing lightpaths
 {
 	private:
 		friend class LSP;
+		friend class lightpathNetwork;
 
 		int id;                              //ID of the established node
-		lightNode* selfAddress;
+		lightNode* selfAddress;              //Stores its own address
 		struct linkDetails                   //This structure has all the details of a lightpath
 		{
 			int wavelength;                  //Wavelength of the lightpath
@@ -23,7 +30,7 @@ class lightNode                            //A node is created when establishing
 			int destinationID;               //Desination ID of the lightpath
 			lightNode* destAddress;          //Address of the destination ID
 			int numberOfLSPs;
-			//vector<LSP> vecLSP;
+			vector<LSP> vecLSP;
 		};
 		int numOfLPLinksPerNode;             //Counter to record the number of lightpaths connected per a node
 		vector<linkDetails> linkVector;      //Vector to hold the details of the lighpaths
@@ -31,19 +38,20 @@ class lightNode                            //A node is created when establishing
 		
 	public:
 		lightNode(int ID);                   //This constructor gives the ID value for a node
-		void setSelfAddress(lightNode* temp);
-		lightNode* returnSelfAddress();
+		void setSelfAddress(lightNode* temp);//Set the address of the source node of the lightpath
+		lightNode* returnSelfAddress();      //Return the source node address
 		void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj);//Lightpaths are added to the nodes
 		int returnId();                      //Returns the ID of the node
 		void viewLPlinks();                  //View the lightpaths connected for a node
 		bool serachLighpathNode(int nodeID); //Search whether an node is connected to the current node
 		lightNode* searchAddress(int val);
+		void insertLSPtoVec(LSP temp, int id);
 	    //void removeLPlink();
 };
 
 class lightpathNetwork                       //Object of this class has to be created in main function
 {
-	private:
+	protected:
 		friend class LSP;
 		vector<lightNode> lighpaths;         //This vector stores all the lightpaths 
 		int totalnumOfLighpaths;             //The total number of lightpaths within the network
@@ -53,9 +61,12 @@ class lightpathNetwork                       //Object of this class has to be cr
 		lightpathNetwork() : totalnumOfLighpaths(0){}                      //The number of lightpaths before creating the network is zero
 		void viewAllLighpaths();                                           //Print all the existing lightpaths
 		void setANewLighpath(vector<int> shortestPath, string wavelength); //Establish a lighpath
-		int checkForAvaialableLPNode(int val);                               //Check whether a node is available within the network
-		bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
+		int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
+		auto checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 		
-		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork obj);
+		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
 
 };
+
+
+#endif
