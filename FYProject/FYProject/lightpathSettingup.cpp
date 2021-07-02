@@ -181,7 +181,7 @@ int lightpathNetwork::checkForAvaialableLPNode(int val)
 	return -1;
 }
 
-auto lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
+bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 {
 	for (size_t i = 0; i < lighpaths.size(); i++)
 	{

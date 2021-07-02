@@ -62,7 +62,7 @@ class lightpathNetwork                       //Object of this class has to be cr
 		void viewAllLighpaths();                                           //Print all the existing lightpaths
 		void setANewLighpath(vector<int> shortestPath, string wavelength); //Establish a lighpath
 		int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
-		auto checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
+		bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 		
 		void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
 

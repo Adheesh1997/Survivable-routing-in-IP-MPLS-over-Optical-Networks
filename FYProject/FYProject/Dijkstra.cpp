@@ -1,5 +1,7 @@
 ﻿#include"Dijkstra.h"
 #include "graph.h"
+#include <map>
+#include <algorithm>   
 
 
 
@@ -129,27 +131,91 @@ void Graph_DG::delete_edge(int end) {
 
 
 
-vector<int> initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination) {
-    int minVal = 1000;
+
+findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination) {
+
+    auto minVal = 1000;
     int waveLengthNumber = -1;
-    vector<int> shortest_path_output;
-    for (int start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);
-        //graph.print();
+    findPathDetails shortestPathsDetails;
+    vector<int> primarySPOutput;
+    vector<int> backUpSPOutput;
+    map<int, vector<int>> totalPathDetails;
+
+
+
+    for (auto start = 0; start < waveLengthNetwork.size(); start++) {
+        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
         graph.Dijkstra(source);
         vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
+
+        totalPathDetails[start] = shortest_path;
+
         if (shortest_path.size() < minVal) {
             minVal = shortest_path.size();
-            shortest_path_output.clear();
-            shortest_path_output = shortest_path;
+            primarySPOutput.clear();
+            primarySPOutput = shortest_path;
             waveLengthNumber = start;
         }
     }
-    for (int j = 0; j < shortest_path_output.size()-1; j++)
-    {
-            waveLengthNetwork[waveLengthNumber].removeLink(shortest_path_output[j], shortest_path_output[j+1]);
+
+    if (primarySPOutput.size() == 1) { //if primary LSP can't create
+        shortestPathsDetails.canCreatPP = false;
+        totalPathDetails.clear();
+        return shortestPathsDetails;
     }
-    waveLengthNumber = waveLengthNumber + 100;
-    shortest_path_output.push_back(waveLengthNumber);
-    return shortest_path_output;
+    else { //if primary LSP can create
+
+        shortestPathsDetails.canCreatPP = true;
+        shortestPathsDetails.primaryShortPath = primarySPOutput;
+        shortestPathsDetails.wavelengthNoPP = waveLengthNumber;
+        minVal = 1000;
+
+        for (auto j = 0; j < primarySPOutput.size() - 1; j++)
+        {
+            waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
+        }
+
+        Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNumber].waveAdjacancyMatrix);//graph.print();
+        graph.Dijkstra(source);
+        vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
+
+        totalPathDetails[waveLengthNumber] = shortest_path;
+
+        for (map<int, vector<int>>::iterator mapIt = totalPathDetails.begin(); mapIt != totalPathDetails.end(); ++mapIt) {
+
+            if (mapIt->second.size() < minVal) {
+                bool validate = true;
+
+                for (vector<int>::iterator itPP = primarySPOutput.begin(); itPP != primarySPOutput.end()-1; ++itPP) {
+                    vector<int>::iterator itTemp;
+                    itTemp = search(mapIt->second.begin(), mapIt->second.end(), itPP, itPP+2);
+                    if (itTemp != mapIt->second.end()) {
+                        validate = false;
+                    }
+                }
+                if (validate == true) {
+                    backUpSPOutput = mapIt->second;            
+                    waveLengthNumber = mapIt->first;
+                }
+            }
+        }
+
+        if (backUpSPOutput.size()==1) {
+            shortestPathsDetails.canCreatBP = false;
+            totalPathDetails.clear();
+            return shortestPathsDetails;
+        }
+        for (auto j = 0; j < backUpSPOutput.size() - 1; j++)
+        {
+            waveLengthNetwork[waveLengthNumber].removeLink(backUpSPOutput[j], backUpSPOutput[j + 1]);
+        }
+
+    shortestPathsDetails.canCreatBP = true;
+    shortestPathsDetails.backUpShortPath = backUpSPOutput;
+    shortestPathsDetails.wavelengthNoBP = waveLengthNumber;
+    totalPathDetails.clear();
+    return shortestPathsDetails;
+
+        //return shortest_path_output;
+    }
 }

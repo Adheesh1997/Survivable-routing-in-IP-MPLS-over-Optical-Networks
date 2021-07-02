@@ -11,7 +11,7 @@
 using namespace std;
 
 /**************** Testing **********************/
-/* void printShortestPath(vector<int> sp) {
+void printShortestPath(vector<int> sp) {
     if (sp[0] == -1) {
         cout << "There is no shortest path" << endl;
     }
@@ -22,7 +22,7 @@ using namespace std;
         }
         cout << endl;
     }
-} */
+}
 /************************************/
 
 
@@ -56,29 +56,39 @@ int main()
         myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
                         +to_string(lspReq.DstNode)+", id = "+to_string(lspReq.id)+", request = "+to_string(lspReq.request)));
 
+        cout << endl;
+
 
         if(waveLengthNetwork.checkForAvilableLightpath(lspReq.srcNode,lspReq.DstNode))
         {
             
         }
         /**************** To find shortest path(testing) *********************/
-        /* vector<waveLengthNetworks> waveLengthNetwork = setupWaveLengthNetworks(adjacencyMetrix, 40);
+        vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
         int vexnum = 14;
         int source = 0;
         int destination = 5;
 
-        vector<int> shortest_path =  initialize(vexnum, waveLengthNetwork, source, destination);
-        int waveLengthnumber = shortest_path.back() - 100;
-        shortest_path.pop_back();
+        findPathDetails pathDetails =  initialize(vexnum, subWaveNetworks, source, destination);
 
-        cout << waveLengthnumber << endl;
 
-        printShortestPath(shortest_path); //print shortest path
+        cout << "Primary path can create  --->  " << pathDetails.canCreatPP << endl; //true or false
+        cout << "BackUp path can create   --->  " << pathDetails.canCreatBP << endl;
+
+        cout << "Primary path wavelength No --->  " << pathDetails.wavelengthNoPP << endl;
+        cout << "BackUp path wavelength No  --->  " << pathDetails.wavelengthNoBP << endl;
+
+        cout << "Primary path" << endl;
+        printShortestPath(pathDetails.primaryShortPath); //print shortest path
+
+        cout << "BackUp path" << endl;
+        printShortestPath(pathDetails.backUpShortPath); //print shortest path
 
         lightpathNetwork testNetwork;
-        testNetwork.setANewLighpath(shortest_path, "20");
-        testNetwork.viewAllLighpaths(); */
+        testNetwork.setANewLighpath(pathDetails.primaryShortPath, "20");
+        testNetwork.viewAllLighpaths();
+
         /*********************************************************************/
     }
     

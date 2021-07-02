@@ -1,10 +1,1 @@
-﻿  LSP.cpp
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(42): warning C4018: '<=': signed/unsigned mismatch
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(68): warning C4018: '<': signed/unsigned mismatch
-  lightpathSettingup.cpp
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(56): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-  Generating Code...
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lightpathsettingup.cpp(75): warning C4715: 'lightNode::searchAddress': not all control paths return a value
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(70): error C4700: uninitialized local variable 'node1id' used
-c:\users\asus\source\repos\survivable-routing-in-ip-mpls-over-optical-networks\fyproject\fyproject\lsp.cpp(72): error C4700: uninitialized local variable 'node2id' used
+﻿  FYProject.vcxproj -> D:\Final_year\Adheesh1997\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
