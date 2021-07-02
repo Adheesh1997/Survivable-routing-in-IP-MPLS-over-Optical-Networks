@@ -61,7 +61,7 @@ void LSP::establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpat
 
 }
 
-void LSP::viewLSPsInALightpath(lightpathNetwork &obj)
+/*void LSP::viewLSPsInALightpath(lightpathNetwork &obj)
 {
 	int node1id, node2id;
 
@@ -75,7 +75,7 @@ void LSP::viewLSPsInALightpath(lightpathNetwork &obj)
 			else
 				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
 			
-		}
+		/*}
 		if (obj.lighpaths[i].returnId() == node2id)
 		{
 			bool check = obj.lighpaths[i].serachLighpathNode(node1id);
@@ -84,11 +84,11 @@ void LSP::viewLSPsInALightpath(lightpathNetwork &obj)
 			else
 				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
 			
-		}
+		/*}
 	}
 	//cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 
-}
+}*/
 
 /*void LSP::viewAllLSPs()
 {
