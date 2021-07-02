@@ -10,8 +10,6 @@
 #include "limits.h"
 #include "graph.h"
 
-#include <tuple>
-#include <stdexcept>
 
 
 using namespace std;
@@ -32,6 +30,14 @@ struct Dis {
     }
 };
 
+struct findPathDetails {
+    vector<int> primaryShortPath;
+    bool canCreatPP;
+    int wavelengthNoPP;
+    vector<int> backUpShortPath;
+    bool canCreatBP;
+    int wavelengthNoBP;
+ };
 
 class Graph_DG {
 private:
@@ -57,4 +63,4 @@ public:
 
 //vector<int> initialize(int, vector<waveLengthNetworks>, int, int);
 
-vector<int> initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
+findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
