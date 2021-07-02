@@ -124,9 +124,9 @@ void waveLengthNetworks::removeLink(int src, int dst)
     
 }
 
-void waveLengthNetworks::addLInk(int src, int dst)
+void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
 {
-    waveAdjacancyMatrix[src][dst] = 40;
+    waveAdjacancyMatrix[src][dst] = bandwidth;
 }
 
 /************* end of waveLengthNetworks *******************/

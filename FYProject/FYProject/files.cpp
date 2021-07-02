@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -12,10 +14,10 @@ using namespace std;
 
 files::files()
 {
-    /*logFile.open(("log_files/"+outputFileName()),ios_base::app);
+    logFile.open(("log_files/"+outputFileName()),ios_base::app);
 
     if(logFile.is_open())
-        logFile<<currentTime()<<" "<<"Log file is created\n";*/
+        logFile<<currentTime()<<" "<<"Log file is created\n";
 }
 
 bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation)
@@ -71,7 +73,7 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
     }
 }
 
-/*string files::currentTime() 
+string files::currentTime() 
 {
     time_t     now = time(0);
     struct tm  tstruct;
@@ -82,9 +84,9 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
 
     return buf;
 
-}*/
+}
 
-/*string files::currentDate() 
+string files::currentDate() 
 {
     time_t     now = time(0);
     struct tm  tstruct;
@@ -95,9 +97,9 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
 
     return buf;
 
-}*/
+}
 
-/*string files::outputFileName() 
+string files::outputFileName() 
 {
     string NowTime;
     time_t now;
@@ -112,17 +114,17 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
                 to_string(nowLocal.tm_hour) + '.' + to_string(nowLocal.tm_min)+".txt";
     
     return NowTime;
-}*/
+}
 
-/*void files::writeLog(string message = " ")
+void files::writeLog(string message = " ")
 {
     if(logFile.is_open())
     {
         logFile<<currentTime()<<" "<<message<<endl;
     }
-}*/
+}
 
 files::~files()
 {
-   // logFile.close();
+   logFile.close();
 }
