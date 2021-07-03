@@ -24,10 +24,13 @@
     <ClCompile Include="lightpathSettingup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dijkstra.cpp">
+    <ClCompile Include="LSP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LSP.cpp">
+    <ClCompile Include="lspRequestGenarator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dijkstra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="files.cpp">
@@ -38,13 +41,16 @@
     <ClInclude Include="graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dijkstra.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lightpathSettingup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LSP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lspRequestGenarator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dijkstra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="files.h">
