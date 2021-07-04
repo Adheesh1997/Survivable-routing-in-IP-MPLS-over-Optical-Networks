@@ -6,8 +6,8 @@
 #include <vector>
 #include <string>
 #include <vector>
-#include "lightpathSettingup.h"
 #include "graph.h"
+#include "lightpathSettingup.h"
 
 using namespace std;
 
@@ -33,14 +33,15 @@ private:
 	int id;
 	lightNode* prev = NULL;
 	lightNode* next = NULL;
+	LSP* nextLSP = NULL;
+	LSP* prevLSP = NULL;
 
 
 public:
-	//void establishANewLSP(vector<int> shortestPathLSP, int wavelength, lightpathNetwork &obj);
 	void viewLSPsInALightpath(lightpathNetwork &obj, int node1id, int node2id);
-	//void printNode();
 	//void viewAllLSPs();
 	//bool checkForAvailableLSP();
+	void traverseLSP(LSP* nextNode);
 
 };
 

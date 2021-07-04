@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "LSP.h"
 #include "graph.h"
+#include "LSP.h"
 using namespace std;
 
 class lightNode;
@@ -16,7 +16,7 @@ class LSP;
 struct lighpathWavelength
 {
 	int wavelength;
-	int numberOfLSPs;
+	int numOfLSPsInLightpath;
 	vector<LSP> LSPvec;
 };
 
@@ -55,7 +55,6 @@ public:
 	void viewLPlinks();                  //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID); //Search whether an node is connected to the current node
 	lightNode* searchAddress(int val);
-	//void insertLSPtoVec(LSP temp, int id);
 	//void removeLPlink();
 };
 
@@ -72,7 +71,7 @@ public:
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
 	void setANewLighpath(vector<int> shortestPath, string wavelength); //Establish a lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
-	auto checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
+	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 
 	void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
 
