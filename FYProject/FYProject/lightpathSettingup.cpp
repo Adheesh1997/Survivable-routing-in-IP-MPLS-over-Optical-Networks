@@ -28,12 +28,12 @@ lightNode* lightNode::returnSelfAddress()
 void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj)
 {
 	linkDetails temporLink;
-	temporLink.initialBandwidth = bandwidthVal;
-	temporLink.availableBandwidth = bandwidthVal;
-	temporLink.path = pathVec;
 	temporLink.destinationID = ID;
 	temporLink.destAddress = tempDesObj;
 
+	temporLink.vecObj.initialBandwidth = bandwidthVal;
+	temporLink.vecObj.availableBandwidth = bandwidthVal;
+	temporLink.vecObj.path = pathVec;
 	temporLink.vecObj.wavelength = wavelengthVal;
 	temporLink.vecObj.numOfLSPsInLightpath = 0;
 	temporLink.wavelengthAndLSP.push_back(temporLink.vecObj);
@@ -53,11 +53,14 @@ void lightNode::viewLPlinks()
 {
 	for (size_t i = 0; i < linkVector.size(); i++)
 	{
-		int pathSize = linkVector[i].path.size();
+		for (size_t j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++)
+		{
+			int pathSize = linkVector[i].wavelengthAndLSP[j].path.size();
 
-		for (size_t j = 0; j < (pathSize - 1); j++)
-			cout << linkVector[i].path[j] << " -> ";
-		cout << linkVector[i].path[pathSize - 1] << endl;
+			for (size_t k = 0; k < (pathSize - 1); k++)
+				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";
+			cout << linkVector[i].wavelengthAndLSP[j].path[pathSize - 1] << endl;
+		}
 	}
 }
 
@@ -356,7 +359,7 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 					break;
 			}
 
-			
+
 			for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP.size(); j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == intLSPwavelength)
@@ -371,13 +374,13 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 
 			obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2;
 			obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
-			
-			
+
+
 			//lighpaths[pos2].linkVector[k].LSPvec.push_back(tempObject);
 			i1 = i2;
 			j1 = j2;
 			k1 = k2;
-			ptr1 = ptr2;			
+			ptr1 = ptr2;
 			pos1 = pos2;
 		}
 
