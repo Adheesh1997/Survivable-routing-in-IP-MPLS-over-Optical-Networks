@@ -419,9 +419,17 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 
 }
 
-
+// Generate adajacency metrix from LP network
 vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numOfNodes)
 {
+	/*
+	Parameters_
+		1.bandwidth - bandwith of LSP request
+		2.numOfNodes - number of nodes in the network (14 for NFSNet)
+
+	return
+		*generated adajacency metrix that need to find shortest path for primary LSP
+	*/
 	
     vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
 	
@@ -429,21 +437,36 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 	{
 		for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
 		{
-			if(lighpaths[i].linkVector[j].availableBandwidth >= bandwidth)
+			for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
 			{
-				int sourceLP = lighpaths[i].returnId();
-				int dstLP = lighpaths[i].linkVector[j].destinationID;
- 
-				arr[sourceLP][dstLP] = 40;
+				if(lighpaths[i].linkVector[j].wavelengthAndLSP[j].availableBandwidth >= bandwidth)
+				{
+					int sourceLP = lighpaths[i].returnId();
+					int dstLP = lighpaths[i].linkVector[j].destinationID;
+	
+					arr[sourceLP][dstLP] = 40;
+				}
 			}
+			
 		}
 	}
 
 	return arr;
 }
 
+// Find given 2 paths are link disjoint or not
 bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes)
 {
+	/*
+	Parameters_
+		1.primaryPath - path that primary lsp going through
+		2.testPath - path need to be checked with primaryPath link disjoint or not
+		3.numOfNodes - number of nodes in the network (14 for NFSNet)
+
+	return_
+		* true - if 2 path linkdisjoint (2 paths never meet in a link)
+		* flase - if 2 paths not link disjoint (2 paths meet atleat in one link)
+	*/
     vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
 
 	for(int i = 0; i < primaryPath.size()-1; i++)
@@ -460,9 +483,28 @@ bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testP
 	return true;
 }
 
+//Generate adjacency metrix to find shortest path for backup LSP
 vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes)
 {
     vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
+
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+		{
+			for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+			{
+				if(isLinkDisjoint(primaryPath,lighpaths[i].linkVector[j].wavelengthAndLSP[h].path, numOfNodes))
+				{
+					int sourceLP = lighpaths[i].returnId();
+					int dstLP = lighpaths[i].linkVector[j].destinationID;
+	
+					arr[sourceLP][dstLP] = 40;
+				}
+			}
+			
+		}
+	}
 
 	
 }

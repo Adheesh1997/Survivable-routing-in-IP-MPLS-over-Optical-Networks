@@ -96,6 +96,16 @@ int main()
         testNetwork.viewAllLighpaths();
 
         /*********************************************************************/
+
+        /************************ for leni ***********************************/
+        vector<vector<int>> adjMetrixForPrimaryLSP = testNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
+        /// if shortest path for primary LSP is temp
+        vector<int> primaryPath = {1,3,5};
+
+        vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath,numOfNodes);
+
+        /***************************** end of for leni ******************************/
+
     }
     
 	cin.get();
