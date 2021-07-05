@@ -415,3 +415,51 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelength
 	}
 
 }
+
+
+vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numOfNodes)
+{
+	
+    vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
+	
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+		{
+			if(lighpaths[i].linkVector[j].availableBandwidth >= bandwidth)
+			{
+				int sourceLP = lighpaths[i].returnId();
+				int dstLP = lighpaths[i].linkVector[j].destinationID;
+ 
+				arr[sourceLP][dstLP] = 40;
+			}
+		}
+	}
+
+	return arr;
+}
+
+bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes)
+{
+    vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
+
+	for(int i = 0; i < primaryPath.size()-1; i++)
+	{
+		arr[primaryPath[i]][primaryPath[i+1]] = 1;
+	}
+
+	for(int i = 0; i < testPath.size()-1; i++)
+	{
+		if(arr[testPath[i]][testPath[i+1]])
+			return false;
+	}
+
+	return true;
+}
+
+vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes)
+{
+    vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
+
+	
+}

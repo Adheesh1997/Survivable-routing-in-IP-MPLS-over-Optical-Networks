@@ -58,17 +58,22 @@ int main()
 
         cout << endl;
 
-
-        if(waveLengthNetwork.checkForAvilableLightpath(lspReq.srcNode,lspReq.DstNode))
+        vector<int> shortestPathForLSP;
+        /* if(shortestPathForLSP =lspShortestPath(lspReq.srcNode,lspReq.DstNode,lspReq.bandwidthSize))
+        {
+            waveLengthNetwork.setANewLSP(shortestPathForLSP,to_string(lspReq.bandwidthSize),waveLengthNetwork);
+        } */
+        //else
         {
             
         }
+
         /**************** To find shortest path(testing) *********************/
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
         int vexnum = 14;
-        int source = 0;
-        int destination = 5;
+        int source = lspReq.srcNode;
+        int destination = lspReq.DstNode;
 
         findPathDetails pathDetails =  initialize(vexnum, subWaveNetworks, source, destination);
 
@@ -87,6 +92,7 @@ int main()
 
         lightpathNetwork testNetwork;
         testNetwork.setANewLighpath(pathDetails.primaryShortPath, "20");
+        testNetwork.setANewLighpath(pathDetails.backUpShortPath,"20");
         testNetwork.viewAllLighpaths();
 
         /*********************************************************************/

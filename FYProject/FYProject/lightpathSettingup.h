@@ -7,6 +7,7 @@
 #include <vector>
 #include "graph.h"
 #include "LSP.h"
+
 using namespace std;
 
 class lightNode;
@@ -64,7 +65,7 @@ protected:
 	friend class LSP;
 	vector<lightNode> lighpaths;         //This vector stores all the lightpaths 
 	int totalnumOfLighpaths;             //The total number of lightpaths within the network
-
+	bool isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes);
 
 public:
 	lightpathNetwork() : totalnumOfLighpaths(0) {}                      //The number of lightpaths before creating the network is zero
@@ -75,6 +76,8 @@ public:
 
 	void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
 
+	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
+	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
 };
 
 
