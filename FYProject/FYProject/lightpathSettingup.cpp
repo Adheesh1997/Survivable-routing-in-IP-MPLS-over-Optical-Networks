@@ -506,5 +506,7 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 		}
 	}
 
+	return arr;
+
 	
 }

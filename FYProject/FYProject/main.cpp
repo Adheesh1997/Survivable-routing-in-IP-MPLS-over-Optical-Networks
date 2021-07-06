@@ -103,7 +103,13 @@ int main()
         vector<int> primaryPath = {1,3,5};
 
         vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath,numOfNodes);
-
+        for(vector<int> i: adjMetrixForPrimaryLSP)
+        {
+            for(int j:i)
+            {
+                cout<<j<<" ";
+            }cout<<endl;
+        }
         /***************************** end of for leni ******************************/
 
     }
