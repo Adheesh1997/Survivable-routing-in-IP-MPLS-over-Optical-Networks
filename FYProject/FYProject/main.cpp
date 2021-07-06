@@ -70,47 +70,76 @@ int main()
 
         /**************** To find shortest path(testing) *********************/
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
+        lightpathNetwork testNetwork;
+
+
+        /*********************************************************************/
+
+/************************ for leni ***********************************/
+        vector<vector<int>> adjMetrixForPrimaryLSP = testNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
+        /// if shortest path for primary LSP is temp
+        vector<int> primaryPath = { 1,3,5 };
+
+        vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath, numOfNodes);
+
+
+        //cout << endl;
+        //for (vector<int> i : adjMetrixForPrimaryLSP)
+        //{
+        //    for (int j : i)
+        //    {
+        //        cout << j << " ";
+        //    }cout << endl;
+        //}
+        //cout << endl;
+        //for (vector<int> i : adjMetrixForBackupLSP)
+        //{
+        //    for (int j : i)
+        //    {
+        //        cout << j << " ";
+        //    }cout << endl;
+        //}
+        /***************************** end of for leni ******************************/
 
         int vexnum = 14;
         int source = lspReq.srcNode;
         int destination = lspReq.DstNode;
 
-        findPathDetails pathDetails =  initialize(vexnum, subWaveNetworks, source, destination);
+        findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
+
+        cout << "already P_LSP is established  ---> "<<pathDetails.alreadyPPhave << endl;
+
+        if (pathDetails.alreadyPPhave == false) {
+            cout << "Primary path can create  --->  " << pathDetails.canCreatPP << endl; //true or false
+            cout << "BackUp path can create   --->  " << pathDetails.canCreatBP << endl;
+
+            cout << "Primary path wavelength No --->  " << pathDetails.wavelengthNoPP << endl;
+            cout << "BackUp path wavelength No  --->  " << pathDetails.wavelengthNoBP << endl;
+
+            cout << "Primary path" << endl;
+            printShortestPath(pathDetails.primaryShortPath); //print shortest path
+
+            cout << "BackUp path" << endl;
+            printShortestPath(pathDetails.backUpShortPath); //print shortest path
+        }
+        else {
+            cout << "Primary path can create  --->  " << pathDetails.tempCanCreatPP << endl; //true or false
+
+            cout << "Primary path wavelength No --->  " << pathDetails.tempWavelengthNoPP << endl;
+
+            cout << "Primary path" << endl;
+            printShortestPath(pathDetails.tempPrimaryShortPath); //print temparary shortest path
+
+            cout << "vector Size ----> " << pathDetails.tempPrimaryShortPath.size() << endl;
+        
+        }
 
 
-        cout << "Primary path can create  --->  " << pathDetails.canCreatPP << endl; //true or false
-        cout << "BackUp path can create   --->  " << pathDetails.canCreatBP << endl;
-
-        cout << "Primary path wavelength No --->  " << pathDetails.wavelengthNoPP << endl;
-        cout << "BackUp path wavelength No  --->  " << pathDetails.wavelengthNoBP << endl;
-
-        cout << "Primary path" << endl;
-        printShortestPath(pathDetails.primaryShortPath); //print shortest path
-
-        cout << "BackUp path" << endl;
-        printShortestPath(pathDetails.backUpShortPath); //print shortest path
-
-        lightpathNetwork testNetwork;
         testNetwork.setANewLighpath(pathDetails.primaryShortPath, "20");
         testNetwork.setANewLighpath(pathDetails.backUpShortPath,"20");
         testNetwork.viewAllLighpaths();
 
-        /*********************************************************************/
 
-        /************************ for leni ***********************************/
-        vector<vector<int>> adjMetrixForPrimaryLSP = testNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
-        /// if shortest path for primary LSP is temp
-        vector<int> primaryPath = {1,3,5};
-
-        vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath,numOfNodes);
-        for(vector<int> i: adjMetrixForPrimaryLSP)
-        {
-            for(int j:i)
-            {
-                cout<<j<<" ";
-            }cout<<endl;
-        }
-        /***************************** end of for leni ******************************/
 
     }
     

@@ -31,9 +31,13 @@ struct Dis {
 };
 
 struct findPathDetails {
+    bool alreadyPPhave;
     vector<int> primaryShortPath;
     bool canCreatPP;
     int wavelengthNoPP;
+    vector<int> tempPrimaryShortPath;
+    bool tempCanCreatPP;
+    int tempWavelengthNoPP;
     vector<int> backUpShortPath;
     bool canCreatBP;
     int wavelengthNoBP;
@@ -63,4 +67,4 @@ public:
 
 //vector<int> initialize(int, vector<waveLengthNetworks>, int, int);
 
-findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
+findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);

@@ -220,3 +220,41 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
         //return shortest_path_output;
     }
 }
+
+findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP) {
+    Graph_DG graph(vexnum, adjMetrixForPrimaryLSP);//graph.print();
+    graph.Dijkstra(source);
+    vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
+
+
+    if (shortest_path[0] == -1) {
+        findPathDetails pathDetails = initialize(vexnum, waveLengthNetwork, source, destination);
+        pathDetails.alreadyPPhave = false;
+        return pathDetails;
+    }
+    else {
+        auto minVal = 1000;
+        int waveLengthNumber = -1;
+        findPathDetails shortestPathsDetails;
+        vector<int> primarySPOutput;
+
+        for (auto start = 0; start < waveLengthNetwork.size(); start++) {
+            Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
+            graph.Dijkstra(source);
+            vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
+
+            if (shortest_path.size() < minVal) {
+                minVal = shortest_path.size();
+                primarySPOutput.clear();
+                primarySPOutput = shortest_path;
+                waveLengthNumber = start;
+            }
+        }
+        shortestPathsDetails.alreadyPPhave = true;
+        shortestPathsDetails.tempCanCreatPP = true;
+        shortestPathsDetails.tempPrimaryShortPath = primarySPOutput;
+        shortestPathsDetails.tempWavelengthNoPP = waveLengthNumber;
+
+        return shortestPathsDetails;
+    }
+}
