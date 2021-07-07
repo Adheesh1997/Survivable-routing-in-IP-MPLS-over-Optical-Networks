@@ -79,15 +79,6 @@ lightNode* lightNode::searchAddress(int temp)
 			return linkVector[i].destAddress;
 }
 
-/*void lightNode::insertLSPtoVec(LSP temp, int id)
-{
-	for (size_t i = 0; i < linkVector.size(); i++)
-	{
-		if (id == linkVector[i].destinationID)
-			linkVector[i].vecLSP.push_back(temp);
-	}
-
-}*/
 
 //////////////////////////////////
 
@@ -196,8 +187,9 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 			bool check = lighpaths[i].serachLighpathNode(node2id);
 			/*if (check)
 				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
-			else
-				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
+			else*/
+			if (!check)
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 			return check;
 		}
 		if (lighpaths[i].returnId() == node2id)
@@ -205,218 +197,20 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 			bool check = lighpaths[i].serachLighpathNode(node1id);
 			/*if (check)
 				cout << "Lightpath between " << node1id << " to " << node2id << " exists\n";
-			else
-				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";*/
+			else*/
+			if (!check)
+				cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 			return check;
 		}
 	}
-	//cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
+	cout << "Lightpath between " << node1id << " to " << node2id << " doesn't exist\n";
 	return false;
 }
 
 void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj)
 {
-	int LSPbandwidth = 10;
-	stringstream change(wavelengthLSPstr);
-	int intLSPwavelength;
-	vector<int> v1 = shortestPathLSP;
-
-	change >> intLSPwavelength;
-
-	if (shortestPathLSP.size() == 2)
-	{
-		LSP tempObject;
-
-		int pos1 = checkForAvaialableLPNode(v1[0]);
-		int pos2 = checkForAvaialableLPNode(v1[1]);
-
-		LSP* ptr1 = NULL;
-		LSP* ptr2 = NULL;
-
-		size_t i1, i2, j1, j2, k1, k2;
-
-		for (size_t i = 0; i < obj.lighpaths[pos1].linkVector.size(); i++)
-		{
-			if (obj.lighpaths[pos1].linkVector[i].destinationID == v1[1])
-			{
-				tempObject.bandwidthOfLSP = LSPbandwidth;
-				tempObject.LSPpath = shortestPathLSP;
-				tempObject.id = obj.lighpaths[pos1].returnId();
-				tempObject.prev = NULL;
-				tempObject.next = obj.lighpaths[pos1].linkVector[i].destAddress;
-
-
-				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
-
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
-					{
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						i1 = i;
-						j1 = j;
-						k1 = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
-						ptr1 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k1];
-					}
-			}
-
-			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[0])
-			{
-				tempObject.bandwidthOfLSP = LSPbandwidth;
-				tempObject.LSPpath = shortestPathLSP;
-				tempObject.id = obj.lighpaths[pos2].returnId();
-				tempObject.prev = NULL;
-				tempObject.next = obj.lighpaths[pos2].linkVector[i].destAddress;
-
-
-				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++)
-
-					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
-					{
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
-						obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						i2 = i;
-						j2 = j;
-						k2 = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
-						ptr2 = &obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k2];
-					}
-			}
-		}
-
-		obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2;
-		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
-
-	}
-
-	else if (shortestPathLSP.size() > 2)
-	{
-		int pathSize = shortestPathLSP.size();
-		int numOfIntermediate = pathSize - 2;
-
-		LSP* ptr1 = NULL;
-		LSP* ptr2 = NULL;
-
-		size_t i1, i2, j1, j2, k1, k2;
-
-		//LSPnode tempNode1;
-		LSP tempObject;
-
-		int pos1 = obj.checkForAvaialableLPNode(v1[0]);
-		for (size_t i = 0; i < obj.lighpaths[pos1].linkVector.size(); i++)
-		{
-			if (obj.lighpaths[pos1].linkVector[i].destinationID == v1[1])
-			{
-				tempObject.bandwidthOfLSP = LSPbandwidth;
-				tempObject.LSPpath = shortestPathLSP;
-				tempObject.id = obj.lighpaths[pos1].returnId();
-				tempObject.prev = NULL;
-				tempObject.next = obj.lighpaths[pos1].linkVector[i].destAddress;
-
-				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
-
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
-					{
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						i1 = i;
-						j1 = j;
-						k1 = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
-						ptr1 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k1];
-					}
-
-			}
-		}
-
-		int pos2;
-		for (size_t i = 1; i <= numOfIntermediate; i++)
-		{
-			pos2 = obj.checkForAvaialableLPNode(v1[i]);
-
-			size_t k = 0;
-			bool switch1 = false, switch2 = false;
-			for (; k < obj.lighpaths[pos2].linkVector.size(); k++)
-			{
-				if (obj.lighpaths[pos2].linkVector[k].destinationID == v1[i - 1])
-				{
-					tempObject.bandwidthOfLSP = LSPbandwidth;
-					tempObject.LSPpath = shortestPathLSP;
-					tempObject.id = obj.lighpaths[pos2].returnId();
-					tempObject.prev = obj.lighpaths[pos1].returnSelfAddress();
-					//tempObject.next = obj.lighpaths[pos3].linkVector[i].destAddress;
-					switch1 = true;
-				}
-				if (obj.lighpaths[pos2].linkVector[k].destinationID == v1[i + 1])
-				{
-					//tempObject.bandwidthOfLSP = LSPbandwidth;
-					//tempObject.LSPidentifier = ;
-					//tempObject.id = obj.lighpaths[pos2].returnId();
-					//tempObject.prev = obj.lighpaths[pos2].returnSelfAddress();
-					i2 = k;
-					tempObject.next = obj.lighpaths[pos2].linkVector[k].destAddress;
-					switch2 = true;
-				}
-
-				if (switch1 && switch2)
-					break;
-			}
-
-
-			for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP.size(); j++)
-			{
-				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == intLSPwavelength)
-				{
-					obj.lighpaths[pos1].linkVector[i2].wavelengthAndLSP[j].numOfLSPsInLightpath++;
-					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-					j2 = j;
-					k2 = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.size() - 1;
-					ptr2 = &obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec[k2];
-				}
-			}
-
-			obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2;
-			obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
-
-
-			//lighpaths[pos2].linkVector[k].LSPvec.push_back(tempObject);
-			i1 = i2;
-			j1 = j2;
-			k1 = k2;
-			ptr1 = ptr2;
-			pos1 = pos2;
-		}
-
-		pos1 = obj.checkForAvaialableLPNode(v1[pathSize - 1]);
-		for (size_t i = 0; i < obj.lighpaths[pos1].linkVector.size(); i++)
-		{
-			if (obj.lighpaths[pos1].linkVector[i].destinationID == v1[pathSize - 2])
-			{
-				//Availablebandwidth = totalBandwidth - LSPbandwidth
-				tempObject.bandwidthOfLSP = LSPbandwidth;
-				tempObject.LSPpath = shortestPathLSP;
-				tempObject.id = obj.lighpaths[pos1].returnId();
-				tempObject.prev = obj.lighpaths[pos1].linkVector[i].destAddress;
-				tempObject.next = NULL;
-
-				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
-
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
-					{
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						i1 = i;
-						j1 = j;
-						k1 = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
-						ptr1 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k1];
-					}
-
-				obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].prevLSP = ptr2;
-				obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr1;
-
-				//lighpaths[pos1].linkVector[i].LSPvec.push_back(tempObject);
-			}
-		}
-
-	}
-
+	LSP Object;
+	Object.makeLSP(shortestPathLSP, wavelengthLSPstr, obj);
 }
 
 // Generate adajacency metrix from LP network
