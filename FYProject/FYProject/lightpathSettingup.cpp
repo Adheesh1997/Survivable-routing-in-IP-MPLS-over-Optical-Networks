@@ -439,10 +439,10 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 		{
 			for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
 			{
-				if(lighpaths[i].linkVector[j].wavelengthAndLSP[j].availableBandwidth > 0)
+				if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth > 0)
 				{
-					cout<<"\navilable bndwidth = "<<lighpaths[i].linkVector[j].wavelengthAndLSP[j].availableBandwidth;
-					if(lighpaths[i].linkVector[j].wavelengthAndLSP[j].availableBandwidth >= bandwidth)
+					cout<<"\navilable bndwidth = "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth;
+					if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth)
 					{
 						int sourceLP = lighpaths[i].returnId();
 						int dstLP = lighpaths[i].linkVector[j].destinationID;

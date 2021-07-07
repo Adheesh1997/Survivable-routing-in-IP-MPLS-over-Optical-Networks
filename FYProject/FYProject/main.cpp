@@ -62,11 +62,11 @@ int main()
         /* if(shortestPathForLSP =lspShortestPath(lspReq.srcNode,lspReq.DstNode,lspReq.bandwidthSize))
         {
             waveLengthNetwork.setANewLSP(shortestPathForLSP,to_string(lspReq.bandwidthSize),waveLengthNetwork);
-        } */
+        }
         //else
         {
             
-        }
+        } */
 
         /**************** To find shortest path(testing) *********************/
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
@@ -101,15 +101,22 @@ int main()
         vector<vector<int>> adjMetrixForPrimaryLSP = testNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
         /// if shortest path for primary LSP is temp
         vector<int> primaryPath = {1,3,5};
+        cout<<endl;
+        for(int i = 0; i < numOfNodes; i++)
+        {
+            for(int j = 0; j < numOfNodes; j++)
+            {
+                if(adjMetrixForPrimaryLSP[i][j] > 0)
+                {
+                    cout<<"("<<i<<","<<j<<"),";
+                }
+                cout<<adjMetrixForPrimaryLSP[i][j]<<" ";
+            }
+            cout<<endl;
+        }
 
         vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath,numOfNodes);
-        for(vector<int> i: adjMetrixForPrimaryLSP)
-        {
-            for(int j:i)
-            {
-                cout<<j<<" ";
-            }cout<<endl;
-        }
+        
         /***************************** end of for leni ******************************/
 
     }
