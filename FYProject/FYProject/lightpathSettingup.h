@@ -17,7 +17,7 @@ struct lighpathWavelength
 	int initialBandwidth;            //Initial badwdth of the lightpath
 	int availableBandwidth;          //Available bandwidth of the lightpath
 	vector<int> path;                //Vector to store the intermediate nodes which the lighpath passes
-	int wavelength;
+	int wavelength;                  //Wavelength of the lightpath
 	int numOfLSPsInLightpath;
 	vector<LSP> LSPvec;
 };
@@ -32,12 +32,8 @@ private:
 	lightNode* selfAddress;              //Stores its own address
 	struct linkDetails                   //This structure has all the details of a lightpath
 	{
-		//Wavelength of the lightpath
-
 		int destinationID;               //Desination ID of the lightpath
 		lightNode* destAddress;          //Address of the destination ID
-
-		//vector<LSP> vecLSP;
 		lighpathWavelength vecObj;
 
 		vector<lighpathWavelength> wavelengthAndLSP;

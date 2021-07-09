@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="files.h" />
+    <ClInclude Include="graph.h" />
+    <ClInclude Include="lightpathSettingup.h" />
+    <ClInclude Include="LSP.h" />
+    <ClInclude Include="lspRequestGenarator.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="files.cpp" />
     <ClCompile Include="graph.cpp" />
@@ -27,19 +35,11 @@
     <ClCompile Include="lspRequestGenarator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Dijkstra.h" />
-    <ClInclude Include="files.h" />
-    <ClInclude Include="graph.h" />
-    <ClInclude Include="lightpathSettingup.h" />
-    <ClInclude Include="LSP.h" />
-    <ClInclude Include="lspRequestGenarator.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{716DA8C7-DD44-43EF-BE55-3516C3597040}</ProjectGuid>
     <RootNamespace>FYProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

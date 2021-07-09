@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <vector>
+#include <sstream>
 #include "graph.h"
 #include "lightpathSettingup.h"
 
@@ -20,14 +21,6 @@ private:
 	friend class lightNode;
 	friend class lightpathNetwork;
 
-	/*struct LSPnode
-	{
-		int id;
-		lightNode* prev;
-		lightNode* next;
-	};
-	vector<LSPnode> LSPnodeVec;*/
-
 	int bandwidthOfLSP;
 	vector<int> LSPpath;
 	int id;
@@ -38,10 +31,12 @@ private:
 
 
 public:
-	void viewLSPsInALightpath(lightpathNetwork &obj, int node1id, int node2id);
+	void makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork& obj);
+	void viewLSPsInALightpath(lightpathNetwork& obj);
 	//void viewAllLSPs();
 	//bool checkForAvailableLSP();
-	void traverseLSP(LSP* nextNode);
+	void traversefLSP(LSP* nextNode);
+	void traversebLSP(LSP* prevNode);
 
 };
 
