@@ -54,6 +54,7 @@ int main()
         myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork physicalLinkNetwork(numOfNodes, 40);
+
         physicalLinkNetwork.setupFiberLinkNetwork(adjacencyMetrix);
 
         myfile.writeLog("Physical network is created.");
@@ -61,12 +62,14 @@ int main()
 
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
 
+        waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
+        
         lightpathNetwork waveLengthNetwork;
 
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
         
-        for(int i = 0; i < 1000; )
+        for(int i = 0; i < 10; )
         {
             lspReq = lspReqGen.generateRequest();
             
