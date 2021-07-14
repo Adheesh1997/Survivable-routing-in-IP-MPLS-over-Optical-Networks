@@ -23,8 +23,20 @@ void printShortestPath(vector<int> sp) {
         cout << endl;
     }
 }
+
+void printVec(vector<vector<int>> arr)
+{
+    for(vector<int> i:arr)
+    {
+        for(int j:i)
+        {
+            cout<<j<<" ";
+        }cout<<endl;
+    }
+}
 /************************************/
 
+bool establishLSP();
 
 int main()
 {
@@ -47,93 +59,97 @@ int main()
         myfile.writeLog("Physical network is created.");
         physicalLinkNetwork.printGraph();
 
+        vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
+
         lightpathNetwork waveLengthNetwork;
 
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
         
-        lspReq = lspReqGen.generateRequest();
-        myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
-                        +to_string(lspReq.DstNode)+", id = "+to_string(lspReq.id)+", request = "+to_string(lspReq.request)));
-
-        cout << endl;
-
-        vector<int> shortestPathForLSP;
-        /* if(shortestPathForLSP =lspShortestPath(lspReq.srcNode,lspReq.DstNode,lspReq.bandwidthSize))
+        for(int i = 0; i < 1000; )
         {
-            waveLengthNetwork.setANewLSP(shortestPathForLSP,to_string(lspReq.bandwidthSize),waveLengthNetwork);
-        }
-        //else
-        {
+            lspReq = lspReqGen.generateRequest();
             
-        } */
+            if(lspReq.request)
+            {
+                i++;
+                myfile.writeLog(("New request. Bandwidth = "+to_string(lspReq.bandwidthSize)+",source = "+to_string(lspReq.srcNode)+", Dst = "
+                                +to_string(lspReq.DstNode)+", id = "+to_string(lspReq.id)+", request = "+to_string(lspReq.request)));
 
-        /**************** To find shortest path(testing) *********************/
-        vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, 40);
-        lightpathNetwork testNetwork;
+                cout << endl;
+                
 
+                vector<vector<int>> adjMetrixForPrimaryLSP = waveLengthNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
+                
+                int vexnum = numOfNodes;
+                int source = lspReq.srcNode;
+                int destination = lspReq.DstNode;
 
-        /*********************************************************************/
+                findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
 
-/************************ for leni ***********************************/
-        vector<vector<int>> adjMetrixForPrimaryLSP = testNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
-        /// if shortest path for primary LSP is temp
-        vector<int> primaryPath = { 1,3,5 };
+                //cout << "already P_LSP is established  ---> "<<pathDetails.alreadyPPhave << endl;
 
-        vector<vector<int>> adjMetrixForBackupLSP = testNetwork.lpBAdjacencyMetrix(primaryPath, numOfNodes);
+                if (pathDetails.alreadyPPhave == false) 
+                {
+                    if(!pathDetails.canCreatPP)
+                    {
+                        myfile.writeLog("Primary LSP path can not establish for this request.");
+                        //break;
+                    }
 
+                    if(!pathDetails.canCreatBP)
+                    {
+                        myfile.writeLog("Backup LSP path can not establish for this request.");
+                        //break;
+                    }
 
-        //cout << endl;
-        //for (vector<int> i : adjMetrixForBackupLSP)
-        //{
-        //    for (int j : i)
-        //    {
-        //        cout << j << " ";
-        //    }cout << endl;
-        //}
-        /***************************** end of for leni ******************************/
+                    if(pathDetails.canCreatBP && pathDetails.canCreatPP)
+                    {
+                        waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath,to_string(pathDetails.wavelengthNoPP) );
+                        waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,to_string(pathDetails.wavelengthNoBP));
 
-        int vexnum = 14;
-        int source = lspReq.srcNode;
-        int destination = lspReq.DstNode;
+                        adjMetrixForPrimaryLSP = waveLengthNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
 
-        findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
+                        pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
+                        myfile.writeLog("new LP is established");
+                    }
 
-        cout << "already P_LSP is established  ---> "<<pathDetails.alreadyPPhave << endl;
+                    /* 
+                    cout<<"\nfrom if\n";
+                    cout << "Primary path can create  --->  " << pathDetails.canCreatPP << endl; //true or false
+                    cout << "BackUp path can create   --->  " << pathDetails.canCreatBP << endl;
 
-        if (pathDetails.alreadyPPhave == false) {
-            cout<<"\nfrom if\n";
-            cout << "Primary path can create  --->  " << pathDetails.canCreatPP << endl; //true or false
-            cout << "BackUp path can create   --->  " << pathDetails.canCreatBP << endl;
+                    cout << "Primary path wavelength No --->  " << pathDetails.wavelengthNoPP << endl;
+                    cout << "BackUp path wavelength No  --->  " << pathDetails.wavelengthNoBP << endl;
 
-            cout << "Primary path wavelength No --->  " << pathDetails.wavelengthNoPP << endl;
-            cout << "BackUp path wavelength No  --->  " << pathDetails.wavelengthNoBP << endl;
+                    cout << "Primary path" << endl;
+                    printShortestPath(pathDetails.primaryShortPath); //print shortest path
 
-            cout << "Primary path" << endl;
-            printShortestPath(pathDetails.primaryShortPath); //print shortest path
+                    cout << "BackUp path" << endl;
+                    printShortestPath(pathDetails.backUpShortPath); //print shortest path 
+                    */
+                }
 
-            cout << "BackUp path" << endl;
-            printShortestPath(pathDetails.backUpShortPath); //print shortest path
+                if(pathDetails.alreadyPPhave == true) 
+                {
+                    /* cout<<"\nFrom else\n";
+                    cout << "Primary path can create  --->  " << pathDetails.tempCanCreatPP << endl; //true or false
+
+                    cout << "Primary path wavelength No --->  " << pathDetails.tempWavelengthNoPP << endl;
+
+                    cout << "Primary path" << endl;
+                    printShortestPath(pathDetails.tempPrimaryShortPath); //print temparary shortest path
+
+                    cout << "vector Size ----> " << pathDetails.tempPrimaryShortPath.size() << endl; */
+                    myfile.writeLog("New lsp is created.");
+                    /// LSP creat function should call here
+                
+                }
+                
+            }
         }
-        else {
-            cout<<"\nFrom else\n";
-            cout << "Primary path can create  --->  " << pathDetails.tempCanCreatPP << endl; //true or false
-
-            cout << "Primary path wavelength No --->  " << pathDetails.tempWavelengthNoPP << endl;
-
-            cout << "Primary path" << endl;
-            printShortestPath(pathDetails.tempPrimaryShortPath); //print temparary shortest path
-
-            cout << "vector Size ----> " << pathDetails.tempPrimaryShortPath.size() << endl;
+        waveLengthNetwork.viewAllLighpaths();
         
-        }
-
-
-        testNetwork.setANewLighpath(pathDetails.primaryShortPath, "20");
-        testNetwork.setANewLighpath(pathDetails.backUpShortPath,"20");
-        testNetwork.viewAllLighpaths();
-
-
 
     }
     

@@ -13,7 +13,7 @@ using namespace std;
 lspRequestGenarator::lspRequestGenarator(int numberOfNode)
 {
     numOfNode = numberOfNode;
-    bandwithArray = vector<int>{1,2,3,5,9,10,15,20};
+    bandwithArray = vector<int>{1,2,3,5,7,9,10};
     lastId = 0;
     srand(time(NULL));
 }

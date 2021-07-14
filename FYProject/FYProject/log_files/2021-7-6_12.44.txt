@@ -1,4 +1,0 @@
-[12:44:38] Log file is created
-[12:44:38] graph_inputs/05/graph05.csv Graph is imported.
-[12:44:38] Physical network is created.
-[12:44:38] New request. Bandwidth = 2,source = 11, Dst = 4, id = 0, request = 1
