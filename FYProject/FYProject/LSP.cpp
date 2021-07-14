@@ -16,7 +16,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 	change >> intLSPwavelength;
 
-	for (size_t seek = 0; seek < (shortestPathLSP.size() - 1); seek++)  //Seek whether a lightpath is available
+	/*for (size_t seek = 0; seek < (shortestPathLSP.size() - 1); seek++)  //Seek whether a lightpath is available
 	{
 		bool checker = obj.checkForAvilableLightpath(shortestPathLSP[seek], shortestPathLSP[seek + 1]);
 		if (!checker)
@@ -27,7 +27,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 	for (size_t s = 0; s < shortestPathLSP.size(); s++)            //Print the required LSP
 		cout << shortestPathLSP[s] << " ";
 	cout << endl;
-	cout << "*****************************************\n";
+	cout << "*****************************************\n";*/
 
 	if (shortestPathLSP.size() == 2)                              //If the LSP path has only 2 nodes
 	{
@@ -68,7 +68,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 					{
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(100);
+						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(1000);
 						i1 = i;
 						j1 = j;
 						k1 = (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1);
@@ -110,7 +110,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 					{
 						obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 						obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject2);
-						obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(100);
+						obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(1000);
 						i2 = i;
 						j2 = j;
 						k2 = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
@@ -165,7 +165,6 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 		size_t i1 = 0, j1 = 0, k1 = 0;
 
-		//LSPnode tempNode1;
 		LSP tempObject;
 
 		int pos1 = obj.checkForAvaialableLPNode(v1[0]);
@@ -189,17 +188,18 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 					{
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(100);
+						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(1000);
 						i1 = i;
 						j1 = j;
 						k1 = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k1].prevLSP = NULL;
 						ptr1 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k1];
 
-						/*cout << "i1 = " << i1 << endl;
+						/*cout << "Wavelength = " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength << endl;
+						cout << "i1 = " << i1 << endl;
 						cout << "j1 = " << j1 << endl;
-						cout << "k1 = " << k1 << endl;*/
-						//cout << "ptr1 = " << ptr1 << endl << endl;
+						cout << "k1 = " << k1 << endl;
+						cout << "ptr1 = " << ptr1 << endl << endl;*/
 					}
 
 			}
@@ -268,42 +268,49 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 					break;
 			}
 
+			size_t waveSize2 = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP.size();
+			//cout << "waveSize2 = " << waveSize2 << endl;
 
-			for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP.size(); j++)
+			for (size_t j = 0; j < waveSize2; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == intLSPwavelength)
 				{
 					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.reserve(100);
+					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.reserve(1000);
 					j2 = j;
 					k2 = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec.size() - 1;
 					ptr2 = &obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LSPvec[k2];
 
-					/*cout << "i2 = " << i2 << endl;
+					/*cout << "Wavelength = " << obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength << endl;
+					cout << "i2 = " << i2 << endl;
 					cout << "j2 = " << j2 << endl;
-					cout << "k2 = " << k2 << endl;*/
-					//cout << "ptr2 = " << ptr2 << endl << endl;
+					cout << "k2 = " << k2 << endl;
+					cout << "ptr2 = " << ptr2 << endl << endl;*/
 
 					break;
 				}
 			}
 
-			for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP.size(); j++)
+			size_t waveSize3 = obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP.size();
+			//cout << "waveSize3 = " << waveSize3 << endl;
+
+			for (size_t j = 0; j < waveSize3; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == intLSPwavelength)
 				{
 					obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 					obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LSPvec.push_back(tempObject2);
-					obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LSPvec.reserve(100);
+					obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LSPvec.reserve(1000);
 					j3 = j;
-					k3 = (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LSPvec.size() - 1);
-					ptr3 = &obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LSPvec[k3];
+					k3 = (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j3].LSPvec.size() - 1);
+					ptr3 = &obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j3].LSPvec[k3];
 
-					/*cout << "i3 = " << i3 << endl;
+					/*cout << "Wavelength = " << obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength << endl;
+					cout << "i3 = " << i3 << endl;
 					cout << "j3 = " << j3 << endl;
-					cout << "k3 = " << k3 << endl;*/
-					//cout << "ptr3 = " << ptr3 << endl << endl;
+					cout << "k3 = " << k3 << endl;
+					cout << "ptr3 = " << ptr3 << endl << endl;*/
 
 					break;
 				}
@@ -313,10 +320,10 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 			obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j3].LSPvec[k3].prevLSP = ptr1;
 
 			/*cout << "obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2 = " << ptr2 << endl;
-			cout << "obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j3].LSPvec[k3].prevLSP = ptr1 = " << ptr1 << endl;*/
+			cout << "obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j3].LSPvec[k3].prevLSP = ptr1 = " << ptr1 << endl;
 
 
-			/*cout << "ptr1 = " << ptr1 << endl;
+			cout << "ptr1 = " << ptr1 << endl;
 			cout << "ptr3 = " << ptr3 << endl;
 			cout << "ptr1 = ptr3" << endl;*/
 
@@ -368,12 +375,13 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 					{
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.push_back(tempObject);
-						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(100);
+						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.reserve(1000);
 						i4 = i;
 						j4 = j;
 						k4 = (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.size() - 1);
 						ptr4 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k4];
-						/*cout << "i4 = " << i4 << endl;
+						/*cout << "Wavelength = " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength << endl;
+						cout << "i4 = " << i4 << endl;
 						cout << "j4 = " << j4 << endl;
 						cout << "k4 = " << k4 << endl;
 						cout << "ptr4 = " << ptr4 << endl << endl;*/
@@ -383,9 +391,9 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 				obj.lighpaths[pos1].linkVector[i4].wavelengthAndLSP[j4].LSPvec[k4].prevLSP = ptr3;
 				obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr4;
 
-				cout << "ptr4 = " << ptr4 << endl;
-				//cout << "obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].prevLSP = ptr3 = " << ptr3 << endl;
-				//cout << "obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr1 = " << ptr1 << endl;
+				/*cout << "ptr4 = " << ptr4 << endl;
+				cout << "obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].prevLSP = ptr3 = " << ptr3 << endl;
+				cout << "obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr1 = " << ptr1 << endl;*/
 
 			}
 		}
@@ -410,6 +418,7 @@ void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 					{
 						if (obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].prev == NULL && obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].next != NULL)
 						{
+							cout << "Wavelength = " << obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength << endl;
 							cout << "The LSPs start from light node " << obj.lighpaths[i].returnId() << endl;
 
 							cout << obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].id;
@@ -420,6 +429,7 @@ void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 
 						if (obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].prev != NULL && obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].next == NULL)
 						{
+							cout << "Wavelength = " << obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength << endl;
 							cout << "The LSPs start from light node " << obj.lighpaths[i].returnId() << endl;
 
 							cout << obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].id;

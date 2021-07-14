@@ -12,14 +12,25 @@ class lightNode;
 class lightpathNetwork;
 class LSP;
 
-struct lighpathWavelength
+class lighpathWavelength
 {
+private:
+	friend class lightNode;
+	friend class LSP;
+	friend class lightpathNetwork;
 	int initialBandwidth;            //Initial badwdth of the lightpath
 	int availableBandwidth;          //Available bandwidth of the lightpath
 	vector<int> path;                //Vector to store the intermediate nodes which the lighpath passes
 	int wavelength;                  //Wavelength of the lightpath
-	int numOfLSPsInLightpath;
-	vector<LSP> LSPvec;
+	int numOfLSPsInLightpath;        //Number of LSPs per a lightnode
+	vector<LSP> LSPvec;              //Details of LSPs are stored
+
+public:
+	lighpathWavelength()
+	{
+		numOfLSPsInLightpath = 0;
+		LSPvec.reserve(100);
+	}
 };
 
 class lightNode                            //A node is created when establishing lightpaths
@@ -47,11 +58,11 @@ public:
 	void setSelfAddress(lightNode* temp);//Set the address of the source node of the lightpath
 	lightNode* returnSelfAddress();      //Return the source node address
 	void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj);//Lightpaths are added to the nodes
+	void addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal);
 	int returnId();                      //Returns the ID of the node
 	void viewLPlinks();                  //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID); //Search whether an node is connected to the current node
 	lightNode* searchAddress(int val);
-	//void removeLPlink();
 };
 
 class lightpathNetwork                       //Object of this class has to be created in main function
@@ -63,7 +74,7 @@ protected:
 	bool isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes);
 
 public:
-	lightpathNetwork() : totalnumOfLighpaths(0) {}                      //The number of lightpaths before creating the network is zero
+	lightpathNetwork();                                                //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
 	void setANewLighpath(vector<int> shortestPath, string wavelength); //Establish a lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network

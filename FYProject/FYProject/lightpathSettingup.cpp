@@ -14,6 +14,7 @@ lightNode::lightNode(int ID)
 	id = ID;
 	numOfLPLinksPerNode = 0;
 	selfAddress = NULL;
+	linkVector.reserve(100);
 }
 
 void lightNode::setSelfAddress(lightNode* temp)
@@ -40,10 +41,27 @@ void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthV
 	temporLink.wavelengthAndLSP.push_back(temporLink.vecObj);
 
 	linkVector.push_back(temporLink);
+	int temp = linkVector.size();
+	linkVector[temp - 1].wavelengthAndLSP.reserve(100);
 	numOfLPLinksPerNode++;
 }
 
+void lightNode::addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal)
+{
+	for (size_t i = 0; i < linkVector.size(); i++)
+	{
+		if (linkVector[i].destinationID == destId)
+		{
+			linkVector[i].vecObj.initialBandwidth = bandwidthVal;
+			linkVector[i].vecObj.availableBandwidth = bandwidthVal;
+			linkVector[i].vecObj.path = pathVec;
+			linkVector[i].vecObj.wavelength = wavelengthToBeAdded;
+			linkVector[i].vecObj.numOfLSPsInLightpath = 0;
 
+			linkVector[i].wavelengthAndLSP.push_back(linkVector[i].vecObj);
+		}
+	}
+}
 
 int lightNode::returnId()
 {
@@ -52,12 +70,13 @@ int lightNode::returnId()
 
 void lightNode::viewLPlinks()
 {
+	//cout << "linkVector.size() = " << linkVector.size() << endl;
 	for (size_t i = 0; i < linkVector.size(); i++)
 	{
 		for (size_t j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++)
 		{
 			int pathSize = linkVector[i].wavelengthAndLSP[j].path.size();
-
+			cout << "Wavelength = " << linkVector[i].wavelengthAndLSP[j].wavelength << endl;
 			for (size_t k = 0; k < (pathSize - 1); k++)
 				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";
 			cout << linkVector[i].wavelengthAndLSP[j].path[pathSize - 1] << endl;
@@ -83,6 +102,11 @@ lightNode* lightNode::searchAddress(int temp)
 
 //////////////////////////////////
 
+lightpathNetwork::lightpathNetwork()
+{
+	totalnumOfLighpaths = 0;
+	lighpaths.reserve(100);
+}
 
 void lightpathNetwork::viewAllLighpaths()
 {
@@ -134,6 +158,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 		else
 		{
 			lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS.returnId(), addr1);
+			//lighpaths[check2].addWavelengthToLink(shortestpathVec, lpNodeS.returnId(), lamda, bandwidth);
 			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress());
 
 			lighpaths.push_back(lpNodeS);
@@ -154,6 +179,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 			lpNodeD.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check1].returnId(), lighpaths[check1].returnSelfAddress());
 			lighpaths[check1].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeD.returnId(), addr2);
+			//lighpaths[check1].addWavelengthToLink(shortestpathVec, lpNodeD.returnId(), lamda, bandwidth);
 
 			lighpaths.push_back(lpNodeD);
 
@@ -162,8 +188,26 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 		else
 		{
-			lighpaths[check1].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress());
-			lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check1].returnId(), lighpaths[check2].returnSelfAddress());
+			bool flag = false;
+			for (size_t i = 0; i < lighpaths[check1].linkVector.size(); i++)
+			{
+				if (lighpaths[check1].linkVector[i].destinationID == lighpaths[check2].returnId())
+				{
+					flag = true;
+					break;
+				}
+			}
+
+			if (flag)
+			{
+				lighpaths[check1].addWavelengthToLink(shortestpathVec, lighpaths[check2].returnId(), lamda, bandwidth);
+				lighpaths[check2].addWavelengthToLink(shortestpathVec, lighpaths[check1].returnId(), lamda, bandwidth);
+			}
+			else
+			{
+				lighpaths[check1].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress());
+				lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check1].returnId(), lighpaths[check2].returnSelfAddress());
+			}
 
 			totalnumOfLighpaths++;
 		}
