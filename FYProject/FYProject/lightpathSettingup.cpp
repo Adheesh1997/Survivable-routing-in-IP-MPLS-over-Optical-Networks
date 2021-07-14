@@ -13,6 +13,7 @@ lightNode::lightNode(int ID)
 {
 	id = ID;
 	numOfLPLinksPerNode = 0;
+	selfAddress = NULL;
 }
 
 void lightNode::setSelfAddress(lightNode* temp)

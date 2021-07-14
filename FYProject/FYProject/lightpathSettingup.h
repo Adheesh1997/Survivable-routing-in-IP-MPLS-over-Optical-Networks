@@ -73,6 +73,7 @@ public:
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
+	~lightpathNetwork() {};
 };
 
 

@@ -20,23 +20,25 @@ class LSP
 private:
 	friend class lightNode;
 	friend class lightpathNetwork;
+	friend struct lighpathWavelength;
 
-	int bandwidthOfLSP;
-	vector<int> LSPpath;
-	int id;
-	lightNode* prev = NULL;
-	lightNode* next = NULL;
-	LSP* nextLSP = NULL;
-	LSP* prevLSP = NULL;
+	int bandwidthOfLSP;        //Bandwidth for the LSP
+	vector<int> LSPpath;       //Path of the LSP
+	//int identifier;          //Identifier
+	int id;                    //Id of the LSP node
+	lightNode* prev = NULL;    //Pointer towards the previous light node
+	lightNode* next = NULL;    //Pointer towards the next light node
+	LSP* nextLSP = NULL;       //Pointer towards the next LSP node
+	LSP* prevLSP = NULL;       //Pointer towards the previous LSP node
 
 
 public:
-	void makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork& obj);
-	void viewLSPsInALightpath(lightpathNetwork& obj);
+	void makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork& obj);  //Establish a LSP
+	void viewLSPsInALightpath(lightpathNetwork& obj);                                           //View the LSPs within a lightpath
 	//void viewAllLSPs();
 	//bool checkForAvailableLSP();
-	void traversefLSP(LSP* nextNode);
-	void traversebLSP(LSP* prevNode);
+	void traversefLSP(LSP* nextNode);       //Traverse a LSP from front the end
+	void traversebLSP(LSP* prevNode);       //Traverse a LSP from back to the front
 
 };
 
