@@ -64,6 +64,15 @@ int main()
 
         waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
         
+        for(vector<int> i:defaulSubWaveNetworks.waveAdjacancyMatrix)
+        {
+            for(int j: i)
+            {
+                cout<<j<<" ";
+            }
+            cout<<endl;
+        }
+        
         lightpathNetwork waveLengthNetwork;
 
         lspRequestGenarator lspReqGen(numOfNodes);
