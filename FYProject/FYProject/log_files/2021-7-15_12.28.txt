@@ -1,0 +1,32 @@
+[12:28:09] Log file is created
+[12:28:09] graph_inputs/05/graph05.csv Graph is imported.
+[12:28:09] Physical network is created.
+[12:28:09] New request. Bandwidth = 5,source = 6, Dst = 12, id = 0, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 10,source = 4, Dst = 1, id = 1, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 7,source = 9, Dst = 11, id = 2, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 2,source = 4, Dst = 12, id = 3, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 5,source = 0, Dst = 6, id = 4, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 9,source = 7, Dst = 4, id = 5, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 10,source = 7, Dst = 12, id = 6, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 1,source = 2, Dst = 11, id = 7, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 7,source = 0, Dst = 3, id = 8, request = 1
+[12:28:09] new LP is established
+[12:28:09] New lsp is created.
+[12:28:09] New request. Bandwidth = 1,source = 12, Dst = 7, id = 9, request = 1
+[12:28:09] New lsp is created.

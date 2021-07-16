@@ -43,6 +43,21 @@ struct findPathDetails {
     int wavelengthNoBP;
  };
 
+struct combineWavelength {
+    bool canCreatCombination;
+    int wavelengthNo1;
+    int wavelengthNo2;
+    vector<int> w1ShortPath;
+    vector<int> w2ShortPath;
+    int connectingNode;
+};
+
+struct forRemainingPath {
+    int wavelengthRemainigNo;
+    vector<int> wavelengthRemainigPath;
+    bool canCreatRemainPath;
+};
+
 class Graph_DG {
 private:
     int vexnum;   //Number of vertices of the graph
@@ -63,8 +78,13 @@ public:
     vector<int> print_path(int, int);
     //delete edge
     void delete_edge(int);
+    vector<vector<int>> conditionAppling(int , int ); //adding 0 or 1
 };
 
-//vector<int> initialize(int, vector<waveLengthNetworks>, int, int);
+vector<int> defaultPath(int, waveLengthNetworks, int, int);
+
+forRemainingPath createRemaing(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
 
 findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);
+
+combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
