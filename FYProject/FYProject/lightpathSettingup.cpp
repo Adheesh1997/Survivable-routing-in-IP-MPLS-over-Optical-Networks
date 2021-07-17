@@ -120,15 +120,10 @@ void lightpathNetwork::viewAllLighpaths()
 	}
 }
 
-void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string wavelengthSt, string type)
+void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type)
 {
 	vector<int> shortestpathVec = shortestPath;
-	stringstream geek(wavelengthSt);
-
-	int lamda;
-	geek >> lamda;
-
-
+	
 
 	int vecSize = shortestPath.size();
 	int bandwidth = 50;
@@ -148,8 +143,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 			lightNode* addr2 = &lpNodeD;
 			lpNodeD.setSelfAddress(addr2);
 
-			lpNodeD.addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS.returnId(), addr1, type);
-			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lpNodeD.returnId(), addr2, type);
+			lpNodeD.addLPlink(shortestpathVec, wavelengthSt, bandwidth, lpNodeS.returnId(), addr1, type);
+			lpNodeS.addLPlink(shortestpathVec, wavelengthSt, bandwidth, lpNodeD.returnId(), addr2, type);
 
 			lighpaths.push_back(lpNodeS);
 			lighpaths.push_back(lpNodeD);
@@ -159,9 +154,9 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 		else
 		{
-			lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeS.returnId(), addr1, type);
+			lighpaths[check2].addLPlink(shortestpathVec, wavelengthSt, bandwidth, lpNodeS.returnId(), addr1, type);
 			//lighpaths[check2].addWavelengthToLink(shortestpathVec, lpNodeS.returnId(), lamda, bandwidth);
-			lpNodeS.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress(), type);
+			lpNodeS.addLPlink(shortestpathVec, wavelengthSt, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress(), type);
 
 			lighpaths.push_back(lpNodeS);
 
@@ -179,8 +174,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 			lightNode* addr2 = &lpNodeD;
 			lpNodeD.setSelfAddress(addr2);
 
-			lpNodeD.addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check1].returnId(), lighpaths[check1].returnSelfAddress(), type);
-			lighpaths[check1].addLPlink(shortestpathVec, lamda, bandwidth, lpNodeD.returnId(), addr2, type);
+			lpNodeD.addLPlink(shortestpathVec, wavelengthSt, bandwidth, lighpaths[check1].returnId(), lighpaths[check1].returnSelfAddress(), type);
+			lighpaths[check1].addLPlink(shortestpathVec, wavelengthSt, bandwidth, lpNodeD.returnId(), addr2, type);
 			//lighpaths[check1].addWavelengthToLink(shortestpathVec, lpNodeD.returnId(), lamda, bandwidth);
 
 			lighpaths.push_back(lpNodeD);
@@ -202,13 +197,13 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 
 			if (flag)
 			{
-				lighpaths[check1].addWavelengthToLink(shortestpathVec, lighpaths[check2].returnId(), lamda, bandwidth, type);
-				lighpaths[check2].addWavelengthToLink(shortestpathVec, lighpaths[check1].returnId(), lamda, bandwidth, type);
+				lighpaths[check1].addWavelengthToLink(shortestpathVec, lighpaths[check2].returnId(), wavelengthSt, bandwidth, type);
+				lighpaths[check2].addWavelengthToLink(shortestpathVec, lighpaths[check1].returnId(), wavelengthSt, bandwidth, type);
 			}
 			else
 			{
-				lighpaths[check1].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress(), type);
-				lighpaths[check2].addLPlink(shortestpathVec, lamda, bandwidth, lighpaths[check1].returnId(), lighpaths[check2].returnSelfAddress(), type);
+				lighpaths[check1].addLPlink(shortestpathVec, wavelengthSt, bandwidth, lighpaths[check2].returnId(), lighpaths[check2].returnSelfAddress(), type);
+				lighpaths[check2].addLPlink(shortestpathVec, wavelengthSt, bandwidth, lighpaths[check1].returnId(), lighpaths[check2].returnSelfAddress(), type);
 			}
 
 			totalnumOfLighpaths++;
@@ -254,7 +249,7 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
+void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec)
 {
 	for (size_t i = 0; i < (posVec.size() - 1); i++)
 	{
@@ -266,7 +261,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 			if(lighpaths[pos1].linkVector[i].destinationID==lighpaths[pos2].returnId())
 				for (size_t j = 0; j < lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 				{
-					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngth && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].type == "pp")
+					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[i] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].type == "pp")
 					{
 						if (!(lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup))
 						{
@@ -294,7 +289,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 										{
 											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 											{
-												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngth && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
 													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 											}
 										}
@@ -317,7 +312,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 										{
 											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 											{
-												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngth && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
 													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 											}
 										}
@@ -331,10 +326,10 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 	}
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj)
 {
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wavelengthLSPstr, obj);
+	Object.makeLSP(shortestPathLSP, wavelengthVec, obj);
 }
 
 // Generate adajacency metrix from LP network

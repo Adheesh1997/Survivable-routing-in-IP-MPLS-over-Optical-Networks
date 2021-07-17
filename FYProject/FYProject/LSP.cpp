@@ -7,14 +7,12 @@ class lightpathNetwork;
 
 int tempVal1 = 0, tempVal2 = 0;
 
-void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork& obj)
+void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj)
 {
-	int LSPbandwidth = 10;
-	stringstream change(wavelengthLSPstr);     //Convert string to int
 	int intLSPwavelength;
+	int LSPbandwidth = 10;
+	
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
-
-	change >> intLSPwavelength;
 
 
 	if (shortestPathLSP.size() == 2)                              //If the LSP path has only 2 nodes
@@ -46,7 +44,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0])
 					{
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -81,7 +79,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++)
 
-					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0])
 					{
 						int remainingBandwidth = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -104,7 +102,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 		obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2;
 		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
 
-		obj.checkHeavilyLoadLP(shortestPathLSP, intLSPwavelength);
+		obj.checkHeavilyLoadLP(shortestPathLSP, LSPwavelengthVec);
 	}
 
 	else if (shortestPathLSP.size() > 2)             //If the LSP path has more than 2 nodes
@@ -132,7 +130,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 				
 				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0])
 					{
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -199,7 +197,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 			
 			for (size_t j = 0; j < waveSize2; j++)
 			{
-				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr])
 				{
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -219,7 +217,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 			
 			for (size_t j = 0; j < waveSize3; j++)
 			{
-				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr])
 				{
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -264,7 +262,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 
-					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == intLSPwavelength)
+					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[numOfIntermediate])
 					{
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -286,7 +284,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 			}
 		}
-		obj.checkHeavilyLoadLP(shortestPathLSP, intLSPwavelength);
+		obj.checkHeavilyLoadLP(shortestPathLSP, LSPwavelengthVec);
 	}
 
 }

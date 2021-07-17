@@ -81,11 +81,11 @@ protected:
 public:
 	lightpathNetwork();                                                //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
-	void setANewLighpath(vector<int> shortestPath, string wavelength, string type); //Establish a lighpath
+	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
-	void checkHeavilyLoadLP(vector<int> posVec, int wavelngth);
-	void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
+	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec);
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj);
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
