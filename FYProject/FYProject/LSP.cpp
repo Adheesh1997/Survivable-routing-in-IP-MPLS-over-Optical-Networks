@@ -104,6 +104,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 		obj.lighpaths[pos1].linkVector[i1].wavelengthAndLSP[j1].LSPvec[k1].nextLSP = ptr2;
 		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
 
+		obj.checkHeavilyLoadLP(shortestPathLSP, intLSPwavelength);
 	}
 
 	else if (shortestPathLSP.size() > 2)             //If the LSP path has more than 2 nodes
@@ -285,7 +286,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpat
 
 			}
 		}
-
+		obj.checkHeavilyLoadLP(shortestPathLSP, intLSPwavelength);
 	}
 
 }

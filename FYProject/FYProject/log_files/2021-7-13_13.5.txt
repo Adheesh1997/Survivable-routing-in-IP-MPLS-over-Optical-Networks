@@ -1,0 +1,3 @@
+[13:05:52] Log file is created
+[13:05:52] graph_inputs/05/graph05.csv Graph is imported.
+[13:05:52] Physical network is created.

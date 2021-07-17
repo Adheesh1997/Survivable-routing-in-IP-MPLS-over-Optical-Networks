@@ -204,10 +204,6 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, string waveleng
 			{
 				lighpaths[check1].addWavelengthToLink(shortestpathVec, lighpaths[check2].returnId(), lamda, bandwidth, type);
 				lighpaths[check2].addWavelengthToLink(shortestpathVec, lighpaths[check1].returnId(), lamda, bandwidth, type);
-				if (type == "bp")
-				{
-					//************************************************** Establishing a identifier for primary lightpaths
-				}
 			}
 			else
 			{
@@ -258,12 +254,12 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-bool lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
+void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 {
-	if (posVec.size() == 2)
+	for (size_t i = 0; i < (posVec.size() - 1); i++)
 	{
-		int pos1 = posVec[0];
-		int pos2 = posVec[1];
+		int pos1 = posVec[i];
+		int pos2 = posVec[i + 1];
 
 		for (size_t i = 0; i < lighpaths[pos1].linkVector.size(); i++)
 		{
@@ -278,32 +274,60 @@ bool lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, int wavelngth)
 							int availBandwidth = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 
 							float usedBandProportion = (initBandwidth - availBandwidth) / initBandwidth;
-							if (usedBandProportion >= 0.75)
+							
+							float bandwidthThreshold = 0.75;
+							int numLSPthreshold = 1;
+
+
+							if (usedBandProportion >= bandwidthThreshold)
 							{
-								//check whether it has a backup lighpath
-								//if(no backup)
-								//request for a backup lightpath
+								vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
+								
+								bool isBackupLPpossible = false;
+								//isBackupLPpossible = backupLPpathRequester(primaryLPpath);
+								if (isBackupLPpossible)
+								{
+									lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup = true;
+									for (size_t ii = 0; ii < lighpaths[pos2].linkVector.size(); ii++)
+									{
+										if (lighpaths[pos2].linkVector[ii].destinationID == lighpaths[pos1].returnId())
+										{
+											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
+											{
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngth && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
+											}
+										}
+									}
+								}
 							}
 
-							else if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath > 2)
+							else if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath > numLSPthreshold)
 							{
-								//check whether it has a backup lighpath
-								//if(no backup)
-								//request for a backup lightpath
+								vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
+
+								bool isBackupLPpossible = false;
+								//isBackupLPpossible = backupLPpathRequester(primaryLPpath);
+								if (isBackupLPpossible)
+								{
+									lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup = true;
+									for (size_t ii = 0; ii < lighpaths[pos2].linkVector.size(); ii++)
+									{
+										if (lighpaths[pos2].linkVector[ii].destinationID == lighpaths[pos1].returnId())
+										{
+											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
+											{
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngth && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
+											}
+										}
+									}
+								}
 							}
 						}
 					}
 				}
 		}
-	}
-	else if (posVec.size() > 2)
-	{
-
-	}
-	for (size_t i = 0; i < posVec.size(); i++)
-	{
-		int pos1 = posVec[i];
-
 	}
 }
 

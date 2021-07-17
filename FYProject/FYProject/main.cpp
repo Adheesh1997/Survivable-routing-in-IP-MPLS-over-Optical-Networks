@@ -68,6 +68,36 @@ int main()
 
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
+
+        /*******************************************************************************************************************/
+        // From Leni default defaulSubWaveNetworks;
+        int source = 0;
+        int destination = 5;
+        int vexnum = 14;
+        vector<int> defaultShortPath = defaultPath(14, defaulSubWaveNetworks, source, destination);
+        cout << "00000000000000000000000000000000000000000000000000000000000" << endl;
+        printShortestPath(defaultShortPath); //print shortest path 
+        cout << "00000000000000000000000000000000000000000000000000000000000" << endl;
+
+        //From Leni(eka lightpath ekak thiyena kota remaiing kotasata shaortest path eka)
+
+        forRemainingPath createRemaingDeatils = createRemaing( vexnum, subWaveNetworks,  source,  destination);
+        cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
+        cout << createRemaingDeatils.canCreatRemainPath << endl; // ithiri hariyata hadanna puluwanda baida kiyala
+        cout << createRemaingDeatils.wavelengthRemainigNo << endl; // wavelenth Number
+        printShortestPath(createRemaingDeatils.wavelengthRemainigPath); // print path
+        cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
+
+        //From leni combine two wavelength
+        combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks,  source,  destination);
+        cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
+        cout << combineWavelengthDetails.canCreatCombination << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa
+        cout << combineWavelengthDetails.wavelengthNo1 << endl; //from source wavlength number
+        cout << combineWavelengthDetails.wavelengthNo2 << endl; //to destination wavlength number
+        printShortestPath(combineWavelengthDetails.w1ShortPath); // print path from source
+        printShortestPath(combineWavelengthDetails.w2ShortPath); // print from intermediate node
+        cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
+        /*******************************************************************************************************************/
         
         for(int i = 0; i < 10; )
         {
@@ -108,13 +138,13 @@ int main()
 
                     if(pathDetails.canCreatBP && pathDetails.canCreatPP)
                     {
-                        waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath,to_string(pathDetails.wavelengthNoPP) );
+                        /*waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, to_string(pathDetails.wavelengthNoPP));
                         waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,to_string(pathDetails.wavelengthNoBP));
 
                         adjMetrixForPrimaryLSP = waveLengthNetwork.lpPAdjacencyMetrix(lspReq.bandwidthSize, numOfNodes);
 
                         pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
-                        myfile.writeLog("new LP is established");
+                        myfile.writeLog("new LP is established");*/
                     }
 
                     /* 
