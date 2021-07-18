@@ -172,7 +172,7 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
         }
     }
 
-    if (primarySPOutput.size() == 1) { //if primary LSP can't create
+    if (primarySPOutput.size() == 0) { //if primary LSP can't create
         shortestPathsDetails.canCreatPP = false;
         totalPathDetails.clear();
         return shortestPathsDetails;
@@ -258,7 +258,7 @@ findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthN
                 waveLengthNumber = start;
             }
         }
-        if (primarySPOutput.size() == 1) {
+        if (primarySPOutput.size() == 0) {
             shortestPathsDetails.alreadyPPhave = true;
             shortestPathsDetails.tempCanCreatPP = false;
             return shortestPathsDetails;
@@ -303,7 +303,7 @@ forRemainingPath createRemaing(int vexnum, vector<waveLengthNetworks> waveLength
         }
     }
 
-    if (primarySPOutput.size() == 1) { //if primary LSP can't create
+    if (primarySPOutput.size() == 0) { //if primary LSP can't create
         shortestPathsDetails.canCreatRemainPP = false;
         totalPathDetails.clear();
         return shortestPathsDetails;
@@ -343,7 +343,7 @@ forRemainingPath createRemaing(int vexnum, vector<waveLengthNetworks> waveLength
                 }
             }
         }
-        if (backUpSPOutput.size() == 1) {
+        if (backUpSPOutput.size() == 0) {
             shortestPathsDetails.canCreatRemainBP = false;
             totalPathDetails.clear();
             return shortestPathsDetails;
@@ -557,7 +557,7 @@ forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, 
                 }
         }
     }
-    if (primarySPOutput.size() == 1) {
+    if (primarySPOutput.size() == 0) {
         shortestPathsDetails.canCreatBLPath = false;
         return shortestPathsDetails;
     }
