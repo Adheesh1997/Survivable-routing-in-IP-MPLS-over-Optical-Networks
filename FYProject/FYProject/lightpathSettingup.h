@@ -20,11 +20,13 @@ private:
 	friend class lightpathNetwork;
 	int initialBandwidth;            //Initial badwdth of the lightpath
 	int availableBandwidth;          //Available bandwidth of the lightpath
+	int primaryLSPbandwidth;
 	vector<int> path;                //Vector to store the intermediate nodes which the lighpath passes
-	string type;
+	string lightpathType;
 	bool havingBackup;
 	int wavelength;                  //Wavelength of the lightpath
 	int numOfLSPsInLightpath;        //Number of LSPs per a lightnode
+	int numOfPrimaryLSPsInLightpath;
 	vector<LSP> LSPvec;              //Details of LSPs are stored
 
 public:
@@ -32,8 +34,10 @@ public:
 	{
 		initialBandwidth = 0;
 		availableBandwidth = 0;
+		primaryLSPbandwidth = 0;
 		havingBackup = false;
 		numOfLSPsInLightpath = 0;
+		numOfPrimaryLSPsInLightpath = 0;
 		LSPvec.reserve(100);
 	}
 };
@@ -85,7 +89,7 @@ public:
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec);
-	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj);
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type);
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);

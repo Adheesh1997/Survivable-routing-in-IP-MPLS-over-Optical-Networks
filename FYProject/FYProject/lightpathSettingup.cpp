@@ -36,7 +36,7 @@ void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthV
 	temporLink.vecObj.initialBandwidth = bandwidthVal;
 	temporLink.vecObj.availableBandwidth = bandwidthVal;
 	temporLink.vecObj.path = pathVec;
-	temporLink.vecObj.type = type;
+	temporLink.vecObj.lightpathType = type;
 	temporLink.vecObj.wavelength = wavelengthVal;
 	temporLink.vecObj.numOfLSPsInLightpath = 0;
 	temporLink.wavelengthAndLSP.push_back(temporLink.vecObj);
@@ -56,7 +56,7 @@ void lightNode::addWavelengthToLink(vector<int> pathVec, int destId, int wavelen
 			linkVector[i].vecObj.initialBandwidth = bandwidthVal;
 			linkVector[i].vecObj.availableBandwidth = bandwidthVal;
 			linkVector[i].vecObj.path = pathVec;
-			linkVector[i].vecObj.type = type;
+			linkVector[i].vecObj.lightpathType = type;
 			linkVector[i].vecObj.wavelength = wavelengthToBeAdded;
 			linkVector[i].vecObj.numOfLSPsInLightpath = 0;
 
@@ -261,14 +261,14 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 			if(lighpaths[pos1].linkVector[i].destinationID==lighpaths[pos2].returnId())
 				for (size_t j = 0; j < lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 				{
-					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[i] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].type == "pp")
+					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[i] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType == "pp")
 					{
 						if (!(lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup))
 						{
 							int initBandwidth = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].initialBandwidth;
-							int availBandwidth = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
+							int usedPrimBand = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth;
 
-							float usedBandProportion = (initBandwidth - availBandwidth) / initBandwidth;
+							float usedBandProportion = usedPrimBand / initBandwidth;
 							
 							float bandwidthThreshold = 0.75;
 							int numLSPthreshold = 1;
@@ -289,7 +289,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 										{
 											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 											{
-												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
 													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 											}
 										}
@@ -297,7 +297,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 								}
 							}
 
-							else if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath > numLSPthreshold)
+							else if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath > numLSPthreshold)
 							{
 								vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
@@ -312,7 +312,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 										{
 											for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 											{
-												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].type == "pp")
+												if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
 													lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 											}
 										}
@@ -326,10 +326,10 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 	}
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type)
 {
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wavelengthVec, obj);
+	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type);
 }
 
 // Generate adajacency metrix from LP network
