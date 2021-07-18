@@ -20,15 +20,24 @@ private:
 	friend class lightpathNetwork;
 	int initialBandwidth;            //Initial badwdth of the lightpath
 	int availableBandwidth;          //Available bandwidth of the lightpath
+	int primaryLSPbandwidth;
 	vector<int> path;                //Vector to store the intermediate nodes which the lighpath passes
+	string lightpathType;
+	bool havingBackup;
 	int wavelength;                  //Wavelength of the lightpath
 	int numOfLSPsInLightpath;        //Number of LSPs per a lightnode
+	int numOfPrimaryLSPsInLightpath;
 	vector<LSP> LSPvec;              //Details of LSPs are stored
 
 public:
 	lighpathWavelength()
 	{
+		initialBandwidth = 0;
+		availableBandwidth = 0;
+		primaryLSPbandwidth = 0;
+		havingBackup = false;
 		numOfLSPsInLightpath = 0;
+		numOfPrimaryLSPsInLightpath = 0;
 		LSPvec.reserve(100);
 	}
 };
@@ -57,8 +66,8 @@ public:
 	lightNode(int ID);                   //This constructor gives the ID value for a node
 	void setSelfAddress(lightNode* temp);//Set the address of the source node of the lightpath
 	lightNode* returnSelfAddress();      //Return the source node address
-	void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj);//Lightpaths are added to the nodes
-	void addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal);
+	void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj, string type);//Lightpaths are added to the nodes
+	void addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal, string type);
 	int returnId();                      //Returns the ID of the node
 	void viewLPlinks();                  //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID); //Search whether an node is connected to the current node
@@ -76,15 +85,15 @@ protected:
 public:
 	lightpathNetwork();                                                //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
-	void setANewLighpath(vector<int> shortestPath, string wavelength); //Establish a lighpath
+	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
-
-	void setANewLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork &obj);
+	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec);
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type);
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
-	~lightpathNetwork() {};
+	~lightpathNetwork() {}
 };
 
 

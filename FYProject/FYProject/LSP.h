@@ -24,6 +24,7 @@ private:
 
 	int bandwidthOfLSP;        //Bandwidth for the LSP
 	vector<int> LSPpath;       //Path of the LSP
+	string LSPtype;
 	//int identifier;          //Identifier
 	int id;                    //Id of the LSP node
 	lightNode* prev = NULL;    //Pointer towards the previous light node
@@ -33,7 +34,7 @@ private:
 
 
 public:
-	void makeLSP(vector<int> shortestPathLSP, string wavelengthLSPstr, lightpathNetwork& obj);  //Establish a LSP
+	void makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type);  //Establish a LSP
 	void viewLSPsInALightpath(lightpathNetwork& obj);                                           //View the LSPs within a lightpath
 	//void viewAllLSPs();
 	//bool checkForAvailableLSP();

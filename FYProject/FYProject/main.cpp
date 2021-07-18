@@ -83,20 +83,54 @@ int main()
 
         forRemainingPath createRemaingDeatils = createRemaing( vexnum, subWaveNetworks,  source,  destination);
         cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
-        cout << createRemaingDeatils.canCreatRemainPath << endl; // ithiri hariyata hadanna puluwanda baida kiyala
-        cout << createRemaingDeatils.wavelengthRemainigNo << endl; // wavelenth Number
-        printShortestPath(createRemaingDeatils.wavelengthRemainigPath); // print path
+        cout << createRemaingDeatils.canCreatRemainPP << endl; // ithiri hariyata hadanna puluwanda baida kiyala PP
+        cout << createRemaingDeatils.wavelengthRemainigPPNo << endl; // wavelenth Number PP
+        printShortestPath(createRemaingDeatils.wavelengthRemainigPP); // print path PP
+        cout << createRemaingDeatils.canCreatRemainBP << endl; // ithiri hariyata hadanna puluwanda baida kiyala BP
+        cout << createRemaingDeatils.wavelengthRemainigBPNo << endl; // wavelenth Number BP
+        printShortestPath(createRemaingDeatils.wavelengthRemainigBP); // print path BP
         cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
 
         //From leni combine two wavelength
         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks,  source,  destination);
         cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
-        cout << combineWavelengthDetails.canCreatCombination << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa
-        cout << combineWavelengthDetails.wavelengthNo1 << endl; //from source wavlength number
-        cout << combineWavelengthDetails.wavelengthNo2 << endl; //to destination wavlength number
-        printShortestPath(combineWavelengthDetails.w1ShortPath); // print path from source
-        printShortestPath(combineWavelengthDetails.w2ShortPath); // print from intermediate node
+        cout << combineWavelengthDetails.canCreatCombinationPP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa PP
+        cout << combineWavelengthDetails.wavelengthNo1PP << endl; //from source wavlength number PP
+        cout << combineWavelengthDetails.wavelengthNo2PP << endl; //to destination wavlength number PP
+        cout << combineWavelengthDetails.connectingNodePP << endl; // primary wavelength intermediate node
+        printShortestPath(combineWavelengthDetails.w1ShortPathPP); // print path from source PP
+        printShortestPath(combineWavelengthDetails.w2ShortPathPP); // print from intermediate node PP
+        cout << combineWavelengthDetails.canCreatCombinationBP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa BP
+        cout << combineWavelengthDetails.wavelengthNo1BP << endl; //from source wavlength number BP
+        cout << combineWavelengthDetails.wavelengthNo2BP << endl; //to destination wavlength number BP
+        cout << combineWavelengthDetails.connectingNodeBP << endl; // primary wavelength intermediate node BP
+        printShortestPath(combineWavelengthDetails.w1ShortPathBP); // print path from source BP
+        printShortestPath(combineWavelengthDetails.w2ShortPathBP); // print from intermediate node BP
         cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
+
+        //From Leni Create BackupLight Path
+
+
+        /*
+
+
+
+
+        vector<int> heavylightpath; // Meka Bauplight path Vector eka
+
+        forBackupLightpath createLightPathBackupDeatls =  createLightPathBackup( vexnum, heavylightpath, subWaveNetworks,  source,  destination);
+        cout << "222222222222222222222222222222222222222222222222222222222222222222222222" << endl;
+        cout << createLightPathBackupDeatls.canCreatBLPath << endl; //BackupLight path hadanna puluwanda baida kiyala
+        cout << createLightPathBackupDeatls.wavelengthBLPNo << endl; // wavelenth Number
+        printShortestPath(createLightPathBackupDeatls.wavelengthBLPath); // print path
+        cout << "22222222222222222222222222222222222222222222222222222222222222222222222222222222222" << endl;
+
+
+
+
+
+        /*
+
         /*******************************************************************************************************************/
         
         for(int i = 0; i < 1; )

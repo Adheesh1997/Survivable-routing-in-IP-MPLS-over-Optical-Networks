@@ -1,4 +1,6 @@
-﻿  main.cpp
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(16,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(15): message : see declaration of 'lighpathWavelength'
-  FYProject.vcxproj -> D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+﻿  LSP.cpp
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(16,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(15): message : see declaration of 'lighpathWavelength'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(183,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(12,6): warning C4101: 'intLSPwavelength': unreferenced local variable
+  FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
