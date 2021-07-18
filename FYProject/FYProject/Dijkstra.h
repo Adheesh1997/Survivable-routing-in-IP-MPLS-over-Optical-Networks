@@ -30,6 +30,12 @@ struct Dis {
     }
 };
 
+struct forBackupLightpath {
+    int wavelengthBLPNo;
+    vector<int> wavelengthBLPath;
+    bool canCreatBLPath;
+};
+
 struct findPathDetails {
     bool alreadyPPhave;
     vector<int> primaryShortPath;
@@ -44,18 +50,27 @@ struct findPathDetails {
  };
 
 struct combineWavelength {
-    bool canCreatCombination;
-    int wavelengthNo1;
-    int wavelengthNo2;
-    vector<int> w1ShortPath;
-    vector<int> w2ShortPath;
-    int connectingNode;
+    bool canCreatCombinationPP;
+    int wavelengthNo1PP;
+    int wavelengthNo2PP;
+    vector<int> w1ShortPathPP;
+    vector<int> w2ShortPathPP;
+    int connectingNodePP;
+    bool canCreatCombinationBP;
+    int wavelengthNo1BP;
+    int wavelengthNo2BP;
+    vector<int> w1ShortPathBP;
+    vector<int> w2ShortPathBP;
+    int connectingNodeBP;
 };
 
 struct forRemainingPath {
-    int wavelengthRemainigNo;
-    vector<int> wavelengthRemainigPath;
-    bool canCreatRemainPath;
+    int wavelengthRemainigPPNo;
+    vector<int> wavelengthRemainigPP;
+    bool canCreatRemainPP;
+    int wavelengthRemainigBPNo;
+    vector<int> wavelengthRemainigBP;
+    bool canCreatRemainBP;
 };
 
 class Graph_DG {
@@ -78,7 +93,7 @@ public:
     vector<int> print_path(int, int);
     //delete edge
     void delete_edge(int);
-    vector<vector<int>> conditionAppling(int , int ); //adding 0 or 1
+    vector<vector<int>> conditionAppling(); //adding 0 or 1
 };
 
 vector<int> defaultPath(int, waveLengthNetworks, int, int);
@@ -88,3 +103,5 @@ forRemainingPath createRemaing(int vexnum, vector<waveLengthNetworks> waveLength
 findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);
 
 combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
+
+forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination);
