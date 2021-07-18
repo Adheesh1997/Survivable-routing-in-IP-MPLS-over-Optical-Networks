@@ -197,7 +197,7 @@ int main()
                         {
                             //Creat LSP here
                             vector<int> temp = {pathDetails.tempPrimaryShortPath[0],pathDetails.tempPrimaryShortPath[pathDetails.tempPrimaryShortPath.size()-1]};
-                            waveLengthNetwork.setANewLSP(temp,"4",waveLengthNetwork);
+                            //waveLengthNetwork.setANewLSP(temp,"4",waveLengthNetwork);
                         }
                         cout<<"\nFrom else\n";
                         cout << "Primary path can create  --->  " << pathDetails.tempCanCreatPP << endl; //true or false
@@ -213,7 +213,7 @@ int main()
                 {
                     //Create LSP here
                     vector<int> temp = {pathDetails.tempPrimaryShortPath[0],pathDetails.tempPrimaryShortPath[pathDetails.tempPrimaryShortPath.size()-1]};
-                    waveLengthNetwork.setANewLSP(pathDetails.tempPrimaryShortPath,"4",waveLengthNetwork);
+                   // waveLengthNetwork.setANewLSP(pathDetails.tempPrimaryShortPath,"4",waveLengthNetwork);
 
                     /* cout<<"\nFrom else\n";
                     cout << "Primary path can create  --->  " << pathDetails.tempCanCreatPP << endl; //true or false
