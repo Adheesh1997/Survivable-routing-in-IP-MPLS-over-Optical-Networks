@@ -326,10 +326,10 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 	}
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier)
 {
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type);
+	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type, identifier);
 }
 
 // Generate adajacency metrix from LP network

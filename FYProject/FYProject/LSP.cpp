@@ -5,9 +5,9 @@
 class lightNode;
 class lightpathNetwork;
 
-int tempVal1 = 0, tempVal2 = 0;
 
-void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type)
+
+void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier)
 {
 	int intLSPwavelength;
 	int LSPbandwidth = 10;
@@ -36,11 +36,10 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 			{
 				tempObject.bandwidthOfLSP = LSPbandwidth;
 				tempObject.LSPpath = shortestPathLSP;
-				//tempObject.identifier = ;
+				tempObject.identifier = identifier;
 				tempObject.id = obj.lighpaths[pos1].returnId();
 				tempObject.prev = NULL;
 				tempObject.next = obj.lighpaths[pos1].linkVector[i].destAddress;
-				tempVal1 = tempObject.id;
 
 				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 
@@ -79,7 +78,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 			{
 				tempObject2.bandwidthOfLSP = LSPbandwidth;
 				tempObject2.LSPpath = shortestPathLSP;
-				//obj.tempObject2->identifier = ;
+				tempObject2.identifier = identifier;
 				tempObject2.id = obj.lighpaths[pos2].returnId();
 				tempObject2.prev = obj.lighpaths[pos2].linkVector[i].destAddress;
 				tempObject2.next = NULL;
@@ -141,6 +140,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 			{
 				tempObject.bandwidthOfLSP = LSPbandwidth;
 				tempObject.LSPpath = shortestPathLSP;
+				tempObject.identifier = identifier;
 				tempObject.id = obj.lighpaths[pos1].returnId();
 				tempObject.prev = NULL;
 				tempObject.next = obj.lighpaths[pos1].linkVector[i].destAddress;
@@ -194,6 +194,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 				{
 					tempObject.bandwidthOfLSP = LSPbandwidth;
 					tempObject.LSPpath = shortestPathLSP;
+					tempObject.identifier = identifier;
 					tempObject.id = obj.lighpaths[pos2].returnId();
 					tempObject.prev = obj.lighpaths[pos1].returnSelfAddress();
 					tempObject.next = obj.lighpaths[pos3].returnSelfAddress();
@@ -205,6 +206,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 				{
 					tempObject2.bandwidthOfLSP = LSPbandwidth;
 					tempObject2.LSPpath = shortestPathLSP;
+					tempObject2.identifier = identifier;
 					tempObject2.id = obj.lighpaths[pos2].returnId();
 					tempObject2.prev = obj.lighpaths[pos1].returnSelfAddress();
 					tempObject2.next = obj.lighpaths[pos3].returnSelfAddress();
@@ -296,6 +298,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 				//Availablebandwidth = totalBandwidth - LSPbandwidth
 				tempObject.bandwidthOfLSP = LSPbandwidth;
 				tempObject.LSPpath = shortestPathLSP;
+				tempObject.identifier = identifier;
 				tempObject.id = obj.lighpaths[pos1].returnId();
 				tempObject.prev = obj.lighpaths[pos1].linkVector[i].destAddress;
 				tempObject.next = NULL;
