@@ -352,7 +352,8 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 		{
 			for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
 			{
-				if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth)
+				if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
+					lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp")
 				{
 					int sourceLP = lighpaths[i].returnId();
 					int dstLP = lighpaths[i].linkVector[j].destinationID;
@@ -395,6 +396,47 @@ bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testP
 
 	return true;
 }
+
+vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth, int pathSize, int waveNo)
+{
+	vector<int> temp = {waveNo,-1};
+	int count = 0;
+
+	if(temp[0] != -1) count = 1;
+	
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if(lighpaths[i].id == source)
+		{
+			for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+			{
+				if(lighpaths[i].linkVector[j].destinationID == dst)
+				{
+					for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+					{
+						if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
+							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" &&
+							lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength != temp[0] &&
+							(lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.size() < pathSize || temp[0] != -1))
+						{
+							temp[count] = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+
+							if(count)
+							{
+								return temp;
+							}
+							i = 0;
+							count++;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+	return vector<int>{-1,-1};
+}
+
 
 //Generate adjacency metrix to find shortest path for backup LSP
 vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes)
