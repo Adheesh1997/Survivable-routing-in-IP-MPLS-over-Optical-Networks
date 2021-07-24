@@ -59,8 +59,8 @@ int main()
         int newLP = 0;
         int oldLP = 0;
         int rejected = 0;
-        
-        for(int i = 0; i < 1000; )
+        int numOfRequest = 1000;
+        for(int i = 0; i < numOfRequest; )
         {
 
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -81,12 +81,6 @@ int main()
                 int vexnum = numOfNodes;
                 int source = lspReq.srcNode;
                 int destination = lspReq.DstNode;
-                
-                /* cout<<"\nsource_ ";
-                cin>>source;
-                cout<<"\ndestination_ ";
-                cin>>destination; */
-
 
                 findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
 
@@ -167,24 +161,11 @@ int main()
                         }
                     }
 
-                    /* if(!pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
-                    {
-                        myfile.writeLog("Backup LSP path can not establish for this request.");
-                        //break;
-                    } */
-
                     //If using new LPs can establish path for LSP reqeust
                     if(pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
                     {
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp" );
                         waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp");
-
-                        /* cout<<"\n\n**Primary path***\n";
-                        printShortestPath(pathDetails.primaryShortPath);
-                        cout<<"\nWave no P: "<<pathDetails.wavelengthNoPP<<endl;
-                        cout<<"\n\n**backup path***\n";
-                        printShortestPath(pathDetails.backUpShortPath);
-                        cout<<"\nWave no B: "<<pathDetails.wavelengthNoBP<<endl; */
 
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
@@ -254,14 +235,16 @@ int main()
             }
 
         }
-       
-        /* myfile.writeLog("\n****Counts****");
+        myfile.writeLog("                 ");
+        myfile.writeLog("****Counts****");
+        myfile.writeLog("Num of lsp rqst = "+to_string(numOfRequest));
         myfile.writeLog("new LP & old LP = "+to_string(newLPnoldLP));
         myfile.writeLog("new 2 LPs  = "+to_string(new2LPs));
         myfile.writeLog("new LP = "+to_string(newLP));
         myfile.writeLog("old LP = "+to_string(oldLP));
-        myfile.writeLog("\nNum.of LSP established = "+to_string(newLPnoldLP+new2LPs+newLP+oldLP));
-        myfile.writeLog("Num.of LSP rejected = "+to_string(rejected)); */
+        myfile.writeLog("                 ");
+        myfile.writeLog("**Num.of LSP established = "+to_string(newLPnoldLP+new2LPs+newLP+oldLP));
+        myfile.writeLog("**Num.of LSP rejected = "+to_string(rejected));
     }
     
 	cin.get();
