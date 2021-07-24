@@ -7,6 +7,7 @@
 #include "lightpathSettingup.h"
 #include "Dijkstra.h"
 #include "lspRequestGenarator.h"
+#include "eventDrivenSimulator.h"
 
 using namespace std;
 
@@ -309,6 +310,9 @@ int main()
         
 
     }
+
+    requestCreation tempObject;
+    tempObject.requestGenerator();
     
 	cin.get();
     return 0;

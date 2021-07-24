@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="eventDrivenSimulator.h" />
     <ClInclude Include="files.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="lightpathSettingup.h" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dijkstra.cpp" />
+    <ClCompile Include="eventDrivenSimulator.cpp" />
     <ClCompile Include="files.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="lightpathSettingup.cpp" />
