@@ -313,6 +313,7 @@ int main()
 
     requestCreation tempObject;
     tempObject.requestGenerator();
+    tempObject.eventCreation();
     
 	cin.get();
     return 0;

@@ -18,13 +18,24 @@ struct request
 	double interArrivalTime;
 };
 
+struct event
+{
+	int identifier;
+	int sourceNode;
+	int destinationNode;
+	int bandwidth;
+	bool action;
+};
+
 class requestCreation
 {
 private:
 	vector<request> requestVector;
+	vector<event> eventVector;
 
 public:
 	void requestGenerator();
+	void eventCreation();
 };
 
 #endif
