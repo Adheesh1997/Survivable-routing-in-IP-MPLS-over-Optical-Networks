@@ -10,7 +10,6 @@
 
 using namespace std;
 
-/**************** Testing **********************/
 void printShortestPath(vector<int> sp) {
     if (sp[0] == -1) {
         cout << "There is no shortest path" << endl;
@@ -23,20 +22,6 @@ void printShortestPath(vector<int> sp) {
         cout << endl;
     }
 }
-
-void printVec(vector<vector<int>> arr)
-{
-    for(vector<int> i:arr)
-    {
-        for(int j:i)
-        {
-            cout<<j<<" ";
-        }cout<<endl;
-    }
-}
-/************************************/
-
-bool establishLSP();
 
 int main()
 {
@@ -69,72 +54,13 @@ int main()
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
 
-        /*******************************************************************************************************************/
-        // From Leni default defaulSubWaveNetworks;
-        /*
-        int source = 0;
-        int destination = 5;
-        int vexnum = 14;
-        vector<int> defaultShortPath = defaultPath(14, defaulSubWaveNetworks, source, destination);
-        cout << "00000000000000000000000000000000000000000000000000000000000" << endl;
-        printShortestPath(defaultShortPath); //print shortest path 
-        cout << "00000000000000000000000000000000000000000000000000000000000" << endl;
-
-        //From Leni(eka lightpath ekak thiyena kota remaiing kotasata shaortest path eka)
-
-        forRemainingPath createRemaingDeatils = createRemaing( vexnum, subWaveNetworks,  source,  destination);
-        cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
-        cout << createRemaingDeatils.canCreatRemainPP << endl; // ithiri hariyata hadanna puluwanda baida kiyala PP
-        cout << createRemaingDeatils.wavelengthRemainigPPNo << endl; // wavelenth Number PP
-        printShortestPath(createRemaingDeatils.wavelengthRemainigPP); // print path PP
-        cout << createRemaingDeatils.canCreatRemainBP << endl; // ithiri hariyata hadanna puluwanda baida kiyala BP
-        cout << createRemaingDeatils.wavelengthRemainigBPNo << endl; // wavelenth Number BP
-        printShortestPath(createRemaingDeatils.wavelengthRemainigBP); // print path BP
-        cout << "555555555555555555555555555555555555555555555555555555555555555555555555" << endl;
-
-        //From leni combine two wavelength
-        combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks,  source,  destination);
-        cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
-        cout << combineWavelengthDetails.canCreatCombinationPP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa PP
-        cout << combineWavelengthDetails.wavelengthNo1PP << endl; //from source wavlength number PP
-        cout << combineWavelengthDetails.wavelengthNo2PP << endl; //to destination wavlength number PP
-        cout << combineWavelengthDetails.connectingNodePP << endl; // primary wavelength intermediate node
-        printShortestPath(combineWavelengthDetails.w1ShortPathPP); // print path from source PP
-        printShortestPath(combineWavelengthDetails.w2ShortPathPP); // print from intermediate node PP
-        cout << combineWavelengthDetails.canCreatCombinationBP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa BP
-        cout << combineWavelengthDetails.wavelengthNo1BP << endl; //from source wavlength number BP
-        cout << combineWavelengthDetails.wavelengthNo2BP << endl; //to destination wavlength number BP
-        cout << combineWavelengthDetails.connectingNodeBP << endl; // primary wavelength intermediate node BP
-        printShortestPath(combineWavelengthDetails.w1ShortPathBP); // print path from source BP
-        printShortestPath(combineWavelengthDetails.w2ShortPathBP); // print from intermediate node BP
-        cout << "444444444444444444444444444444444444444444444444444444444444444444444444" << endl;
-
-        //From Leni Create BackupLight Path
-
-
+        int newLPnoldLP = 0;
+        int new2LPs = 0;
+        int newLP = 0;
+        int oldLP = 0;
+        int rejected = 0;
         
-
-
-
-
-        vector<int> heavylightpath; // Meka Bauplight path Vector eka
-
-        forBackupLightpath createLightPathBackupDeatls =  createLightPathBackup( vexnum, heavylightpath, subWaveNetworks,  source,  destination);
-        cout << "222222222222222222222222222222222222222222222222222222222222222222222222" << endl;
-        cout << createLightPathBackupDeatls.canCreatBLPath << endl; //BackupLight path hadanna puluwanda baida kiyala
-        cout << createLightPathBackupDeatls.wavelengthBLPNo << endl; // wavelenth Number
-        printShortestPath(createLightPathBackupDeatls.wavelengthBLPath); // print path
-        cout << "22222222222222222222222222222222222222222222222222222222222222222222222222222222222" << endl;
-
-
-
-
-
-        /*
-
-        /*******************************************************************************************************************/
-        
-        for(int i = 0; i < 100; )
+        for(int i = 0; i < 1000; )
         {
 
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -155,6 +81,12 @@ int main()
                 int vexnum = numOfNodes;
                 int source = lspReq.srcNode;
                 int destination = lspReq.DstNode;
+                
+                /* cout<<"\nsource_ ";
+                cin>>source;
+                cout<<"\ndestination_ ";
+                cin>>destination; */
+
 
                 findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
 
@@ -181,9 +113,9 @@ int main()
                                 if(createRemaingDeatils.canCreatRemainPP && createRemaingDeatils.canCreatRemainBP)
                                 {
                                     waveLengthNetwork.setANewLighpath(createRemaingDeatils.wavelengthRemainigPP,createRemaingDeatils.wavelengthRemainigPPNo,"pp");
-                                    waveLengthNetwork.setANewLighpath(createRemaingDeatils.wavelengthRemainigBP,createRemaingDeatils.wavelengthRemainigBPNo,"bp");
+                                    waveLengthNetwork.setANewLighpath(createRemaingDeatils.wavelengthRemainigBP,createRemaingDeatils.wavelengthRemainigBPNo,"pp");
 
-                                    vector<int> temp = waveLengthNetwork.getWaveNumbers(defaultShortPath[0],defaultShortPath[j],lspReq.bandwidthSize);
+                                    vector<int> temp = waveLengthNetwork.getWaveNumbers(defaultShortPath[0],defaultShortPath[j], numOfNodes, lspReq.bandwidthSize);
                                     
                                     if(temp[0] != -1)
                                     {
@@ -197,6 +129,7 @@ int main()
 
                                         isLSPestablish = true;
                                         myfile.writeLog("LSP established using 1 new LP & 1 old LP.*");
+                                        newLPnoldLP++;
                                         break;
                                     }
                                 }
@@ -228,6 +161,7 @@ int main()
                             waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
 
                             myfile.writeLog("New lsp establish with 2 new LPs.**");
+                            new2LPs++;
                             isLSPestablish = true;
 
                         }
@@ -240,10 +174,17 @@ int main()
                     } */
 
                     //If using new LPs can establish path for LSP reqeust
-                    if(pathDetails.canCreatBP && pathDetails.canCreatPP)
+                    if(pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
                     {
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp" );
                         waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp");
+
+                        /* cout<<"\n\n**Primary path***\n";
+                        printShortestPath(pathDetails.primaryShortPath);
+                        cout<<"\nWave no P: "<<pathDetails.wavelengthNoPP<<endl;
+                        cout<<"\n\n**backup path***\n";
+                        printShortestPath(pathDetails.backUpShortPath);
+                        cout<<"\nWave no B: "<<pathDetails.wavelengthNoBP<<endl; */
 
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
@@ -255,33 +196,35 @@ int main()
 
                         isLSPestablish = true;
                         myfile.writeLog("New lsp established with new single LP.***");
+                        newLP++;
                     }
                 }
 
                 //Already there is path(LP) for LSP request
-                if(pathDetails.alreadyPPhave == true) 
-                {                    
+                else
+                {  
                     if(pathDetails.tempCanCreatPP)
                     {
-                        vector<int> waveVector = waveLengthNetwork.getWaveNumbers(source,destination, lspReq.bandwidthSize, pathDetails.tempPrimaryShortPath.size());
+                        vector<int> waveVector = waveLengthNetwork.getWaveNumbers(source,destination,numOfNodes, lspReq.bandwidthSize, pathDetails.tempPrimaryShortPath.size());
                         
                         if(waveVector[0] == -1)
                         {
-                            vector<int> waves = waveLengthNetwork.getWaveNumbers(source,destination, lspReq.bandwidthSize, pathDetails.tempPrimaryShortPath.size(),pathDetails.tempWavelengthNoPP);
-
-                            if(waves[0] != -1)
+                            //find a backup path
+                            int backupWave = waveLengthNetwork.getBWaveNumber(source,destination,numOfNodes,lspReq.bandwidthSize,pathDetails.tempPrimaryShortPath);
+                            if(backupWave != -1)
                             {
                                 waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp");
-                                subWaveNetworks[waves[0]].removeLink(source,destination);
+                                subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
 
                                 vector<int> pathForLSP = {source,destination};
-                                vector<int> wavesP = {waves[0]};
-                                vector<int> wavesB = {waves[1]};
+                                vector<int> wavesP = {pathDetails.tempWavelengthNoPP};
+                                vector<int> wavesB = {backupWave};
 
                                 waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",lspReq.id);
                                 waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
 
                                 myfile.writeLog("New lsp establish with new LP and old LP.");
+                                newLPnoldLP++;
                                 isLSPestablish = true;
                             }
                         }
@@ -295,19 +238,30 @@ int main()
                             waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
                             
                             myfile.writeLog("New lsp established with 2 old LPs.");
+                            oldLP++;
                             isLSPestablish = true;
                         }
                     }                
                 }
                 
-                if(!isLSPestablish) myfile.writeLog("LSP is REJECTED.");
+                if(!isLSPestablish) 
+                {
+                    rejected++;
+                    myfile.writeLog("LSP is REJECTED.");
+                }
+                
+                
             }
 
         }
-        cout<<endl<<"\n**NetWork**\n";
-        //waveLengthNetwork.viewAllLighpaths();
-        
-
+       
+        /* myfile.writeLog("\n****Counts****");
+        myfile.writeLog("new LP & old LP = "+to_string(newLPnoldLP));
+        myfile.writeLog("new 2 LPs  = "+to_string(new2LPs));
+        myfile.writeLog("new LP = "+to_string(newLP));
+        myfile.writeLog("old LP = "+to_string(oldLP));
+        myfile.writeLog("\nNum.of LSP established = "+to_string(newLPnoldLP+new2LPs+newLP+oldLP));
+        myfile.writeLog("Num.of LSP rejected = "+to_string(rejected)); */
     }
     
 	cin.get();
