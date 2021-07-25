@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+
 #include "graph.h"
 #include "LSP.h"
 using namespace std;
@@ -95,6 +97,9 @@ public:
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
 	vector<int> getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize = 14);
 	int getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath);
+
+	map<int, vector<vector<int>>> mapFromsource(int src, int numOfNodes);
+	map<int, vector<vector<int>>> mapFromdst(int dst, int numOfNodes);
 
 	~lightpathNetwork() {}
 };

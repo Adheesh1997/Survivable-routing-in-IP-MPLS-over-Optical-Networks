@@ -10,19 +10,21 @@
 
 using namespace std;
 
-void printShortestPath(vector<int> sp) {
-    if (sp[0] == -1) {
-        cout << "There is no shortest path" << endl;
-    }
-    else {
-        for (size_t j = 0; j < sp.size(); j++)
+void printMap(map<int,vector<vector<int>>> arr)
+{
+    for(auto it = arr.cbegin(); it != arr.cend(); ++it)
+    {
+        cout<<endl<<it->first<<"-> ";
+        
+        for(vector<int> j:it->second)
         {
-            cout << sp[j] << " --> ";
-        }
-        cout << endl;
+            for(int k:j)
+            {
+                cout<<k<<" ";
+            }cout<<endl;
+        }cout<<endl;
     }
 }
-
 int main()
 {
     files myfile;
@@ -59,7 +61,8 @@ int main()
         int newLP = 0;
         int oldLP = 0;
         int rejected = 0;
-        int numOfRequest = 1000;
+        int numOfRequest = 100;
+        
         for(int i = 0; i < numOfRequest; )
         {
 
@@ -224,7 +227,19 @@ int main()
                         }
                     }                
                 }
-                
+
+                if(i == 99)
+                {
+                    cout<<endl<<endl;
+                    cout<<"source = "<<lspReq.srcNode<<" , "<<"dest = "<<lspReq.DstNode<<endl;
+                    cout<<"\nmap from src";
+                    map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(lspReq.srcNode,numOfNodes);
+                    printMap(arr);
+                    cout<<"\nmap from dst\n";
+                    map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromdst(lspReq.DstNode,numOfNodes);
+                    printMap(arr1);
+                }
+
                 if(!isLSPestablish) 
                 {
                     rejected++;
@@ -235,6 +250,7 @@ int main()
             }
 
         }
+
         myfile.writeLog("                 ");
         myfile.writeLog("****Counts****");
         myfile.writeLog("Num of lsp rqst = "+to_string(numOfRequest));

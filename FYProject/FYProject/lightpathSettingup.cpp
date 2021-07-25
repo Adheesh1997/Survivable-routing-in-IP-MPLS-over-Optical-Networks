@@ -3,6 +3,8 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <map>
+
 #include "graph.h"
 #include "LSP.h"
 #include <string>
@@ -526,4 +528,122 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 	return arr;
 
 	
+}
+
+
+map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes)
+{
+	map<int, vector<vector<int>>> temp;
+
+	for(int i = 40; i < 80; i++)
+	{
+		temp[i] = vector<vector<int>> (numOfNodes,vector<int>(1,0));
+	}
+
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if(lighpaths[i].id == src)
+		{
+			for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+			{
+				int dst = lighpaths[i].linkVector[j].destinationID;
+
+				for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+				{	
+					int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
+
+					if(path[0] != src)
+					{
+						reverse(path.begin(),path.end());
+					}
+					
+					if(temp[40 + wave][dst][0] == 0)
+					{
+						temp[40 + wave][dst][0] = 1;
+
+						for(int k :path)
+						{
+							temp[40 + wave][dst].push_back(k);
+						}
+					}
+
+					else
+					{
+						if(path.size() < temp[40 + wave][dst].size()-1)
+						{
+							temp[40 + wave][dst].clear();
+							temp[40 + wave][dst].push_back(1);
+
+							for(int k :path)
+							{
+								temp[40 + wave][dst].push_back(k);
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+	return temp;
+}
+
+
+map<int, vector<vector<int>>> lightpathNetwork::mapFromdst(int dst, int numOfNodes)
+{
+	map<int, vector<vector<int>>> temp;
+
+	for(int i = 40; i < 80; i++)
+	{
+		temp[i] = vector<vector<int>> (numOfNodes,vector<int>(1,0));
+	}
+
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		int src = lighpaths[i].id;
+		for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+		{
+			if( dst == lighpaths[i].linkVector[j].destinationID)
+			{
+				for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+				{	
+					int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
+
+					if(path[path.size()-1] != dst)
+					{
+						reverse(path.begin(),path.end());
+					}
+
+					if(temp[40 + wave][src][0] == 0)
+					{
+						temp[40 + wave][src][0] = 1;
+
+						for(int k :path)
+						{
+							temp[40 + wave][src].push_back(k);
+						}
+					}
+
+					else
+					{
+						if(path.size()< temp[40 + wave][src].size()-1)
+						{
+							temp[40 + wave][src].clear();
+							temp[40 + wave][src].push_back(1);
+
+							for(int k :path)
+							{
+								temp[40 + wave][src].push_back(k);
+							}
+						}
+					}
+				}
+			}			
+		}
+	}
+
+	return temp;
 }
