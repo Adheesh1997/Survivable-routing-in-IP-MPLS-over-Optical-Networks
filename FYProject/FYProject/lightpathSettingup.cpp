@@ -3,8 +3,11 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <map>
+
 #include "graph.h"
 #include "LSP.h"
+#include <string>
 
 using namespace std;
 
@@ -376,6 +379,8 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 // Find given 2 paths are link disjoint or not
 bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes)
 {
+	cout<<"primary = "<<primaryPath.size()<<endl;
+	cout<<"test = "<<testPath.size()<<endl;
 	/*
 	Parameters_
 		1.primaryPath - path that primary lsp going through
@@ -402,13 +407,14 @@ bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testP
 	return true;
 }
 
-vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth, int pathSize, int waveNo)
+vector<int> lightpathNetwork::getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize)
+//vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth)
 {
-	vector<int> temp = {waveNo,-1};
-	int count = 0;
-
-	if(temp[0] != -1) count = 1;
+	vector<int> temp = {-1,-1};
+	int primaryWaveNo = -1;
+	vector<int> primaryPath;
 	
+	//Find primary LP with minimum physical links
 	for (int i = 0; i < lighpaths.size(); i++)
 	{
 		if(lighpaths[i].id == source)
@@ -418,20 +424,16 @@ vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth,
 				if(lighpaths[i].linkVector[j].destinationID == dst)
 				{
 					for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
-					{
+					{						
 						if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
-							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" &&
-							lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength != temp[0] &&
-							(lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.size() < pathSize || temp[0] != -1))
+							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" )
 						{
-							temp[count] = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
-
-							if(count)
+							if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.size() <= pathSize)
 							{
-								return temp;
+								pathSize = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.size();
+								primaryWaveNo = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+								primaryPath = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
 							}
-							i = 0;
-							count++;
 						}
 					}
 				}
@@ -439,7 +441,69 @@ vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth,
 			}
 		}
 	}
+
+	temp[0] = primaryWaveNo;
+
+	if(temp[0] == -1) return temp;
+
+	//Find LP for backup path
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if(lighpaths[i].id == source)
+		{
+			for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+			{
+				if(lighpaths[i].linkVector[j].destinationID == dst)
+				{
+					for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+					{						
+						if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
+							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" )
+						{
+							if(isLinkDisjoint(primaryPath,lighpaths[i].linkVector[j].wavelengthAndLSP[h].path,numOfNodes))
+							{
+								temp[1] = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+								return temp;
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
 	return vector<int>{-1,-1};
+}
+
+int lightpathNetwork::getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath)
+{
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if(lighpaths[i].id == source)
+		{
+			for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+			{
+				if(lighpaths[i].linkVector[j].destinationID == dst)
+				{
+					for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+					{						
+						if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
+							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" )
+						{
+							if(isLinkDisjoint(primaryPath,lighpaths[i].linkVector[j].wavelengthAndLSP[h].path,numOfNodes))
+							{
+								return lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+	return -1;
 }
 
 
@@ -469,4 +533,122 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 	return arr;
 
 	
+}
+
+
+map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes)
+{
+	map<int, vector<vector<int>>> temp;
+
+	for(int i = 40; i < 80; i++)
+	{
+		temp[i] = vector<vector<int>> (numOfNodes,vector<int>(1,0));
+	}
+
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		if(lighpaths[i].id == src)
+		{
+			for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+			{
+				int dst = lighpaths[i].linkVector[j].destinationID;
+
+				for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+				{	
+					int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
+
+					if(path[0] != src)
+					{
+						reverse(path.begin(),path.end());
+					}
+					
+					if(temp[40 + wave][dst][0] == 0)
+					{
+						temp[40 + wave][dst][0] = 1;
+
+						for(int k :path)
+						{
+							temp[40 + wave][dst].push_back(k);
+						}
+					}
+
+					else
+					{
+						if(path.size() < temp[40 + wave][dst].size()-1)
+						{
+							temp[40 + wave][dst].clear();
+							temp[40 + wave][dst].push_back(1);
+
+							for(int k :path)
+							{
+								temp[40 + wave][dst].push_back(k);
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+	return temp;
+}
+
+
+map<int, vector<vector<int>>> lightpathNetwork::mapFromdst(int dst, int numOfNodes)
+{
+	map<int, vector<vector<int>>> temp;
+
+	for(int i = 40; i < 80; i++)
+	{
+		temp[i] = vector<vector<int>> (numOfNodes,vector<int>(1,0));
+	}
+
+	for (int i = 0; i < lighpaths.size(); i++)
+	{
+		int src = lighpaths[i].id;
+		for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+		{
+			if( dst == lighpaths[i].linkVector[j].destinationID)
+			{
+				for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
+				{	
+					int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
+
+					if(path[path.size()-1] != dst)
+					{
+						reverse(path.begin(),path.end());
+					}
+
+					if(temp[40 + wave][src][0] == 0)
+					{
+						temp[40 + wave][src][0] = 1;
+
+						for(int k :path)
+						{
+							temp[40 + wave][src].push_back(k);
+						}
+					}
+
+					else
+					{
+						if(path.size()< temp[40 + wave][src].size()-1)
+						{
+							temp[40 + wave][src].clear();
+							temp[40 + wave][src].push_back(1);
+
+							for(int k :path)
+							{
+								temp[40 + wave][src].push_back(k);
+							}
+						}
+					}
+				}
+			}			
+		}
+	}
+
+	return temp;
 }
