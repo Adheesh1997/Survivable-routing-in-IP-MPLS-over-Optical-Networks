@@ -88,8 +88,8 @@ public:
 	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
-	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec);
-	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier);
+	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType);
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType);
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);

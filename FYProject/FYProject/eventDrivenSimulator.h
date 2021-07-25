@@ -34,7 +34,7 @@ private:
 	vector<event> eventVector;
 
 public:
-	void requestGenerator();
+	void requestGenerator(int numberOfLSPrequests);
 	void eventCreation();
 };
 

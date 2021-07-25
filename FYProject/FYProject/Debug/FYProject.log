@@ -1,1 +1,4 @@
-﻿  FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+﻿  main.cpp
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(16,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(15): message : see declaration of 'lighpathWavelength'
+  FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe

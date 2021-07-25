@@ -34,7 +34,7 @@ private:
 
 
 public:
-	void makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier);  //Establish a LSP
+	void makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType);  //Establish a LSP
 	void viewLSPsInALightpath(lightpathNetwork& obj);                                           //View the LSPs within a lightpath
 	//void viewAllLSPs();
 	//bool checkForAvailableLSP();

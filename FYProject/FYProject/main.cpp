@@ -41,6 +41,7 @@ bool establishLSP();
 
 int main()
 {
+    bool protectionType = true;//True for bandwisth protection
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -193,8 +194,8 @@ int main()
 
                                         vector<int> pathForLSP = {defaultShortPath[0],defaultShortPath[j],defaultShortPath[defaultShortPath.size()-1]};
 
-                                        waveLengthNetwork.setANewLSP(pathForLSP,primaryWaves,waveLengthNetwork,"pp",lspReq.id);
-                                        waveLengthNetwork.setANewLSP(pathForLSP,backupWaves,waveLengthNetwork,"bp",lspReq.id);
+                                        waveLengthNetwork.setANewLSP(pathForLSP, primaryWaves, waveLengthNetwork, "pp", lspReq.id, protectionType);
+                                        waveLengthNetwork.setANewLSP(pathForLSP, backupWaves, waveLengthNetwork, "bp", lspReq.id, protectionType);
 
                                         isLSPestablish = true;
                                         myfile.writeLog("LSP established using 1 new LP & 1 old LP.*");
@@ -218,7 +219,7 @@ int main()
                             //Setup primary LSP
                             vector<int> pathForPLSP = {combineWavelengthDetails.w1ShortPathPP[0],combineWavelengthDetails.connectingNodePP,combineWavelengthDetails.w2ShortPathPP[combineWavelengthDetails.w2ShortPathPP.size()-1]};
                             vector<int> wavesP = {combineWavelengthDetails.wavelengthNo1PP,combineWavelengthDetails.wavelengthNo2PP};
-                            waveLengthNetwork.setANewLSP(pathForPLSP,wavesP,waveLengthNetwork,"pp",lspReq.id);
+                            waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", lspReq.id, protectionType);
 
                             waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.wavelengthNo1BP,"pp");
                             waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathBP, combineWavelengthDetails.wavelengthNo2BP, "pp");
@@ -226,7 +227,7 @@ int main()
                             vector<int> pathForBLSP = {combineWavelengthDetails.w1ShortPathBP[0],combineWavelengthDetails.connectingNodeBP,combineWavelengthDetails.w2ShortPathBP[combineWavelengthDetails.w2ShortPathBP.size()-1]};
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
-                            waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
+                            waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", lspReq.id, protectionType);
 
                             myfile.writeLog("New lsp establish with 2 new LPs.**");
                             isLSPestablish = true;
@@ -248,11 +249,11 @@ int main()
 
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                        waveLengthNetwork.setANewLSP(pathForPLSP,wavesP,waveLengthNetwork,"pp",lspReq.id);
+                        waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", lspReq.id, protectionType);
 
                         vector<int> pathForBLSP = {pathDetails.backUpShortPath[0],pathDetails.backUpShortPath[pathDetails.backUpShortPath.size()-1]};
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
-                        waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
+                        waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", lspReq.id, protectionType);
 
                         isLSPestablish = true;
                         myfile.writeLog("New lsp established with new single LP.***");
@@ -279,8 +280,8 @@ int main()
                                 vector<int> wavesP = {waves[0]};
                                 vector<int> wavesB = {waves[1]};
 
-                                waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",lspReq.id);
-                                waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
+                                waveLengthNetwork.setANewLSP(pathForLSP, wavesP, waveLengthNetwork, "pp", lspReq.id, protectionType);
+                                waveLengthNetwork.setANewLSP(pathForLSP, wavesB, waveLengthNetwork, "bp", lspReq.id, protectionType);
 
                                 myfile.writeLog("New lsp establish with new LP and old LP.");
                                 isLSPestablish = true;
@@ -292,8 +293,8 @@ int main()
                             vector<int> wavesP = {waveVector[0]};
                             vector<int> wavesB = {waveVector[1]};
 
-                            waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",lspReq.id);
-                            waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",lspReq.id);
+                            waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",lspReq.id, protectionType);
+                            waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",lspReq.id, protectionType);
                             
                             myfile.writeLog("New lsp established with 2 old LPs.");
                             isLSPestablish = true;
@@ -311,9 +312,11 @@ int main()
 
     }
 
+    int numberOfLSPrequests = 100000;
+
     requestCreation tempObject;
-    tempObject.requestGenerator();
-    tempObject.eventCreation();
+    //tempObject.requestGenerator(numberOfLSPrequests);
+    //tempObject.eventCreation();
     
 	cin.get();
     return 0;
