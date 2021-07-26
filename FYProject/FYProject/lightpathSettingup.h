@@ -74,6 +74,7 @@ public:
 	void viewLPlinks();                   //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID);  //Search whether an node is connected to the current node
 	lightNode* searchAddress(int val);    //Getting the address of a node which is connected to current node
+	~lightNode() {}
 };
 
 class lightpathNetwork                    //Object of this class has to be created in main function
