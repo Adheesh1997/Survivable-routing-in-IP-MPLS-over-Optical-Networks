@@ -1,9 +1,4 @@
-﻿  LSP.cpp
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(18,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(17): message : see declaration of 'lighpathWavelength'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(192,28): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(21,6): warning C4101: 'intLSPwavelength': unreferenced local variable
-  lightpathSettingup.cpp
+﻿  lightpathSettingup.cpp
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(18,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(17): message : see declaration of 'lighpathWavelength'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(120,25): warning C4018: '<': signed/unsigned mismatch
@@ -32,9 +27,13 @@ C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\F
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(702,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(705,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(709,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(759,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(769,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(770,21): warning C4018: '<': signed/unsigned mismatch
   main.cpp
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(18,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(17): message : see declaration of 'lighpathWavelength'
   Generating Code...
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(154): warning C4715: 'lightNode::searchAddress': not all control paths return a value
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(766): warning C4715: 'lightNode::verifyDestinationNode': not all control paths return a value
   FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe

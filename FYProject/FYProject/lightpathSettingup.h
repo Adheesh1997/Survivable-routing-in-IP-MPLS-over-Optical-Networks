@@ -74,6 +74,11 @@ public:
 	void viewLPlinks();                   //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID);  //Search whether an node is connected to the current node
 	lightNode* searchAddress(int val);    //Getting the address of a node which is connected to current node
+	
+	/**********************************/
+	void checkDestinationAndWavelength(int, int);
+	int verifyDestinationNode(int);
+	void deleteLpLink(int);				// this can be used to  remove item from wavelengthAndLSP vector
 	~lightNode() {}
 };
 
@@ -101,6 +106,11 @@ public:
 
 	map<int, vector<vector<int>>> mapFromsource(int src, int numOfNodes);
 	map<int, vector<vector<int>>> mapFromdst(int dst, int numOfNodes);
+
+
+	/*********************************************/
+	void releaseEshtablishedLighpath(int source, int destination, int wavelength);	// remove item from lightpath vector
+	void getTotalNumberOfLightpaths();				// to get total number of lightpaths (used for testing)
 
 	~lightpathNetwork() {}
 };
