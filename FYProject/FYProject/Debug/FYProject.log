@@ -1,4 +1,24 @@
-﻿  main.cpp
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(16,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(15): message : see declaration of 'lighpathWavelength'
-  FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+﻿  Dijkstra.cpp
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(160,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(167,34): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(187,28): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(199,38): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(221,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(251,36): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(256,38): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(282,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(301,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(338,40): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(365,36): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(375,36): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(404,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(423,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(465,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(475,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(523,44): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(550,36): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(560,36): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(596,32): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(601,34): warning C4018: '<': signed/unsigned mismatch
+D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\Dijkstra.cpp(627,28): warning C4018: '<': signed/unsigned mismatch
+  FYProject.vcxproj -> D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
