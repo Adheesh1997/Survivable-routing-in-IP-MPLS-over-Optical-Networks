@@ -238,7 +238,7 @@ int main()
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(lspReq.srcNode,numOfNodes);
                     printMap(arr);
                     cout<<"\nmap from dst\n";
-                    map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromdst(lspReq.DstNode,numOfNodes);
+                    map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(lspReq.DstNode,numOfNodes);
                     printMap(arr1);
                 }
 
