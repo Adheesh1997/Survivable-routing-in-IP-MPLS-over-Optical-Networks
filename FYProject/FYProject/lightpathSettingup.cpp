@@ -652,3 +652,83 @@ map<int, vector<vector<int>>> lightpathNetwork::mapFromdst(int dst, int numOfNod
 
 	return temp;
 }
+
+/***************************** REMOVE LIGHTPAH ******************************/
+
+
+void lightNode::checkDestinationAndWavelength(int destination, int wavelength) {
+
+}
+
+int lightNode::verifyDestinationNode(int node2)
+{
+	for (int i = 0; i < linkVector.size(); i++)
+	{
+		if (linkVector[i].destinationID == node2)
+		{
+			return i;
+		}
+	}
+}
+
+void lightNode::deleteLpLink(int wl) {
+	for (int i = 0; i < linkVector.size(); i++) {
+		for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
+			if (linkVector[i].wavelengthAndLSP[j].wavelength == wl) {
+				if (linkVector[i].wavelengthAndLSP[j].availableBandwidth == linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
+					//lighpaths.erase(lighpaths.begin() + i);
+					linkVector.erase(linkVector.begin() + i);
+					cout << "********		SUCESSFULY DELETED ********" << endl;
+				}
+				else {
+					cout << "the lightpath is in use" << endl;
+				}
+			}
+			else {
+				cout << " ---ERROR!--- can not find the wavelenght" << endl;
+			}
+		}
+	}
+}
+
+
+void lightpathNetwork::getTotalNumberOfLightpaths() {
+	cout << totalnumOfLighpaths << endl;
+}
+
+
+
+
+void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination, int wavelength) {
+	//to delete from source node's LP-link's vector
+	int positionOne = checkForAvaialableNode(source);
+	if (positionOne != -1) {
+		int temp = lighpaths[positionOne].verifyDestinationNode(destination);
+
+		if (temp != -1) {
+			//call the functions
+			lighpaths[positionOne].deleteLpLink(wavelength);
+			lighpaths.erase(lighpaths.begin() + positionOne);
+		}
+		else {
+			cout << "------error!!!!!!-----------" << endl;
+		}
+	}
+
+	//to delete from destination node's LP-link's vector
+	int positionTwo = checkForAvaialableNode(destination);
+	if (positionTwo != -1) {
+		int temp = lighpaths[positionTwo].verifyDestinationNode(source);
+		if (temp != -1) {
+			//call the functions
+			lighpaths[positionTwo].deleteLpLink(wavelength);
+			lighpaths.erase(lighpaths.begin() + positionTwo);
+			totalnumOfLighpaths = totalnumOfLighpaths - 1;
+		}
+		else {
+			cout << "------error!!!!!!-----------" << endl;
+		}
+	}
+
+	//to delete from lightpaths vector
+}
