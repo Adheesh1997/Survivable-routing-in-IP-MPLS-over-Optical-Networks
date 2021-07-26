@@ -28,9 +28,23 @@ void printMap(map<int,vector<vector<int>>> arr)
 }
 int main()
 {
-    bool protectionType = true;//True for bandwisth protection
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
+
+
+    bool protectionType = true;         //True for bandwidth based LP protection. False for number of LSPs based LP protection
+    int numberOfLSPrequests = 100;      //The number of LSP requests
+    double erlang = 10;                 //Erlang value
+    double meanHoldingTime = 1;         //Mean holding time
+
+
+    requestCreation tempObject;
+    tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
+    tempObject.printLSPrequests();                                               //Print the LSP requests
+    vector<event> listOfEvents = tempObject.eventCreation();                     //Create the events
+    tempObject.printEvents();                                                    //Print the events
+
+
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
     //graph input file location
@@ -65,7 +79,8 @@ int main()
         int rejected = 0;
         int numOfRequest = 100;
         
-        for(int i = 0; i < numOfRequest; )
+        
+        for(int i = 0; i < numOfRequest; )//while(!listOfEvents.empty())
         {
 
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -242,28 +257,32 @@ int main()
                     printMap(arr1);
                     vector<int> ShortestPath;
 
-                    // create backup lightpath connecting two wavelengths
-                    forRemainingBackUpPath createRemaingBackUpDeatils = createRemaing(vexnum, subWaveNetworks,  lspReq.srcNode, lspReq.DstNode, arr, arr1, pathDetails.primaryShortPath);
-                    cout << createRemaingBackUpDeatils.canCreatCombinationBP << endl; // hadanna puluwanda kiyala balanawa
-                    cout << createRemaingBackUpDeatils.connectingNodeBP << endl;//intermediateNode
-                    cout << createRemaingBackUpDeatils.wavelengthNo1BP << endl; // from source wavelength Number
-                    cout << createRemaingBackUpDeatils.wavelengthNo2BP << endl; //from to destination wavelength Number
-                    // cout << createRemaingBackUpDeatils.w1ShortPathBP << endl; meka from source vector path
-                    // cout << createRemaingBackUpDeatils.w2ShortPathBP << endl; meka from source vector path
-                    combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, lspReq.srcNode, lspReq.DstNode,arr,arr1);
-                    cout << combineWavelengthDetails.canCreatCombinationPP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa PP
-                    cout << combineWavelengthDetails.wavelengthNo1PP << endl; //from source wavlength number PP
-                    cout << combineWavelengthDetails.wavelengthNo2PP << endl; //to destination wavlength number PP
-                    cout << combineWavelengthDetails.connectingNodePP << endl; // primary wavelength intermediate node
-                    //printShortestPath(combineWavelengthDetails.w1ShortPathPP); // print path from source PP
-                   // printShortestPath(combineWavelengthDetails.w2ShortPathPP); // print from intermediate node PP
-                    cout << combineWavelengthDetails.canCreatCombinationBP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa BP
-                    cout << combineWavelengthDetails.wavelengthNo1BP << endl; //from source wavlength number BP
-                    cout << combineWavelengthDetails.wavelengthNo2BP << endl; //to destination wavlength number BP
-                    cout << combineWavelengthDetails.connectingNodeBP << endl; // primary wavelength intermediate node BP
-                    //printShortestPath(combineWavelengthDetails.w1ShortPathBP); // print path from source BP
-                    //printShortestPath(combineWavelengthDetails.w2ShortPathBP); // print from intermediate node BP
-                
+                    cout << "Vecsize ============== " << pathDetails.primaryShortPath.size() << endl;
+
+                    if (!pathDetails.primaryShortPath.empty())
+                        // create backup lightpath connecting two wavelengths
+                    {
+                        forRemainingBackUpPath createRemaingBackUpDeatils = createRemaing(vexnum, subWaveNetworks, lspReq.srcNode, lspReq.DstNode, arr, arr1, pathDetails.primaryShortPath);
+                        cout << createRemaingBackUpDeatils.canCreatCombinationBP << endl; // hadanna puluwanda kiyala balanawa
+                        cout << createRemaingBackUpDeatils.connectingNodeBP << endl;//intermediateNode
+                        cout << createRemaingBackUpDeatils.wavelengthNo1BP << endl; // from source wavelength Number
+                        cout << createRemaingBackUpDeatils.wavelengthNo2BP << endl; //from to destination wavelength Number
+                        // cout << createRemaingBackUpDeatils.w1ShortPathBP << endl; meka from source vector path
+                        // cout << createRemaingBackUpDeatils.w2ShortPathBP << endl; meka from source vector path
+                        combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, lspReq.srcNode, lspReq.DstNode, arr, arr1);
+                        cout << combineWavelengthDetails.canCreatCombinationPP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa PP
+                        cout << combineWavelengthDetails.wavelengthNo1PP << endl; //from source wavlength number PP
+                        cout << combineWavelengthDetails.wavelengthNo2PP << endl; //to destination wavlength number PP
+                        cout << combineWavelengthDetails.connectingNodePP << endl; // primary wavelength intermediate node
+                        //printShortestPath(combineWavelengthDetails.w1ShortPathPP); // print path from source PP
+                       // printShortestPath(combineWavelengthDetails.w2ShortPathPP); // print from intermediate node PP
+                        cout << combineWavelengthDetails.canCreatCombinationBP << endl; //wavelength dekak connect karanna puluwanda baida kiyala balanawa BP
+                        cout << combineWavelengthDetails.wavelengthNo1BP << endl; //from source wavlength number BP
+                        cout << combineWavelengthDetails.wavelengthNo2BP << endl; //to destination wavlength number BP
+                        cout << combineWavelengthDetails.connectingNodeBP << endl; // primary wavelength intermediate node BP
+                        //printShortestPath(combineWavelengthDetails.w1ShortPathBP); // print path from source BP
+                        //printShortestPath(combineWavelengthDetails.w2ShortPathBP); // print from intermediate node BP
+                    }
                 // meke wavelenth number eka 40 ho 40 ta wadinam eka existing light path ekak
                 
                 }
@@ -291,11 +310,7 @@ int main()
         myfile.writeLog("**Num.of LSP rejected = "+to_string(rejected));
     }
 
-    int numberOfLSPrequests = 100000;
-
-    requestCreation tempObject;
-    //tempObject.requestGenerator(numberOfLSPrequests);
-    //tempObject.eventCreation();
+   
     
 	cin.get();
     return 0;

@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-struct request 
+struct requestDetails 
 {
 	int identifier;
 	int sourceNode;
@@ -24,18 +24,22 @@ struct event
 	int sourceNode;
 	int destinationNode;
 	int bandwidth;
-	bool action;
+	int action;
 };
 
 class requestCreation
 {
 private:
-	vector<request> requestVector;
+	int reqID;
+	vector<requestDetails> requestVector;
 	vector<event> eventVector;
 
 public:
-	void requestGenerator(int numberOfLSPrequests);
-	void eventCreation();
+	requestCreation() :reqID(0) {}
+	void requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime);
+	void printLSPrequests();
+	vector<event> eventCreation();
+	void printEvents();
 };
 
 #endif

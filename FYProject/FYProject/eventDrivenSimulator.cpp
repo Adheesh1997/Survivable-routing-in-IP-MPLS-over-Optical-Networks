@@ -2,51 +2,55 @@
 #include <stdlib.h>     
 #include <time.h>
 #include <random>
+#include <algorithm>
 
-bool compareByLength(const request& a, const request& b)
+bool compareByLength(const requestDetails& a, const requestDetails& b)
 {
 	return a.remainingTime < b.remainingTime;
 }
 
-void requestCreation::requestGenerator(int numberOfLSPrequests)
+void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime)
 {
-	request obj;
+	requestDetails obj;
 	srand(time(NULL));
 	
-	random_device rd; // uniformly-distributed integer random number generator
-	mt19937 rng(rd()); // mt19937: Pseudo-random number generation
+	random_device rd;            // uniformly-distributed integer random number generator
+	mt19937 rng(rd());           // mt19937: Pseudo-random number generation
 
-	double averageArrival = 15;
-	double lamda = 1 / averageArrival;
-	lamda = 10;
-	exponential_distribution<double> exp(lamda);
+	//double averageArrival = 15;
+	//double erlang = 1 / averageArrival;
+	//erlang = 10;
+	exponential_distribution<double> exp(erlang);
 
-	random_device rd2; // uniformly-distributed integer random number generator
-	mt19937 rng2(rd2()); // mt19937: Pseudo-random number generation
+	random_device rd2;           // uniformly-distributed integer random number generator
+	mt19937 rng2(rd2());         // mt19937: Pseudo-random number generation
 
-	exponential_distribution<double> exp2(1);
+	exponential_distribution<double> exp2(meanHoldingTime);
 
-	//int numberOfLSPrequests = 100;
 	for (size_t i = 0; i < numberOfLSPrequests; i++)
 	{
-		//obj.identifier = ;
+		obj.identifier = reqID++;
 		obj.sourceNode = rand() % 14;
 		do
 		{
 			obj.destinationNode = rand() % 14;
 		} while (obj.destinationNode == obj.sourceNode);
 		obj.bandwidth = 10 + rand() % 6;
-		obj.interArrivalTime = exp.operator() (rng);// generates the next random number in the distribution 
-		obj.holdingTime = exp2.operator() (rng2);// generates the next random number in the distribution 
+		obj.interArrivalTime = exp.operator() (rng); // generates the next random number in the distribution 
+		obj.holdingTime = exp2.operator() (rng2);    // generates the next random number in the distribution 
 		obj.remainingTime = obj.holdingTime;
 
 
 		requestVector.push_back(obj);
 	}
+}
 
+void requestCreation::printLSPrequests()
+{
 	for (size_t i = 0; i < requestVector.size(); i++)
 	{
 		cout << "***************************\n";
+		cout << "identifier = " << requestVector[i].identifier << endl;
 		cout << "sourceNode = " << requestVector[i].sourceNode << endl;
 		cout << "destinationNode = " << requestVector[i].destinationNode << endl;
 		cout << "bandwidth = " << requestVector[i].bandwidth << endl;
@@ -56,23 +60,22 @@ void requestCreation::requestGenerator(int numberOfLSPrequests)
 	cout << "***************************\n";
 }
 
-void requestCreation::eventCreation()
+vector<event> requestCreation::eventCreation()
 {
 	event eventObject;
-	//eventObject.identifier = requestVector[0].identifier;
+	eventObject.identifier = requestVector[0].identifier;
 	eventObject.sourceNode = requestVector[0].sourceNode;
 	eventObject.destinationNode = requestVector[0].destinationNode;
 	eventObject.bandwidth = requestVector[0].bandwidth;
-	eventObject.action = 1; //establish the LSP connection
+	eventObject.action = 1;   //establish the LSP connection
 	eventVector.push_back(eventObject);
 
-	vector<request> tempRequest;
+	vector<requestDetails> tempRequest;
 	tempRequest.push_back(requestVector[0]);
-	vector<request>::iterator it;
+	vector<requestDetails>::iterator it;
 
 	it = requestVector.begin();
-	requestVector.erase(it);
-	//remove this element from request Vector
+	requestVector.erase(it);   //remove this element from request Vector
 	
 
 	while (!requestVector.empty())
@@ -91,7 +94,7 @@ void requestCreation::eventCreation()
 				sort(tempRequest.begin(), tempRequest.end(), compareByLength);//sort tempRequest
 
 
-				//eventObject.identifier = requestVector[0].identifier;
+				eventObject.identifier = requestVector[0].identifier;
 				eventObject.sourceNode = requestVector[0].sourceNode;
 				eventObject.destinationNode = requestVector[0].destinationNode;
 				eventObject.bandwidth = requestVector[0].bandwidth;
@@ -104,7 +107,7 @@ void requestCreation::eventCreation()
 			}
 			else
 			{
-				//eventObject.identifier = tempRequest[0].identifier;
+				eventObject.identifier = tempRequest[0].identifier;
 				eventObject.sourceNode = tempRequest[0].sourceNode;
 				eventObject.destinationNode = tempRequest[0].destinationNode;
 				eventObject.bandwidth = tempRequest[0].bandwidth;
@@ -129,7 +132,7 @@ void requestCreation::eventCreation()
 				{
 					tempRequest.push_back(requestVector[0]);
 
-					//eventObject.identifier = requestVector[0].identifier;
+					eventObject.identifier = requestVector[0].identifier;
 					eventObject.sourceNode = requestVector[0].sourceNode;
 					eventObject.destinationNode = requestVector[0].destinationNode;
 					eventObject.bandwidth = requestVector[0].bandwidth;
@@ -146,6 +149,7 @@ void requestCreation::eventCreation()
 
 	while (!tempRequest.empty())
 	{
+		eventObject.identifier = tempRequest[0].identifier;
 		eventObject.sourceNode = tempRequest[0].sourceNode;
 		eventObject.destinationNode = tempRequest[0].destinationNode;
 		eventObject.bandwidth = tempRequest[0].bandwidth;
@@ -155,10 +159,15 @@ void requestCreation::eventCreation()
 		it = tempRequest.begin();
 		tempRequest.erase(it);
 	}
+	return eventVector;
+}
 
+void requestCreation::printEvents()
+{
 	for (size_t i = 0; i < eventVector.size(); i++)
 	{
 		cout << "**************************\n";
+		cout << "eventVector[" << i << "].identifier = " << eventVector[i].identifier << endl;
 		cout << "eventVector[" << i << "].sourceNode = " << eventVector[i].sourceNode << endl;
 		cout << "eventVector[" << i << "].destinationNode = " << eventVector[i].destinationNode << endl;
 		cout << "eventVector[" << i << "].bandwidth = " << eventVector[i].bandwidth << endl;
