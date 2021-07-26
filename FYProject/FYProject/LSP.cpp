@@ -2,13 +2,22 @@
 #include "graph.h"
 #include "LSP.h"
 
-class lightNode;
+class lightNode;                                //Classes declaration
 class lightpathNetwork;
 
 
 
 void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType)
 {
+	/*
+	* Parameters
+		vector<int> shortestPathLSP - The path of the LSP
+		vector<int> LSPwavelengthVec - List of wavelengths
+		lightpathNetwork& obj - The one object of lightpathNetwork class
+		string type - Primary(pLSP) or Backup(bLSP)
+		int identifier - The id value of the LSP
+		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
+	*/
 	int intLSPwavelength;
 	int LSPbandwidth = 10;
 	
@@ -344,12 +353,14 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 
 void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 {
-
+	/*
+	* Parameter
+		lightpathNetwork& obj - The one object of lightpathNetwork class
+	*/
 	for (size_t i = 0; i < obj.lighpaths.size(); i++)
 	{
 		for (size_t j = 0; j < obj.lighpaths[i].linkVector.size(); j++)
 		{
-			//cout << obj.lighpaths[i].returnId() << endl;
 			for (size_t k = 0; k < obj.lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++)
 			{
 				if (obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].numOfLSPsInLightpath > 0)
@@ -383,9 +394,12 @@ void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 
 }
 
-void LSP::traversefLSP(LSP* nextNode)
+void LSP::traversefLSP(LSP* nextNode)    //Traverse the LSP from forward
 {
-
+	/*
+	* Parameter
+		LSP* nextNode - Next LSP node
+	*/
 	LSP temp;
 	while (nextNode->nextLSP != NULL)
 	{
@@ -399,8 +413,12 @@ void LSP::traversefLSP(LSP* nextNode)
 
 }
 
-void LSP::traversebLSP(LSP* prevNode)
+void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 {
+	/*
+	* Parameter
+		LSP* nextNode - Next LSP node
+	*/
 	LSP temp;
 	while (prevNode->prevLSP != NULL)
 	{
