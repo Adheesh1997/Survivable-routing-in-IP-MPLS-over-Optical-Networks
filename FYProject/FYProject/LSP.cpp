@@ -2,18 +2,27 @@
 #include "graph.h"
 #include "LSP.h"
 
-class lightNode;
+class lightNode;                                //Classes declaration
 class lightpathNetwork;
 
 
 
 void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType)
 {
+	/*
+	* Parameters
+		vector<int> shortestPathLSP - The path of the LSP
+		vector<int> LSPwavelengthVec - List of wavelengths
+		lightpathNetwork& obj - The one object of lightpathNetwork class
+		string type - Primary(pLSP) or Backup(bLSP)
+		int identifier - The id value of the LSP
+		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
+	*/
 	int intLSPwavelength;
 	int LSPbandwidth = 10;
 	
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
-
+	vector<int> positionVector;
 
 	if (shortestPathLSP.size() == 2)                              //If the LSP path has only 2 nodes
 	{
@@ -22,6 +31,9 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 
 		int pos1 = obj.checkForAvaialableLPNode(v1[0]);
 		int pos2 = obj.checkForAvaialableLPNode(v1[1]);
+
+		positionVector.push_back(pos1);
+		positionVector.push_back(pos2);
 
 		LSP* ptr1 = NULL;
 		LSP* ptr2 = NULL;
@@ -118,7 +130,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
 
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(shortestPathLSP, LSPwavelengthVec, protectionType);
+			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType);
 	}
 
 	else if (shortestPathLSP.size() > 2)             //If the LSP path has more than 2 nodes
@@ -336,20 +348,27 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 
 			}
 		}
+		for (size_t i = 0; i < shortestPathLSP.size(); i++)
+		{
+			int pos = obj.checkForAvaialableLPNode(shortestPathLSP[i]);
+			positionVector.push_back(pos);
+		}
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(shortestPathLSP, LSPwavelengthVec, protectionType);
+			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType);
 	}
 
 }
 
 void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 {
-
+	/*
+	* Parameter
+		lightpathNetwork& obj - The one object of lightpathNetwork class
+	*/
 	for (size_t i = 0; i < obj.lighpaths.size(); i++)
 	{
 		for (size_t j = 0; j < obj.lighpaths[i].linkVector.size(); j++)
 		{
-			//cout << obj.lighpaths[i].returnId() << endl;
 			for (size_t k = 0; k < obj.lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++)
 			{
 				if (obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].numOfLSPsInLightpath > 0)
@@ -383,9 +402,12 @@ void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 
 }
 
-void LSP::traversefLSP(LSP* nextNode)
+void LSP::traversefLSP(LSP* nextNode)    //Traverse the LSP from forward
 {
-
+	/*
+	* Parameter
+		LSP* nextNode - Next LSP node
+	*/
 	LSP temp;
 	while (nextNode->nextLSP != NULL)
 	{
@@ -399,8 +421,12 @@ void LSP::traversefLSP(LSP* nextNode)
 
 }
 
-void LSP::traversebLSP(LSP* prevNode)
+void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 {
+	/*
+	* Parameter
+		LSP* nextNode - Next LSP node
+	*/
 	LSP temp;
 	while (prevNode->prevLSP != NULL)
 	{
