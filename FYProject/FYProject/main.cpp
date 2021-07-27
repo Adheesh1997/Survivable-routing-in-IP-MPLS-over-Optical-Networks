@@ -26,6 +26,7 @@ void printMap(map<int,vector<vector<int>>> arr)
         }cout<<endl;
     }
 }
+
 int main()
 {
     bool protectionType = true;//True for bandwisth protection
@@ -235,11 +236,11 @@ int main()
                     cout<<"source = "<<lspReq.srcNode<<" , "<<"dest = "<<lspReq.DstNode<<endl;
                     cout<<"\nmap from src";
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(lspReq.srcNode,numOfNodes);
-                    printMap(arr);
+                    //printMap(arr);
                     cout<<"\nmap from dst\n";
                     cout << "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222" << endl;
                     map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(lspReq.DstNode,numOfNodes);
-                    printMap(arr1);
+                    //printMap(arr1);
                     vector<int> ShortestPath;
 
                     // create backup lightpath connecting two wavelengths
