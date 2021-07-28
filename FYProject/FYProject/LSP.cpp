@@ -236,7 +236,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 			
 			for (size_t j = 0; j < waveSize2; j++)
 			{
-				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr])
+				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr - 1])
 				{
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
