@@ -33,7 +33,11 @@ int main()
 
 
     bool protectionType = true;         //True for bandwidth based LP protection. False for number of LSPs based LP protection
+<<<<<<< HEAD
     int numberOfLSPrequests = 100;    //The number of LSP requests
+=======
+    int numberOfLSPrequests = 1000;      //The number of LSP requests
+>>>>>>> 6b5f72a53a53c4faf44ec394d6c45246d50a3fc9
     double erlang = 10;                 //Erlang value
     double meanHoldingTime = 1;         //Mean holding time
 
@@ -69,7 +73,7 @@ int main()
 
         waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
         
-        lightpathNetwork waveLengthNetwork;
+        lightpathNetwork waveLengthNetwork(subWaveNetworks);
 
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
@@ -285,7 +289,11 @@ int main()
 
                 if(!isLSPestablish) 
                 {
+<<<<<<< HEAD
                     rejectedEvents.push_back(listOfEvents[0].identifier);
+=======
+
+>>>>>>> 6b5f72a53a53c4faf44ec394d6c45246d50a3fc9
                     rejected++;
                     myfile.writeLog("LSP is REJECTED.");
                 }

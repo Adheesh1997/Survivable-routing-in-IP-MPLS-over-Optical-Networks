@@ -157,11 +157,12 @@ lightNode* lightNode::searchAddress(int temp)
 
 //////////////////////////////////
 
-lightpathNetwork::lightpathNetwork()
+/* lightpathNetwork::lightpathNetwork(vector<waveLengthNetworks>& wv)
 {
+	waveLengthNetwork = wv;
 	totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
 	lighpaths.reserve(100);
-}
+} */
 
 void lightpathNetwork::viewAllLighpaths()                //The function to print the all lighpaths
 {
