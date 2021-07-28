@@ -33,16 +33,19 @@ int main()
 
 
     bool protectionType = true;         //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    int numberOfLSPrequests = 10000;      //The number of LSP requests
+    int numberOfLSPrequests = 100;    //The number of LSP requests
     double erlang = 10;                 //Erlang value
     double meanHoldingTime = 1;         //Mean holding time
 
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
-    //tempObject.printLSPrequests();                                               //Print the LSP requests
-    vector<events> listOfEvents = tempObject.eventCreation();                     //Create the events
-    //tempObject.printEvents();  
+    //tempObject.printLSPrequests();                                             //Print the LSP requests
+    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //tempObject.printEvents();                                                  //Print the events
+    vector<int> rejectedEvents;                                                  //To capture the rejected events
+    vector<events>::iterator itr;
+
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
@@ -78,19 +81,34 @@ int main()
         int rejected = 0;
         
         
-        for(events event:tempObject.eventVector)//while(!listOfEvents.empty())
+        while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         {
             
             int vexnum = numOfNodes;
-            int source = event.sourceNode;
-            int destination = event.destinationNode;
-            int id = event.identifier;
-            int bandwidth = event.bandwidth;
-            bool action = event.action;
+            int source = listOfEvents[0].sourceNode;
+            int destination = listOfEvents[0].destinationNode;
+            int id = listOfEvents[0].identifier;
+            int bandwidth = listOfEvents[0].bandwidth;
+            bool action = listOfEvents[0].action;
 
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;
             
+            while (!rejectedEvents.empty())
+            {
+                int count = 0;
+                if (listOfEvents[0].identifier == rejectedEvents[count])
+                {
+                    itr = listOfEvents.begin();
+                    listOfEvents.erase(itr);
+
+                    vector<int>::iterator itr2;
+                    itr2 = rejectedEvents.begin() + count;
+                    rejectedEvents.erase(itr2);
+                }
+                count++;
+            }
+
             if(action)
             {
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
@@ -267,13 +285,15 @@ int main()
 
                 if(!isLSPestablish) 
                 {
+                    rejectedEvents.push_back(listOfEvents[0].identifier);
                     rejected++;
                     myfile.writeLog("LSP is REJECTED.");
                 }
                 
                 
             }
-
+            itr = listOfEvents.begin();
+            listOfEvents.erase(itr);
         } 
 
         myfile.writeLog("                 ");

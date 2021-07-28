@@ -1,0 +1,228 @@
+[00:59:19] Log file is created
+[00:59:19] graph_inputs/05/graph05.csv Graph is imported.
+[00:59:19] Physical network is created.
+[00:59:19] New request. Bandwidth = 13,source = 10, Dst = 0, id = 0, request = 1
+[00:59:19] New lsp established with new single LP.***
+[00:59:19]                  
+[00:59:19] ****Counts****
+[00:59:19] Num of lsp rqst = 1
+[00:59:19] new LP & old LP = 0
+[00:59:19] new 2 LPs  = 0
+[00:59:19] new LP = 1
+[00:59:19] old LP = 0
+[00:59:19]                  
+[00:59:19] **Num.of LSP established = 1
+[00:59:19] **Num.of LSP rejected = 0
+[00:59:38] Log file is created
+[00:59:38] graph_inputs/05/graph05.csv Graph is imported.
+[00:59:38] Physical network is created.
+[00:59:38] New request. Bandwidth = 14,source = 2, Dst = 4, id = 0, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 0, Dst = 6, id = 1, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 7, Dst = 11, id = 2, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 12,source = 13, Dst = 2, id = 3, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 11,source = 6, Dst = 8, id = 4, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 8, Dst = 7, id = 5, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 11,source = 9, Dst = 11, id = 6, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 11,source = 4, Dst = 12, id = 7, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 2, Dst = 12, id = 8, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 6, Dst = 9, id = 9, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 0, Dst = 6, id = 10, request = 1
+[00:59:38] New lsp established with 2 old LPs.
+[00:59:38] New request. Bandwidth = 13,source = 3, Dst = 5, id = 11, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 4, Dst = 10, id = 12, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 11, Dst = 9, id = 13, request = 1
+[00:59:38] New lsp established with 2 old LPs.
+[00:59:38] New request. Bandwidth = 11,source = 10, Dst = 6, id = 14, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 12, Dst = 7, id = 15, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 14,source = 13, Dst = 9, id = 16, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 2, Dst = 4, id = 17, request = 1
+[00:59:38] New lsp established with 2 old LPs.
+[00:59:38] New request. Bandwidth = 11,source = 3, Dst = 0, id = 18, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 1, Dst = 11, id = 19, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 5, Dst = 4, id = 20, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 14,source = 10, Dst = 0, id = 21, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 10, Dst = 9, id = 22, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 1, Dst = 7, id = 23, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 4, Dst = 1, id = 24, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 6, Dst = 2, id = 25, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 11,source = 3, Dst = 9, id = 26, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 15,source = 13, Dst = 11, id = 27, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 12,source = 2, Dst = 0, id = 28, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 4, Dst = 13, id = 29, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 10,source = 4, Dst = 11, id = 30, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 8, Dst = 9, id = 31, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 13,source = 7, Dst = 0, id = 32, request = 1
+[00:59:38] New lsp established with new single LP.***
+[00:59:38] New request. Bandwidth = 14,source = 13, Dst = 7, id = 33, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 1, Dst = 7, id = 34, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 3, Dst = 8, id = 35, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 7, Dst = 9, id = 36, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 10,source = 8, Dst = 13, id = 37, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 5, Dst = 3, id = 38, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 0, Dst = 11, id = 39, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 14,source = 13, Dst = 11, id = 40, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 13,source = 11, Dst = 10, id = 41, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 2, Dst = 13, id = 42, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 14,source = 8, Dst = 11, id = 43, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 6, Dst = 9, id = 44, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 11,source = 6, Dst = 5, id = 45, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 3, Dst = 2, id = 46, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 5, Dst = 11, id = 47, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 2, Dst = 11, id = 48, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 10,source = 12, Dst = 6, id = 49, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 6, Dst = 7, id = 50, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 14,source = 12, Dst = 8, id = 51, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 15,source = 5, Dst = 9, id = 52, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 1, Dst = 11, id = 53, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 3, Dst = 9, id = 54, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 15,source = 5, Dst = 8, id = 55, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 10, Dst = 2, id = 56, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 15,source = 13, Dst = 9, id = 57, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 11,source = 10, Dst = 13, id = 58, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 5, Dst = 10, id = 59, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 10, Dst = 7, id = 60, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 14,source = 13, Dst = 7, id = 61, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 3, Dst = 0, id = 62, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 1, Dst = 0, id = 63, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 3, Dst = 8, id = 64, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 15,source = 13, Dst = 1, id = 65, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 10,source = 13, Dst = 11, id = 66, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 12, Dst = 1, id = 67, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 13, Dst = 12, id = 68, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 12,source = 1, Dst = 10, id = 69, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 10,source = 2, Dst = 12, id = 70, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 13, Dst = 7, id = 71, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 14,source = 5, Dst = 6, id = 72, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 14,source = 7, Dst = 9, id = 73, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 10, Dst = 6, id = 74, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 13,source = 3, Dst = 8, id = 75, request = 1
+[00:59:39] New lsp establish with new LP and old LP.
+[00:59:39] New request. Bandwidth = 14,source = 9, Dst = 4, id = 76, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 14,source = 0, Dst = 11, id = 77, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 14,source = 8, Dst = 6, id = 78, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 11,source = 9, Dst = 12, id = 79, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 11,source = 7, Dst = 0, id = 80, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 10,source = 12, Dst = 13, id = 81, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 13,source = 0, Dst = 2, id = 82, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 14,source = 13, Dst = 7, id = 83, request = 1
+[00:59:39] New lsp establish with new LP and old LP.
+[00:59:39] New request. Bandwidth = 13,source = 11, Dst = 0, id = 84, request = 1
+[00:59:39] New lsp establish with new LP and old LP.
+[00:59:39] New request. Bandwidth = 11,source = 10, Dst = 4, id = 85, request = 1
+[00:59:39] New lsp established with 2 old LPs.
+[00:59:39] New request. Bandwidth = 13,source = 6, Dst = 10, id = 86, request = 1
+[00:59:39] New lsp establish with new LP and old LP.
+[00:59:39] New request. Bandwidth = 11,source = 8, Dst = 0, id = 87, request = 1
+[00:59:39] New lsp established with new single LP.***
+[00:59:39] New request. Bandwidth = 13,source = 10, Dst = 9, id = 88, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40] New request. Bandwidth = 12,source = 1, Dst = 11, id = 89, request = 1
+[00:59:40] New lsp establish with new LP and old LP.
+[00:59:40] New request. Bandwidth = 13,source = 4, Dst = 6, id = 90, request = 1
+[00:59:40] New lsp established with new single LP.***
+[00:59:40] New request. Bandwidth = 13,source = 0, Dst = 10, id = 91, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40] New request. Bandwidth = 10,source = 7, Dst = 12, id = 92, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40] New request. Bandwidth = 10,source = 5, Dst = 0, id = 93, request = 1
+[00:59:40] New lsp established with new single LP.***
+[00:59:40] New request. Bandwidth = 10,source = 11, Dst = 8, id = 94, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40] New request. Bandwidth = 15,source = 12, Dst = 11, id = 95, request = 1
+[00:59:40] New lsp established with new single LP.***
+[00:59:40] New request. Bandwidth = 10,source = 5, Dst = 2, id = 96, request = 1
+[00:59:40] New lsp established with new single LP.***
+[00:59:40] New request. Bandwidth = 14,source = 9, Dst = 7, id = 97, request = 1
+[00:59:40] New lsp establish with new LP and old LP.
+[00:59:40] New request. Bandwidth = 10,source = 13, Dst = 2, id = 98, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40] New request. Bandwidth = 15,source = 7, Dst = 11, id = 99, request = 1
+[00:59:40] New lsp established with 2 old LPs.
+[00:59:40]                  
+[00:59:40] ****Counts****
+[00:59:40] Num of lsp rqst = 100
+[00:59:40] new LP & old LP = 6
+[00:59:40] new 2 LPs  = 0
+[00:59:40] new LP = 62
+[00:59:40] old LP = 32
+[00:59:40]                  
+[00:59:40] **Num.of LSP established = 100
+[00:59:40] **Num.of LSP rejected = 0

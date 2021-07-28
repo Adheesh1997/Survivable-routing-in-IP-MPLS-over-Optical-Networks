@@ -32,9 +32,9 @@ class requestCreation
 private:
 	int reqID;
 	vector<requestDetails> requestVector;
+	vector<events> eventVector;
 
 public:
-	vector<events> eventVector;
 	requestCreation() :reqID(0) {}
 	void requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime);
 	void printLSPrequests();
