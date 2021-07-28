@@ -335,7 +335,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
                         tempVecDes.pop_back();
                         reverse(tempVecDes.begin(), tempVecDes.end());
                         tempVecDes.insert(tempVecDes.begin(), tempVecSource.begin(), tempVecSource.end());
-                        if (PPD.size() < minumuVal) {
+                        if (tempVecDes.size() < minumuVal) {
                             bool validate = true;
                             for (vector<int>::iterator itPP = PPD.begin(); itPP != PPD.end() - 1; ++itPP) {
                                 vector<int>::iterator itTemp;
@@ -520,7 +520,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
                         tempVecDes.pop_back();
                         reverse(tempVecDes.begin(), tempVecDes.end());
                         tempVecDes.insert(tempVecDes.begin(), tempVecSource.begin(), tempVecSource.end());
-                            if (PPD.size() < minumuVal) {
+                            if (tempVecDes.size() < minumuVal) {
                                 bool validate = true;
                                 for (vector<int>::iterator itPP = PPD.begin(); itPP != PPD.end() - 1; ++itPP) {
                                     vector<int>::iterator itTemp;

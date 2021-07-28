@@ -60,9 +60,9 @@ void requestCreation::printLSPrequests()
 	cout << "***************************\n";
 }
 
-vector<event> requestCreation::eventCreation()
+vector<events> requestCreation::eventCreation()
 {
-	event eventObject;
+	events eventObject;
 	eventObject.identifier = requestVector[0].identifier;
 	eventObject.sourceNode = requestVector[0].sourceNode;
 	eventObject.destinationNode = requestVector[0].destinationNode;

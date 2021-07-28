@@ -4,10 +4,11 @@
 #include <sstream>
 #include <algorithm>
 #include <map>
+#include <string>
 
 #include "graph.h"
 #include "LSP.h"
-#include <string>
+#include "files.h"
 
 using namespace std;
 
@@ -473,8 +474,8 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 // Find given 2 paths are link disjoint or not
 bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes)
 {
-	cout<<"primary = "<<primaryPath.size()<<endl;
-	cout<<"test = "<<testPath.size()<<endl;
+	//cout<<"primary = "<<primaryPath.size()<<endl;
+	//cout<<"test = "<<testPath.size()<<endl;
 	/*
 	Parameters_
 		1.primaryPath - path that primary lsp going through
@@ -630,7 +631,7 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 }
 
 
-map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes)
+map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes, files &myfile)
 {
 	map<int, vector<vector<int>>> temp;
 

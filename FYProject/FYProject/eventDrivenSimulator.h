@@ -18,7 +18,7 @@ struct requestDetails
 	double interArrivalTime;
 };
 
-struct event
+struct events
 {
 	int identifier;
 	int sourceNode;
@@ -32,13 +32,13 @@ class requestCreation
 private:
 	int reqID;
 	vector<requestDetails> requestVector;
-	vector<event> eventVector;
 
 public:
+	vector<events> eventVector;
 	requestCreation() :reqID(0) {}
 	void requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime);
 	void printLSPrequests();
-	vector<event> eventCreation();
+	vector<events> eventCreation();
 	void printEvents();
 };
 
