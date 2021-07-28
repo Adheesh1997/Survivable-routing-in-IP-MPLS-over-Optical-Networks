@@ -16,6 +16,12 @@ class lightNode;                    //Classes declaration
 class lightpathNetwork;
 class LSP;
 
+struct thresholds
+{
+	float bandwidthThreshold;
+	int numLSPthreshold;
+};
+
 class lighpathWavelength
 {
 private:
@@ -104,8 +110,8 @@ public:
 	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a new lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
-	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType);//Check whether a lightpath is heavily loaded
-	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType); //Call a function of LSP class to establish a LSP
+	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals);//Check whether a lightpath is heavily loaded
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals); //Call a function of LSP class to establish a LSP
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);

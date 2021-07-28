@@ -14,6 +14,7 @@ using namespace std;
 
 class lightpathNetwork;        //Classes declaration
 class lightNode;
+struct thresholds;
 
 class LSP
 {
@@ -34,7 +35,7 @@ private:
 
 
 public:
-	void makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType);  //Establish a LSP
+	void makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals);  //Establish a LSP
 	void viewLSPsInALightpath(lightpathNetwork& obj);    //View the LSPs within a lightpath
 	void traversefLSP(LSP* nextNode);                    //Traverse a LSP from front the end
 	void traversebLSP(LSP* prevNode);                    //Traverse a LSP from back to the front

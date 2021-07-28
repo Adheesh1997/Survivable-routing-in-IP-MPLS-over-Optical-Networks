@@ -325,7 +325,7 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType)
+void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals)
 {
 	/*
 	* Parameters
@@ -352,8 +352,8 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 
 							float usedBandProportion = usedPrimBand / initBandwidth;
 
-							float bandwidthThreshold = 0.75;
-							int numLSPthreshold = 1;
+							float bandwidthThreshold = thresholdVals.bandwidthThreshold;
+							int numLSPthreshold = thresholdVals.numLSPthreshold;
 
 							if (protectionType) //Bandwidth based protection
 							{
@@ -421,7 +421,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 	}
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
 	/*
 	* Parameters
@@ -433,7 +433,7 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavel
 		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
 	*/
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type, identifier, protectionType);
+	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type, identifier, protectionType, thresholdVals);
 }
 
 // Generate adajacency metrix from LP network

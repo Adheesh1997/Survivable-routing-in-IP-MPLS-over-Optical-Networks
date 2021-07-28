@@ -6,8 +6,7 @@ class lightNode;                                //Classes declaration
 class lightpathNetwork;
 
 
-
-void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType)
+void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
 	/*
 	* Parameters
@@ -130,7 +129,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
 
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType);
+			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType, thresholdVals);
 	}
 
 	else if (shortestPathLSP.size() > 2)             //If the LSP path has more than 2 nodes
@@ -354,7 +353,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> LSPwavelengthVec, lig
 			positionVector.push_back(pos);
 		}
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType);
+			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType, thresholdVals);
 	}
 
 }

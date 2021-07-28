@@ -26,20 +26,20 @@ void printMap(map<int,vector<vector<int>>> arr)
         }cout<<endl;
     }
 }
+
+
 int main()
 {
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
 
-
-    bool protectionType = true;         //True for bandwidth based LP protection. False for number of LSPs based LP protection
-<<<<<<< HEAD
-    int numberOfLSPrequests = 100;    //The number of LSP requests
-=======
-    int numberOfLSPrequests = 1000;      //The number of LSP requests
->>>>>>> 6b5f72a53a53c4faf44ec394d6c45246d50a3fc9
-    double erlang = 10;                 //Erlang value
-    double meanHoldingTime = 1;         //Mean holding time
+    thresholds thresholdObj;
+    bool protectionType = true;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
+    thresholdObj.bandwidthThreshold = 0.75;  //Assigning the threshold values
+    thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
+    int numberOfLSPrequests = 100;           //The number of LSP requests
+    double erlang = 10;                      //Erlang value
+    double meanHoldingTime = 1;              //Mean holding time
 
 
     requestCreation tempObject;
@@ -139,11 +139,11 @@ int main()
 
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                        waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType);
+                        waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType, thresholdObj);
 
                         vector<int> pathForBLSP = {pathDetails.backUpShortPath[0],pathDetails.backUpShortPath[pathDetails.backUpShortPath.size()-1]};
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
-                        waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType);
+                        waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
 
                         isLSPestablish = true;
                         newLP++;
@@ -183,12 +183,12 @@ int main()
 
                             vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                             vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                            waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType);
+                            waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType, thresholdObj);
 
                             vector<int> pathForBLSP = {source, createRemaingBackUpDeatils.connectingNodeBP, destination};
                             vector<int> wavesB = {createRemaingBackUpDeatils.wavelengthNo1BP, createRemaingBackUpDeatils.wavelengthNo2BP};
 
-                            waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",id,protectionType);
+                            waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",id,protectionType, thresholdObj);
 
                             isLSPestablish = true;
                             newLP++;
@@ -227,12 +227,12 @@ int main()
                             vector<int> pathForPLSP = {source, combineWavelengthDetails.connectingNodePP, destination};
                             vector<int> wavesP = {combineWavelengthDetails.wavelengthNo1PP, combineWavelengthDetails.wavelengthNo2PP};
 
-                            waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType);
+                            waveLengthNetwork.setANewLSP(pathForPLSP, wavesP, waveLengthNetwork, "pp", id, protectionType, thresholdObj);
 
                             vector<int> pathForBLSP = {source, combineWavelengthDetails.connectingNodeBP, destination};
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
-                            waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType);
+                            waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
 
                             isLSPestablish = true;
                             newLP++;
@@ -264,8 +264,8 @@ int main()
                                 vector<int> wavesP = {pathDetails.tempWavelengthNoPP};
                                 vector<int> wavesB = {backupWave};
 
-                                waveLengthNetwork.setANewLSP(pathForLSP, wavesP, waveLengthNetwork, "pp", id, protectionType);
-                                waveLengthNetwork.setANewLSP(pathForLSP, wavesB, waveLengthNetwork, "bp", id, protectionType);
+                                waveLengthNetwork.setANewLSP(pathForLSP, wavesP, waveLengthNetwork, "pp", id, protectionType, thresholdObj);
+                                waveLengthNetwork.setANewLSP(pathForLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
 
                                 newLPnoldLP++;
                                 isLSPestablish = true;
@@ -278,8 +278,8 @@ int main()
                             vector<int> wavesP = {waveVector[0]};
                             vector<int> wavesB = {waveVector[1]};
 
-                            waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",id, protectionType);
-                            waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",id, protectionType);
+                            waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",id, protectionType, thresholdObj);
+                            waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",id, protectionType, thresholdObj);
                             
                             oldLP++;
                             isLSPestablish = true;
@@ -289,11 +289,7 @@ int main()
 
                 if(!isLSPestablish) 
                 {
-<<<<<<< HEAD
                     rejectedEvents.push_back(listOfEvents[0].identifier);
-=======
-
->>>>>>> 6b5f72a53a53c4faf44ec394d6c45246d50a3fc9
                     rejected++;
                     myfile.writeLog("LSP is REJECTED.");
                 }
