@@ -92,8 +92,14 @@ protected:
 	int totalnumOfLighpaths;              //The total number of lightpaths within the network
 	bool isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes);
 
+	vector<waveLengthNetworks>& waveLengthNetwork; //parameter for createLightPathBackup function
+
 public:
-	lightpathNetwork();                                                //The number of lightpaths before creating the network is zero
+	lightpathNetwork(vector<waveLengthNetworks>& vw):waveLengthNetwork(vw)
+	{
+		totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
+		lighpaths.reserve(100);
+	}                                        //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
 	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a new lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
