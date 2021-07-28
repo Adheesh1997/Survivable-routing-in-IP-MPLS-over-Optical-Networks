@@ -332,17 +332,17 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 		vector<int> wavelngthVec - Wavelengths relevant to the lightpaths
 		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
 	*/
-	for (size_t i = 0; i < (posVec.size() - 1); i++)
+	for (size_t itr = 0; itr < (posVec.size() - 1); itr++)
 	{
-		int pos1 = posVec[i];
-		int pos2 = posVec[i + 1];
+		int pos1 = posVec[itr];
+		int pos2 = posVec[itr + 1];
 
 		for (size_t i = 0; i < lighpaths[pos1].linkVector.size(); i++)
 		{
-			if(lighpaths[pos1].linkVector[i].destinationID==lighpaths[pos2].returnId())
+			if (lighpaths[pos1].linkVector[i].destinationID == lighpaths[pos2].returnId())
 				for (size_t j = 0; j < lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 				{
-					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[i] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType == "pp")
+					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[itr] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType == "pp")
 					{
 						if (!(lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup))
 						{
@@ -371,7 +371,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 											{
 												for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 												{
-													if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
+													if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[itr] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
 													{
 														lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 														//Call for lightpath establishment
@@ -401,7 +401,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 											{
 												for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 												{
-													if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[i] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
+													if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[itr] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
 													{
 														lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 														//Call for lightpath establishment
