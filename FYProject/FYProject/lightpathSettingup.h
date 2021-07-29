@@ -23,6 +23,19 @@ struct thresholds
 	int numLSPthreshold;
 };
 
+struct backupStruct
+{
+	vector<int> posVec;
+	vector<int> wavelngthVec;
+	int pos1;
+	int pos2;
+	int i;
+	int j;
+	int itr;
+	bool protectionType;
+	thresholds thresholdVals;
+};
+
 class lighpathWavelength
 {
 private:
@@ -112,7 +125,8 @@ public:
 	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier); //Establish a new lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
-	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals);//Check whether a lightpath is heavily loaded
+	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals, bool addOrRemoveLP);//Check whether a lightpath is heavily loaded
+	void establishBackupLightpath(backupStruct tempbackupObj);
 	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals); //Call a function of LSP class to establish a LSP
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);

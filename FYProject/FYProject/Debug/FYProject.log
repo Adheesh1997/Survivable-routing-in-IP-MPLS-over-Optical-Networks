@@ -1,45 +1,45 @@
 ﻿  LSP.cpp
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(27,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(26): message : see declaration of 'lighpathWavelength'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(40,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(39): message : see declaration of 'lighpathWavelength'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(194,28): warning C4018: '<=': signed/unsigned mismatch
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\LSP.cpp(20,6): warning C4101: 'intLSPwavelength': unreferenced local variable
   lightpathSettingup.cpp
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(27,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(26): message : see declaration of 'lighpathWavelength'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(40,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(39): message : see declaration of 'lighpathWavelength'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(123,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(355,33): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(461,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(463,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(465,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(500,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(505,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(522,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(526,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(530,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(535,70): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(554,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(558,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(562,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(585,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(589,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(593,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(619,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(621,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(623,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(391,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(494,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(496,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(498,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(533,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(538,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(555,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(559,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(563,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(568,70): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(587,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(591,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(595,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(618,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(622,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(626,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(652,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(654,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(656,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(660,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(712,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(715,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(719,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(769,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(779,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(780,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(685,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(689,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(693,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(745,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(748,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(752,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(802,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(812,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(813,21): warning C4018: '<': signed/unsigned mismatch
   main.cpp
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(27,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(26): message : see declaration of 'lighpathWavelength'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(40,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(39): message : see declaration of 'lighpathWavelength'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(92,20): warning C4101: 'lspReq': unreferenced local variable
   Generating Code...
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(157): warning C4715: 'lightNode::searchAddress': not all control paths return a value
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(776): warning C4715: 'lightNode::verifyDestinationNode': not all control paths return a value
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.cpp(809): warning C4715: 'lightNode::verifyDestinationNode': not all control paths return a value
   FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
