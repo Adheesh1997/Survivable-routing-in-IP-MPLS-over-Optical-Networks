@@ -9,6 +9,7 @@
 #include "graph.h"
 #include "LSP.h"
 #include "files.h"
+#include "Dijkstra.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ private:
 	friend class lightNode;          //Creating friend classes
 	friend class LSP;
 	friend class lightpathNetwork;
+	long int LPidentifier;
 	int initialBandwidth;            //Initial badwdth of the lightpath
 	int availableBandwidth;          //Available bandwidth of the lightpath
 	int primaryLSPbandwidth;         //Total bandwidth of the primary LSPs within the lightpath
@@ -76,8 +78,8 @@ public:
 	lightNode(int ID);                    //This constructor gives the ID value for a node
 	void setSelfAddress(lightNode* temp); //Set the address of the source node of the lightpath
 	lightNode* returnSelfAddress();       //Return the source node address
-	void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj, string type);//Lightpaths are added to the nodes
-	void addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal, string type);
+	void addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthVal, int ID, lightNode* tempDesObj, string type, int LPidentifier);//Lightpaths are added to the nodes
+	void addWavelengthToLink(vector<int> pathVec, int destId, int wavelengthToBeAdded, int bandwidthVal, string type, int LPidentifier);
 	int returnId();                       //Returns the ID of the node
 	void viewLPlinks();                   //View the lightpaths connected for a node
 	bool serachLighpathNode(int nodeID);  //Search whether an node is connected to the current node
@@ -107,7 +109,7 @@ public:
 		lighpaths.reserve(100);
 	}                                        //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
-	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type); //Establish a new lighpath
+	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier); //Establish a new lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals);//Check whether a lightpath is heavily loaded

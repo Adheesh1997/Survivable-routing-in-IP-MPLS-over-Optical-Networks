@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <numeric>
 
 #include "files.h"
 #include "graph.h"
@@ -27,6 +28,18 @@ void printMap(map<int,vector<vector<int>>> arr)
     }
 }
 
+void checkWhetherLPidfinished(vector<int> &LPids, int &countForLPids)
+{
+    if (LPids.empty())
+        LPids.push_back(++countForLPids);
+}
+
+void removeLPidFromVec(vector<int>& LPids)
+{
+    vector<int>::iterator LPitr;
+    LPitr = LPids.begin();
+    LPids.erase(LPitr);
+}
 
 int main()
 {
@@ -84,6 +97,9 @@ int main()
         int oldLP = 0;
         int rejected = 0;
         
+        vector<int> LPids(100000); // vector with 100 ints.
+        iota(begin(LPids), end(LPids), 1); // Fill with 1, 2, ..., 100000.
+        int countForLPids = 100000;
         
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         {
@@ -134,8 +150,13 @@ int main()
                     {
                         myfile.writeLog("New lsp established with new single LP.***");
                         
-                        waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp" );
-                        waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp");
+                        checkWhetherLPidfinished(LPids, countForLPids);
+                        waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
+                        removeLPidFromVec(LPids);
+
+                        checkWhetherLPidfinished(LPids, countForLPids);
+                        waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp", LPids[0]);
+                        removeLPidFromVec(LPids);
 
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
@@ -163,7 +184,9 @@ int main()
                             
                             if(createRemaingBackUpDeatils.wavelengthNo1BP < 40)
                             {
-                                waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w1ShortPathBP,createRemaingBackUpDeatils.wavelengthNo1BP,"pp");
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w1ShortPathBP,createRemaingBackUpDeatils.wavelengthNo1BP,"pp", LPids[0]);
+                                removeLPidFromVec(LPids);
                             }
                             else
                             {
@@ -172,14 +195,18 @@ int main()
 
                             if(createRemaingBackUpDeatils.wavelengthNo2BP < 40)
                             {
-                                waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w2ShortPathBP,createRemaingBackUpDeatils.wavelengthNo2BP,"pp");
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w2ShortPathBP,createRemaingBackUpDeatils.wavelengthNo2BP,"pp", LPids[0]);
+                                removeLPidFromVec(LPids);
                             }
                             else
                             {
                                 createRemaingBackUpDeatils.wavelengthNo2BP -=40;
                             }
                             
-                            waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp" );
+                            checkWhetherLPidfinished(LPids, countForLPids);
+                            waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
+                            removeLPidFromVec(LPids);
 
                             vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                             vector<int> wavesP = {pathDetails.wavelengthNoPP};
@@ -203,24 +230,40 @@ int main()
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
                         {
                             myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs.");
-                            if(combineWavelengthDetails.wavelengthNo1PP < 40)
-                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.wavelengthNo1PP, "pp");
+                            if (combineWavelengthDetails.wavelengthNo1PP < 40)
+                            {
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.wavelengthNo1PP, "pp", LPids[0]);
+                                removeLPidFromVec(LPids);
+                            }
                             
                             else combineWavelengthDetails.wavelengthNo1PP -= 40;
 
-                            if(combineWavelengthDetails.wavelengthNo2PP < 40)
-                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathPP, combineWavelengthDetails.wavelengthNo2PP, "pp");
-                            
+                            if (combineWavelengthDetails.wavelengthNo2PP < 40)
+                            {
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathPP, combineWavelengthDetails.wavelengthNo2PP, "pp", LPids[0]);
+                                removeLPidFromVec(LPids);
+                            }
+
                             else combineWavelengthDetails.wavelengthNo2PP -= 40;
 
 
-                            if(combineWavelengthDetails.wavelengthNo1BP < 40)
-                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.wavelengthNo1BP, "pp");
+                            if (combineWavelengthDetails.wavelengthNo1BP < 40)
+                            {
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.wavelengthNo1BP, "pp", LPids[0]);
+                                removeLPidFromVec(LPids);
+                            }
                             
                             else combineWavelengthDetails.wavelengthNo1BP -= 40;
 
-                            if(combineWavelengthDetails.wavelengthNo2BP < 40)
-                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathBP, combineWavelengthDetails.wavelengthNo2BP, "pp");
+                            if (combineWavelengthDetails.wavelengthNo2BP < 40)
+                            {
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathBP, combineWavelengthDetails.wavelengthNo2BP, "pp", LPids[0]);
+                                removeLPidFromVec(LPids);
+                            }
                             
                             else combineWavelengthDetails.wavelengthNo2BP -= 40;
 
@@ -257,7 +300,10 @@ int main()
                             if(backupWave != -1)
                             {
                                 myfile.writeLog("New lsp establish with new LP and old LP.");
-                                waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp");
+
+                                checkWhetherLPidfinished(LPids, countForLPids);
+                                waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp", LPids[0]);
+                                removeLPidFromVec(LPids);
                                 subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
 
                                 vector<int> pathForLSP = {source,destination};
