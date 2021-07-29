@@ -47,10 +47,10 @@ int main()
     int numOfNodes; //Variable to store number of nodes in the network
 
     thresholds thresholdObj;
-    bool protectionType = true;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    thresholdObj.bandwidthThreshold = 0.75;  //Assigning the threshold values
+    bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
+    thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -114,19 +114,17 @@ int main()
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;
             
-            while (!rejectedEvents.empty())
+            for (int ww = 0; ww < rejectedEvents.size(); ww++)
             {
-                int count = 0;
-                if (listOfEvents[0].identifier == rejectedEvents[count])
+                if (listOfEvents[0].identifier == rejectedEvents[ww])
                 {
                     itr = listOfEvents.begin();
                     listOfEvents.erase(itr);
 
                     vector<int>::iterator itr2;
-                    itr2 = rejectedEvents.begin() + count;
+                    itr2 = rejectedEvents.begin() + ww;
                     rejectedEvents.erase(itr2);
                 }
-                count++;
             }
 
             if(action)
@@ -359,7 +357,7 @@ int main()
     }
 
    
-    
+    cout << "\nPress ENTER to exit\n";
 	cin.get();
     return 0;
 }
