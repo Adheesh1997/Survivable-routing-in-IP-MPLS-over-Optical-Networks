@@ -37,7 +37,7 @@ int main()
     bool protectionType = true;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.75;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 5000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -132,7 +132,6 @@ int main()
                     //If using new LPs can establish path for LSP reqeust
                     if(pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
                     {
-                        myfile.writeLog("New lsp established with new single LP.***");
                         
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp" );
                         waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp");
@@ -145,6 +144,7 @@ int main()
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
                         waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
 
+                        myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
                         newLP++;
                     }
@@ -159,7 +159,6 @@ int main()
                         
                         if(createRemaingBackUpDeatils.canCreatCombinationBP)
                         {
-                            myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup.");
                             
                             if(createRemaingBackUpDeatils.wavelengthNo1BP < 40)
                             {
@@ -190,6 +189,8 @@ int main()
 
                             waveLengthNetwork.setANewLSP(pathForBLSP,wavesB,waveLengthNetwork,"bp",id,protectionType, thresholdObj);
 
+                            myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
+                            
                             isLSPestablish = true;
                             newLP++;
 
@@ -202,7 +203,6 @@ int main()
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
                         {
-                            myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs.");
                             if(combineWavelengthDetails.wavelengthNo1PP < 40)
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.wavelengthNo1PP, "pp");
                             
@@ -233,7 +233,10 @@ int main()
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
                             waveLengthNetwork.setANewLSP(pathForBLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
-
+                            
+                            myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
+                                            +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
+                            
                             isLSPestablish = true;
                             newLP++;
                         }
@@ -256,7 +259,6 @@ int main()
                             int backupWave = waveLengthNetwork.getBWaveNumber(source,destination,numOfNodes,bandwidth,pathDetails.tempPrimaryShortPath);
                             if(backupWave != -1)
                             {
-                                myfile.writeLog("New lsp establish with new LP and old LP.");
                                 waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp");
                                 subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
 
@@ -267,13 +269,14 @@ int main()
                                 waveLengthNetwork.setANewLSP(pathForLSP, wavesP, waveLengthNetwork, "pp", id, protectionType, thresholdObj);
                                 waveLengthNetwork.setANewLSP(pathForLSP, wavesB, waveLengthNetwork, "bp", id, protectionType, thresholdObj);
 
+                                
+                                myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                                 newLPnoldLP++;
                                 isLSPestablish = true;
                             }
                         }
                         else
                         {
-                            myfile.writeLog("New lsp established with 2 old LPs.");
                             vector<int> pathForLSP = {source,destination};
                             vector<int> wavesP = {waveVector[0]};
                             vector<int> wavesB = {waveVector[1]};
@@ -281,6 +284,8 @@ int main()
                             waveLengthNetwork.setANewLSP(pathForLSP,wavesP,waveLengthNetwork,"pp",id, protectionType, thresholdObj);
                             waveLengthNetwork.setANewLSP(pathForLSP,wavesB,waveLengthNetwork,"bp",id, protectionType, thresholdObj);
                             
+                            
+                            myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                             oldLP++;
                             isLSPestablish = true;
                         }
