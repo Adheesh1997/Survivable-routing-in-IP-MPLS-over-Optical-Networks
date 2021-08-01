@@ -21,7 +21,8 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 	int LSPbandwidth = 10;
 	
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
-	vector<int> positionVector;
+	vector<int> positionVector;                 //Positions of the nodes in lightpaths vector
+	vector<vector<int>> partitionedPath;        //wholePath is partitioned according to the number of lightpaths
 
 	if (shortestPathLSP.size() == 2)                              //If the LSP path has only 2 nodes
 	{
@@ -46,7 +47,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			if (obj.lighpaths[pos1].linkVector[i].destinationID == v1[1])
 			{
 				tempObject.bandwidthOfLSP = LSPbandwidth;
-				tempObject.LSPpath = shortestPathLSP;
+				tempObject.LSPpath = wholePath;
 				tempObject.identifier = identifier;
 				tempObject.id = obj.lighpaths[pos1].returnId();
 				tempObject.prev = NULL;
@@ -89,7 +90,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[0])
 			{
 				tempObject2.bandwidthOfLSP = LSPbandwidth;
-				tempObject2.LSPpath = shortestPathLSP;
+				tempObject2.LSPpath = wholePath;
 				tempObject2.identifier = identifier;
 				tempObject2.id = obj.lighpaths[pos2].returnId();
 				tempObject2.prev = obj.lighpaths[pos2].linkVector[i].destAddress;
@@ -131,7 +132,10 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 		obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].prevLSP = ptr1;
 
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType, thresholdVals, true);
+		{
+			partitionedPath.push_back(wholePath);
+			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, true);
+		}
 	}
 
 	else if (shortestPathLSP.size() > 2)             //If the LSP path has more than 2 nodes
@@ -145,8 +149,6 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 		size_t i1 = 0, j1 = 0, k1 = 0;
 
 		LSP tempObject;
-
-		vector<vector<int>> partitionedPath;
 
 		vector<int>::iterator it;
 
@@ -378,7 +380,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			positionVector.push_back(pos);
 		}
 		if (type == "pLSP")
-			obj.checkHeavilyLoadLP(positionVector, LSPwavelengthVec, protectionType, thresholdVals, true);
+			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, true);
 	}
 
 }
