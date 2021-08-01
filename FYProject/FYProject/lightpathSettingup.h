@@ -127,7 +127,7 @@ public:
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 	void checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals, bool addOrRemoveLP);//Check whether a lightpath is heavily loaded
 	void establishBackupLightpath(backupStruct tempbackupObj);
-	void setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals); //Call a function of LSP class to establish a LSP
+	void setANewLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals); //Call a function of LSP class to establish a LSP
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
