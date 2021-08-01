@@ -400,7 +400,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 				vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
 				forBackupLightpath backupObj;
-				backupObj = createLightPathBackup(14, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
+				backupObj = createLightPathBackup(thresholdVals.numOfNodesOfTheNetwork, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
 				bool isBackupLPpossible = backupObj.canCreatBLPath;
 
 				if (isBackupLPpossible)
@@ -435,7 +435,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 				vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
 				forBackupLightpath backupObj;
-				backupObj = createLightPathBackup(14, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
+				backupObj = createLightPathBackup(thresholdVals.numOfNodesOfTheNetwork, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
 				bool isBackupLPpossible = backupObj.canCreatBLPath;
 
 				if (isBackupLPpossible)

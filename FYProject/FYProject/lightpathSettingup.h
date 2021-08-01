@@ -21,6 +21,7 @@ struct thresholds
 {
 	float bandwidthThreshold;
 	int numLSPthreshold;
+	int numOfNodesOfTheNetwork;
 };
 
 struct backupStruct

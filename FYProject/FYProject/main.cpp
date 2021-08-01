@@ -76,6 +76,7 @@ int main()
         myfile.writeLog((fileLocation + " Graph is imported."));
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork physicalLinkNetwork(numOfNodes, 40);
+        thresholdObj.numOfNodesOfTheNetwork = numOfNodes;
 
         physicalLinkNetwork.setupFiberLinkNetwork(adjacencyMetrix);
 
