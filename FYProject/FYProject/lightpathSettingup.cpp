@@ -327,7 +327,7 @@ bool lightpathNetwork::checkForAvilableLightpath(int node1id, int node2id)
 	return false;
 }
 
-void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals, bool addOrRemoveLP)
+void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<vector<int>> partitionedPath, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals, bool addOrRemoveLP)
 {
 	/*
 	* Parameters
@@ -345,18 +345,19 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 			if (lighpaths[pos1].linkVector[i].destinationID == lighpaths[pos2].returnId())
 				for (size_t j = 0; j < lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 				{
-					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[itr] && lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType == "pp")
+					if (lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == wavelngthVec[itr]
+						&& lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType == "pp" 
+						&& lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == partitionedPath[itr])
 					{
 						if (addOrRemoveLP)
 						{
 							backupStruct tempbackupObj;
-							tempbackupObj.posVec = posVec;
-							tempbackupObj.wavelngthVec = wavelngthVec;
+							tempbackupObj.intermediateNodes = partitionedPath[itr];
+							tempbackupObj.theWavelength = wavelngthVec[itr];
 							tempbackupObj.pos1 = pos1;
 							tempbackupObj.pos2 = pos2;
 							tempbackupObj.i = i;
 							tempbackupObj.j = j;
-							tempbackupObj.itr = itr;
 							tempbackupObj.protectionType = protectionType;
 							tempbackupObj.thresholdVals = thresholdVals;
 							establishBackupLightpath(tempbackupObj);
@@ -373,13 +374,12 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<int> waveln
 
 void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 {
-	vector<int> posVec = tempbackupObj.posVec;
-	vector<int> wavelngthVec = tempbackupObj.wavelngthVec;
+	int theWavelength = tempbackupObj.theWavelength;
+	vector<int> intermediateNodes = tempbackupObj.intermediateNodes;
 	int pos1 = tempbackupObj.pos1;
 	int pos2 = tempbackupObj.pos2;
 	int i = tempbackupObj.i;
 	int j = tempbackupObj.j;
-	int itr = tempbackupObj.itr;
 	bool protectionType = tempbackupObj.protectionType;
 	thresholds thresholdVals = tempbackupObj.thresholdVals;
 
@@ -400,7 +400,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 				vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
 				forBackupLightpath backupObj;
-				backupObj = createLightPathBackup(14, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
+				backupObj = createLightPathBackup(thresholdVals.numOfNodesOfTheNetwork, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
 				bool isBackupLPpossible = backupObj.canCreatBLPath;
 
 				if (isBackupLPpossible)
@@ -412,7 +412,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 						{
 							for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 							{
-								if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[itr] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
+								if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == theWavelength
+									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp"
+									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].path == intermediateNodes)
 								{
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
@@ -433,7 +435,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 				vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
 				forBackupLightpath backupObj;
-				backupObj = createLightPathBackup(14, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
+				backupObj = createLightPathBackup(thresholdVals.numOfNodesOfTheNetwork, primaryLPpath, waveLengthNetwork, primaryLPpath.front(), primaryLPpath.back());
 				bool isBackupLPpossible = backupObj.canCreatBLPath;
 
 				if (isBackupLPpossible)
@@ -445,7 +447,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 						{
 							for (size_t jj = 0; jj < lighpaths[pos2].linkVector[ii].wavelengthAndLSP.size(); jj++)
 							{
-								if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == wavelngthVec[itr] && lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp")
+								if (lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].wavelength == theWavelength
+									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp"
+									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].path == intermediateNodes)
 								{
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
@@ -462,7 +466,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 
 }
 
-void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
+void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
 	/*
 	* Parameters
@@ -474,7 +478,7 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> wavel
 		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
 	*/
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wavelengthVec, obj, type, identifier, protectionType, thresholdVals);
+	Object.makeLSP(shortestPathLSP, wholePath, wavelengthVec, obj, type, identifier, protectionType, thresholdVals);
 }
 
 // Generate adajacency metrix from LP network
