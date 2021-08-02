@@ -1,0 +1,26 @@
+[15:11:27] Log file is created
+[15:11:27] graph_inputs/05/graph05.csv Graph is imported.
+[15:11:27] Physical network is created.
+[15:11:27] New request. Bandwidth = 13,source = 1, Dst = 4, id = 0, request = 1
+[15:11:27] New lsp established with new single LP. [0] [0]
+[15:11:27] New request. Bandwidth = 13,source = 1, Dst = 4, id = 1, request = 1
+[15:11:27] New lsp established with 2 old LPs. [0] [0]
+[15:11:27] New request. Bandwidth = 14,source = 1, Dst = 4, id = 2, request = 1
+[15:11:27] New lsp established with 2 old LPs. [0] [0]
+[15:11:27] New request. Bandwidth = 14,source = 1, Dst = 4, id = 3, request = 1
+[15:11:27] New lsp established with 2 old LPs. [0] [0]
+[15:11:27] New request. Bandwidth = 11,source = 1, Dst = 4, id = 4, request = 1
+[15:11:27] New lsp established with new single LP. [0] [0]
+[15:11:27] New request. Bandwidth = 14,source = 1, Dst = 4, id = 5, request = 1
+[15:11:27] New lsp established with 2 old LPs. [0] [0]
+[15:11:27] New request. Bandwidth = 14,source = 1, Dst = 4, id = 6, request = 1
+[15:11:27] New lsp established with 2 old LPs. [0] [0]
+[15:11:27]                  
+[15:11:27] ****Counts****
+[15:11:27] Num of lsp rqst = 7
+[15:11:27] new LP & old LP = 0
+[15:11:27] new LP = 2
+[15:11:27] old LP = 5
+[15:11:27]                  
+[15:11:27] **Num.of LSP established = 7
+[15:11:27] **Num.of LSP rejected = 0

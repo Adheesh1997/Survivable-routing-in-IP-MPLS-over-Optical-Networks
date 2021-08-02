@@ -109,7 +109,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++)
 
 					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]
-						&& obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == wholePath)
+						&& obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].path == wholePath)
 					{
 						int remainingBandwidth = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						//cout<<"bandwidth before = "<<obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth<<endl;
@@ -273,7 +273,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			for (size_t j = 0; j < waveSize2; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr - 1]
-					&& obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == partitionedPath[itr - 1])
+					&& obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].path == partitionedPath[itr - 1])
 				{
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -302,7 +302,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			for (size_t j = 0; j < waveSize3; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr]
-					&& obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == partitionedPath[itr])
+					&& obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].path == partitionedPath[itr])
 				{
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
