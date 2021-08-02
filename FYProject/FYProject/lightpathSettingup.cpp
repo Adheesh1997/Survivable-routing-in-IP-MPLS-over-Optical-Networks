@@ -500,9 +500,19 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 				if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
 					lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp")
 				{
+					int bndwdth = lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth;
 					int sourceLP = lighpaths[i].returnId();
 					int dstLP = lighpaths[i].linkVector[j].destinationID;
-	
+
+					cout<<"\n*\nSource = "<<sourceLP;
+					cout<<"\nPath = ";
+					for(int X:lighpaths[i].linkVector[j].wavelengthAndLSP[h].path)
+					{
+						cout<<X<<"-> ";
+					}cout<<endl;
+					cout<<"\nav. bnadwidth = "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth <<" req.bandwidth = "<<bandwidth;
+					cout<<"\n wave no : "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+
 					arr[sourceLP][dstLP] = 40;
 				}
 			}
@@ -561,7 +571,10 @@ vector<int> lightpathNetwork::getWaveNumbers(int source, int dst,int numOfNodes,
 				if(lighpaths[i].linkVector[j].destinationID == dst)
 				{
 					for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
-					{						
+					{
+						int band = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth;
+						string lpType = lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType;
+						//cout<<"\n bandwidth in func: "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth;			
 						if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth && 
 							lighpaths[i].linkVector[j].wavelengthAndLSP[h].lightpathType == "pp" )
 						{

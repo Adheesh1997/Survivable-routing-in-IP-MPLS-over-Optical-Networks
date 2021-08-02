@@ -1,0 +1,18 @@
+[10:00:35] Log file is created
+[10:00:35] graph_inputs/05/graph05.csv Graph is imported.
+[10:00:35] Physical network is created.
+[10:00:35] New request. Bandwidth = 13,source = 1, Dst = 4, id = 0, request = 1
+[10:00:35] New lsp established with new single LP. [0] [0]
+[10:00:35] New request. Bandwidth = 11,source = 1, Dst = 4, id = 1, request = 1
+[10:02:48] New lsp established with 2 old LPs. [0] [0]
+[10:02:48] New request. Bandwidth = 11,source = 1, Dst = 4, id = 2, request = 1
+[10:05:50] New lsp establish with new LP and old LP. [0] [0]
+[10:05:50] New request. Bandwidth = 13,source = 1, Dst = 4, id = 3, request = 1
+[10:08:43] New lsp established with 2 old LPs. [0] [0]
+[10:08:43] New request. Bandwidth = 10,source = 1, Dst = 4, id = 4, request = 1
+[10:11:30] New lsp established with 2 old LPs. [0] [0]
+[10:11:30] New request. Bandwidth = 13,source = 1, Dst = 4, id = 5, request = 1
+[10:11:47] LSP is REJECTED.
+[10:11:47] New request. Bandwidth = 14,source = 1, Dst = 4, id = 6, request = 1
+[10:22:03] LSP is REJECTED.
+[10:22:03] New request. Bandwidth = 15,source = 1, Dst = 4, id = 7, request = 1
