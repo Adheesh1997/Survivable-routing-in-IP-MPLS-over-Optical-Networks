@@ -131,8 +131,8 @@ public:
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
 	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
-	vector<int> getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize = 14);
-	int getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath);
+	vector<vector<int>> getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize = 14);
+	vector<int> getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath);
 
 	map<int, vector<vector<int>>> mapFromsource(int src, int numOfNodes, files &myfile);
 	map<int, vector<vector<int>>> mapFromdst(int dst, int numOfNodes);

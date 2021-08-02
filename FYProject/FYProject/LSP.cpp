@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include "lightpathSettingup.h"
 #include "graph.h"
