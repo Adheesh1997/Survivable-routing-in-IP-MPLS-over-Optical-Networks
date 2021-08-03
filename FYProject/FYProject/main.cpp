@@ -67,7 +67,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10000;           //The number of LSP requests
+    int numberOfLSPrequests = 100;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -115,6 +115,7 @@ int main()
         int newLP = 0;
         int oldLP = 0;
         int rejected = 0;
+        int totalCount = 0;
         
         vector<int> LPids(100000); // vector with 100000 ints.
         iota(begin(LPids), end(LPids), 1); // Fill with 1, 2, ..., 100000.
@@ -147,6 +148,7 @@ int main()
 
             if(action)
             {
+                totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
 
@@ -190,10 +192,6 @@ int main()
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
                         lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
 
-                        /* cout<<endl<<"primary ";
-                        printVector(wholePathP);
-                        cout<<endl<<"Backup ";
-                        printVector(wholePathB); */
                         myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
                         newLP++;
@@ -255,12 +253,8 @@ int main()
 
                             lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
 
-                            /* cout<<endl<<"primary ";
-                            printVector(wholePathP);
-                            cout<<endl<<"Backup ";
-                            printVector(wholePathB);
                             myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
-                             */
+                            
                             isLSPestablish = true;
                             newLP++;
 
@@ -331,11 +325,6 @@ int main()
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
                             lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
-                            
-                            /* cout<<endl<<"primary ";
-                            printVector(wholePathP);
-                            cout<<endl<<"Backup ";
-                            printVector(wholePathB); */
 
                             myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
                                             +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
@@ -380,12 +369,6 @@ int main()
 
                                 lspObj.makeLSP(pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                                 lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
-
-
-                            /* cout<<endl<<"primary ";
-                            printVector(wholePathP);
-                            cout<<endl<<"Backup ";
-                            printVector(wholePathB); */
                                 
                                 myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                                 newLPnoldLP++;
@@ -408,11 +391,6 @@ int main()
                             lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork,"bLSP",id, protectionType, thresholdObj);
                             
                             
-                            /* cout<<endl<<"primary ";
-                            printVector(wholePathP);
-                            cout<<endl<<"Backup ";
-                            printVector(wholePathB); */
-                            
                             myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                             oldLP++;
                             isLSPestablish = true;
@@ -432,14 +410,6 @@ int main()
             itr = listOfEvents.begin();
             listOfEvents.erase(itr);
         } 
-        
-        //waveLengthNetwork.viewAllLighpaths();
-        
-        //print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-        //removeLink(0, vector<int>{1,3,4}, subWaveNetworks);
-        //cout<<"\nAfter remove\n";
-        //print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-
 
         myfile.writeLog("                 ");
         myfile.writeLog("****Counts****");
@@ -450,6 +420,7 @@ int main()
         myfile.writeLog("                 ");
         myfile.writeLog("**Num.of LSP established = "+to_string(newLPnoldLP+newLP+oldLP));
         myfile.writeLog("**Num.of LSP rejected = "+to_string(rejected));
+        myfile.writeLog("**Total count = "+to_string(totalCount));
 
     }
 
