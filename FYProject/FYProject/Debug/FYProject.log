@@ -1,6 +1,8 @@
 ﻿  main.cpp
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(40,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
 C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(39): message : see declaration of 'lighpathWavelength'
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(117,33): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(92,20): warning C4101: 'lspReq': unreferenced local variable
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(41,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(68,42): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(135,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(110,20): warning C4101: 'lspReq': unreferenced local variable
   FYProject.vcxproj -> C:\Users\ASUS\source\repos\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe

@@ -65,7 +65,7 @@ int main()
 
     thresholds thresholdObj;
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
+    thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
     int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
@@ -86,7 +86,7 @@ int main()
     //graph input file location
     string fileLocation = "graph_inputs/05/graph05.csv"; 
     
-
+    int theCount = 1;
     //Read csv file and assign values to the matrix 
     if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
@@ -427,10 +427,13 @@ int main()
                     myfile.writeLog("LSP is REJECTED.");
                 }
                 
-                
+                theCount++;
             }
             itr = listOfEvents.begin();
             listOfEvents.erase(itr);
+
+            //cout << theCount << endl;
+            
         } 
         
         //waveLengthNetwork.viewAllLighpaths();
@@ -440,7 +443,7 @@ int main()
         //cout<<"\nAfter remove\n";
         //print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
-
+        cout << theCount << endl;
         myfile.writeLog("                 ");
         myfile.writeLog("****Counts****");
         myfile.writeLog("Num of lsp rqst = "+to_string(numberOfLSPrequests));

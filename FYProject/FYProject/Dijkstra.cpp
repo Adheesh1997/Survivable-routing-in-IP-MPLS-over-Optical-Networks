@@ -361,7 +361,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-            if (w1BP > 40) {
+            if (w1BP < 40) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
@@ -371,7 +371,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
                 fromSource[w1BP][intNode].clear();
                 fromSource[w1BP][intNode].push_back(0);
             }
-            if (w2BP > 40) {
+            if (w2BP < 40) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
@@ -461,7 +461,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
         fromDestination[destinationwavelength][intermediateNode].erase(fromDestination[destinationwavelength][intermediateNode].begin());
         fromSource[sourceWavelegth][intermediateNode].erase(fromSource[sourceWavelegth][intermediateNode].begin());
         reverse(fromDestination[destinationwavelength][intermediateNode].begin(), fromDestination[destinationwavelength][intermediateNode].end());
-        if (sourceWavelegth > 40) {
+        if (sourceWavelegth < 40) {
             for (auto j = 0; j < fromSource[sourceWavelegth][intermediateNode].size() - 1; j++)
             {
                 waveLengthNetwork[sourceWavelegth].removeLink(fromSource[sourceWavelegth][intermediateNode][j], fromSource[sourceWavelegth][intermediateNode][j + 1]);
@@ -471,7 +471,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
             fromSource[sourceWavelegth][intermediateNode].clear();
             fromSource[sourceWavelegth][intermediateNode].push_back(0);
         }
-        if (destinationwavelength>40) {
+        if (destinationwavelength < 40) {
             for (auto j = 0; j < fromDestination[destinationwavelength][intermediateNode].size() - 1; j++)
             {
                 waveLengthNetwork[destinationwavelength].removeLink(fromDestination[destinationwavelength][intermediateNode][j], fromDestination[destinationwavelength][intermediateNode][j + 1]);
@@ -546,7 +546,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-            if (sourceWavelegth > 40) {
+            if (sourceWavelegth < 40) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
@@ -556,7 +556,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
                 fromSource[w1BP][intNode].clear();
                 fromSource[w1BP][intNode].push_back(0);
             }
-            if (destinationwavelength > 40) {
+            if (destinationwavelength < 40) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);

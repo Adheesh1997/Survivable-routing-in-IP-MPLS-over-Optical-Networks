@@ -188,7 +188,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 	
 
 	int vecSize = shortestPath.size();
-	int bandwidth = 50;
+	int bandwidth = 40;
 
 	int check1 = checkForAvaialableLPNode(shortestPath[0]);            //Check whether the source node, destination node of the lightpath is available in the
 	int check2 = checkForAvaialableLPNode(shortestPath[vecSize - 1]);  //lightpath network(If it is available, the position in the lightpaths vector is returned.
