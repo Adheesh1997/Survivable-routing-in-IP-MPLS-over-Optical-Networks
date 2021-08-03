@@ -12,13 +12,6 @@
 
 using namespace std;
 
-void removeLink(int waveNum, vector<int> path, vector<waveLengthNetworks>& subWaveNetworks)
-{
-    for(int i = 0; i < path.size()-1; i++)
-    {
-        subWaveNetworks[waveNum].removeLink(path[i],path[i+1]);
-    }
-}
 
 void print2dVector(vector<vector<int>> adjMetrixForPrimaryLSP)
 {
@@ -37,6 +30,18 @@ void printVector(vector<int> arr)
     for(int i:arr)
     {
         cout<<i<<"-> ";
+    }
+}
+
+
+void removeLink(int waveNum, vector<int> path, vector<waveLengthNetworks>& subWaveNetworks)
+{
+    //cout<<"\nWave : "<<waveNum<<"\nPaht ";
+    //printVector(path);
+    for(int i = 0; i < path.size()-1; i++)
+    {
+        //cout<<"\nIn main"<<", Source : "<<path[i]<<" , Dst : "<<path[i+1]<<endl;
+        subWaveNetworks[waveNum].removeLinks(path[i],path[i+1]);
     }
 }
 
@@ -62,7 +67,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 1000;           //The number of LSP requests
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -122,7 +127,7 @@ int main()
             int source = listOfEvents[0].sourceNode;
             int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
-            int bandwidth = listOfEvents[0].bandwidth;
+            int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
 
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -263,7 +268,7 @@ int main()
                     }
 
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
-                    {
+                    {cout<<"\nhere..";
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)

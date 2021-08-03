@@ -120,6 +120,19 @@ void waveLengthNetworks::removeLink(int src, int dst)
         src - Source node connected to link
         dst - Destinationo node connected to link
     */
+   /* cout<<"\n Source : "<<src<<", Dst : "<<dst<<endl;
+    waveAdjacancyMatrix[src][dst] = 0; */
+    
+}
+
+void waveLengthNetworks::removeLinks(int src, int dst)
+{
+    /*
+    Parameter_
+        src - Source node connected to link
+        dst - Destinationo node connected to link
+    */
+   //cout<<"\n Source : "<<src<<", Dst : "<<dst<<endl;
     waveAdjacancyMatrix[src][dst] = 0;
     
 }

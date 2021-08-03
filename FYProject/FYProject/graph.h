@@ -67,6 +67,7 @@ public:
     int getID();
 
     //To remove a link from adjacency matrix
+    void removeLinks(int src, int dst);
     void removeLink(int src, int dst);
 
     //Add a new link to adjacency matrix
