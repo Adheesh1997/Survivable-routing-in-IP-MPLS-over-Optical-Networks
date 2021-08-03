@@ -508,14 +508,14 @@ vector<vector<int>> lightpathNetwork::lpPAdjacencyMetrix(int bandwidth, int numO
 					int sourceLP = lighpaths[i].returnId();
 					int dstLP = lighpaths[i].linkVector[j].destinationID;
 
-					cout<<"\n*\nSource = "<<sourceLP;
+					/* cout<<"\n*\nSource = "<<sourceLP;
 					cout<<"\nPath = ";
 					for(int X:lighpaths[i].linkVector[j].wavelengthAndLSP[h].path)
 					{
 						cout<<X<<"-> ";
 					}cout<<endl;
 					cout<<"\nav. bnadwidth = "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth <<" req.bandwidth = "<<bandwidth;
-					cout<<"\n wave no : "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+					cout<<"\n wave no : "<<lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength; */
 
 					arr[sourceLP][dstLP] = 40;
 				}

@@ -12,6 +12,20 @@ struct thresholds;
 
 void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
+	cout << "\nshortestPathLSP = \n";
+	for(size_t qq=0;qq<shortestPathLSP.size();qq++)
+		cout<<shortestPathLSP[qq] << " ";
+	cout << endl;
+
+	cout << "\nwholePath = \n";
+	for(size_t qq=0;qq<wholePath.size();qq++)
+		cout<<wholePath[qq] << " ";
+	cout << endl;
+
+	cout << "\nLSPwavelengthVec = \n";
+	for(size_t qq=0;qq<LSPwavelengthVec.size();qq++)
+		cout<<LSPwavelengthVec[qq] << " ";
+	cout << endl;
 	/*
 	* Parameters
 		vector<int> shortestPathLSP - The path of the LSP
