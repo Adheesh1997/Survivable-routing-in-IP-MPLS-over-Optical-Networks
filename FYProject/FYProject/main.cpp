@@ -83,18 +83,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    for(events event:listOfEvents)
-    {
-        myfile.wrteALSP(event);
-    }
-    myfile.closeLspFile();
+    /* vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    myfile.wrteALSP("rqst_inputs/rq1.txt", listOfEvents); */
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    /* vector<events> listOfEvents;
+    vector<events> listOfEvents;
     myfile.readLSPs("rqst_inputs/rq1.txt",listOfEvents);
-    myfile.closeLspFile(); */
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork

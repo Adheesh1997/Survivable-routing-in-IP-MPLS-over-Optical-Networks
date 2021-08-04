@@ -16,10 +16,6 @@ using namespace std;
 files::files()
 {
     logFile.open(("log_files/"+outputFileName()),ios_base::app);
-    lspRequests.open("rqst_inputs/rq1.txt");
-
-    if(!lspRequests.is_open())
-        cout<<"file not open. :-(\n";
     if(logFile.is_open())
         logFile<<currentTime()<<" "<<"Log file is created\n";
 }
@@ -129,14 +125,21 @@ void files::writeLog(string message = " ")
 }
 
 
-void files::wrteALSP(events event)
+void files::wrteALSP(string fileLocation, vector<events>& listOfEvents)
 {
+    ofstream lspRequests;
+    lspRequests.open(fileLocation);
 
     if(lspRequests.is_open())
     {
-        lspRequests<<event.sourceNode<<","<<event.destinationNode<<","<<event.identifier<<","<<event.action<<endl;
+        for(events event:listOfEvents)
+        {
+            lspRequests<<event.sourceNode<<","<<event.destinationNode<<","<<event.identifier<<","<<event.action<<endl;
+        }
     }
     else cout<<"LSP file not open to write\n";
+
+    lspRequests.close();
 }
 
 void files::readLSPs(string fileLocation, vector<events>& listOfEvents)
@@ -175,10 +178,6 @@ void files::readLSPs(string fileLocation, vector<events>& listOfEvents)
         
 }
 
-void files::closeLspFile()
-{
-   lspRequests.close();
-}
 
 
 

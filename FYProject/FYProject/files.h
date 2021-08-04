@@ -14,7 +14,6 @@ using namespace std;
 class files
 {
 private:
-    ofstream lspRequests;
     ofstream logFile;
 
     string currentTime();
@@ -27,9 +26,8 @@ public:
 
     bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation);
     void writeLog(string message);
-    void wrteALSP(events event);
+    void wrteALSP(string fileLocation, vector<events>& listOfEvents);
     void readLSPs(string fileLocation, vector<events>& listOfEvents);
-    void closeLspFile();
 
     ~files();
 };
