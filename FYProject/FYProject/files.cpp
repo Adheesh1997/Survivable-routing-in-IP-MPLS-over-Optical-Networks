@@ -9,13 +9,18 @@
 #include <time.h>
 
 #include "files.h"
+#include "eventDrivenSimulator.h"
 
 using namespace std;
 
 files::files()
 {
     logFile.open(("log_files/"+outputFileName()),ios_base::app);
+    lspRequests.open("rqst_inputs/rq1.txt",ios_base::app);
+    lspRequests.clear();
 
+    if(!lspRequests.is_open())
+        cout<<"file not open. :-(\n";
     if(logFile.is_open())
         logFile<<currentTime()<<" "<<"Log file is created\n";
 }
@@ -124,7 +129,56 @@ void files::writeLog(string message = " ")
     }
 }
 
+
+void files::wrteALSP(events event)
+{
+
+    if(lspRequests.is_open())
+    {
+        lspRequests<<event.sourceNode<<","<<event.destinationNode<<","<<event.identifier<<","<<event.action<<endl;
+    }
+    else cout<<"LSP file not open to write\n";
+}
+
+void files::readLSPs(string fileLocation, vector<events>& listOfEvents)
+{
+    ifstream myFileStream(fileLocation);
+
+    string rows;
+
+    if(myFileStream.is_open())
+    {
+        while(getline(myFileStream,rows)) 
+        {
+            events temp;
+            stringstream line(rows); //rowOfMatrix stream into line 
+            string num;
+
+            getline(line,num,','); 
+            temp.sourceNode = stoi(num);
+
+            getline(line,num,','); 
+            temp.destinationNode = stoi(num);
+
+            getline(line,num,','); 
+            temp.identifier = stoi(num);
+
+            getline(line,num,','); 
+            temp.action = stoi(num);
+            temp.bandwidth = 10;
+
+            listOfEvents.push_back(temp); //Push temprary vector that contain a row of adjacency metrix to final vector
+        }
+
+        myFileStream.close();
+    }
+    else cout<<"\nlsp Request read from file failed, check file location!!!\n";
+        
+}
+
+
 files::~files()
 {
-   logFile.close();
+   //logFile.close();
+   lspRequests.close();
 }

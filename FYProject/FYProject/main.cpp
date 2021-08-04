@@ -67,7 +67,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 3000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -75,11 +75,25 @@ int main()
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
     //tempObject.printLSPrequests();                                             //Print the LSP requests
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //
     //tempObject.printEvents();                                                  //Print the events
     vector<int> rejectedEvents;                                                  //To capture the rejected events
     vector<events>::iterator itr;
 
+    // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
+
+    /*************** Read event to a file*****************  -------------------------(1)
+    /* vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    for(events event:listOfEvents)
+    {
+        myfile.wrteALSP(event);
+    } */
+    /*************** end of (1) *******************/
+
+    /**************** LSP requests read from file ********** -------------------------(2) */
+    vector<events> listOfEvents;
+    myfile.readLSPs("rqst_inputs/rq1.txt",listOfEvents);
+    /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
@@ -153,11 +167,11 @@ int main()
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
 
                 
-
+                cout<<"\nLine : 156";
                 vector<vector<int>> adjMetrixForPrimaryLSP = waveLengthNetwork.lpPAdjacencyMetrix(bandwidth, numOfNodes);
-                cout<<endl<<endl<<"*\n";
+                cout<<"\nLine : 158";
                 
-
+                cout<<"\nLine : 160";
                 findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
 
 
@@ -169,7 +183,7 @@ int main()
                     {
                         //cout<<"\nleni\n";
                         //printVector(pathDetails.primaryShortPath);
-
+                        cout<<"\nLine : 172";
                         checkWhetherLPidfinished(LPids, countForLPids);
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
                         removeLPidFromVec(LPids);
@@ -196,15 +210,16 @@ int main()
                         isLSPestablish = true;
                         newLP++;
                     }
+                    cout<<"\nLine : 199";
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, myfile);
                     map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(destination,numOfNodes, myfile);
-                    
+                    cout<<"\nLine : 202";
 
                     //If LP can not creat for primary path
                     if(pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
-                    {
+                    {cout<<"\nLine : 206";
                         forRemainingBackUpPath createRemaingBackUpDeatils = createRemaing(vexnum, subWaveNetworks, source, destination, arr, arr1, pathDetails.primaryShortPath);
-                        
+                        cout<<"\nLine : 208";
                         if(createRemaingBackUpDeatils.canCreatCombinationBP)
                         {
                             
@@ -233,11 +248,11 @@ int main()
                             {
                                 createRemaingBackUpDeatils.wavelengthNo2BP -=40;
                             }
-                            
+                            cout<<"\nLine : 237";
                             checkWhetherLPidfinished(LPids, countForLPids);
                             waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
                             removeLPidFromVec(LPids);
-
+                            cout<<"\nLine : 241";
                             removeLink(pathDetails.wavelengthNoPP, pathDetails.primaryShortPath, subWaveNetworks);
 
                             vector<int>wholePathP = pathDetails.primaryShortPath;
@@ -262,11 +277,11 @@ int main()
                     }
 
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
-                    {cout<<"\nhere..";
+                    {cout<<"\nLine : 266";
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
-                        {
+                        {cout<<"\nLine : 270";
                             if (combineWavelengthDetails.wavelengthNo1PP < 40)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
@@ -342,13 +357,14 @@ int main()
                 else
                 {  
                     if(pathDetails.tempCanCreatPP)
-                    {
+                    {cout<<"\nLine : 346";
                         vector<vector<int>> waveVector = waveLengthNetwork.getWaveNumbers(source,destination,numOfNodes, bandwidth, pathDetails.tempPrimaryShortPath.size());
-                        
+                        cout<<"\nLine : 348";
                         if(waveVector[0][0] == -1)
-                        {
+                        {cout<<"\nLine : 350";
                             //find a backup path
                             vector<int> backupWave = waveLengthNetwork.getBWaveNumber(source,destination,numOfNodes,bandwidth,pathDetails.tempPrimaryShortPath);
+                            cout<<"\nLine : 353";
                             if(backupWave[0] != -1)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);

@@ -186,7 +186,7 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
 
         for (auto j = 0; j < primarySPOutput.size() - 1; j++)
         {
-            waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
+            //waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
         }
 
         Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNumber].waveAdjacancyMatrix);//graph.print();
@@ -220,7 +220,7 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
         else {
             for (auto j = 0; j < backUpSPOutput.size() - 1; j++)
             {
-                waveLengthNetwork[waveLengthNumber].removeLink(backUpSPOutput[j], backUpSPOutput[j + 1]);
+                //waveLengthNetwork[waveLengthNumber].removeLink(backUpSPOutput[j], backUpSPOutput[j + 1]);
             }
             shortestPathsDetails.canCreatBP = true;
             shortestPathsDetails.backUpShortPath = backUpSPOutput;
@@ -364,7 +364,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
             if (w1BP < 40) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
-                    waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
+                    //waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
                 }
             }
             else {
@@ -374,7 +374,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
             if (w2BP < 40) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
-                    waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
+                    //waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
                 }
             }
             else {
@@ -464,7 +464,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
         if (sourceWavelegth < 40) {
             for (auto j = 0; j < fromSource[sourceWavelegth][intermediateNode].size() - 1; j++)
             {
-                waveLengthNetwork[sourceWavelegth].removeLink(fromSource[sourceWavelegth][intermediateNode][j], fromSource[sourceWavelegth][intermediateNode][j + 1]);
+                //waveLengthNetwork[sourceWavelegth].removeLink(fromSource[sourceWavelegth][intermediateNode][j], fromSource[sourceWavelegth][intermediateNode][j + 1]);
             }
         }
         else {
@@ -474,7 +474,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
         if (destinationwavelength < 40) {
             for (auto j = 0; j < fromDestination[destinationwavelength][intermediateNode].size() - 1; j++)
             {
-                waveLengthNetwork[destinationwavelength].removeLink(fromDestination[destinationwavelength][intermediateNode][j], fromDestination[destinationwavelength][intermediateNode][j + 1]);
+                //waveLengthNetwork[destinationwavelength].removeLink(fromDestination[destinationwavelength][intermediateNode][j], fromDestination[destinationwavelength][intermediateNode][j + 1]);
             }
         }
         else {
@@ -549,7 +549,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
             if (sourceWavelegth < 40) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
-                    waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
+                    //waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
                 }
             }
             else {
@@ -559,7 +559,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
             if (destinationwavelength < 40) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
-                    waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
+                    //waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
                 }
             }
             else {
@@ -626,7 +626,7 @@ forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, 
         shortestPathsDetails.wavelengthBLPNo = waveLengthNumber;
         for (auto j = 0; j < primarySPOutput.size() - 1; j++)
         {
-            waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
+            // waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
         }
         return shortestPathsDetails;
     }
