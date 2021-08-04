@@ -29,6 +29,7 @@ public:
     void writeLog(string message);
     void wrteALSP(events event);
     void readLSPs(string fileLocation, vector<events>& listOfEvents);
+    void closeLspFile();
 
     ~files();
 };

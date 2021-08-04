@@ -16,8 +16,7 @@ using namespace std;
 files::files()
 {
     logFile.open(("log_files/"+outputFileName()),ios_base::app);
-    lspRequests.open("rqst_inputs/rq1.txt",ios_base::app);
-    lspRequests.clear();
+    lspRequests.open("rqst_inputs/rq1.txt");
 
     if(!lspRequests.is_open())
         cout<<"file not open. :-(\n";
@@ -176,9 +175,14 @@ void files::readLSPs(string fileLocation, vector<events>& listOfEvents)
         
 }
 
+void files::closeLspFile()
+{
+   lspRequests.close();
+}
+
+
 
 files::~files()
 {
-   //logFile.close();
-   lspRequests.close();
+   logFile.close();
 }
