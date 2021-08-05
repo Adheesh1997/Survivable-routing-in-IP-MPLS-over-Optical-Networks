@@ -189,6 +189,7 @@ findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetw
             //waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
         }
 
+    
         Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNumber].waveAdjacancyMatrix);//graph.print();
         graph.Dijkstra(source);
         vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
@@ -402,6 +403,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
     map<int, vector<vector<int>>> fromSource;
 
     for (auto start = 0; start < waveLengthNetwork.size(); start++) {
+
         Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
         graph.Dijkstra(source);
         fromSource[start] = graph.conditionAppling(); // first Shortest path
@@ -494,13 +496,20 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
         PPS.pop_back();
         PPD.insert(PPD.begin(), PPS.begin(), PPS.end());
 
-        Graph_DG graph(vexnum, waveLengthNetwork[sourceWavelegth].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        fromSource[sourceWavelegth] = graph.conditionAppling();
-
-        Graph_DG graph1(vexnum, waveLengthNetwork[destinationwavelength].waveAdjacancyMatrix);//graph.print();
-        graph1.Dijkstra(destination);
-        fromDestination[destinationwavelength] = graph1.conditionAppling();
+        if(sourceWavelegth < 40)
+        {
+            Graph_DG graph(vexnum, waveLengthNetwork[sourceWavelegth].waveAdjacancyMatrix);//graph.print();
+            graph.Dijkstra(source);
+            fromSource[sourceWavelegth] = graph.conditionAppling();
+        }
+        
+        if(destinationwavelength < 40)
+        {
+            Graph_DG graph1(vexnum, waveLengthNetwork[destinationwavelength].waveAdjacancyMatrix);//graph.print();
+            graph1.Dijkstra(destination);
+            fromDestination[destinationwavelength] = graph1.conditionAppling();
+        }
+        
 
         vector<int> sourcePathBP;
         vector<int> destinationPathPathBP;

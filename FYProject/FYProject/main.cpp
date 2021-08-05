@@ -274,7 +274,8 @@ int main()
                     }
 
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
-                    {cout<<"\nLine : 266";
+                    {
+                        cout<<"\nLine : 266";
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
