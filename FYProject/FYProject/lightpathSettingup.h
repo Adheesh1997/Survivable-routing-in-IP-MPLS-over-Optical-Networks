@@ -101,7 +101,7 @@ public:
 	/**********************************/
 	void checkDestinationAndWavelength(int, int);
 	int verifyDestinationNode(int);
-	void deleteLpLink(int);				// this can be used to  remove item from wavelengthAndLSP vector
+	void deleteLpLink(long int);		// this can be used to  remove item from wavelengthAndLSP vector
 	~lightNode() {}
 };
 
@@ -139,7 +139,7 @@ public:
 
 
 	/*********************************************/
-	void releaseEshtablishedLighpath(int source, int destination, int wavelength);	// remove item from lightpath vector
+	void releaseEshtablishedLighpath(int, int, long in	// remove item from lightpath vector
 	void getTotalNumberOfLightpaths();				// to get total number of lightpaths (used for testing)
 
 	~lightpathNetwork() {}
