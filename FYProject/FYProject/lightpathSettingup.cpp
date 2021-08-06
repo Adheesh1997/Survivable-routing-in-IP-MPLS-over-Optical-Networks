@@ -696,7 +696,7 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 }
 
 
-map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes, files &myfile)
+map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes, int bandwidth)
 {
 	map<int, vector<vector<int>>> temp;
 
@@ -715,34 +715,37 @@ map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOf
 
 				for(int h = 0; h < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); h++)
 				{	
-					int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
-					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
-
-					if(path[0] != src)
+					if(lighpaths[i].linkVector[j].wavelengthAndLSP[h].availableBandwidth >= bandwidth)
 					{
-						reverse(path.begin(),path.end());
-					}
-					
-					if(temp[40 + wave][dst][0] == 0)
-					{
-						temp[40 + wave][dst][0] = 1;
-
-						for(int k :path)
+						int wave = 	lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
+						vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[h].path;
+						
+						if(path[0] != src)
 						{
-							temp[40 + wave][dst].push_back(k);
+							reverse(path.begin(),path.end());
 						}
-					}
-
-					else
-					{
-						if(path.size() < temp[40 + wave][dst].size()-1)
+						
+						if(temp[40 + wave][dst][0] == 0)
 						{
-							temp[40 + wave][dst].clear();
-							temp[40 + wave][dst].push_back(1);
+							temp[40 + wave][dst][0] = 1;
 
 							for(int k :path)
 							{
 								temp[40 + wave][dst].push_back(k);
+							}
+						}
+
+						else
+						{
+							if(path.size() < temp[40 + wave][dst].size()-1)
+							{
+								temp[40 + wave][dst].clear();
+								temp[40 + wave][dst].push_back(1);
+
+								for(int k :path)
+								{
+									temp[40 + wave][dst].push_back(k);
+								}
 							}
 						}
 					}
@@ -811,6 +814,89 @@ map<int, vector<vector<int>>> lightpathNetwork::mapFromdst(int dst, int numOfNod
 	}
 
 	return temp;
+}
+
+map<int, map<int, vector<vector<int>>>> lightpathNetwork::mapFromLpGraph(int numOfWaves, int numOfNodes, int bandwidth)
+{
+   if(numOfWaves <= 0 || numOfNodes <= 0)
+   {
+      cerr<< "Err:lightpathSettingup.cpp mapFromLpGraph parameters are negetavie.";
+   }
+	map<int,vector<vector<int>>> mapToReturnMap;
+
+	for(int i = 0; i < numOfNodes; i++)
+	{
+		mapToReturnMap[i] = vector<vector<int>> (numOfNodes,vector<int> (1,0));
+	}
+
+   map<int,map<int,vector<vector<int>>>> mapToReturn;
+
+   for(int i = 0; i < numOfWaves; i++)
+   {
+      mapToReturn[i+numOfWaves] = mapToReturnMap;
+   }
+
+   for(int i = 0; i < lighpaths.size(); i++)
+   {
+	   int source = lighpaths[i].id;
+
+	   for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+	   {
+		   int destination = lighpaths[i].linkVector[j].destinationID;
+
+		   for(int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++)
+		   {
+			   if(lighpaths[i].linkVector[j].wavelengthAndLSP[k].availableBandwidth >= bandwidth)
+			   {
+				   int wave = lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[k].path;
+
+					if(path[0] != source)
+					{
+						reverse(path.begin(),path.end());
+					}
+
+					if(mapToReturn[wave+numOfWaves][source][destination][0] == 0)
+					{
+						mapToReturn[wave+numOfWaves][source][destination][0] = 1;
+
+						mapToReturn[wave+numOfWaves][source][destination].insert(mapToReturn[wave+numOfWaves][source][destination].end(),path.begin(), path.end());
+					}
+					else
+					{
+						if(path.size() < mapToReturn[wave+numOfWaves][source][destination].size()-1)
+						{
+							mapToReturn[wave+numOfWaves][source][destination].clear();
+							mapToReturn[wave+numOfWaves][source][destination].push_back(1);
+
+							mapToReturn[wave+numOfWaves][source][destination].insert(mapToReturn[wave+numOfWaves][source][destination].end(),path.begin(), path.end());
+						}
+					}
+			   }
+		   }
+	   }
+   }
+
+   return mapToReturn;
+
+   /* for(vector<int> i:mapToReturn[1+numOfWaves][2])
+   {
+      for(int j:i)
+      {
+         cout<<j<<" ";
+      }cout<<endl;
+   }
+   cout<< "\nNext...\n";
+   for(vector<int> i:mapToReturn[39+numOfWaves][13])
+   {
+      for(int j:i)
+      {
+         cout<<j<<" ";
+      }cout<<endl;
+   } */
+
+   
+
 }
 
 /***************************** REMOVE LIGHTPAH ******************************/
