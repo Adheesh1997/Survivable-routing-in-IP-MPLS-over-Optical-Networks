@@ -1,5 +1,4 @@
-#ifndef FILES_H
-#define FILES_H
+#pragma once
 
 #include<vector>
 #include<string>
@@ -31,5 +30,3 @@ public:
 
     ~files();
 };
-
-#endif

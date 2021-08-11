@@ -382,6 +382,11 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 						break;
 					}
 
+				if(identifier == 1412)
+				{
+					cout<<"ptr3 = "<<ptr3<<endl;
+					cout<<"ptr4 = "<<ptr4<<endl;
+				}
 				obj.lighpaths[pos1].linkVector[i4].wavelengthAndLSP[j4].LSPvec[k4].prevLSP = ptr3;
 				obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr4;
 
