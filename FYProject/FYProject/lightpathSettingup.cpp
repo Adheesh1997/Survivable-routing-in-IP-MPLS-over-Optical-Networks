@@ -1004,6 +1004,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int sorce, int destination, l
 				}
 			}
 		}
+
 		if (lighpaths[i].id == destination) {
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {

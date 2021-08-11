@@ -1,0 +1,39 @@
+Erlang = 10
+Threshold = 0.5
+Rejected = 10
+
+Erlang = 20
+Threshold = 0.5
+Rejected = 21
+
+Erlang = 30
+Threshold = 0.5
+Rejected = 11
+
+Erlang = 40
+Threshold = 0.5
+Rejected = 20
+
+Erlang = 50
+Threshold = 0.5
+Rejected = 18
+
+Erlang = 10
+Threshold = 0.25
+Rejected = 12
+
+Erlang = 20
+Threshold = 0.25
+Rejected = 1
+
+Erlang = 30
+Threshold = 0.25
+Rejected = 8
+
+Erlang = 40
+Threshold = 0.25
+Rejected = 12
+
+Erlang = 50
+Threshold = 0.25
+Rejected = 5

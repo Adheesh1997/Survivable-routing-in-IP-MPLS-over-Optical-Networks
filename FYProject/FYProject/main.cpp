@@ -60,6 +60,7 @@ void removeLPidFromVec(vector<int>& LPids)
 
 int main()
 {
+    cout << "Promgram started___\n";
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
 
@@ -84,7 +85,7 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs\rq2.txt", listOfEvents); 
+    //myfile.wrteALSP("rqst_inputs/rq2.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
@@ -95,18 +96,20 @@ int main()
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
     //graph input file location
-    string fileLocation = "graph_inputs\05\graph05.csv"; 
+    string fileLocation = "graph_inputs/05/graph05.csv"; 
     
     int theCount = 1;
     //Read csv file and assign values to the matrix 
     if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation))
     { 
         myfile.writeLog((fileLocation + " Graph is imported."));
+        cout << "Graph imported from csv file.\n";
         //If there is no any error while reading file then graph is created
         fiberLinkNetwork physicalLinkNetwork(numOfNodes, 40);
         thresholdObj.numOfNodesOfTheNetwork = numOfNodes;
 
         physicalLinkNetwork.setupFiberLinkNetwork(adjacencyMetrix);
+        cout << "Physical link network is created.\n";
 
         myfile.writeLog("Physical network is created.");
         //physicalLinkNetwork.printGraph();
@@ -117,6 +120,7 @@ int main()
         
         lightpathNetwork waveLengthNetwork(subWaveNetworks);
 
+        cout << endl << "Generting all LSP requests.\n";
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
 
@@ -132,6 +136,7 @@ int main()
         iota(begin(LPids), end(LPids), 1); // Fill with 1, 2, ..., 100000.
         int countForLPids = 100000;
         
+        cout << "Establishing and releasing LSP requests.....\n";
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         {
             
@@ -141,7 +146,7 @@ int main()
             int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
-
+            
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;            
             for (int ww = 0; ww < rejectedEvents.size(); ww++)
@@ -156,7 +161,7 @@ int main()
                     rejectedEvents.erase(itr2);
                 }
             }
-
+            
             if(action)
             {
                 totalCount++;
@@ -164,13 +169,11 @@ int main()
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
 
                 
-                //cout<<"\nLine: 156";
+
                 vector<vector<int>> adjMetrixForPrimaryLSP = waveLengthNetwork.lpPAdjacencyMetrix(bandwidth, numOfNodes);
-                //cout<<"\nLine: 158";
-                             
+                            
 
 
-                //cout<<"\nLine: 160";
                 findPathDetails pathDetails = startingPoint(vexnum, subWaveNetworks, source, destination,adjMetrixForPrimaryLSP);
 
                 map<int, map<int, vector<vector<int>>>> mapFromLPGraph;
@@ -178,12 +181,9 @@ int main()
                 //If there is no LP(S) to establish LSP
                 if (pathDetails.alreadyPPhave == false) 
                 {
-                    //If using new LPs can establish path for LSP reqeust
+
                     if(pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
                     {
-                        //cout<<"\nleni\n";
-                        //printVector(pathDetails.primaryShortPath);
-                        //cout<<"\nLine: 172";
                         checkWhetherLPidfinished(LPids, countForLPids);
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
                         removeLPidFromVec(LPids);
@@ -210,16 +210,16 @@ int main()
                         isLSPestablish = true;
                         newLP++;
                     }
-                    //cout<<"\nLine: 199";
+
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, bandwidth);
                     map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(destination,numOfNodes, bandwidth);
-                    //cout<<"\nLine: 202";
+
 
                     //If LP can not creat for primary path
                     if(pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
-                    {//cout<<"\nLine: 206";
+                    {
                         forRemainingBackUpPath createRemaingBackUpDeatils = createRemaing(vexnum, subWaveNetworks, source, destination, arr, arr1, pathDetails.primaryShortPath);
-                        //cout<<"\nLine: 208";
+
                         if(createRemaingBackUpDeatils.canCreatCombinationBP)
                         {
                             
@@ -248,11 +248,9 @@ int main()
                             {
                                 createRemaingBackUpDeatils.wavelengthNo2BP -=40;
                             }
-                            //cout<<"\nLine: 237";
                             checkWhetherLPidfinished(LPids, countForLPids);
                             waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
                             removeLPidFromVec(LPids);
-                            //cout<<"\nLine: 241";
                             removeLink(pathDetails.wavelengthNoPP, pathDetails.primaryShortPath, subWaveNetworks);
 
                             vector<int>wholePathP = pathDetails.primaryShortPath;
@@ -278,11 +276,10 @@ int main()
 
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
                     {
-                        //cout<<"\nLine: 266";
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
-                        {//cout<<"\nLine: 270";
+                        {
                             if (combineWavelengthDetails.wavelengthNo1PP < 40)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
@@ -354,18 +351,16 @@ int main()
                     
                 }
 
-                //Already there is path(LP) for LSP request
                 else
                 {  
                     if(pathDetails.tempCanCreatPP)
-                    {//cout<<"\nLine: 346";
+                    {
                         vector<vector<int>> waveVector = waveLengthNetwork.getWaveNumbers(source,destination,numOfNodes, bandwidth, pathDetails.tempPrimaryShortPath.size());
-                        //cout<<"\nLine: 348";
+
                         if(waveVector[0][0] == -1)
-                        {//cout<<"\nLine: 350";
-                            //find a backup path
+                        {
                             vector<int> backupWave = waveLengthNetwork.getBWaveNumber(source,destination,numOfNodes,bandwidth,pathDetails.tempPrimaryShortPath);
-                            //cout<<"\nLine: 353";
+
                             if(backupWave[0] != -1)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
@@ -414,7 +409,6 @@ int main()
                         }
                     }                
                 }
-                //cout<<endl<<"isEstablish = "<<isLSPestablish<<endl<<endl;
                 if(!isLSPestablish) 
                 {
                     rejectedEvents.push_back(listOfEvents[0].identifier);
@@ -424,19 +418,16 @@ int main()
                 
                 theCount++;
             }
-            itr = listOfEvents.begin();
-            listOfEvents.erase(itr);
-
-            //cout << theCount << endl;
+            if (!listOfEvents.empty())
+            {
+                itr = listOfEvents.begin();
+                listOfEvents.erase(itr);
+            }
             
         } 
         
         //waveLengthNetwork.viewAllLighpaths();
         
-        //print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-        //removeLink(0, vector<int>{1,3,4}, subWaveNetworks);
-        //cout<<"\nAfter remove\n";
-        //print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
         cout << theCount << endl;
         myfile.writeLog("                 ");

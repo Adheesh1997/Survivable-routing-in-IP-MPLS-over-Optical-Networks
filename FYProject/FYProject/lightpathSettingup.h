@@ -141,7 +141,7 @@ public:
 
 
 	/*********************************************/
-	void releaseEshtablishedLighpath(int, int, long in);	// remove item from lightpath vector
+	void releaseEshtablishedLighpath(int, int, long int);	// remove item from lightpath vector
 	void getTotalNumberOfLightpaths();				// to get total number of lightpaths (used for testing)
 
 	~lightpathNetwork() {}

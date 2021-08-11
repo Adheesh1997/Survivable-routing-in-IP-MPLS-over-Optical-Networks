@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-
 #include "files.h"
 #include <iostream>
 #include <vector>
@@ -8,7 +7,6 @@
 #include <sstream>
 #include <stdio.h>
 #include <time.h>
-
 
 #include "eventDrivenSimulator.h"
 
