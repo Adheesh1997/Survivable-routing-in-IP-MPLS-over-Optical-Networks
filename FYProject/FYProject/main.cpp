@@ -141,7 +141,7 @@ int main()
             int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
-
+            
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;            
             for (int ww = 0; ww < rejectedEvents.size(); ww++)
@@ -156,7 +156,7 @@ int main()
                     rejectedEvents.erase(itr2);
                 }
             }
-
+            
             if(action)
             {
                 totalCount++;
@@ -438,8 +438,11 @@ int main()
                 
                 theCount++;
             }
-            itr = listOfEvents.begin();
-            listOfEvents.erase(itr);
+            if (!listOfEvents.empty())
+            {
+                itr = listOfEvents.begin();
+                listOfEvents.erase(itr);
+            }
 
             //cout << theCount << endl;
             
