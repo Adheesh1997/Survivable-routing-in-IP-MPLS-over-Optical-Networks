@@ -930,13 +930,15 @@ void lightNode::deleteLpLink(long int LPidentifier) {
 							for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
 								if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID && linkVector[m].wavelengthAndLSP[n].havingBackup == true) {
 									linkVector[m].wavelengthAndLSP[n].havingBackup == false;
+
 								}
 							}
 						}
 					}
 
 					linkVector.erase(linkVector.begin() + i);
-					cout << "********		SUCESSFULY DELETED ********" << endl;
+
+					break;
 				}
 				else {
 					cout << "the lightpath is in use" << endl;
@@ -955,9 +957,9 @@ void lightpathNetwork::getTotalNumberOfLightpaths() {
 }
 
 
-
 /*
-void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination, int wavelength) {
+
+void lightpathNetwork::releaseEshtablishedLighpath( int source, int destination, int wavelength) {
 	//to delete from source node's LP-link's vector
 	int positionOne = checkForAvaialableLPNode(source);
 	if (positionOne != -1) {
@@ -965,8 +967,10 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination, 
 
 		if (temp != -1) {
 			//call the functions
+			lighpaths[positionOne];
 			lighpaths[positionOne].deleteLpLink(wavelength);
 			lighpaths.erase(lighpaths.begin() + positionOne);
+
 		}
 		else {
 			cout << "------error!!!!!!-----------" << endl;
@@ -1000,11 +1004,11 @@ void lightpathNetwork::releaseEshtablishedLighpath(int sorce, int destination, l
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
 						lighpaths[i].deleteLpLink(LightPathIdentifier);
 						lighpaths.erase(lighpaths.begin() + i);
+						break;
 					}
 				}
 			}
 		}
-
 		if (lighpaths[i].id == destination) {
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
@@ -1012,6 +1016,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int sorce, int destination, l
 						lighpaths[i].deleteLpLink(LightPathIdentifier);
 						lighpaths.erase(lighpaths.begin() + i);
 						totalnumOfLighpaths = totalnumOfLighpaths - 1;
+						break;
 					}
 				}
 			}
