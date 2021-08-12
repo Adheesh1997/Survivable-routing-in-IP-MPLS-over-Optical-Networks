@@ -917,7 +917,7 @@ int lightNode::verifyDestinationNode(int node2)
 	}
 }
 
-void lightNode::deleteLpLink(long int LPidentifier) {
+void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength) {
 	for (int i = 0; i < linkVector.size(); i++) {
 		for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
 			if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier) {
@@ -935,7 +935,8 @@ void lightNode::deleteLpLink(long int LPidentifier) {
 							}
 						}
 					}
-
+					
+					//int wavelengthUsed = linkVector[i].wavelengthAndLSP[j].L
 					linkVector.erase(linkVector.begin() + i);
 
 					break;
@@ -995,14 +996,14 @@ void lightpathNetwork::releaseEshtablishedLighpath( int source, int destination,
 	//to delete from lightpaths vector
 }*/
 
-void lightpathNetwork::releaseEshtablishedLighpath(int sorce, int destination, long int LightPathIdentifier) {
+void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,long int LightPathIdentifier, int wavelenght) {
 
 	for (int i = 0; i < lighpaths.size(); i++) {
-		if (lighpaths[i].id == sorce) {
+		if (lighpaths[i].id == source) {
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-						lighpaths[i].deleteLpLink(LightPathIdentifier);
+						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght);
 						lighpaths.erase(lighpaths.begin() + i);
 						break;
 					}
@@ -1013,7 +1014,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int sorce, int destination, l
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-						lighpaths[i].deleteLpLink(LightPathIdentifier);
+						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght);
 						lighpaths.erase(lighpaths.begin() + i);
 						totalnumOfLighpaths = totalnumOfLighpaths - 1;
 						break;
