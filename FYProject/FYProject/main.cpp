@@ -461,14 +461,7 @@ int main()
             {
                  myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
                     + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
-<<<<<<< HEAD
-=======
 
-                vector<int> pathP = lspPathDetails[id][0][0];
-                vector<int> wavesP = lspPathDetails[id][0][1];
-                vector<int> pathB = lspPathDetails[id][1][0];
-                vector<int> wavesB = lspPathDetails[id][1][1];
->>>>>>> 739d4800997e0a5ad2e7747d031d913da2eccb27
 
                  vector<int> pathP = lspPathDetails[id][0][0];
                  vector<int> wavesP = lspPathDetails[id][0][1];
@@ -477,8 +470,8 @@ int main()
 
                 if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
                 {
-                    //lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
                 }
                 else
                 {
