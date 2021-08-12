@@ -917,11 +917,7 @@ int lightNode::verifyDestinationNode(int node2)
 	}
 }
 
-<<<<<<< HEAD
-void lightNode::deleteLpLink(long int LPidentifier, vector<waveLengthNetworks>& waveLengthNetwork) {
-=======
-void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength) {
->>>>>>> 654b300f1c070bbfda772a3c70b0a275b0d545b6
+void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength, vector<waveLengthNetworks>& waveLengthNetwork) {
 	for (int i = 0; i < linkVector.size(); i++) {
 		for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
 			if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier) {
@@ -942,7 +938,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 					
 					//int wavelengthUsed = linkVector[i].wavelengthAndLSP[j].L
 					linkVector.erase(linkVector.begin() + i);
-
+					waveLengthNetwork[wavelength].addLInk(source, destination);
 					break;
 				}
 				else {
@@ -1007,11 +1003,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-<<<<<<< HEAD
-						lighpaths[i].deleteLpLink(LightPathIdentifier, waveLengthNetwork);
-=======
-						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght);
->>>>>>> 654b300f1c070bbfda772a3c70b0a275b0d545b6
+						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
 						lighpaths.erase(lighpaths.begin() + i);
 						break;
 					}
@@ -1022,11 +1014,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,
 			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-<<<<<<< HEAD
-						lighpaths[i].deleteLpLink(LightPathIdentifier, waveLengthNetwork);
-=======
-						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght);
->>>>>>> 654b300f1c070bbfda772a3c70b0a275b0d545b6
+						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
 						lighpaths.erase(lighpaths.begin() + i);
 						totalnumOfLighpaths = totalnumOfLighpaths - 1;
 						break;

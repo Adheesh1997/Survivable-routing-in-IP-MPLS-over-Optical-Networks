@@ -68,7 +68,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 2;           //The number of LSP requests
+    int numberOfLSPrequests = 1000;           //The number of LSP requests
     double erlang = 10;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
@@ -147,9 +147,9 @@ int main()
         {
             
             int vexnum = numOfNodes;
-            int source = 1; // listOfEvents[0].sourceNode;
-            int destination = 5; // listOfEvents[0].destinationNode;
-            int id = 1; // listOfEvents[0].identifier;
+            int source = listOfEvents[0].sourceNode;
+            int destination = listOfEvents[0].destinationNode;
+            int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
             
@@ -170,7 +170,6 @@ int main()
             
             if(action)
             {
-                cout << "id : " << id << endl;
                 totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
@@ -449,6 +448,27 @@ int main()
                 
                 theCount++;
             }
+            
+
+            else
+            {
+                vector<int> pathP = lspPathDetails[id][0][0];
+                vector<int> wavesP = lspPathDetails[id][0][1];
+                vector<int> pathB = lspPathDetails[id][1][0];
+                vector<int> wavesB = lspPathDetails[id][1][1];
+
+                if (pathP.size() > 0 && wavesP.size() > 0 && pathB.size() > 0 && wavesB.size())
+                {
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                }
+                else
+                {
+                    cout << "\nCheck the map\n";
+                }
+
+                
+            }
 
             cout << "\nLsp established. \n";
 
@@ -460,14 +480,7 @@ int main()
             
         } 
 
-        cout << "\nTest...\n";
-        printVector(lspPathDetails[1][0][0]);
-        cout << endl;
-        printVector(lspPathDetails[1][0][1]);
-        cout << endl;
-        printVector(lspPathDetails[1][1][0]);
-        cout << endl;
-        printVector(lspPathDetails[1][1][1]);
+        
 
         
         
