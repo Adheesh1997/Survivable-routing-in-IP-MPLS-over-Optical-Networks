@@ -22,7 +22,7 @@ lightNode::lightNode(int ID)
 	id = ID;                        
 	numOfLPLinksPerNode = 0;
 	selfAddress = NULL;
-	linkVector.reserve(100);
+	linkVector.reserve(1000);
 }
 
 void lightNode::setSelfAddress(lightNode* temp)
@@ -71,7 +71,7 @@ void lightNode::addLPlink(vector<int> pathVec, int wavelengthVal, int bandwidthV
 
 	linkVector.push_back(temporLink);                              //The lightpath is created
 	int temp = linkVector.size();                                 
-	linkVector[temp - 1].wavelengthAndLSP.reserve(100);
+	linkVector[temp - 1].wavelengthAndLSP.reserve(1000);
 	numOfLPLinksPerNode++;                                         //The counter for lightpath is incremented
 }
 
@@ -919,34 +919,47 @@ int lightNode::verifyDestinationNode(int node2)
 
 void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength, vector<waveLengthNetworks>& waveLengthNetwork) {
 	for (int i = 0; i < linkVector.size(); i++) {
-		for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
-			if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier) {
-				if (linkVector[i].wavelengthAndLSP[j].availableBandwidth == linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
-					//lighpaths.erase(lighpaths.begin() + i);
-					if (linkVector[i].wavelengthAndLSP[j].lightpathType == "bp") {//check the string
-							//linkVector[i].wavelengthAndLSP[j].havingBackup ==
-						long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
-						for (int m = 0; m < linkVector.size(); m++) {
-							for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
-								if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID && linkVector[m].wavelengthAndLSP[n].havingBackup == true) {
-									linkVector[m].wavelengthAndLSP[n].havingBackup == false;
+		//int sourceID =
+		if (linkVector[i].destinationID == destination) {
+			for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
+				if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
+					if (linkVector[i].wavelengthAndLSP[j].availableBandwidth == linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
+						//lighpaths.erase(lighpaths.begin() + i);
+						if (linkVector[i].wavelengthAndLSP[j].lightpathType == "bp") {//check the string
+								//linkVector[i].wavelengthAndLSP[j].havingBackup ==
+							long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
+							for (int m = 0; m < linkVector.size(); m++) {
+								for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
+									if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID && linkVector[m].wavelengthAndLSP[n].havingBackup == true && linkVector[m].wavelengthAndLSP[n].lightpathType == "pp") {
+										linkVector[m].wavelengthAndLSP[n].havingBackup == false;
 
+									}
 								}
 							}
 						}
+						else if(linkVector[i].wavelengthAndLSP[j].lightpathType == "pp") {
+							if (linkVector[i].wavelengthAndLSP[j].havingBackup) {
+								long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
+								for (int m = 0; m < linkVector.size(); m++) {
+									for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
+										if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID &&  linkVector[m].wavelengthAndLSP[n].lightpathType == "bp") {
+											linkVector.erase(linkVector.begin() + m);
+										}
+									}
+								}
+							}
+							else {
+								linkVector.erase(linkVector.begin() + i);
+							}
+						}
+																	
+						waveLengthNetwork[wavelength].addLInk(source, destination);
+						break;
 					}
-					
-					//int wavelengthUsed = linkVector[i].wavelengthAndLSP[j].L
-					linkVector.erase(linkVector.begin() + i);
-					waveLengthNetwork[wavelength].addLInk(source, destination);
-					break;
-				}
-				else {
-					cout << "the lightpath is in use" << endl;
-				}
-			}
-			else {
-				cout << " ---ERROR!--- can not find the wavelenght" << endl;
+					else {
+						cout << "the lightpath is in use" << endl;
+					}
+				}		
 			}
 		}
 	}
@@ -1004,7 +1017,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
 						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
-						lighpaths.erase(lighpaths.begin() + i);
+						//lighpaths.erase(lighpaths.begin() + i);
 						break;
 					}
 				}
@@ -1015,7 +1028,7 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,
 				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
 					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
 						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
-						lighpaths.erase(lighpaths.begin() + i);
+						//lighpaths.erase(lighpaths.begin() + i);
 						totalnumOfLighpaths = totalnumOfLighpaths - 1;
 						break;
 					}

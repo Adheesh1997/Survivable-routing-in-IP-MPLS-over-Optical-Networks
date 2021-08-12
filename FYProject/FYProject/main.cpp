@@ -84,13 +84,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+   // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
     //myfile.wrteALSP("rqst_inputs/rq2.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    /*vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq2.txt",listOfEvents);*/
+    vector<events> listOfEvents;
+    myfile.readLSPs("rqst_inputs/rq2.txt",listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -150,7 +150,7 @@ int main()
             int source = listOfEvents[0].sourceNode;
             int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
-            int bandwidth = 10; //listOfEvents[0].bandwidth;
+            int bandwidth = 1; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
             
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -452,6 +452,9 @@ int main()
 
             else
             {
+                 myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
+                    + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+
                 vector<int> pathP = lspPathDetails[id][0][0];
                 vector<int> wavesP = lspPathDetails[id][0][1];
                 vector<int> pathB = lspPathDetails[id][1][0];
@@ -459,8 +462,8 @@ int main()
 
                 if (pathP.size() > 0 && wavesP.size() > 0 && pathB.size() > 0 && wavesB.size())
                 {
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    //lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
+                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
                 }
                 else
                 {

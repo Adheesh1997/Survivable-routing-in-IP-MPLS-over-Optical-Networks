@@ -1,2 +1,2 @@
-PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.29.30133:TargetPlatformVersion=10.0.19041.0:
-Debug|Win32|E:\Academic\7th Sem\Final Year Project\Source\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\|
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v142:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0
+Debug|Win32|C:\Users\prabo\Desktop\FYI\try10\FYProject\|
