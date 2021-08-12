@@ -133,13 +133,35 @@ void waveLengthNetworks::removeLinks(int src, int dst)
         dst - Destinationo node connected to link
     */
    //cout<<"\n Source : "<<src<<", Dst : "<<dst<<endl;
+   if(src > 13)
+    {
+        cout<<"\nErr! src out of the range in removeLink graph.cpp\n";
+        return;
+    }
+    if(dst > 13)
+    {
+        cout<<"\nErr! dst out of the range in removeLink graph.cpp\n";
+        return;
+    }
     waveAdjacancyMatrix[src][dst] = 0;
+    waveAdjacancyMatrix[dst][src] = 0;
     
 }
 
 void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
 {
+    if(src > 13)
+    {
+        cout<<"\nErr! src out of the range in addLInk graph.cpp\n";
+        return;
+    }
+    if(dst > 13)
+    {
+        cout<<"\nErr! dst out of the range in addLInk graph.cpp\n";
+        return;
+    }
     waveAdjacancyMatrix[src][dst] = bandwidth;
+    waveAdjacancyMatrix[dst][src] = bandwidth;
 }
 
 /************* end of waveLengthNetworks *******************/
