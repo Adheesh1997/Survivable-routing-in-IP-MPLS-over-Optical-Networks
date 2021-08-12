@@ -150,7 +150,7 @@ int main()
             int source = listOfEvents[0].sourceNode;
             int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
-            int bandwidth = 10; //listOfEvents[0].bandwidth;
+            int bandwidth = 1; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
             
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -461,6 +461,14 @@ int main()
             {
                  myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
                     + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+<<<<<<< HEAD
+=======
+
+                vector<int> pathP = lspPathDetails[id][0][0];
+                vector<int> wavesP = lspPathDetails[id][0][1];
+                vector<int> pathB = lspPathDetails[id][1][0];
+                vector<int> wavesB = lspPathDetails[id][1][1];
+>>>>>>> 739d4800997e0a5ad2e7747d031d913da2eccb27
 
                  vector<int> pathP = lspPathDetails[id][0][0];
                  vector<int> wavesP = lspPathDetails[id][0][1];
