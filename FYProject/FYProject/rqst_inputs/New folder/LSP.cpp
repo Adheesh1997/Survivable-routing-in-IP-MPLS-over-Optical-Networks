@@ -24,7 +24,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 	*/
 	int intLSPwavelength;
 	int LSPbandwidth = 10;
-	
+
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
 	vector<int> positionVector;                 //Positions of the nodes in lightpaths vector
 	vector<vector<int>> partitionedPath;        //wholePath is partitioned according to the number of lightpaths
@@ -64,11 +64,11 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 						&& obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == wholePath)
 					{
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
-						
+
 						//cout<<"bandwidth before = "<<obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth<<endl;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth = remainingBandwidth;
-						
+
 						//cout<<"bandwidth after = "<<obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth<<endl;
 
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath++;
@@ -192,7 +192,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 				tempObject.id = obj.lighpaths[pos1].returnId();
 				tempObject.prev = NULL;
 				tempObject.next = obj.lighpaths[pos1].linkVector[i].destAddress;
-				
+
 				for (size_t j = 0; j < obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP.size(); j++)
 
 					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]
@@ -270,7 +270,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			}
 
 			size_t waveSize2 = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP.size();
-			
+
 			for (size_t j = 0; j < waveSize2; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr - 1]
@@ -299,7 +299,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 			}
 
 			size_t waveSize3 = obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP.size();
-			
+
 			for (size_t j = 0; j < waveSize3; j++)
 			{
 				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr]
@@ -378,14 +378,14 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 						else if (type == "bLSP")
 							obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k4].LSPtype = "bLSP";
 						ptr4 = &obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k4];
-						
+
 						break;
 					}
 
-				if(identifier == 1412)
+				if (identifier == 1412)
 				{
-					cout<<"ptr3 = "<<ptr3<<endl;
-					cout<<"ptr4 = "<<ptr4<<endl;
+					cout << "ptr3 = " << ptr3 << endl;
+					cout << "ptr4 = " << ptr4 << endl;
 				}
 				obj.lighpaths[pos1].linkVector[i4].wavelengthAndLSP[j4].LSPvec[k4].prevLSP = ptr3;
 				obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j2].LSPvec[k2].nextLSP = ptr4;
@@ -424,7 +424,7 @@ void LSP::viewLSPsInALightpath(lightpathNetwork& obj)
 						{
 							cout << "Wavelength = " << obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength << endl;
 							cout << "The LSPs start from light node " << obj.lighpaths[i].returnId() << endl;
-							
+
 							cout << "LSPpath = \n";
 							int sizeOfLSPpath = obj.lighpaths[i].linkVector[j].wavelengthAndLSP[k].LSPvec[m].LSPpath.size();
 							for (size_t n = 0; n < (sizeOfLSPpath - 1); n++)
@@ -475,7 +475,7 @@ void LSP::traversefLSP(LSP* nextNode)    //Traverse the LSP from forward
 		temp = *nextNode;
 		cout << "->" << temp.id;
 		nextNode = nextNode->nextLSP;
-		
+
 	}
 	temp = *nextNode;
 	cout << "->" << temp.id << endl;
@@ -494,7 +494,7 @@ void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 		temp = *prevNode;
 		cout << "->" << temp.id;
 		prevNode = prevNode->prevLSP;
-		
+
 	}
 	temp = *prevNode;
 	cout << "->" << temp.id << endl;
@@ -530,7 +530,7 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								// update LSP counter in LP
 								obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath--;
 								// Deletion of LPS
-								obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.erase(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.begin() + k);								
+								obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.erase(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec.begin() + k);
 
 							}
 						}
@@ -540,8 +540,8 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 		}
 		//from destinaion node to source node
 		for (size_t i = 0; i < obj.lighpaths[pos2].linkVector.size(); i++) {
-			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[0]) {		
-				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++) {				
+			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[0]) {
+				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++) {
 					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]) {
 						for (size_t k = 0; k < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.size(); k++) {
 							if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier == identifier) {
@@ -554,10 +554,7 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth + obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].bandwidthOfLSP;
 								obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath--;// update LSP counter
 								obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.erase(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.begin() + k);		//deleting of LSP happen here				
-								int long tempIdOfLP= obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-								cout << "\n\n  ---------------------------------------------\n";
-								cout << "LSP deleted" << endl;
-								cout << " ---------------------------------------------\n\n";
+								int long tempIdOfLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
 								if (type == "pLSP") {
 									if (protectionType) {
 										float bandwithPecentage = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth / obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth;
@@ -570,7 +567,7 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 														if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
 															int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
 															obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, tempWaveL);
-															
+
 														}
 													}
 												}
@@ -598,7 +595,7 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 
 
 								// delete LP if it is empty
-								if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth == obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
+								if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth == obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
 									obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, LSPwavelengthVec[0]);
 								}
 								goto label;
@@ -647,7 +644,7 @@ label:
 								iVector.push_back(i);
 								jVector.push_back(j);
 								idVector.push_back(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier);
-								
+
 							}
 						}
 					}
@@ -678,7 +675,7 @@ label:
 									iVector.push_back(i);
 									jVector.push_back(j);
 									idVector.push_back(obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LPidentifier);
-									
+
 								}
 							}
 						}
@@ -745,7 +742,7 @@ label:
 
 
 		for (size_t i = 0; i < obj.lighpaths[pos2].linkVector.size(); i++) {
-			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[v1.size() - 2]) {
+			if (obj.lighpaths[pos2].linkVector[i].destinationID == v1[pos2 - 1]) {
 				for (size_t j = 0; j < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP.size(); j++) {
 					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[LSPwavelengthVec.size() - 1]) {
 						for (size_t k = 0; k < obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.size(); k++) {

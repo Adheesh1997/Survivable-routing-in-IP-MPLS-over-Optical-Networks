@@ -84,7 +84,7 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-   // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
     //myfile.wrteALSP("rqst_inputs/rq2.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
@@ -167,12 +167,6 @@ int main()
                     rejectedEvents.erase(itr2);
                 }
             }
-
-
-            lspPathDetails[id][0].push_back(vector<int>{-1});
-            lspPathDetails[id][0].push_back(vector<int>{-1});
-            lspPathDetails[id][1].push_back(vector<int>{-1});
-            lspPathDetails[id][1].push_back(vector<int>{-1});
             
             if(action)
             {
@@ -447,7 +441,6 @@ int main()
                 }
                 if(!isLSPestablish) 
                 {
-
                     rejectedEvents.push_back(listOfEvents[0].identifier);
                     rejected++;
                     myfile.writeLog("LSP is REJECTED.");
@@ -457,28 +450,36 @@ int main()
             }
             
 
-            else if(!action)
+            else
             {
-                 myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
-                    + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
-
-                 vector<int> pathP = lspPathDetails[id][0][0];
-                 vector<int> wavesP = lspPathDetails[id][0][1];
-                 vector<int> pathB = lspPathDetails[id][1][0];
-                 vector<int> wavesB = lspPathDetails[id][1][1];
-
-                if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
+                
+                /*cout << "\npathP\n";
+                printVector(pathP);
+                cout << "\nwavesP\n";
+                printVector(wavesP);
+                cout << "\npathB\n";
+                printVector(pathB);
+                cout << "\nwavesB\n";
+                printVector(wavesB);*/
+                if (lspPathDetails[id][0][0].size() > 0 && lspPathDetails[id][0][1].size() > 0 && lspPathDetails[id][1][0].size() > 0 && lspPathDetails[id][1][1].size())
                 {
-                    //lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    vector<int> pathP = lspPathDetails[id][0][0];
+                    vector<int> wavesP = lspPathDetails[id][0][1];
+                    vector<int> pathB = lspPathDetails[id][1][0];
+                    vector<int> wavesB = lspPathDetails[id][1][1];
+
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
                 }
                 else
                 {
-                    cout << "\nRejected lsp trying to release.";
+                    cout << "\nCheck the map\n";
                 }
 
                 
             }
+
+            cout << "\nLsp established. \n";
 
             if (!listOfEvents.empty())
             {

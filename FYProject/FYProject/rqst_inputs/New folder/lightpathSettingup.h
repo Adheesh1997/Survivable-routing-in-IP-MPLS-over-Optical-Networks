@@ -63,7 +63,7 @@ public:
 		havingBackup = false;
 		numOfLSPsInLightpath = 0;
 		numOfPrimaryLSPsInLightpath = 0;
-		LSPvec.reserve(1000);
+		LSPvec.reserve(100);
 	}
 };
 
@@ -119,7 +119,7 @@ public:
 	lightpathNetwork(vector<waveLengthNetworks>& vw):waveLengthNetwork(vw)
 	{
 		totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
-		lighpaths.reserve(1000);
+		lighpaths.reserve(100);
 	}                                        //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
 	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier); //Establish a new lighpath
