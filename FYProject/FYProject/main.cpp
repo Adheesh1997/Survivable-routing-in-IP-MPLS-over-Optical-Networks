@@ -155,7 +155,7 @@ int main()
             
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;            
-            for (int ww = 0; ww < rejectedEvents.size(); ww++)
+            /*for (int ww = 0; ww < rejectedEvents.size(); ww++)
             {
                 if (listOfEvents[0].identifier == rejectedEvents[ww])
                 {
@@ -166,7 +166,7 @@ int main()
                     itr2 = rejectedEvents.begin() + ww;
                     rejectedEvents.erase(itr2);
                 }
-            }
+            }*/
 
 
             lspPathDetails[id][0].push_back(vector<int>{-1});
@@ -218,10 +218,10 @@ int main()
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
                         lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
                         
-                        lspPathDetails[id][0].push_back(pathForPLSP);
-                        lspPathDetails[id][0].push_back(wavesP);
-                        lspPathDetails[id][1].push_back(pathForBLSP);
-                        lspPathDetails[id][1].push_back(wavesB);
+                        lspPathDetails[id][0][0] = pathForPLSP;
+                        lspPathDetails[id][0][1] = wavesP;
+                        lspPathDetails[id][1][0] = pathForBLSP;
+                        lspPathDetails[id][1][1] = wavesB;
 
                         myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
@@ -285,10 +285,10 @@ int main()
 
                             myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
                             
-                            lspPathDetails[id][0].push_back(pathForPLSP);
-                            lspPathDetails[id][0].push_back(wavesP);
-                            lspPathDetails[id][1].push_back(pathForBLSP);
-                            lspPathDetails[id][1].push_back(wavesB);
+                            lspPathDetails[id][0][0] = pathForPLSP;
+                            lspPathDetails[id][0][1] = wavesP;
+                            lspPathDetails[id][1][0] = pathForBLSP;
+                            lspPathDetails[id][1][1] = wavesB;
 
                             isLSPestablish = true;
                             newLP++;
@@ -364,10 +364,10 @@ int main()
                             myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
                                             +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
                             
-                            lspPathDetails[id][0].push_back(pathForPLSP);
-                            lspPathDetails[id][0].push_back(wavesP);
-                            lspPathDetails[id][1].push_back(pathForBLSP);
-                            lspPathDetails[id][1].push_back(wavesB);
+                            lspPathDetails[id][0][0] = pathForPLSP;
+                            lspPathDetails[id][0][1] = wavesP;
+                            lspPathDetails[id][1][0] = pathForBLSP;
+                            lspPathDetails[id][1][1] = wavesB;
 
                             isLSPestablish = true;
                             newLP++;
@@ -409,10 +409,10 @@ int main()
                                 lspObj.makeLSP(pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                                 lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
                                 
-                                lspPathDetails[id][0].push_back(pathForLSP);
-                                lspPathDetails[id][0].push_back(wavesP);
-                                lspPathDetails[id][1].push_back(pathForLSP);
-                                lspPathDetails[id][1].push_back(wavesB);
+                                lspPathDetails[id][0][0] = pathForLSP;
+                                lspPathDetails[id][0][1] = wavesP;
+                                lspPathDetails[id][1][0] = pathForLSP;
+                                lspPathDetails[id][1][1] = wavesB;
 
                                 myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                                 newLPnoldLP++;
@@ -434,10 +434,10 @@ int main()
                             lspObj.makeLSP(pathForLSP, wholePathP, wavesP, waveLengthNetwork,"pLSP",id, protectionType, thresholdObj);
                             lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork,"bLSP",id, protectionType, thresholdObj);
                             
-                            lspPathDetails[id][0].push_back(pathForLSP);
-                            lspPathDetails[id][0].push_back(wavesP);
-                            lspPathDetails[id][1].push_back(pathForLSP);
-                            lspPathDetails[id][1].push_back(wavesB);
+                            lspPathDetails[id][0][0] = pathForLSP;
+                            lspPathDetails[id][0][1] = wavesP;
+                            lspPathDetails[id][1][0] = pathForLSP;
+                            lspPathDetails[id][1][1] = wavesB;
 
                             myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                             oldLP++;
@@ -459,16 +459,6 @@ int main()
 
             else if(!action)
             {
-                 myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
-                    + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
-<<<<<<< HEAD
-=======
-
-                vector<int> pathP = lspPathDetails[id][0][0];
-                vector<int> wavesP = lspPathDetails[id][0][1];
-                vector<int> pathB = lspPathDetails[id][1][0];
-                vector<int> wavesB = lspPathDetails[id][1][1];
->>>>>>> 739d4800997e0a5ad2e7747d031d913da2eccb27
 
                  vector<int> pathP = lspPathDetails[id][0][0];
                  vector<int> wavesP = lspPathDetails[id][0][1];
@@ -477,12 +467,15 @@ int main()
 
                 if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
                 {
-                    //lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    ///cout << "\nRejected lsp trying to release.";
                 }
                 else
                 {
-                    cout << "\nRejected lsp trying to release.";
+                    myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
+                        + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
                 }
 
                 
