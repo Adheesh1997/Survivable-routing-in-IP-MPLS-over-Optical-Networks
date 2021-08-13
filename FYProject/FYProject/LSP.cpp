@@ -11,7 +11,7 @@ class lightNode;                                //Classes declaration
 class lightpathNetwork;
 struct thresholds;
 
-void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
+void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
 	/*
 	* Parameters
@@ -23,7 +23,7 @@ void LSP::makeLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int
 		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
 	*/
 	int intLSPwavelength;
-	int LSPbandwidth = 10;
+	int LSPbandwidth = bandwidth;
 	
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
 	vector<int> positionVector;                 //Positions of the nodes in lightpaths vector
@@ -555,9 +555,9 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath--;// update LSP counter
 								obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.erase(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec.begin() + k);		//deleting of LSP happen here				
 								int long tempIdOfLP= obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-								cout << "\n\n  ---------------------------------------------\n";
-								cout << "LSP deleted" << endl;
-								cout << " ---------------------------------------------\n\n";
+								//cout << "\n\n  ---------------------------------------------\n";
+								//cout << "LSP deleted" << endl;
+								//cout << " ---------------------------------------------\n\n";
 								if (type == "pLSP") {
 									if (protectionType) {
 										float bandwithPecentage = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth / obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth;

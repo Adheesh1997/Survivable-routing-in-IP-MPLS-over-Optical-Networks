@@ -68,8 +68,8 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 10;                      //Erlang value
+    int numberOfLSPrequests = 100000;           //The number of LSP requests
+    double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
 
 
@@ -84,13 +84,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-   // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq2.txt", listOfEvents); 
+    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    myfile.wrteALSP("rqst_inputs/rq3.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq2.txt",listOfEvents);
+    /* vector<events> listOfEvents;
+    myfile.readLSPs("rqst_inputs/rq1.txt",listOfEvents); */
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -144,18 +144,19 @@ int main()
         vector<int> waveVecFortest;
 
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
+        //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
             
             int vexnum = numOfNodes;
             int source = listOfEvents[0].sourceNode;
             int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
-            int bandwidth = 1; //listOfEvents[0].bandwidth;
+            int bandwidth = listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
             
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
             bool isLSPestablish = false;            
-            /*for (int ww = 0; ww < rejectedEvents.size(); ww++)
+            /* for (int ww = 0; ww < rejectedEvents.size(); ww++)
             {
                 if (listOfEvents[0].identifier == rejectedEvents[ww])
                 {
@@ -166,7 +167,7 @@ int main()
                     itr2 = rejectedEvents.begin() + ww;
                     rejectedEvents.erase(itr2);
                 }
-            }*/
+            } */
 
 
             lspPathDetails[id][0].push_back(vector<int>{-1});
@@ -177,8 +178,8 @@ int main()
             if(action)
             {
                 totalCount++;
-                myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
-                                +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
+                /* myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
+                                +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action))); */
 
                 
 
@@ -211,19 +212,19 @@ int main()
                         vector<int> wholePathP = pathDetails.primaryShortPath;
                         vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                         vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                        lspObj.makeLSP(pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                        lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                         
                         vector<int> wholePathB = pathDetails.backUpShortPath;
                         vector<int> pathForBLSP = {pathDetails.backUpShortPath[0],pathDetails.backUpShortPath[pathDetails.backUpShortPath.size()-1]};
                         vector<int> wavesB = {pathDetails.wavelengthNoBP};
-                        lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                        lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
                         
                         lspPathDetails[id][0][0] = pathForPLSP;
                         lspPathDetails[id][0][1] = wavesP;
                         lspPathDetails[id][1][0] = pathForBLSP;
                         lspPathDetails[id][1][1] = wavesB;
 
-                        myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
+                        //myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
                         newLP++;
                     }
@@ -273,7 +274,7 @@ int main()
                             vector<int>wholePathP = pathDetails.primaryShortPath;
                             vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                             vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                            lspObj.makeLSP(pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                             
                             vector<int> wholePathB = createRemaingBackUpDeatils.w1ShortPathBP;
                             wholePathB.insert(wholePathB.end(), createRemaingBackUpDeatils.w2ShortPathBP.begin() + 1, createRemaingBackUpDeatils.w2ShortPathBP.end());
@@ -281,9 +282,9 @@ int main()
                             vector<int> pathForBLSP = {source, createRemaingBackUpDeatils.connectingNodeBP, destination};
                             vector<int> wavesB = {createRemaingBackUpDeatils.wavelengthNo1BP, createRemaingBackUpDeatils.wavelengthNo2BP};
 
-                            lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
 
-                            myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
+                            //myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
                             
                             lspPathDetails[id][0][0] = pathForPLSP;
                             lspPathDetails[id][0][1] = wavesP;
@@ -352,17 +353,17 @@ int main()
                             vector<int> pathForPLSP = {source, combineWavelengthDetails.connectingNodePP, destination};
                             vector<int> wavesP = {combineWavelengthDetails.wavelengthNo1PP, combineWavelengthDetails.wavelengthNo2PP};
 
-                            lspObj.makeLSP(pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
 
                             vector<int> wholePathB = combineWavelengthDetails.w1ShortPathBP;
                             wholePathB.insert(wholePathB.end(), combineWavelengthDetails.w2ShortPathBP.begin() + 1, combineWavelengthDetails.w2ShortPathBP.end());
                             vector<int> pathForBLSP = {source, combineWavelengthDetails.connectingNodeBP, destination};
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
-                            lspObj.makeLSP(pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
 
-                            myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
-                                            +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
+                            //myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
+                            //                +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
                             
                             lspPathDetails[id][0][0] = pathForPLSP;
                             lspPathDetails[id][0][1] = wavesP;
@@ -406,15 +407,15 @@ int main()
                                 vector<int> wavesP = {pathDetails.tempWavelengthNoPP};
                                 vector<int> wavesB = {backupWave[0]};
 
-                                lspObj.makeLSP(pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
-                                lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                                lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                                lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
                                 
                                 lspPathDetails[id][0][0] = pathForLSP;
                                 lspPathDetails[id][0][1] = wavesP;
                                 lspPathDetails[id][1][0] = pathForLSP;
                                 lspPathDetails[id][1][1] = wavesB;
 
-                                myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
+                                //myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                                 newLPnoldLP++;
                                 isLSPestablish = true;
                             }
@@ -431,15 +432,15 @@ int main()
                             vector<int> wavesP = {waveVector[0][0]};
                             vector<int> wavesB = {waveVector[1][0]};
 
-                            lspObj.makeLSP(pathForLSP, wholePathP, wavesP, waveLengthNetwork,"pLSP",id, protectionType, thresholdObj);
-                            lspObj.makeLSP(pathForLSP, wholePathB, wavesB, waveLengthNetwork,"bLSP",id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork,"pLSP",id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork,"bLSP",id, protectionType, thresholdObj);
                             
                             lspPathDetails[id][0][0] = pathForLSP;
                             lspPathDetails[id][0][1] = wavesP;
                             lspPathDetails[id][1][0] = pathForLSP;
                             lspPathDetails[id][1][1] = wavesB;
 
-                            myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
+                            //myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                             oldLP++;
                             isLSPestablish = true;
                         }
@@ -450,7 +451,7 @@ int main()
 
                     rejectedEvents.push_back(listOfEvents[0].identifier);
                     rejected++;
-                    myfile.writeLog("LSP is REJECTED.");
+                    //myfile.writeLog("LSP is REJECTED.");
                 }
                 
                 theCount++;
@@ -471,8 +472,8 @@ int main()
                 }
                 else
                 {
-                    myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
-                        + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+                    /* myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
+                        + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action))); */
 
                     lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
                     lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
@@ -492,15 +493,28 @@ int main()
         
 
         
-        
+           
         //waveLengthNetwork.viewAllLighpaths();
-        
+        myfile.writeLog("");
+        myfile.writeLog("*****************");
+        if(protectionType)
+        {
+            myfile.writeLog("Protection type = Bandwidth based");
+            myfile.writeLog("Threshold value = "+to_string(thresholdObj.bandwidthThreshold));
+        }
+        else
+        {
+            myfile.writeLog("Protection type = Number of LSP based");
+            myfile.writeLog("Threshold value = "+to_string(thresholdObj.numLSPthreshold));
+        }
+        myfile.writeLog("Erlang = "+to_string(erlang));
+        myfile.writeLog("Mean holding time = "+to_string(meanHoldingTime));
 
         myfile.writeLog("                 ");
         myfile.writeLog("****Counts****");
         myfile.writeLog("Num of lsp rqst = "+to_string(numberOfLSPrequests));
-        myfile.writeLog("new LP & old LP = "+to_string(newLPnoldLP));
-        myfile.writeLog("new LP = "+to_string(newLP));
+        //myfile.writeLog("New LP & old LP = "+to_string(newLPnoldLP));
+        //myfile.writeLog("New LP = "+to_string(newLP));
         myfile.writeLog("old LP = "+to_string(oldLP));
         myfile.writeLog("                 ");
         myfile.writeLog("**Num.of LSP established = "+to_string(newLPnoldLP+newLP+oldLP));

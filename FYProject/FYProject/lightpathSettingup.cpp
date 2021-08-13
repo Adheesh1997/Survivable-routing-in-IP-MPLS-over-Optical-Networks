@@ -478,7 +478,7 @@ void lightpathNetwork::setANewLSP(vector<int> shortestPathLSP, vector<int> whole
 		bool protectionType - Relevant protection scheme(Based on the bandwidth/Based on the # of LSPs)
 	*/
 	LSP Object;
-	Object.makeLSP(shortestPathLSP, wholePath, wavelengthVec, obj, type, identifier, protectionType, thresholdVals);
+	//Object.makeLSP(shortestPathLSP, wholePath, wavelengthVec, obj, type, identifier, protectionType, thresholdVals);
 }
 
 // Generate adajacency metrix from LP network

@@ -1,0 +1,13 @@
+[03:11:13] Log file is created
+[03:11:13] graph_inputs/05/graph05.csv Graph is imported.
+[03:11:13] Physical network is created.
+[03:11:13]                  
+[03:11:13] ****Counts****
+[03:11:13] Num of lsp rqst = 1000
+[03:11:13] new LP & old LP = 0
+[03:11:13] new LP = 0
+[03:11:13] old LP = 0
+[03:11:13]                  
+[03:11:13] **Num.of LSP established = 0
+[03:11:13] **Num.of LSP rejected = 0
+[03:11:13] **Total count = 0
