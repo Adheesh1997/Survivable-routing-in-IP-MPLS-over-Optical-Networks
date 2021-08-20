@@ -66,15 +66,20 @@ fiberLinkNetwork::fiberLinkNetwork(int n,int maxWave)
 
 
 //Connect all the nodes according to the adjacency metrix
-void fiberLinkNetwork::setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix)
+void fiberLinkNetwork::setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix, int numOfWaves)
 {
+    if(adjacencyMetrix.empty()|| numOfWaves <= 0)
+    {
+        cout<<"Err! Graph.cpp fiberLinkNetwork::setupFiberLinkNetwork\n";
+        return;
+    }
     for(int i=0;i<numOfNodes;i++) 
     {
         for(int j=0;j<numOfNodes;j++)
         {
             if(adjacencyMetrix[i][j]) //If value is not zero then new link will added to the relevant node
             {
-                nodes[i].addLinks(&nodes[j],maxWaveLengths,40);
+                nodes[i].addLinks(&nodes[j],maxWaveLengths,numOfWaves);
             }
         }
     }
@@ -113,19 +118,8 @@ int waveLengthNetworks::getID()
     return waveLengthId;
 }
 
-void waveLengthNetworks::removeLink(int src, int dst)
-{
-    /*
-    Parameter_
-        src - Source node connected to link
-        dst - Destinationo node connected to link
-    */
-   /* cout<<"\n Source : "<<src<<", Dst : "<<dst<<endl;
-    waveAdjacancyMatrix[src][dst] = 0; */
-    
-}
 
-void waveLengthNetworks::removeLinks(int src, int dst)
+void waveLengthNetworks::removeLink(int src, int dst)
 {
     /*
     Parameter_
@@ -162,6 +156,8 @@ void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
     }
     waveAdjacancyMatrix[src][dst] = bandwidth;
     waveAdjacancyMatrix[dst][src] = bandwidth;
+
+    cout<<"\nLink established : "<<src<<" "<<dst<<endl;
 }
 
 /************* end of waveLengthNetworks *******************/

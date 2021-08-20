@@ -48,7 +48,7 @@ public:
     fiberLinkNetwork(int n, int maxWavelegths);
 
     //Function that build graph using adjacency matrix
-    void setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix);
+    void setupFiberLinkNetwork(vector<vector<int>> &adjacencyMetrix, int numOfWaves);
 
     void printGraph();
 
@@ -59,7 +59,7 @@ class waveLengthNetworks
 {
 private:
     int waveLengthId;
-
+    int numOfWaves;
 public:
     vector<vector<int>> waveAdjacancyMatrix;
     waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID);
@@ -67,7 +67,7 @@ public:
     int getID();
 
     //To remove a link from adjacency matrix
-    void removeLinks(int src, int dst);
+    //void removeLinks(int src, int dst);
     void removeLink(int src, int dst);
 
     //Add a new link to adjacency matrix
