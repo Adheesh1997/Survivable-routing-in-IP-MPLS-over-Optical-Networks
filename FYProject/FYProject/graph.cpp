@@ -14,7 +14,7 @@ node::node(int i) //Constructor take id and assing to variable
 }
 
 
-void node::addLinks(node* address, int bandwith, int numOfLightpaths )
+void node::addLinks(node* address, int bandwith, int numOfWaves)
 {
     /* 
     Parameters_
@@ -24,7 +24,7 @@ void node::addLinks(node* address, int bandwith, int numOfLightpaths )
     link templink;
     templink.address = address;
     templink.bandwith = bandwith;
-    templink.numOfLightpaths = numOfLightpaths;
+    templink.numOfWaves = numOfWaves;
     
     links.push_back(templink);
 
@@ -102,13 +102,14 @@ void fiberLinkNetwork::printGraph()
 
 //***************** Begining of wave length network Class ******************/
 
-waveLengthNetworks::waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID)
+waveLengthNetworks::waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID,int waves)
 {
     /* 
     Parameter_
         initAdjacencyMatrix - Initial adjacency matrix that taken from CSV file,
         waveID - wave length number that this network represent
     */
+    numOfWaves = waves;
     waveAdjacancyMatrix = initAdjacencyMatrix;
     waveLengthId = waveID;
 }
@@ -127,12 +128,12 @@ void waveLengthNetworks::removeLink(int src, int dst)
         dst - Destinationo node connected to link
     */
    //cout<<"\n Source : "<<src<<", Dst : "<<dst<<endl;
-   if(src > 13)
+   if(src >= numOfWaves)
     {
         cout<<"\nErr! src out of the range in removeLink graph.cpp\n";
         return;
     }
-    if(dst > 13)
+    if(dst >= numOfWaves)
     {
         cout<<"\nErr! dst out of the range in removeLink graph.cpp\n";
         return;
@@ -144,12 +145,12 @@ void waveLengthNetworks::removeLink(int src, int dst)
 
 void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
 {
-    if(src > 13)
+    if(src >= numOfWaves)
     {
         cout<<"\nErr! src out of the range in addLInk graph.cpp\n";
         return;
     }
-    if(dst > 13)
+    if(dst >= numOfWaves)
     {
         cout<<"\nErr! dst out of the range in addLInk graph.cpp\n";
         return;
@@ -164,13 +165,17 @@ void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
 
 
 // Seturp networks for different wavelengths
-vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int maxWaveLengths)
+vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int numOfWaves)
 {
+    if(initAdjacencyMatrix.empty() || numOfWaves <= 0)
+    {
+        cerr<<"\nErr! graph.cpp vector<waveLengthNetworks> setupWaveLengthNetworks. ";
+    }
     vector<waveLengthNetworks> temp;
 
-    for(int i =  0 ; i < maxWaveLengths ; i++)
+    for(int i =  0 ; i < numOfWaves ; i++)
     {
-        waveLengthNetworks tempNetwork(initAdjacencyMatrix,i);
+        waveLengthNetworks tempNetwork(initAdjacencyMatrix,i,numOfWaves);
         temp.push_back(tempNetwork);
     }
 

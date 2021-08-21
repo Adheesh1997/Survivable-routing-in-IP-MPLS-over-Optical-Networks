@@ -19,7 +19,7 @@ private:
     {
         node* address;  //Address of the other node that connected to link
         int bandwith;  //Maximum bandwith of the link
-        int numOfLightpaths; //Maximum light-path that can be created within this link
+        int numOfWaves; //Maximum light-path that can be created within this link
     };
 
     vector<link> links; //Vector of link (size = numOfLinks)
@@ -28,7 +28,7 @@ public:
     node(int i); //Constructor take id and assing to variable
     
     //To add new link to the node this should call
-    void addLinks(node* address, int bandwith, int numOfLightpaths);
+    void addLinks(node* address, int bandwith, int numOfWaves);
 
     int getId();
 
@@ -60,9 +60,10 @@ class waveLengthNetworks
 private:
     int waveLengthId;
     int numOfWaves;
+    int numOfNodes;
 public:
     vector<vector<int>> waveAdjacancyMatrix;
-    waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID);
+    waveLengthNetworks(vector<vector<int>> initAdjacencyMatrix, int waveID,int waves);
 
     int getID();
 

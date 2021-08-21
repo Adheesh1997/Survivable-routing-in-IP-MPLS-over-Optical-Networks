@@ -134,8 +134,7 @@ public:
 	vector<vector<int>> getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize = 14);
 	vector<int> getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath);
 
-	map<int, vector<vector<int>>> mapFromsource(int src, int numOfNodes, int bandwidth);
-	map<int, vector<vector<int>>> mapFromdst(int dst, int numOfNodes);
+	map<int, vector<vector<int>>> mapFromsource(int src, int numOfNodes, int bandwidth, int numOfWaves);
 
 	map<int, map<int, vector<vector<int>>>> mapFromLpGraph(int numOfWaves, int numOfNodes, int bandwidth);
 

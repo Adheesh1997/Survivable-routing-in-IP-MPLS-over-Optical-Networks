@@ -59,7 +59,7 @@ int main()
     int numberOfLSPrequests = 100;           //The number of LSP requests
     double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 40;
+    int numOfWaves = 16;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
@@ -211,8 +211,8 @@ int main()
                         newLP++;
                     }
 
-                    map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, bandwidth);
-                    map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(destination,numOfNodes, bandwidth);
+                    map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, bandwidth,numOfWaves);
+                    map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(destination,numOfNodes, bandwidth,numOfWaves);
 
 
                     //If LP can not creat for primary path
@@ -223,7 +223,7 @@ int main()
                         if(createRemaingBackUpDeatils.canCreatCombinationBP)
                         {
                             
-                            if(createRemaingBackUpDeatils.wavelengthNo1BP < 40)
+                            if(createRemaingBackUpDeatils.wavelengthNo1BP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w1ShortPathBP,createRemaingBackUpDeatils.wavelengthNo1BP,"pp", LPids[0]);
@@ -231,10 +231,10 @@ int main()
                             }
                             else
                             {
-                                createRemaingBackUpDeatils.wavelengthNo1BP -= 40;
+                                createRemaingBackUpDeatils.wavelengthNo1BP -= numOfWaves;
                             }
 
-                            if(createRemaingBackUpDeatils.wavelengthNo2BP < 40)
+                            if(createRemaingBackUpDeatils.wavelengthNo2BP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w2ShortPathBP,createRemaingBackUpDeatils.wavelengthNo2BP,"pp", LPids[0]);
@@ -243,7 +243,7 @@ int main()
                             }
                             else
                             {
-                                createRemaingBackUpDeatils.wavelengthNo2BP -=40;
+                                createRemaingBackUpDeatils.wavelengthNo2BP -= numOfWaves;
                             }
                             checkWhetherLPidfinished(LPids, countForLPids);
                             waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
@@ -281,7 +281,7 @@ int main()
                         
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
                         {
-                            if (combineWavelengthDetails.wavelengthNo1PP < 40)
+                            if (combineWavelengthDetails.wavelengthNo1PP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.wavelengthNo1PP, "pp", LPids[0]);
@@ -289,9 +289,9 @@ int main()
 
                             }
                             
-                            else combineWavelengthDetails.wavelengthNo1PP -= 40;
+                            else combineWavelengthDetails.wavelengthNo1PP -= numOfWaves;
 
-                            if (combineWavelengthDetails.wavelengthNo2PP < 40)
+                            if (combineWavelengthDetails.wavelengthNo2PP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathPP, combineWavelengthDetails.wavelengthNo2PP, "pp", LPids[0]);
@@ -299,10 +299,10 @@ int main()
 
                             }
 
-                            else combineWavelengthDetails.wavelengthNo2PP -= 40;
+                            else combineWavelengthDetails.wavelengthNo2PP -= numOfWaves;
 
 
-                            if (combineWavelengthDetails.wavelengthNo1BP < 40)
+                            if (combineWavelengthDetails.wavelengthNo1BP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.wavelengthNo1BP, "pp", LPids[0]);
@@ -310,9 +310,9 @@ int main()
 
                             }
                             
-                            else combineWavelengthDetails.wavelengthNo1BP -= 40;
+                            else combineWavelengthDetails.wavelengthNo1BP -= numOfWaves;
 
-                            if (combineWavelengthDetails.wavelengthNo2BP < 40)
+                            if (combineWavelengthDetails.wavelengthNo2BP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathBP, combineWavelengthDetails.wavelengthNo2BP, "pp", LPids[0]);
@@ -320,7 +320,7 @@ int main()
 
                             }
                             
-                            else combineWavelengthDetails.wavelengthNo2BP -= 40;
+                            else combineWavelengthDetails.wavelengthNo2BP -= numOfWaves;
 
                             vector<int> wholePathP = combineWavelengthDetails.w1ShortPathPP;
                             wholePathP.insert(wholePathP.end(), combineWavelengthDetails.w2ShortPathPP.begin() + 1, combineWavelengthDetails.w2ShortPathPP.end());

@@ -285,6 +285,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>& wav
         graph.Dijkstra(source);
         fromSource[start] = graph.conditionAppling(); // first Shortest path
     }
+    
     fromSource.insert(FS.begin(), FS.end());
 
     //for (int start = 0; start != fromSource.size(); start++) {
@@ -324,8 +325,9 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>& wav
         int w2BP;
         int intNode;
         minumuVal = 10000;
-        for (int startsourse = 0; startsourse != fromSource.size(); startsourse++) {
-            for (int startdesti = 0; startdesti != fromSource.size(); startdesti++) {
+        int xxx = fromSource.size();
+        for (int startsourse = 0; startsourse < fromSource.size(); startsourse++) {
+            for (int startdesti = 0; startdesti < fromSource.size(); startdesti++) {
                 for (int i = 0; i < vexnum; i++) {
                     if (fromSource[startsourse][i][0] == 1 && fromDestination[startdesti][i][0] == 1) {
 
@@ -362,7 +364,8 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>& wav
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-            if (w1BP < 40) {
+            if (w1BP < waveLengthNetwork.size()) 
+            {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
@@ -372,7 +375,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>& wav
                 fromSource[w1BP][intNode].clear();
                 fromSource[w1BP][intNode].push_back(0);
             }
-            if (w2BP < 40) {
+            if (w2BP < waveLengthNetwork.size()) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
@@ -463,7 +466,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
         fromDestination[destinationwavelength][intermediateNode].erase(fromDestination[destinationwavelength][intermediateNode].begin());
         fromSource[sourceWavelegth][intermediateNode].erase(fromSource[sourceWavelegth][intermediateNode].begin());
         reverse(fromDestination[destinationwavelength][intermediateNode].begin(), fromDestination[destinationwavelength][intermediateNode].end());
-        if (sourceWavelegth < 40) {
+        if (sourceWavelegth < waveLengthNetwork.size()) {
             for (auto j = 0; j < fromSource[sourceWavelegth][intermediateNode].size() - 1; j++)
             {
                 waveLengthNetwork[sourceWavelegth].removeLink(fromSource[sourceWavelegth][intermediateNode][j], fromSource[sourceWavelegth][intermediateNode][j + 1]);
@@ -473,7 +476,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
             fromSource[sourceWavelegth][intermediateNode].clear();
             fromSource[sourceWavelegth][intermediateNode].push_back(0);
         }
-        if (destinationwavelength < 40) {
+        if (destinationwavelength < waveLengthNetwork.size()) {
             for (auto j = 0; j < fromDestination[destinationwavelength][intermediateNode].size() - 1; j++)
             {
                 waveLengthNetwork[destinationwavelength].removeLink(fromDestination[destinationwavelength][intermediateNode][j], fromDestination[destinationwavelength][intermediateNode][j + 1]);
@@ -496,14 +499,14 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
         PPS.pop_back();
         PPD.insert(PPD.begin(), PPS.begin(), PPS.end());
 
-        if(sourceWavelegth < 40)
+        if(sourceWavelegth < waveLengthNetwork.size())
         {
             Graph_DG graph(vexnum, waveLengthNetwork[sourceWavelegth].waveAdjacancyMatrix);//graph.print();
             graph.Dijkstra(source);
             fromSource[sourceWavelegth] = graph.conditionAppling();
         }
         
-        if(destinationwavelength < 40)
+        if(destinationwavelength < waveLengthNetwork.size())
         {
             Graph_DG graph1(vexnum, waveLengthNetwork[destinationwavelength].waveAdjacancyMatrix);//graph.print();
             graph1.Dijkstra(destination);
@@ -555,7 +558,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-            if (sourceWavelegth < 40) {
+            if (sourceWavelegth < waveLengthNetwork.size()) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
@@ -565,7 +568,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
                 fromSource[w1BP][intNode].clear();
                 fromSource[w1BP][intNode].push_back(0);
             }
-            if (destinationwavelength < 40) {
+            if (destinationwavelength < waveLengthNetwork.size()) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);

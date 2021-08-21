@@ -55,12 +55,7 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
 
             while(getline(line,num,',')) //Separate values from line and copy to num
             {
-                //temp.push_back(stoi(num)); //Convert num into integer and store in temprory vector 
-                if(stoi(num))
-                {
-                    temp.push_back(numOfWaves);
-                }
-                else temp.push_back(0);
+                temp.push_back(stoi(num)); //Convert num into integer and store in temprory vector                 
             }
 
             adjacencyMetrix.push_back(temp); //Push temprary vector that contain a row of adjacency metrix to final vector
