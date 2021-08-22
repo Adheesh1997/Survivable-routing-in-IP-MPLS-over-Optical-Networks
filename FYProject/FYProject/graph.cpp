@@ -157,7 +157,7 @@ void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
     waveAdjacancyMatrix[src][dst] = bandwidth;
     waveAdjacancyMatrix[dst][src] = bandwidth;
 
-    cout<<"\nLink established : "<<src<<" "<<dst<<endl;
+    
 }
 
 /************* end of waveLengthNetworks *******************/

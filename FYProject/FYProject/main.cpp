@@ -56,8 +56,8 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
-    double erlang = 130;                      //Erlang value
+    int numberOfLSPrequests = 10;           //The number of LSP requests
+    double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
 
@@ -73,12 +73,12 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq3.txt", listOfEvents); 
+    myfile.wrteALSP("rqst_inputs/rq4.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    /* vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq1.txt",listOfEvents); */
+     /*vector<events> listOfEvents;
+    myfile.readLSPs("rqst_inputs/rq3.txt",listOfEvents); */
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -430,12 +430,10 @@ int main()
 
             else if(!action)
             {
-<<<<<<< HEAD
+
                  myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
                     + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
 
-=======
->>>>>>> 642d421555210a35a24d2e6e9c85dfcf395fd1c7
 
                  vector<int> pathP = lspPathDetails[id][0][0];
                  vector<int> wavesP = lspPathDetails[id][0][1];
@@ -444,12 +442,8 @@ int main()
 
                 if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
                 {
-<<<<<<< HEAD
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
-=======
-                    ///cout << "\nRejected lsp trying to release.";
->>>>>>> 642d421555210a35a24d2e6e9c85dfcf395fd1c7
+
+
                 }
                 else
                 {
@@ -470,7 +464,9 @@ int main()
             
         } 
 
-        
+        waveLengthNetwork.viewAllLighpaths();
+        cout << "\n\n\n";
+        lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
         
            
@@ -503,6 +499,7 @@ int main()
         myfile.writeLog("**Total count = "+to_string(totalCount));
 
     }
+
 
    
     cout << "\nPress ENTER to exit\n";
