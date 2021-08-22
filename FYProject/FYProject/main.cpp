@@ -56,10 +56,10 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 5;           //The number of LSP requests
     double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 16;
+    int numOfWaves = 40;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
@@ -72,13 +72,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq3.txt", listOfEvents); 
+    /* vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); */
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    /* vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq1.txt",listOfEvents); */
+    vector<events> listOfEvents;
+    myfile.readLSPs("rqst_inputs/rq.txt",listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -132,6 +132,9 @@ int main()
         vector<int> pPathFortest;
         vector<int> bPathFortest;
         vector<int> waveVecFortest;
+
+        cout<<"Before\n";
+        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
@@ -252,7 +255,6 @@ int main()
                             vector<int>wholePathP = pathDetails.primaryShortPath;
                             vector<int> pathForPLSP = {pathDetails.primaryShortPath[0],pathDetails.primaryShortPath[pathDetails.primaryShortPath.size()-1]};
                             vector<int> wavesP = {pathDetails.wavelengthNoPP};
-                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                             
                             vector<int> wholePathB = createRemaingBackUpDeatils.w1ShortPathBP;
                             wholePathB.insert(wholePathB.end(), createRemaingBackUpDeatils.w2ShortPathBP.begin() + 1, createRemaingBackUpDeatils.w2ShortPathBP.end());
@@ -261,6 +263,7 @@ int main()
                             vector<int> wavesB = {createRemaingBackUpDeatils.wavelengthNo1BP, createRemaingBackUpDeatils.wavelengthNo2BP};
 
                             lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
 
                             myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
                             
@@ -459,7 +462,8 @@ int main()
             
         } 
 
-        
+        cout<<"After\n";
+        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
         
            
@@ -493,7 +497,7 @@ int main()
 
     }
 
-   
+  
     cout << "\nPress ENTER to exit\n";
 	cin.get();
     return 0;
