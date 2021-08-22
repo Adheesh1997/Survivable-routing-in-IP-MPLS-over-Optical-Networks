@@ -1,0 +1,22 @@
+[18:11:16] Log file is created
+[18:11:16] graph_inputs/05/graph05.csv Graph is imported.
+[18:11:16] Physical network is created.
+[18:11:16] New request. Bandwidth = 10,source = 1, Dst = 5, id = 0, request = 1
+[18:11:16] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [0,0]
+[18:11:16] New release. Bandwidth = 10,source = 1, Dst = 5, id = 0, Release = 0
+[18:11:16] 
+[18:11:16] *****************
+[18:11:16] Protection type = Number of LSP based
+[18:11:16] Threshold value = 1
+[18:11:16] Erlang = 130.000000
+[18:11:16] Mean holding time = 1.000000
+[18:11:16]                  
+[18:11:16] ****Counts****
+[18:11:16] Num of lsp rqst = 1
+[18:11:16] New LP & old LP = 0
+[18:11:16] New LP = 1
+[18:11:16] old LP = 0
+[18:11:16]                  
+[18:11:16] **Num.of LSP established = 1
+[18:11:16] **Num.of LSP rejected = 0
+[18:11:16] **Total count = 1

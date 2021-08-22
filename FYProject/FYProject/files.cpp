@@ -19,7 +19,7 @@ files::files()
         logFile<<currentTime()<<" "<<"Log file is created\n";
 }
 
-bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation)
+bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation, int numOfWaves)
 {
     /*
     Parameters_
@@ -55,7 +55,12 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
 
             while(getline(line,num,',')) //Separate values from line and copy to num
             {
-                temp.push_back(stoi(num)); //Convert num into integer and store in temprory vector 
+                //temp.push_back(stoi(num)); //Convert num into integer and store in temprory vector 
+                if(stoi(num))
+                {
+                    temp.push_back(numOfWaves);
+                }
+                else temp.push_back(0);
             }
 
             adjacencyMetrix.push_back(temp); //Push temprary vector that contain a row of adjacency metrix to final vector
@@ -67,7 +72,7 @@ bool files::readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMe
 
     else    // If file does not open output error message and return from the function
     {
-        cout<<"Graph input file failed to open!!!"<<endl;
+        cout<<"Err! Graph input file failed to open!!!"<<endl;
         return false;
     }
 }

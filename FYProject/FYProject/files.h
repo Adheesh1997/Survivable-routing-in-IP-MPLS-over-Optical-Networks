@@ -23,7 +23,7 @@ private:
 public:
     files();
 
-    bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation);
+    bool readGraphInputFile(int& numOfNodes, vector<vector<int>>& adjacencyMetrix,string fileLocation, int numOfWaves);
     void writeLog(string message);
     void wrteALSP(string fileLocation, vector<events>& listOfEvents);
     void readLSPs(string fileLocation, vector<events>& listOfEvents);
