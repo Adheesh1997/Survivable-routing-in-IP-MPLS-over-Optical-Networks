@@ -72,7 +72,7 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+   // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
     //myfile.wrteALSP("rqst_inputs/rq4.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
@@ -450,8 +450,9 @@ int main()
                     myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
                         + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
 
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP");
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP");
                 }
 
             }
