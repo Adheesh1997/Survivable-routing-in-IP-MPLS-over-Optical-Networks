@@ -917,40 +917,45 @@ int lightNode::verifyDestinationNode(int node2)
 	}
 }
 
-void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength, vector<waveLengthNetworks>& waveLengthNetwork) {
-	for (int i = 0; i < linkVector.size(); i++) {
+void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength, vector<waveLengthNetworks>& waveLengthNetwork, int LinkID) {
+	//for (int i = 0; i < linkVector.size(); i++) {
 		//int sourceID =
-		if (linkVector[i].destinationID == destination) {
-			for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
-				if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
-					if (linkVector[i].wavelengthAndLSP[j].availableBandwidth == linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
+		//if (linkVector[i].destinationID == lighpaths[destination].id) {
+			for (int j = 0; j < linkVector[LinkID].wavelengthAndLSP.size(); j++) {
+				//cout << "identifier :: " << LPidentifier << endl;
+				//cout << "linkVector[i].wavelengthAndLSP[j].LPidentifier : " << linkVector[LinkID].wavelengthAndLSP[j].LPidentifier<<endl;
+				if (linkVector[LinkID].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
+					//cout << "available bandwidht: " << linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth << endl;
+					//cout << "initial Bandwidth : linkVector[i].wavelengthAndLSP[j].initialBandwidth" << endl;
+					if (linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth == linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth) {
 						//lighpaths.erase(lighpaths.begin() + i);
-						if (linkVector[i].wavelengthAndLSP[j].lightpathType == "bp") {//check the string
+						if (linkVector[LinkID].wavelengthAndLSP[j].lightpathType == "bp") {//check the string
 								//linkVector[i].wavelengthAndLSP[j].havingBackup ==
-							long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
+							long int tempID = linkVector[LinkID].wavelengthAndLSP[j].LPidentifier;
 							for (int m = 0; m < linkVector.size(); m++) {
 								for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
 									if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID && linkVector[m].wavelengthAndLSP[n].havingBackup == true && linkVector[m].wavelengthAndLSP[n].lightpathType == "pp") {
 										linkVector[m].wavelengthAndLSP[n].havingBackup == false;
-
 									}
 								}
 							}
+							linkVector[LinkID].wavelengthAndLSP.erase(linkVector[LinkID].wavelengthAndLSP.begin() + j);
 						}
-						else if(linkVector[i].wavelengthAndLSP[j].lightpathType == "pp") {
-							if (linkVector[i].wavelengthAndLSP[j].havingBackup) {
-								long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
+						else if(linkVector[LinkID].wavelengthAndLSP[j].lightpathType == "pp") {
+							if (linkVector[LinkID].wavelengthAndLSP[j].havingBackup) {
+								long int tempID = linkVector[LinkID].wavelengthAndLSP[j].LPidentifier;
 								for (int m = 0; m < linkVector.size(); m++) {
 									for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
 										if (linkVector[m].wavelengthAndLSP[n].LPidentifier == tempID &&  linkVector[m].wavelengthAndLSP[n].lightpathType == "bp") {
-											linkVector.erase(linkVector.begin() + m);
+											linkVector[m].wavelengthAndLSP.erase(linkVector[m].wavelengthAndLSP.begin() + n);
 										}
 									}
 								}
+
 							}
-							else {
-								linkVector.erase(linkVector.begin() + i);
-							}
+							
+							linkVector[LinkID].wavelengthAndLSP.erase(linkVector[LinkID].wavelengthAndLSP.begin() + j);
+							
 						}
 																	
 						waveLengthNetwork[wavelength].addLInk(source, destination);
@@ -961,8 +966,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 					}
 				}		
 			}
-		}
-	}
+		//}}
 }
 
 
@@ -1010,32 +1014,37 @@ void lightpathNetwork::releaseEshtablishedLighpath( int source, int destination,
 }*/
 
 void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,long int LightPathIdentifier, int wavelenght) {
+	//for (int i = 0; i < lighpaths.size(); i++) {
 
-	for (int i = 0; i < lighpaths.size(); i++) {
-		if (lighpaths[i].id == source) {
-			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
-				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
-					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
+		//cout << "lighpaths[i].id : " << lighpaths[i].id << endl;
+		//if (lighpaths[i].id == ligthpaths[source].id) {
+			
+			for (int j = 0; j < lighpaths[source].linkVector.size(); j++) {
+				for (int k = 0; k < lighpaths[source].linkVector[j].wavelengthAndLSP.size(); k++) {
+					
+					if (lighpaths[source].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
+
+						lighpaths[source].deleteLpLink(LightPathIdentifier, lighpaths[source].id, lighpaths[destination].id, wavelenght, waveLengthNetwork, j);
 						//lighpaths.erase(lighpaths.begin() + i);
 						break;
 					}
 				}
 			}
-		}
-		if (lighpaths[i].id == destination) {
-			for (int j = 0; j < lighpaths[i].linkVector.size(); j++) {
-				for (int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++) {
-					if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
-						lighpaths[i].deleteLpLink(LightPathIdentifier, source, destination, wavelenght, waveLengthNetwork);
+		//}
+		//if (lighpaths[i].id == destination) {
+			for (int j = 0; j < lighpaths[destination].linkVector.size(); j++) {
+				for (int k = 0; k < lighpaths[destination].linkVector[j].wavelengthAndLSP.size(); k++) {
+					if (lighpaths[destination].linkVector[j].wavelengthAndLSP[k].LPidentifier == LightPathIdentifier) {
+
+						lighpaths[destination].deleteLpLink(LightPathIdentifier, lighpaths[destination].id, lighpaths[source].id, wavelenght, waveLengthNetwork , j);
 						//lighpaths.erase(lighpaths.begin() + i);
 						totalnumOfLighpaths = totalnumOfLighpaths - 1;
 						break;
 					}
 				}
 			}
-		}
+		//}
 
-	}
+	//}
 
 }
