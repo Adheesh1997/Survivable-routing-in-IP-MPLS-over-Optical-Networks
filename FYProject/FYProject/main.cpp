@@ -56,8 +56,8 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 5;           //The number of LSP requests
-    double erlang = 130;                      //Erlang value
+    int numberOfLSPrequests = 10;           //The number of LSP requests
+    double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
 
@@ -434,6 +434,10 @@ int main()
             else if(!action)
             {
 
+                 myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
+                    + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+
+
                  vector<int> pathP = lspPathDetails[id][0][0];
                  vector<int> wavesP = lspPathDetails[id][0][1];
                  vector<int> pathB = lspPathDetails[id][1][0];
@@ -441,7 +445,8 @@ int main()
 
                 if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
                 {
-                    ///cout << "\nRejected lsp trying to release.";
+
+
                 }
                 else
                 {
@@ -497,7 +502,8 @@ int main()
 
     }
 
-  
+
+   
     cout << "\nPress ENTER to exit\n";
 	cin.get();
     return 0;

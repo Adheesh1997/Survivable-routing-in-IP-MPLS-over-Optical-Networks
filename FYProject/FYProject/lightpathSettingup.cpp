@@ -862,14 +862,13 @@ int lightNode::verifyDestinationNode(int node2)
 
 void lightNode::deleteLpLink(long int LPidentifier, int source, int destination, int wavelength, vector<waveLengthNetworks>& waveLengthNetwork) {
 	for (int i = 0; i < linkVector.size(); i++) {
-		//int sourceID =
 		if (linkVector[i].destinationID == destination) {
 			for (int j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++) {
+				cout<<"linkVector[i].wavelengthAndLSP[j].LPidentifier : "<<linkVector[i].wavelengthAndLSP[j].LPidentifier<<endl;
+				cout<<"LPidentifier : "<<LPidentifier<<endl;
 				if (linkVector[i].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
 					if (linkVector[i].wavelengthAndLSP[j].availableBandwidth == linkVector[i].wavelengthAndLSP[j].initialBandwidth) {
-						//lighpaths.erase(lighpaths.begin() + i);
 						if (linkVector[i].wavelengthAndLSP[j].lightpathType == "bp") {//check the string
-								//linkVector[i].wavelengthAndLSP[j].havingBackup ==
 							long int tempID = linkVector[i].wavelengthAndLSP[j].LPidentifier;
 							for (int m = 0; m < linkVector.size(); m++) {
 								for (int n = 0; n < linkVector[m].wavelengthAndLSP.size(); n++) {
@@ -895,7 +894,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 								linkVector.erase(linkVector.begin() + i);
 							}
 						}
-																	
+						cout<<"lightpathSettingup.cpp line:898 \n";											
 						waveLengthNetwork[wavelength].addLInk(source, destination);
 						break;
 					}

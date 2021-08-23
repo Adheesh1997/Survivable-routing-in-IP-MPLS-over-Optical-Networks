@@ -1,0 +1,40 @@
+[16:03:21] Log file is created
+[16:03:21] graph_inputs/05/graph05.csv Graph is imported.
+[16:03:21] Physical network is created.
+[16:03:21] New request. Bandwidth = 10,source = 10, Dst = 1, id = 0, request = 1
+[16:03:21] New lsp established with new single LP. [0] [0]
+[16:03:21] New request. Bandwidth = 10,source = 13, Dst = 4, id = 1, request = 1
+[16:03:21] New lsp established with new single LP. [0] [1]
+[16:03:21] New request. Bandwidth = 10,source = 12, Dst = 6, id = 2, request = 1
+[16:03:21] New lsp established with new single LP. [1] [1]
+[16:03:21] New request. Bandwidth = 10,source = 1, Dst = 0, id = 3, request = 1
+[16:03:21] New lsp established with new single LP. [1] [0]
+[16:03:22] New request. Bandwidth = 10,source = 4, Dst = 11, id = 4, request = 1
+[16:03:22] New lsp established with new single LP. [2] [2]
+[16:03:22] New release. Bandwidth = 10,source = 1, Dst = 0, id = 3, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 1, Dst = 0, id = 3, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 12, Dst = 6, id = 2, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 12, Dst = 6, id = 2, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 10, Dst = 1, id = 0, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 10, Dst = 1, id = 0, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 13, Dst = 4, id = 1, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 13, Dst = 4, id = 1, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 4, Dst = 11, id = 4, Release = 0
+[16:03:22] New release. Bandwidth = 10,source = 4, Dst = 11, id = 4, Release = 0
+[16:03:22] 
+[16:03:22] *****************
+[16:03:22] Protection type = Number of LSP based
+[16:03:22] Threshold value = 1
+[16:03:22] Erlang = 200.000000
+[16:03:22] Mean holding time = 1.000000
+[16:03:22] Num.of wave lengths per fiber = 40
+[16:03:22]                  
+[16:03:22] ****Counts****
+[16:03:22] Num.of lsp rqst = 10
+[16:03:22] New LP & old LP = 0
+[16:03:22] New LP = 5
+[16:03:22] old LP = 0
+[16:03:22]                  
+[16:03:22] **Num.of LSP established = 5
+[16:03:22] **Num.of LSP rejected = 0
+[16:03:22] **Total count = 5
