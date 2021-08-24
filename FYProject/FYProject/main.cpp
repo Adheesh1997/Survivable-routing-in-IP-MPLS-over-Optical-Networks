@@ -56,8 +56,8 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 1;           //The number of LSP requests
-    double erlang = 200;                      //Erlang value
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
+    double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
 
@@ -72,13 +72,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); 
+    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    /*vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq.txt",listOfEvents);*/
+    //vector<events> listOfEvents;
+    //myfile.readLSPs("rqst_inputs/rq.txt",listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -141,8 +141,8 @@ int main()
         {
             
             int vexnum = numOfNodes;
-            int source = 1;//listOfEvents[0].sourceNode;
-            int destination = 5; //listOfEvents[0].destinationNode;
+            int source = 9; // listOfEvents[0].sourceNode;
+            int destination = 12; // listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
@@ -478,8 +478,6 @@ int main()
                     lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType,"pLSP");
                     lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType,"bLSP");
 
-                    cout<<"\nID : "<<id<<" >> ";
-                    waveLengthNetwork.viewAllLighpaths();
                 }
 
             }
@@ -490,7 +488,10 @@ int main()
                 listOfEvents.erase(itr);
             }
             
-        }       
+        }
+
+        cout << "\nAll LPs\n";
+        waveLengthNetwork.viewAllLighpaths();
 
         cout << "main.cpp line:495 after\n";
         print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
