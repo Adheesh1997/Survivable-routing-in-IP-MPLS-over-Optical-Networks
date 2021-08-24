@@ -56,7 +56,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
@@ -72,7 +72,7 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-   // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
     //myfile.wrteALSP("rqst_inputs/rq4.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
