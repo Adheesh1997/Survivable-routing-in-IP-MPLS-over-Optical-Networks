@@ -119,6 +119,7 @@ void lightNode::viewLPlinks()
 		for (size_t j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++)
 		{
 			int pathSize = linkVector[i].wavelengthAndLSP[j].path.size();
+			cout << "LP type = " << linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
 			cout << "Wavelength = " << linkVector[i].wavelengthAndLSP[j].wavelength << endl;
 			for (size_t k = 0; k < (pathSize - 1); k++)
 				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";         //Print the path of the lightpath

@@ -56,7 +56,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10;           //The number of LSP requests
+    int numberOfLSPrequests = 100;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
@@ -466,6 +466,8 @@ int main()
         } 
 
        waveLengthNetwork.viewAllLighpaths();
+       cout << "\n\n\n";
+       cout << "------------------- LSP --------------------";
         cout << "\n\n\n";
         //lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
