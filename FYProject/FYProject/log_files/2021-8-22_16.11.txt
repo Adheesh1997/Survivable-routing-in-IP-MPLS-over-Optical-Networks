@@ -1,0 +1,24 @@
+[16:11:49] Log file is created
+[16:11:49] graph_inputs/05/graph05.csv Graph is imported.
+[16:11:49] Physical network is created.
+[16:11:49] New request. Bandwidth = 10,source = 4, Dst = 7, id = 0, request = 1
+[16:11:49] New lsp established with new single LP. [0] [0]
+[16:11:49] New release. Bandwidth = 10,source = 4, Dst = 7, id = 0, Release = 0
+[16:11:49] New release. Bandwidth = 10,source = 4, Dst = 7, id = 0, Release = 0
+[16:11:49] 
+[16:11:49] *****************
+[16:11:49] Protection type = Number of LSP based
+[16:11:49] Threshold value = 1
+[16:11:49] Erlang = 200.000000
+[16:11:49] Mean holding time = 1.000000
+[16:11:49] Num.of wave lengths per fiber = 40
+[16:11:49]                  
+[16:11:49] ****Counts****
+[16:11:49] Num.of lsp rqst = 1
+[16:11:49] New LP & old LP = 0
+[16:11:49] New LP = 1
+[16:11:49] old LP = 0
+[16:11:49]                  
+[16:11:49] **Num.of LSP established = 1
+[16:11:49] **Num.of LSP rejected = 0
+[16:11:49] **Total count = 1

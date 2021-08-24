@@ -1,0 +1,60 @@
+[21:21:42] Log file is created
+[21:21:42] graph_inputs/05/graph05.csv Graph is imported.
+[21:21:42] Physical network is created.
+[21:21:42] New request. Bandwidth = 10,source = 12, Dst = 13, id = 0, request = 1
+[21:21:42] New lsp established with new single LP. [0] [0]
+[21:21:42] New request. Bandwidth = 10,source = 7, Dst = 1, id = 1, request = 1
+[21:21:42] New lsp established with new single LP. [0] [0]
+[21:21:42] New request. Bandwidth = 10,source = 10, Dst = 0, id = 2, request = 1
+[21:21:42] New lsp established with new single LP. [1] [1]
+[21:21:42] New request. Bandwidth = 10,source = 1, Dst = 7, id = 3, request = 1
+[21:21:42] New lsp established with 2 old LPs. [0] [0]
+[21:21:42] New request. Bandwidth = 10,source = 11, Dst = 4, id = 4, request = 1
+[21:21:42] New lsp established with new single LP. [0] [1]
+[21:21:42] New request. Bandwidth = 10,source = 10, Dst = 9, id = 5, request = 1
+[21:21:42] New lsp established with new single LP. [1] [2]
+[21:21:42] New request. Bandwidth = 10,source = 11, Dst = 9, id = 6, request = 1
+[21:21:42] New lsp established with new single LP. [3] [2]
+[21:21:42] New request. Bandwidth = 10,source = 11, Dst = 2, id = 7, request = 1
+[21:21:42] New lsp established with new single LP. [3] [3]
+[21:21:42] New request. Bandwidth = 10,source = 6, Dst = 4, id = 8, request = 1
+[21:21:43] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [2,2]
+[21:21:43] New request. Bandwidth = 10,source = 10, Dst = 3, id = 9, request = 1
+[21:21:43] New lsp established with new single LP. [2] [3]
+[21:21:43] New release. Bandwidth = 10,source = 12, Dst = 13, id = 0, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 12, Dst = 13, id = 0, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 11, Dst = 2, id = 7, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 11, Dst = 2, id = 7, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 9, id = 5, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 9, id = 5, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 7, Dst = 1, id = 1, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 7, Dst = 1, id = 1, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 0, id = 2, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 0, id = 2, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 3, id = 9, Release = 0
+[21:21:43] New release. Bandwidth = 10,source = 10, Dst = 3, id = 9, Release = 0
+[21:21:44] New release. Bandwidth = 10,source = 6, Dst = 4, id = 8, Release = 0
+[21:21:44] New release. Bandwidth = 10,source = 6, Dst = 4, id = 8, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 11, Dst = 9, id = 6, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 11, Dst = 9, id = 6, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 11, Dst = 4, id = 4, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 11, Dst = 4, id = 4, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 1, Dst = 7, id = 3, Release = 0
+[21:21:46] New release. Bandwidth = 10,source = 1, Dst = 7, id = 3, Release = 0
+[21:21:46] 
+[21:21:46] *****************
+[21:21:46] Protection type = Number of LSP based
+[21:21:46] Threshold value = 1
+[21:21:46] Erlang = 200.000000
+[21:21:46] Mean holding time = 1.000000
+[21:21:46] Num.of wave lengths per fiber = 40
+[21:21:46]                  
+[21:21:46] ****Counts****
+[21:21:46] Num.of lsp rqst = 10
+[21:21:46] New LP & old LP = 0
+[21:21:46] New LP = 9
+[21:21:46] old LP = 1
+[21:21:46]                  
+[21:21:46] **Num.of LSP established = 10
+[21:21:46] **Num.of LSP rejected = 0
+[21:21:46] **Total count = 10

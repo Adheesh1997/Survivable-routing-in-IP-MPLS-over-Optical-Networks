@@ -469,7 +469,7 @@ int main()
        cout << "\n\n\n";
        cout << "------------------- LSP --------------------";
         cout << "\n\n\n";
-        //lspObj.viewLSPsInALightpath(waveLengthNetwork);
+        lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
         
            
