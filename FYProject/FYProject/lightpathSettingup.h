@@ -101,7 +101,7 @@ public:
 	/**********************************/
 	void checkDestinationAndWavelength(int, int);
 	int verifyDestinationNode(int);
-	void deleteLpLink(long int, int ,int, int, vector<waveLengthNetworks>&);		// this can be used to  remove item from wavelengthAndLSP vector
+	void deleteLpLink(long int, int ,int, int, vector<waveLengthNetworks>&, int);		// this can be used to  remove item from wavelengthAndLSP vector
 	~lightNode() {}
 };
 

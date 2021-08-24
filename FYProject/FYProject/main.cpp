@@ -56,7 +56,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10;           //The number of LSP requests
+    int numberOfLSPrequests = 2;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
@@ -72,8 +72,8 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    /* vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); */
+    // vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
@@ -133,16 +133,14 @@ int main()
         vector<int> bPathFortest;
         vector<int> waveVecFortest;
 
-        cout<<"Before\n";
-        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
             
             int vexnum = numOfNodes;
-            int source = listOfEvents[0].sourceNode;
-            int destination = listOfEvents[0].destinationNode;
+            int source = 1;//listOfEvents[0].sourceNode;
+            int destination = 5; //listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
@@ -169,7 +167,8 @@ int main()
             lspPathDetails[id][1].push_back(vector<int>{-1});
             
             if(action)
-            {                
+            {      
+                cout << "\nCreatein lsp : " << id << endl;
                 totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
@@ -208,6 +207,14 @@ int main()
                         lspPathDetails[id][0][1] = wavesP;
                         lspPathDetails[id][1][0] = pathForBLSP;
                         lspPathDetails[id][1][1] = wavesB;
+
+                        
+                        cout<<"\n\n**Paths from main Line: 211**\n";
+                        cout<<"primary : ";
+                        printVector(wholePathP);
+                        cout<<"\nBackup : ";
+                        printVector(wholePathB);
+                        cout<<endl<<endl;
 
                         myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
@@ -274,6 +281,13 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
+
+                            cout << "\n\n**Paths from main Line: 283**\n";
+                            cout << "primary : ";
+                            printVector(wholePathP);
+                            cout << "\nBackup : ";
+                            printVector(wholePathB);
+                            cout << endl << endl;
 
                         }
                     }
@@ -349,6 +363,13 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
+
+                            cout << "\n\n**Paths from main Line: 366**\n";
+                            cout << "primary : ";
+                            printVector(wholePathP);
+                            cout << "\nBackup : ";
+                            printVector(wholePathB);
+                            cout << endl << endl;
                         }
                     }
 
@@ -446,7 +467,6 @@ int main()
                 if (pathP[0] == -1 || wavesP[0] == -1 || pathB[0] == -1 || wavesB[0] == -1)
                 {
 
-
                 }
                 else
                 {
@@ -455,6 +475,9 @@ int main()
 
                     lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType);
                     lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+
+                    cout<<"\nID : "<<id<<" >> ";
+                    waveLengthNetwork.viewAllLighpaths();
                 }
 
             }
@@ -465,12 +488,7 @@ int main()
                 listOfEvents.erase(itr);
             }
             
-        } 
-
-        cout<<"After\n";
-        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-
-        
+        }         
            
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
