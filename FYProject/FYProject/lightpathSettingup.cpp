@@ -122,6 +122,7 @@ void lightNode::viewLPlinks()
 			cout << "LP type = " << linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
 			cout << "Initial BD : " << linkVector[i].wavelengthAndLSP[j].initialBandwidth << "\tAvailable BD : " << linkVector[i].wavelengthAndLSP[j].availableBandwidth << endl;
 			cout << "Wavelength = " << linkVector[i].wavelengthAndLSP[j].wavelength << endl;
+			cout << "IDentifier : " << linkVector[i].wavelengthAndLSP[j].LPidentifier << endl;
 			for (size_t k = 0; k < (pathSize - 1); k++)
 				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";         //Print the path of the lightpath
 			cout << linkVector[i].wavelengthAndLSP[j].path[pathSize - 1] << endl;
@@ -193,7 +194,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 	cout << endl;
 
 	int vecSize = shortestPath.size();
-	int bandwidth = 40;
+	int bandwidth = 10;
 
 	int check1 = checkForAvaialableLPNode(shortestPath[0]);            //Check whether the source node, destination node of the lightpath is available in the
 	int check2 = checkForAvaialableLPNode(shortestPath[vecSize - 1]);  //lightpath network(If it is available, the position in the lightpaths vector is returned.
@@ -874,14 +875,14 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 	bool linkIsFound = false;
 	vector<int> lightpathPath;
 			for (int j = 0; j < linkVector[LinkID].wavelengthAndLSP.size(); j++) {
-				cout << "identifier : " << LPidentifier << endl;
-				cout << "LPidentifier : " << linkVector[LinkID].wavelengthAndLSP[j].LPidentifier<<endl;
+				//cout << "identifier : " << LPidentifier << endl;
+				//cout << "LPidentifier : " << linkVector[LinkID].wavelengthAndLSP[j].LPidentifier<<endl;
 				if (linkVector[LinkID].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
-					cout << "available bandwidht: " << linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth << endl;
+					/*cout << "available bandwidht: " << linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth << endl;
 					cout << "initialBandwidth" << linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth<<endl;
-					cout << " typeOfLP : " << typeOfLP << endl;
+					cout << " typeOfLP : " << typeOfLP << endl;*/
 					if (linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth == linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth) {
-						cout << " lightpath Type : " << linkVector[LinkID].wavelengthAndLSP[j].lightpathType << "     typeOfLP : " << typeOfLP << endl;
+						//cout << " lightpath Type : " << linkVector[LinkID].wavelengthAndLSP[j].lightpathType << "     typeOfLP : " << typeOfLP << endl;
 						if (linkVector[LinkID].wavelengthAndLSP[j].lightpathType == typeOfLP) {							
 							lightpathPath = linkVector[LinkID].wavelengthAndLSP[j].path;
 							linkIsFound = true;
@@ -912,7 +913,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 						}
 					}
 					else {
-						cout << "the lightpath is in use" << endl;
+						cout << "\n******the lightpath is in use******" << endl;
 					}
 				}		
 			}

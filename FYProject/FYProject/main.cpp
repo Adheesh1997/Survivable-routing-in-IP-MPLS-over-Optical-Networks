@@ -40,6 +40,17 @@ void checkWhetherLPidfinished(vector<int> &LPids, int &countForLPids)
         LPids.push_back(++countForLPids);
 }
 
+void removeLink(int waveNum, vector<int> path, vector<waveLengthNetworks>& subWaveNetworks)
+{
+    //cout<<"\nWave : "<<waveNum<<"\nPaht ";
+    //printVector(path);
+    for (int i = 0; i < path.size() - 1; i++)
+    {
+        //cout<<"\nIn main"<<", Source : "<<path[i]<<" , Dst : "<<path[i+1]<<endl;
+        subWaveNetworks[waveNum].removeLink(path[i], path[i + 1]);
+    }
+}
+
 void removeLPidFromVec(vector<int>& LPids)
 {
     vector<int>::iterator LPitr;
@@ -62,9 +73,9 @@ int main()
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 200;                      //Erlang value
+    double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 40;
+    int numOfWaves = 16;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
@@ -77,14 +88,14 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
+    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    myfile.wrteALSP("rqst_inputs/rq_last.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    vector<events> listofevents;
-    //myfile.readlsps("rqst_inputs/rq4.txt",listofevents);
-    myfile.readLSPs("rqst_inputs/rq4.txt", listofevents);
+    //vector<events> listOfEvents;
+    ////myfile.readlsps("rqst_inputs/rq4.txt",listofevents);
+    //myfile.readLSPs("rqst_inputs/rq5.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -139,10 +150,9 @@ int main()
         vector<int> bPathFortest;
         vector<int> waveVecFortest;
 
-        cout << "main.cpp line:169 Before\n";
-        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-
-        while(!listofevents.empty())//for(events event:tempObject.eventVector)
+        cout << "\nBefore :\n";
+        print2dVector(subWaveNetworks[3].waveAdjacancyMatrix);
+        while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
             
@@ -150,7 +160,7 @@ int main()
             int source = listOfEvents[0].sourceNode;
             int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
-            int bandwidth = 10; //listOfEvents[0].bandwidth;
+            int bandwidth = listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
             
             //Generte a lsp reqest with src,dst,bandwidth, request or remove
@@ -175,7 +185,11 @@ int main()
             lspPathDetails[id][1].push_back(vector<int>{-1});
             
             if(action)
-            {      
+            {   
+                if (LPids[0] == 278)
+                {
+                    int a = 9;
+                }
                 cout << "\nCreatein lsp : " << id << endl;
                 totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
@@ -195,10 +209,12 @@ int main()
                     {
                         checkWhetherLPidfinished(LPids, countForLPids);
                         waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
+                        removeLink(pathDetails.wavelengthNoPP, pathDetails.primaryShortPath, subWaveNetworks);
                         removeLPidFromVec(LPids);
 
                         checkWhetherLPidfinished(LPids, countForLPids);
                         waveLengthNetwork.setANewLighpath(pathDetails.backUpShortPath,pathDetails.wavelengthNoBP,"pp", LPids[0]);
+                        removeLink(pathDetails.wavelengthNoBP, pathDetails.backUpShortPath, subWaveNetworks);
                         removeLPidFromVec(LPids);
 
                         vector<int> wholePathP = pathDetails.primaryShortPath;
@@ -245,6 +261,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w1ShortPathBP,createRemaingBackUpDeatils.wavelengthNo1BP,"pp", LPids[0]);
+                                removeLink(createRemaingBackUpDeatils.wavelengthNo1BP, createRemaingBackUpDeatils.w1ShortPathBP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
                             }
                             else
@@ -256,6 +273,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(createRemaingBackUpDeatils.w2ShortPathBP,createRemaingBackUpDeatils.wavelengthNo2BP,"pp", LPids[0]);
+                                removeLink(createRemaingBackUpDeatils.wavelengthNo2BP, createRemaingBackUpDeatils.w2ShortPathBP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
                             }
@@ -265,6 +283,7 @@ int main()
                             }
                             checkWhetherLPidfinished(LPids, countForLPids);
                             waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
+                            removeLink(pathDetails.wavelengthNoPP, pathDetails.primaryShortPath, subWaveNetworks);
                             removeLPidFromVec(LPids);
 
                             vector<int>wholePathP = pathDetails.primaryShortPath;
@@ -310,6 +329,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.wavelengthNo1PP, "pp", LPids[0]);
+                                removeLink(combineWavelengthDetails.wavelengthNo1PP, combineWavelengthDetails.w1ShortPathPP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
                             }
@@ -320,6 +340,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathPP, combineWavelengthDetails.wavelengthNo2PP, "pp", LPids[0]);
+                                removeLink(combineWavelengthDetails.wavelengthNo2PP, combineWavelengthDetails.w2ShortPathPP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
                             }
@@ -331,6 +352,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.wavelengthNo1BP, "pp", LPids[0]);
+                                removeLink(combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.w1ShortPathBP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
                             }
@@ -341,6 +363,7 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(combineWavelengthDetails.w2ShortPathBP, combineWavelengthDetails.wavelengthNo2BP, "pp", LPids[0]);
+                                removeLink(combineWavelengthDetails.wavelengthNo2BP, combineWavelengthDetails.w2ShortPathBP, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
                             }
@@ -399,9 +422,11 @@ int main()
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
                                 waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp", LPids[0]);
+                                removeLink(pathDetails.tempWavelengthNoPP, pathDetails.tempPrimaryShortPath, subWaveNetworks);
                                 removeLPidFromVec(LPids);
 
-                                subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
+                                
+                                //subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
                                 
                                 vector<int> wholePathP = {pathDetails.tempPrimaryShortPath};
                                 vector<int> wholePathB;
@@ -450,6 +475,8 @@ int main()
                         }
                     }                
                 }
+
+                
                 if(!isLSPestablish) 
                 {
 
@@ -484,6 +511,13 @@ int main()
                     //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
                     lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter);
                     lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter);
+
+                    if (id == 28)
+                    {
+                        waveLengthNetwork.viewAllLighpaths();
+
+                        int xxx = 6;
+                    }
                 }
 
             }
@@ -496,17 +530,17 @@ int main()
             
         }
 
-       waveLengthNetwork.viewAllLighpaths();
+        waveLengthNetwork.viewAllLighpaths();
+       /*
        cout << "\n\n\n";
        cout << "------------------- LSP --------------------";
         cout << "\n\n\n";
         lspObj.viewLSPsInALightpath(waveLengthNetwork);
         cout << "\n----------------------------------";
-        cout << "\n \t\t Counter :: " << _couter;
+        cout << "\n \t\t Counter :: " << _couter;*/
 
-        cout << "main.cpp line:495 after\n";
-        print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
-           
+        cout << "\nAfter :\n";
+        print2dVector(subWaveNetworks[3].waveAdjacancyMatrix);
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
         myfile.writeLog("*****************");
