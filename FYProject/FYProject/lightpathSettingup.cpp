@@ -120,6 +120,7 @@ void lightNode::viewLPlinks()
 		{
 			int pathSize = linkVector[i].wavelengthAndLSP[j].path.size();
 			cout << "LP type = " << linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
+			cout << "Initial BD : " << linkVector[i].wavelengthAndLSP[j].initialBandwidth << "\tAvailable BD : " << linkVector[i].wavelengthAndLSP[j].availableBandwidth << endl;
 			cout << "Wavelength = " << linkVector[i].wavelengthAndLSP[j].wavelength << endl;
 			for (size_t k = 0; k < (pathSize - 1); k++)
 				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";         //Print the path of the lightpath
@@ -399,7 +400,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 
 		if (protectionType) //Bandwidth based protection
 		{
-			if (usedBandProportion >= bandwidthThreshold)
+			if (usedBandProportion > bandwidthThreshold)
 			{
 				vector<int> primaryLPpath = lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path;
 
@@ -871,14 +872,14 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 		//if (linkVector[i].destinationID == lighpaths[destination].id) {
 	vector<int> lightpathPath;
 			for (int j = 0; j < linkVector[LinkID].wavelengthAndLSP.size(); j++) {
-				//cout << "identifier : " << LPidentifier << endl;
-				//cout << "LPidentifier : " << linkVector[LinkID].wavelengthAndLSP[j].LPidentifier<<endl;
+				cout << "identifier : " << LPidentifier << endl;
+				cout << "LPidentifier : " << linkVector[LinkID].wavelengthAndLSP[j].LPidentifier<<endl;
 				if (linkVector[LinkID].wavelengthAndLSP[j].LPidentifier == LPidentifier ) {
-					//cout << "available bandwidht: " << linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth << endl;
-					//cout << "initialBandwidth" << linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth<<endl;
-					//cout << " typeOfLP : " << typeOfLP << endl;
+					cout << "available bandwidht: " << linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth << endl;
+					cout << "initialBandwidth" << linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth<<endl;
+					cout << " typeOfLP : " << typeOfLP << endl;
 					if (linkVector[LinkID].wavelengthAndLSP[j].availableBandwidth == linkVector[LinkID].wavelengthAndLSP[j].initialBandwidth) {
-						//cout << " lightpath Type : " << linkVector[LinkID].wavelengthAndLSP[j].lightpathType << "     typeOfLP : " << typeOfLP << endl;
+						cout << " lightpath Type : " << linkVector[LinkID].wavelengthAndLSP[j].lightpathType << "     typeOfLP : " << typeOfLP << endl;
 						if (linkVector[LinkID].wavelengthAndLSP[j].lightpathType == typeOfLP) {							
 							lightpathPath = linkVector[LinkID].wavelengthAndLSP[j].path;
 							if (typeOfLP == "bp") {

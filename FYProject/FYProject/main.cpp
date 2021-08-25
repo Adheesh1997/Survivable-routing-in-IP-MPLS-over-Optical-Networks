@@ -490,8 +490,11 @@ int main()
             
         }
 
-        cout << "\nAll LPs\n";
-        waveLengthNetwork.viewAllLighpaths();
+       waveLengthNetwork.viewAllLighpaths();
+       cout << "\n\n\n";
+       cout << "------------------- LSP --------------------";
+        cout << "\n\n\n";
+        lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
         cout << "main.cpp line:495 after\n";
         print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
