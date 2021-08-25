@@ -12,6 +12,7 @@
 
 using namespace std;
 
+//int _couter = 0;
 
 void print2dVector(vector<vector<int>> adjMetrixForPrimaryLSP)
 {
@@ -52,11 +53,14 @@ int main()
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
 
+    
+    int _couter = 0;
+
     thresholds thresholdObj;
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10000;           //The number of LSP requests
+    int numberOfLSPrequests = 1000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
@@ -451,8 +455,8 @@ int main()
                         + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
 
                     //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP");
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP");
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter);
                 }
 
             }
@@ -470,6 +474,8 @@ int main()
        cout << "------------------- LSP --------------------";
         cout << "\n\n\n";
         lspObj.viewLSPsInALightpath(waveLengthNetwork);
+        cout << "\n----------------------------------";
+        cout << "\n \t\t Counter :: " << _couter;
 
         
            
