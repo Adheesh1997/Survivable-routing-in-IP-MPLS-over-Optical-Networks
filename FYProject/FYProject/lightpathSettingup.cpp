@@ -119,10 +119,10 @@ void lightNode::viewLPlinks()
 		for (size_t j = 0; j < linkVector[i].wavelengthAndLSP.size(); j++)
 		{
 			int pathSize = linkVector[i].wavelengthAndLSP[j].path.size();
-			cout << "LP type = " << linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
+			/* cout << "LP type = " << linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
 			cout << "Initial BD : " << linkVector[i].wavelengthAndLSP[j].initialBandwidth << "\tAvailable BD : " << linkVector[i].wavelengthAndLSP[j].availableBandwidth << endl;
 			cout << "Wavelength = " << linkVector[i].wavelengthAndLSP[j].wavelength << endl;
-			cout << "IDentifier : " << linkVector[i].wavelengthAndLSP[j].LPidentifier << endl;
+			cout << "IDentifier : " << linkVector[i].wavelengthAndLSP[j].LPidentifier << endl; */
 			for (size_t k = 0; k < (pathSize - 1); k++)
 				cout << linkVector[i].wavelengthAndLSP[j].path[k] << " -> ";         //Print the path of the lightpath
 			cout << linkVector[i].wavelengthAndLSP[j].path[pathSize - 1] << endl;
@@ -189,9 +189,9 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 	*/
 	vector<int> shortestpathVec = shortestPath;
 	
-	cout << "\nNew LP creating. "<<type<<" >>";
-	for (int zz : shortestPath) cout << zz << "> ";
-	cout << endl;
+	/* cout << "\nNew LP creating. "<<type<<" >>";
+	for (int zz : shortestPath) cout << zz << "> "; 
+	cout << endl;*/
 
 	int vecSize = shortestPath.size();
 	int bandwidth = 10;

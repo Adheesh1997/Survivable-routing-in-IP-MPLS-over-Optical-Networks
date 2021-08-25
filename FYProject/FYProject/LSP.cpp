@@ -12,7 +12,7 @@ struct thresholds;
 
 void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
 {
-	cout << "\n\t New LSP Request : " << identifier;
+	//cout << "\n\t New LSP Request : " << identifier;
 	/*
 	* Parameters
 		vector<int> shortestPathLSP - The path of the LSP
@@ -65,12 +65,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]
 						&& (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == wholePath || obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == tempVVec))
 					{
-						if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier == 279)
-						{
-							cout << "\nLSP ID : " << identifier << endl;
-						}
-						//if (identifier == 588)
-							//cout << " \n\t\tLP type 588 : " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType<<endl;
+						
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 
 						//cout<<"bandwidth before = "<<obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth<<endl;
@@ -222,12 +217,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]
 						&& (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == partitionedPath[0] || obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == tempVVec))
 					{
-						if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier == 278)
-						{
-							cout << "\nLSP ID : " << identifier << endl;
-						}
-						//if (identifier == 588)
-							//cout << " \n\t\tLP type 588 : " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].lightpathType << endl;
+						
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth = remainingBandwidth;
@@ -318,12 +308,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 				if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr - 1]
 					&& (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].path == partitionedPath[itr - 1] || obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].path == tempVVec))
 				{
-					if (obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].LPidentifier == 279)
-					{
-						cout << "\nLSP ID : " << identifier << endl;
-					}
-					//if(identifier ==588)
-						//cout << " \n\t\tLP type 588 : " << obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].lightpathType << endl;
+								
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
 					obj.lighpaths[pos2].linkVector[i2].wavelengthAndLSP[j].availableBandwidth = remainingBandwidth;
@@ -372,12 +357,6 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 				if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[itr]
 					&& (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].path == partitionedPath[itr] || obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].path == temVVec))
 				{
-					if (obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].LPidentifier == 279)
-					{
-						cout << "\nLSP ID : " << identifier << endl;
-					}
-					//if (identifier == 588)
-						//cout << " \n\t\tLP type 588 : " << obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].lightpathType << endl;
 					int remainingBandwidth = obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].availableBandwidth;
 					remainingBandwidth = remainingBandwidth - LSPbandwidth;
 					obj.lighpaths[pos2].linkVector[i3].wavelengthAndLSP[j].availableBandwidth = remainingBandwidth;
@@ -443,10 +422,6 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 					if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[numOfIntermediate]
 						&& (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == partitionedPath[numOfIntermediate] || obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].path == temVVVec))
 					{
-						if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier == 279)
-						{
-							cout << "\nLSP ID : " << identifier << endl;
-						}
 						int remainingBandwidth = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
 						obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth = remainingBandwidth;
@@ -615,7 +590,7 @@ void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 
 
 void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP , int &_counter) {
-	cout << "\n\t\t NEW DELETE  : " << identifier;
+	//cout << "\n\t\t NEW DELETE  : " << identifier;
 	/*cout << "path: ";
 	for (int i = 0; i < path.size(); i++)
 		cout << "\t" << path[i];

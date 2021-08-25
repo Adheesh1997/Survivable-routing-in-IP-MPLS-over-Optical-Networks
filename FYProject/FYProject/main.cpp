@@ -72,7 +72,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 1000;           //The number of LSP requests
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 130;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
@@ -88,14 +88,14 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq_last.txt", listOfEvents); 
+    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //myfile.wrteALSP("rqst_inputs/rq_last.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    //vector<events> listOfEvents;
+    vector<events> listOfEvents;
     ////myfile.readlsps("rqst_inputs/rq4.txt",listofevents);
-    //myfile.readLSPs("rqst_inputs/rq5.txt", listOfEvents);
+    myfile.readLSPs("rqst_inputs/rq_last.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -128,7 +128,7 @@ int main()
         
         lightpathNetwork waveLengthNetwork(subWaveNetworks);
         
-
+        
         cout << endl << "Generting all LSP requests.\n";
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
@@ -150,8 +150,6 @@ int main()
         vector<int> bPathFortest;
         vector<int> waveVecFortest;
 
-        cout << "\nBefore :\n";
-        print2dVector(subWaveNetworks[3].waveAdjacancyMatrix);
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
@@ -186,10 +184,7 @@ int main()
             
             if(action)
             {   
-                if (LPids[0] == 278)
-                {
-                    int a = 9;
-                }
+                
                 cout << "\nCreatein lsp : " << id << endl;
                 totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
@@ -232,14 +227,6 @@ int main()
                         lspPathDetails[id][1][0] = pathForBLSP;
                         lspPathDetails[id][1][1] = wavesB;
 
-                        
-                        cout<<"\n\n**Paths from main Line: 211**\n";
-                        cout<<"primary : ";
-                        printVector(wholePathP);
-                        cout<<"\nBackup : ";
-                        printVector(wholePathB);
-                        cout<<endl<<endl;
-
                         myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
                         newLP++;
@@ -247,8 +234,7 @@ int main()
 
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, bandwidth,numOfWaves);
                     map<int,vector<vector<int>>> arr1 = waveLengthNetwork.mapFromsource(destination,numOfNodes, bandwidth,numOfWaves);
-
-
+                    
                     //If LP can not creat for primary path
                     if(pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
                     {
@@ -308,13 +294,6 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
-
-                            cout << "\n\n**Paths from main Line: 283**\n";
-                            cout << "primary : ";
-                            printVector(wholePathP);
-                            cout << "\nBackup : ";
-                            printVector(wholePathB);
-                            cout << endl << endl;
 
                         }
                     }
@@ -394,13 +373,6 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
-
-                            cout << "\n\n**Paths from main Line: 366**\n";
-                            cout << "primary : ";
-                            printVector(wholePathP);
-                            cout << "\nBackup : ";
-                            printVector(wholePathB);
-                            cout << endl << endl;
                         }
                     }
 
@@ -512,12 +484,7 @@ int main()
                     lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter);
                     lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter);
 
-                    if (id == 28)
-                    {
-                        waveLengthNetwork.viewAllLighpaths();
-
-                        int xxx = 6;
-                    }
+               
                 }
 
             }
@@ -530,17 +497,12 @@ int main()
             
         }
 
+        cout << "\nAll LPs.....\n";
         waveLengthNetwork.viewAllLighpaths();
-       /*
-       cout << "\n\n\n";
-       cout << "------------------- LSP --------------------";
-        cout << "\n\n\n";
-        lspObj.viewLSPsInALightpath(waveLengthNetwork);
-        cout << "\n----------------------------------";
-        cout << "\n \t\t Counter :: " << _couter;*/
 
-        cout << "\nAfter :\n";
-        print2dVector(subWaveNetworks[3].waveAdjacancyMatrix);
+        cout << "\nAll LSPs.....\n";
+        lspObj.viewLSPsInALightpath(waveLengthNetwork);
+
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
         myfile.writeLog("*****************");
