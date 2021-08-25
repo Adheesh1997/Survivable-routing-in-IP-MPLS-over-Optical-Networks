@@ -566,7 +566,7 @@ bool lightpathNetwork::isLinkDisjoint(vector<int> primaryPath, vector<int> testP
 vector<vector<int>> lightpathNetwork::getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize)
 //vector<int> lightpathNetwork::getWaveNumbers(int source, int dst, int bandwidth)
 {
-	vector<vector<int>> temp(2,vector<int>(1,-1));
+	vector<vector<int>> temp(2,vector<int>(1,-1));// {{-1},{-1}}
 	int primaryWaveNo = -1;
 	vector<int> primaryPath;
 	
@@ -621,6 +621,7 @@ vector<vector<int>> lightpathNetwork::getWaveNumbers(int source, int dst,int num
 						{
 							if(isLinkDisjoint(primaryPath,lighpaths[i].linkVector[j].wavelengthAndLSP[h].path,numOfNodes))
 							{
+
 								temp[0].insert(temp[0].end(), primaryPath.begin(), primaryPath.end());
 								
 								temp[1][0] = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
@@ -870,6 +871,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 	//for (int i = 0; i < linkVector.size(); i++) {
 		//int sourceID =
 		//if (linkVector[i].destinationID == lighpaths[destination].id) {
+	bool linkIsFound = false;
 	vector<int> lightpathPath;
 			for (int j = 0; j < linkVector[LinkID].wavelengthAndLSP.size(); j++) {
 				cout << "identifier : " << LPidentifier << endl;
@@ -882,6 +884,7 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 						cout << " lightpath Type : " << linkVector[LinkID].wavelengthAndLSP[j].lightpathType << "     typeOfLP : " << typeOfLP << endl;
 						if (linkVector[LinkID].wavelengthAndLSP[j].lightpathType == typeOfLP) {							
 							lightpathPath = linkVector[LinkID].wavelengthAndLSP[j].path;
+							linkIsFound = true;
 							if (typeOfLP == "bp") {
 								long int tempID = linkVector[LinkID].wavelengthAndLSP[j].LPidentifier;
 								for (int m = 0; m < linkVector.size(); m++) {
@@ -914,9 +917,10 @@ void lightNode::deleteLpLink(long int LPidentifier, int source, int destination,
 				}		
 			}
 
-			for (int z = 0; z < lightpathPath.size() - 1; z++) {
-				waveLengthNetwork[wavelength].addLInk(lightpathPath[z], lightpathPath[z + 1]);
-			}
+			if (linkIsFound)
+				for (int z = 0; z < lightpathPath.size() - 1; z++) {
+					waveLengthNetwork[wavelength].addLInk(lightpathPath[z], lightpathPath[z + 1]);
+				}
 }
 
 

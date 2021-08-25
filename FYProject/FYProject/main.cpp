@@ -12,6 +12,7 @@
 
 using namespace std;
 
+//int _couter = 0;
 
 void print2dVector(vector<vector<int>> adjMetrixForPrimaryLSP)
 {
@@ -48,16 +49,20 @@ void removeLPidFromVec(vector<int>& LPids)
 
 int main()
 {
+
     cout << "Promgram started___\n";
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
+
+    
+    int _couter = 0;
 
     thresholds thresholdObj;
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10000;           //The number of LSP requests
-    double erlang = 130;                      //Erlang value
+    int numberOfLSPrequests = 1000;           //The number of LSP requests
+    double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 40;
 
@@ -72,13 +77,14 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
     //myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq.txt",listOfEvents);
+    vector<events> listofevents;
+    //myfile.readlsps("rqst_inputs/rq4.txt",listofevents);
+    myfile.readLSPs("rqst_inputs/rq4.txt", listofevents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -136,13 +142,13 @@ int main()
         cout << "main.cpp line:169 Before\n";
         print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
 
-        while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
+        while(!listofevents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
             
             int vexnum = numOfNodes;
-            int source = 9; // listOfEvents[0].sourceNode;
-            int destination = 12; // listOfEvents[0].destinationNode;
+            int source = listOfEvents[0].sourceNode;
+            int destination = listOfEvents[0].destinationNode;
             int id = listOfEvents[0].identifier;
             int bandwidth = 10; //listOfEvents[0].bandwidth;
             bool action = listOfEvents[0].action;
@@ -475,9 +481,9 @@ int main()
                     myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
                         + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
 
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType,"pLSP");
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType,"bLSP");
-
+                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
+                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter);
+                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter);
                 }
 
             }
@@ -495,6 +501,8 @@ int main()
        cout << "------------------- LSP --------------------";
         cout << "\n\n\n";
         lspObj.viewLSPsInALightpath(waveLengthNetwork);
+        cout << "\n----------------------------------";
+        cout << "\n \t\t Counter :: " << _couter;
 
         cout << "main.cpp line:495 after\n";
         print2dVector(subWaveNetworks[0].waveAdjacancyMatrix);
