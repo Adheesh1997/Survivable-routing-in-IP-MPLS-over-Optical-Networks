@@ -267,14 +267,16 @@ findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthN
 
     if (primarySPOutput.size() == 0) { //if primary LSP can't create
         shortestPathsDetails.tempCanCreatPP = false;
+        shortestPathsDetails.alreadyPPhave = true;
         totalPathDetails.clear();
         return shortestPathsDetails;
     }
     else { //if primary LSP can create
 
         shortestPathsDetails.tempCanCreatPP = true;
+        shortestPathsDetails.alreadyPPhave = true;
         shortestPathsDetails.tempPrimaryShortPath = primarySPOutput;
-        shortestPathsDetails.tempWavelengthNoBP = waveLengthNumber;
+        shortestPathsDetails.tempWavelengthNoPP = waveLengthNumber;
         minVal = 1000;
 
         for (auto j = 0; j < primarySPOutput.size() - 1; j++)
@@ -414,6 +416,14 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
+
+            combinationDetails.canCreatCombinationBP = true;
+            combinationDetails.connectingNodeBP = intNode;
+            combinationDetails.w1ShortPathBP = sourcePathBP;
+            combinationDetails.w2ShortPathBP = destinationPathPathBP;
+            combinationDetails.wavelengthNo1BP = w1BP;
+            combinationDetails.wavelengthNo2BP = w2BP;
+
             if (w1BP < waveLengthNetwork.size()) 
             {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
@@ -435,12 +445,7 @@ forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> wave
                 fromDestination[w2BP][intNode].clear();
                 fromDestination[w2BP][intNode].push_back(0);
             }
-            combinationDetails.canCreatCombinationBP = true;
-            combinationDetails.connectingNodeBP = intNode;
-            combinationDetails.w1ShortPathBP = sourcePathBP;
-            combinationDetails.w2ShortPathBP = destinationPathPathBP;
-            combinationDetails.wavelengthNo1BP = w1BP;
-            combinationDetails.wavelengthNo2BP = w2BP;
+            
 
             return combinationDetails;
 
