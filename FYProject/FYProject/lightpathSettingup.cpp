@@ -605,6 +605,7 @@ vector<vector<int>> lightpathNetwork::getWaveNumbers(int source, int dst,int num
 	temp[0][0] = primaryWaveNo;
 
 	if(temp[0][0] == -1) return temp;
+	temp[0].insert(temp[0].end(), primaryPath.begin(), primaryPath.end());
 
 	//Find LP for backup path
 	for (int i = 0; i < lighpaths.size(); i++)
@@ -622,9 +623,6 @@ vector<vector<int>> lightpathNetwork::getWaveNumbers(int source, int dst,int num
 						{
 							if(isLinkDisjoint(primaryPath,lighpaths[i].linkVector[j].wavelengthAndLSP[h].path,numOfNodes))
 							{
-
-								temp[0].insert(temp[0].end(), primaryPath.begin(), primaryPath.end());
-								
 								temp[1][0] = lighpaths[i].linkVector[j].wavelengthAndLSP[h].wavelength;
 								temp[1].insert(temp[1].end(), lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.begin(), lighpaths[i].linkVector[j].wavelengthAndLSP[h].path.end());
 								return temp;
@@ -637,7 +635,7 @@ vector<vector<int>> lightpathNetwork::getWaveNumbers(int source, int dst,int num
 		}
 	}
 
-	return vector<vector<int>> {{-1},{-1}};
+	return temp;
 }
 
 vector<int> lightpathNetwork::getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath)

@@ -413,15 +413,15 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
     }
     fromSource.insert(FS.begin(), FS.end());
 
-    //for (int start = 0; start != fromSource.size(); start++) {
-    //    cout << " 00000000000000000000000000 " << start << " 0000000000000000000000000" << endl;
-    //    for (int i = 0; i < vexnum; i++) {
-    //        for (std::vector<int>::iterator k = fromSource[start][i].begin(); k != fromSource[start][i].end(); ++k) {
-    //            std::cout << *k << " --> ";
-    //        }
-    //        cout << endl;
-    //    }
-    //}
+    /*for (int start = 0; start != fromSource.size(); start++) {
+        cout << " 00000000000000000000000000 " << start << " 0000000000000000000000000" << endl;
+        for (int i = 0; i < vexnum; i++) {
+            for (std::vector<int>::iterator k = fromSource[start][i].begin(); k != fromSource[start][i].end(); ++k) {
+                std::cout << *k << " --> ";
+            }
+            cout << endl;
+        }
+    }*/
 
     map<int, vector<vector<int>>> fromDestination;
 
@@ -445,6 +445,8 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
     int sourceWavelegth;
     int destinationwavelength;
     int intermediateNode;
+
+    int fromSourceSize = fromSource[16][3].size();
     for (int startsourse = 0; startsourse != fromSource.size(); startsourse++) {
         for (int startdesti = 0; startdesti != fromSource.size(); startdesti++) {
             for (int i = 0; i < vexnum; i++) {
@@ -461,11 +463,20 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
         }
     }
 
+
     //fromSource[sourceWavelegth][intermediateNode].pop_back();
     if (minumuVal != 10000) {
         fromDestination[destinationwavelength][intermediateNode].erase(fromDestination[destinationwavelength][intermediateNode].begin());
         fromSource[sourceWavelegth][intermediateNode].erase(fromSource[sourceWavelegth][intermediateNode].begin());
         reverse(fromDestination[destinationwavelength][intermediateNode].begin(), fromDestination[destinationwavelength][intermediateNode].end());
+        
+        combinationDetails.canCreatCombinationPP = true;
+        combinationDetails.connectingNodePP = intermediateNode;
+        combinationDetails.wavelengthNo1PP = sourceWavelegth;
+        combinationDetails.wavelengthNo2PP = destinationwavelength;
+        combinationDetails.w1ShortPathPP = fromSource[sourceWavelegth][intermediateNode];
+        combinationDetails.w2ShortPathPP = fromDestination[destinationwavelength][intermediateNode];
+        
         if (sourceWavelegth < waveLengthNetwork.size()) {
             for (auto j = 0; j < fromSource[sourceWavelegth][intermediateNode].size() - 1; j++)
             {
@@ -486,13 +497,6 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
             fromDestination[destinationwavelength][intermediateNode].clear();
             fromDestination[destinationwavelength][intermediateNode].push_back(0);
         }
-
-        combinationDetails.canCreatCombinationPP = true;
-        combinationDetails.connectingNodePP = intermediateNode;
-        combinationDetails.wavelengthNo1PP = sourceWavelegth;
-        combinationDetails.wavelengthNo2PP = destinationwavelength;
-        combinationDetails.w1ShortPathPP = fromSource[sourceWavelegth][intermediateNode];
-        combinationDetails.w2ShortPathPP = fromDestination[destinationwavelength][intermediateNode];
 
         vector<int> PPS = fromSource[sourceWavelegth][intermediateNode];
         vector<int> PPD = fromDestination[destinationwavelength][intermediateNode];
@@ -558,7 +562,15 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
             destinationPathPathBP.erase(destinationPathPathBP.begin());
             sourcePathBP.erase(sourcePathBP.begin());
             reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-            if (sourceWavelegth < waveLengthNetwork.size()) {
+
+            combinationDetails.canCreatCombinationBP = true;
+            combinationDetails.connectingNodeBP = intNode;
+            combinationDetails.w1ShortPathBP = sourcePathBP;
+            combinationDetails.w2ShortPathBP = destinationPathPathBP;
+            combinationDetails.wavelengthNo1BP = w1BP;
+            combinationDetails.wavelengthNo2BP = w2BP;
+
+            if (w1BP < waveLengthNetwork.size()) {
                 for (auto j = 0; j < sourcePathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
@@ -568,7 +580,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
                 fromSource[w1BP][intNode].clear();
                 fromSource[w1BP][intNode].push_back(0);
             }
-            if (destinationwavelength < waveLengthNetwork.size()) {
+            if (w2BP < waveLengthNetwork.size()) {
                 for (auto j = 0; j < destinationPathPathBP.size() - 1; j++)
                 {
                     waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
@@ -578,12 +590,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& w
                 fromDestination[w2BP][intNode].clear();
                 fromDestination[w2BP][intNode].push_back(0);
             }
-            combinationDetails.canCreatCombinationBP = true;
-            combinationDetails.connectingNodeBP = intNode;
-            combinationDetails.w1ShortPathBP = sourcePathBP;
-            combinationDetails.w2ShortPathBP = destinationPathPathBP;
-            combinationDetails.wavelengthNo1BP = w1BP;
-            combinationDetails.wavelengthNo2BP = w2BP;
+            
 
             return combinationDetails;
         

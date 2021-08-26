@@ -48,6 +48,14 @@ struct findPathDetails {
     vector<int> backUpShortPath;
     bool canCreatBP;
     int wavelengthNoBP;
+
+    findPathDetails()
+    {
+        alreadyPPhave = false;
+        canCreatPP = false;
+        tempCanCreatPP = false;
+        canCreatBP = false;
+    }
  };
 
 struct combineWavelength {

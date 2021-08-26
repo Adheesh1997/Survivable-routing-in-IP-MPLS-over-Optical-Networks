@@ -10,7 +10,7 @@ class lightNode;                                //Classes declaration
 class lightpathNetwork;
 struct thresholds;
 
-void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals)
+void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals, vector<vector<int>> partitionedPath)
 {
 	//cout << "\n\t New LSP Request : " << identifier;
 	/*
@@ -27,8 +27,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 
 	vector<int> v1 = shortestPathLSP;           //Shortest path for a LSP
 	vector<int> positionVector;                 //Positions of the nodes in lightpaths vector
-	vector<vector<int>> partitionedPath;        //wholePath is partitioned according to the number of lightpaths
-
+	
 	if (shortestPathLSP.size() == 2)                              //If the LSP path has only 2 nodes
 	{
 		LSP tempObject;
@@ -184,7 +183,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 		vector<int>::iterator it;
 
 		int value1 = 0;
-		for (size_t i = 1; i < v1.size(); i++)
+		/*for (size_t i = 1; i < v1.size(); i++)
 		{
 			int value2 = v1[i];
 			it = std::find(wholePath.begin(), wholePath.end(), value2);
@@ -196,7 +195,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 				tempVec.clear();
 				value1 = value2;
 			}
-		}
+		}*/
 
 		int pos1 = obj.checkForAvaialableLPNode(v1[0]);
 		for (size_t i = 0; i < obj.lighpaths[pos1].linkVector.size(); i++)

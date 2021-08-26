@@ -72,7 +72,7 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 100;           //The number of LSP requests
+    int numberOfLSPrequests = 10000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
@@ -88,13 +88,13 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); 
+    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+    myfile.wrteALSP("rqst_inputs/rq4.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
-    vector<events> listOfEvents;
-    myfile.readLSPs("rqst_inputs/rq_last.txt", listOfEvents);
+    //vector<events> listOfEvents;
+    //myfile.readLSPs("rqst_inputs/rq3.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -133,6 +133,18 @@ int main()
         lspRequest lspReq;
 
         LSP lspObj;
+
+        //path can create
+        int newLPnNewLP = 0;
+        int newLPnCombineLP = 0;
+        int combineLPnCombineLP = 0;
+
+        //path can create but rejected
+        int noAlreadyPathNCombine = 0;
+
+        //Already path, but new one is shotest , but there is no backup path(already) found
+        int bLpNotFound = 0;
+        int plpNotFound = 0;
 
         int newLPnoldLP = 0;
         int newLP = 0;
@@ -198,7 +210,7 @@ int main()
                 //If there is no LP(S) to establish LSP
                 if (pathDetails.alreadyPPhave == false) 
                 {
-
+                    
                     if(pathDetails.canCreatBP && pathDetails.canCreatPP && !isLSPestablish)
                     {
                         checkWhetherLPidfinished(LPids, countForLPids);
@@ -226,11 +238,12 @@ int main()
                         lspPathDetails[id][1][0] = pathForBLSP;
                         lspPathDetails[id][1][1] = wavesB;
                         
-                        myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
+                        myfile.writeLog("New lsp established with 2 new LPs. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
+                        newLPnNewLP++;
                         newLP++;
 
-                        cout << "\nPrimay_";
+                        /*cout << "\nPrimay_";
                         cout << "\nP.whole path >> ";
                         printVector(wholePathP);
                         cout << "\nP.pathforlsp >> ";
@@ -238,7 +251,7 @@ int main()
                         cout << "\nB. whole path >> ";
                         printVector(wholePathB);
                         cout << "\nB. pathforlsp >> ";
-                        printVector(pathForBLSP);
+                        printVector(pathForBLSP);*/
                        
                     }
 
@@ -277,6 +290,7 @@ int main()
                             {
                                 createRemaingBackUpDeatils.wavelengthNo2BP -= numOfWaves;
                             }
+
                             checkWhetherLPidfinished(LPids, countForLPids);
                             waveLengthNetwork.setANewLighpath(pathDetails.primaryShortPath, pathDetails.wavelengthNoPP,"pp", LPids[0]);
                             removeLink(pathDetails.wavelengthNoPP, pathDetails.primaryShortPath, subWaveNetworks);
@@ -292,7 +306,7 @@ int main()
                             vector<int> pathForBLSP = {source, createRemaingBackUpDeatils.connectingNodeBP, destination};
                             vector<int> wavesB = {createRemaingBackUpDeatils.wavelengthNo1BP, createRemaingBackUpDeatils.wavelengthNo2BP};
 
-                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj, vector<vector<int>>{ createRemaingBackUpDeatils.w1ShortPathBP, createRemaingBackUpDeatils.w2ShortPathBP});
                             lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
 
                             myfile.writeLog("New LSP establish with single LP for primary, and 2 combine LPs for backup. ["+to_string(wavesP[0])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
@@ -303,9 +317,10 @@ int main()
                             lspPathDetails[id][1][1] = wavesB;
 
                             isLSPestablish = true;
+                            newLPnCombineLP++;
                             newLP++;
 
-                            cout << "\nPrimay_";
+                            /*cout << "\nPrimay_";
                             cout << "\nP.whole path >> ";
                             printVector(wholePathP);
                             cout << "\nP.pathforlsp >> ";
@@ -313,17 +328,35 @@ int main()
                             cout << "\nB. whole path >> ";
                             printVector(wholePathB);
                             cout << "\nB. pathforlsp >> ";
-                            printVector(pathForBLSP);
+                            printVector(pathForBLSP);*/
 
                         }
                     }
+                                     
 
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
                     {
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
+                        //cout << "\n****Combine path******\n";
+
+
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
                         {
+                            /*cout << "\n--Primary--\n";
+                            cout << "Part 01 : ";
+                            printVector(combineWavelengthDetails.w1ShortPathPP);
+                            cout << "\nPart 02 : ";
+                            printVector(combineWavelengthDetails.w2ShortPathPP);
+                            cout << "\nWave 1 : " << combineWavelengthDetails.wavelengthNo1PP << " , Wave 2 : " << combineWavelengthDetails.wavelengthNo2PP;
+
+                            cout << "\n--Backup--\n";
+                            cout << "Part 01 : ";
+                            printVector(combineWavelengthDetails.w1ShortPathBP);
+                            cout << "\nPart 02 : ";
+                            printVector(combineWavelengthDetails.w2ShortPathBP);
+                            cout << "\nWave 1 : " << combineWavelengthDetails.wavelengthNo1BP << " , Wave 2 : " << combineWavelengthDetails.wavelengthNo2BP;*/
+
                             if (combineWavelengthDetails.wavelengthNo1PP < numOfWaves)
                             {
                                 checkWhetherLPidfinished(LPids, countForLPids);
@@ -332,7 +365,6 @@ int main()
                                 removeLPidFromVec(LPids);
 
                             }
-                            
                             else combineWavelengthDetails.wavelengthNo1PP -= numOfWaves;
 
                             if (combineWavelengthDetails.wavelengthNo2PP < numOfWaves)
@@ -343,7 +375,6 @@ int main()
                                 removeLPidFromVec(LPids);
 
                             }
-
                             else combineWavelengthDetails.wavelengthNo2PP -= numOfWaves;
 
 
@@ -369,19 +400,20 @@ int main()
                             
                             else combineWavelengthDetails.wavelengthNo2BP -= numOfWaves;
 
+                            
                             vector<int> wholePathP = combineWavelengthDetails.w1ShortPathPP;
                             wholePathP.insert(wholePathP.end(), combineWavelengthDetails.w2ShortPathPP.begin() + 1, combineWavelengthDetails.w2ShortPathPP.end());
                             vector<int> pathForPLSP = {source, combineWavelengthDetails.connectingNodePP, destination};
                             vector<int> wavesP = {combineWavelengthDetails.wavelengthNo1PP, combineWavelengthDetails.wavelengthNo2PP};
-
-                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                            
+                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj, vector<vector<int>>{combineWavelengthDetails.w1ShortPathPP, combineWavelengthDetails.w2ShortPathPP});
 
                             vector<int> wholePathB = combineWavelengthDetails.w1ShortPathBP;
                             wholePathB.insert(wholePathB.end(), combineWavelengthDetails.w2ShortPathBP.begin() + 1, combineWavelengthDetails.w2ShortPathBP.end());
                             vector<int> pathForBLSP = {source, combineWavelengthDetails.connectingNodeBP, destination};
                             vector<int> wavesB = {combineWavelengthDetails.wavelengthNo1BP, combineWavelengthDetails.wavelengthNo2BP};
 
-                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj, vector<vector<int>>{combineWavelengthDetails.w1ShortPathBP, combineWavelengthDetails.w2ShortPathBP});
 
                             myfile.writeLog("New LSP establish with combine LPs for both primary and backup LSPs. ["
                                             +to_string(wavesP[0])+","+to_string(wavesP[1])+"] ["+to_string(wavesB[0])+","+to_string(wavesB[1])+"]");
@@ -392,9 +424,10 @@ int main()
                             lspPathDetails[id][1][1] = wavesB;
 
                             isLSPestablish = true;
+                            combineLPnCombineLP++;
                             newLP++;
 
-                            cout << "\nPrimay_";
+                            /*cout << "\nPrimay_";
                             cout << "\nP.whole path >> ";
                             printVector(wholePathP);
                             cout << "\nP.pathforlsp >> ";
@@ -402,55 +435,139 @@ int main()
                             cout << "\nB. whole path >> ";
                             printVector(wholePathB);
                             cout << "\nB. pathforlsp >> ";
-                            printVector(pathForBLSP);
+                            printVector(pathForBLSP);*/
                         }
                     }
+                    if(isLSPestablish == false)
+                        noAlreadyPathNCombine++;
 
-                    
-                    
                 }
 
                 else
-                {  
-                    if(pathDetails.tempCanCreatPP)
+                { 
+                    vector<vector<int>>  waveVector = waveLengthNetwork.getWaveNumbers(source, destination, numOfNodes, bandwidth, 14);
+
+                    if (waveVector[0][0] != -1)
                     {
-                        vector<vector<int>> waveVector = waveLengthNetwork.getWaveNumbers(source,destination,numOfNodes, bandwidth, pathDetails.tempPrimaryShortPath.size());
-
-                        if(waveVector[0][0] == -1)
+                        if (pathDetails.tempCanCreatPP)
                         {
-                            vector<int> backupWave = waveLengthNetwork.getBWaveNumber(source,destination,numOfNodes,bandwidth,pathDetails.tempPrimaryShortPath);
+                            waveVector = waveLengthNetwork.getWaveNumbers(source, destination, numOfNodes, bandwidth, pathDetails.tempPrimaryShortPath.size());
 
-                            if(backupWave[0] != -1)
+                            if (waveVector[0][0] == -1)
                             {
-                                checkWhetherLPidfinished(LPids, countForLPids);
-                                waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath,pathDetails.tempWavelengthNoPP,"pp", LPids[0]);
-                                removeLink(pathDetails.tempWavelengthNoPP, pathDetails.tempPrimaryShortPath, subWaveNetworks);
-                                removeLPidFromVec(LPids);
+                                vector<int> backupWave = waveLengthNetwork.getBWaveNumber(source, destination, numOfNodes, bandwidth, pathDetails.tempPrimaryShortPath);
 
-                                
-                                //subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
-                                
-                                vector<int> wholePathP = {pathDetails.tempPrimaryShortPath};
+                                if (backupWave[0] != -1)
+                                {
+                                    checkWhetherLPidfinished(LPids, countForLPids);
+                                    waveLengthNetwork.setANewLighpath(pathDetails.tempPrimaryShortPath, pathDetails.tempWavelengthNoPP, "pp", LPids[0]);
+                                    removeLink(pathDetails.tempWavelengthNoPP, pathDetails.tempPrimaryShortPath, subWaveNetworks);
+                                    removeLPidFromVec(LPids);
+
+
+                                    //subWaveNetworks[pathDetails.tempWavelengthNoPP].removeLink(source,destination);
+
+                                    vector<int> wholePathP = { pathDetails.tempPrimaryShortPath };
+                                    vector<int> wholePathB;
+                                    wholePathB.assign(backupWave.begin() + 1, backupWave.end());
+
+                                    vector<int> pathForLSP = { source,destination };
+                                    vector<int> wavesP = { pathDetails.tempWavelengthNoPP };
+                                    vector<int> wavesB = { backupWave[0] };
+
+                                    lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                                    lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+
+                                    lspPathDetails[id][0][0] = pathForLSP;
+                                    lspPathDetails[id][0][1] = wavesP;
+                                    lspPathDetails[id][1][0] = pathForLSP;
+                                    lspPathDetails[id][1][1] = wavesB;
+
+                                    myfile.writeLog("New lsp establish with new LP and old LP. [" + to_string(wavesP[0]) + "] [" + to_string(wavesB[0]) + "]");
+                                    newLPnoldLP++;
+                                    isLSPestablish = true;
+
+                                    /*cout << "\nPrimay_";
+                                    cout << "\nP.whole path >> ";
+                                    printVector(wholePathP);
+                                    cout << "\nP.pathforlsp >> ";
+                                    printVector(pathForLSP);
+                                    cout << "\nB. whole path >> ";
+                                    printVector(wholePathB);
+                                    cout << "\nB. pathforlsp >> ";
+                                    printVector(pathForLSP);*/
+                                }
+                                else 
+                                    bLpNotFound++;
+                            }
+                            else
+                            {
+                                if (waveVector[1][0] != -1)
+                                {
+                                    vector<int> wholePathP;
+                                    wholePathP.assign(waveVector[0].begin() + 1, waveVector[0].end());
+
+                                    vector<int> wholePathB;
+                                    wholePathB.assign(waveVector[1].begin() + 1, waveVector[1].end());
+
+                                    vector<int> pathForLSP = { source,destination };
+                                    vector<int> wavesP = { waveVector[0][0] };
+                                    vector<int> wavesB = { waveVector[1][0] };
+
+                                    lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
+                                    lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
+
+                                    lspPathDetails[id][0][0] = pathForLSP;
+                                    lspPathDetails[id][0][1] = wavesP;
+                                    lspPathDetails[id][1][0] = pathForLSP;
+                                    lspPathDetails[id][1][1] = wavesB;
+
+                                    myfile.writeLog("New lsp established with 2 old LPs. [" + to_string(wavesP[0]) + "] [" + to_string(wavesB[0]) + "]");
+                                    oldLP++;
+                                    isLSPestablish = true;
+
+                                    /*cout << "\nPrimay_";
+                                    cout << "\nP.whole path >> ";
+                                    printVector(wholePathP);
+                                    cout << "\nP.pathforlsp >> ";
+                                    printVector(pathForLSP);
+                                    cout << "\nB. whole path >> ";
+                                    printVector(wholePathB);
+                                    cout << "\nB. pathforlsp >> ";
+                                    printVector(pathForLSP);*/
+                                }
+                                else bLpNotFound++;
+
+                            }
+
+                        }
+                        else
+                        {
+                            if (waveVector[1][0] != -1)
+                            {
+                                vector<int> wholePathP;
+                                wholePathP.assign(waveVector[0].begin() + 1, waveVector[0].end());
+
                                 vector<int> wholePathB;
-                                wholePathB.assign(backupWave.begin()+1, backupWave.end());
+                                wholePathB.assign(waveVector[1].begin() + 1, waveVector[1].end());
 
-                                vector<int> pathForLSP = {source,destination};
-                                vector<int> wavesP = {pathDetails.tempWavelengthNoPP};
-                                vector<int> wavesB = {backupWave[0]};
+                                vector<int> pathForLSP = { source,destination };
+                                vector<int> wavesP = { waveVector[0][0] };
+                                vector<int> wavesB = { waveVector[1][0] };
 
                                 lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj);
                                 lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj);
-                                
+
                                 lspPathDetails[id][0][0] = pathForLSP;
                                 lspPathDetails[id][0][1] = wavesP;
                                 lspPathDetails[id][1][0] = pathForLSP;
                                 lspPathDetails[id][1][1] = wavesB;
 
-                                myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
-                                newLPnoldLP++;
+                                myfile.writeLog("New lsp established with 2 old LPs. [" + to_string(wavesP[0]) + "] [" + to_string(wavesB[0]) + "]");
+                                oldLP++;
                                 isLSPestablish = true;
 
-                                cout << "\nPrimay_";
+                                /*cout << "\nPrimay_";
                                 cout << "\nP.whole path >> ";
                                 printVector(wholePathP);
                                 cout << "\nP.pathforlsp >> ";
@@ -458,44 +575,12 @@ int main()
                                 cout << "\nB. whole path >> ";
                                 printVector(wholePathB);
                                 cout << "\nB. pathforlsp >> ";
-                                printVector(pathForLSP);
+                                printVector(pathForLSP);*/
                             }
+                            else bLpNotFound++; 
                         }
-                        else
-                        {
-                            vector<int> wholePathP;
-                            wholePathP.assign(waveVector[0].begin()+1, waveVector[0].end());
-
-                            vector<int> wholePathB;
-                            wholePathB.assign(waveVector[1].begin()+1, waveVector[1].end());
-
-                            vector<int> pathForLSP = {source,destination};
-                            vector<int> wavesP = {waveVector[0][0]};
-                            vector<int> wavesB = {waveVector[1][0]};
-
-                            lspObj.makeLSP(bandwidth, pathForLSP, wholePathP, wavesP, waveLengthNetwork,"pLSP",id, protectionType, thresholdObj);
-                            lspObj.makeLSP(bandwidth, pathForLSP, wholePathB, wavesB, waveLengthNetwork,"bLSP",id, protectionType, thresholdObj);
-                            
-                            lspPathDetails[id][0][0] = pathForLSP;
-                            lspPathDetails[id][0][1] = wavesP;
-                            lspPathDetails[id][1][0] = pathForLSP;
-                            lspPathDetails[id][1][1] = wavesB;
-
-                            myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
-                            oldLP++;
-                            isLSPestablish = true;
-
-                            cout << "\nPrimay_";
-                            cout << "\nP.whole path >> ";
-                            printVector(wholePathP);
-                            cout << "\nP.pathforlsp >> ";
-                            printVector(pathForLSP);
-                            cout << "\nB. whole path >> ";
-                            printVector(wholePathB);
-                            cout << "\nB. pathforlsp >> ";
-                            printVector(pathForLSP);
-                        }
-                    }                
+                    }
+                    
                 }
 
                 
@@ -580,9 +665,23 @@ int main()
         myfile.writeLog("**Num.of LSP established = "+to_string(newLPnoldLP+newLP+oldLP));
         myfile.writeLog("**Num.of LSP rejected = "+to_string(rejected));
         myfile.writeLog("**Total count = "+to_string(totalCount));
+        myfile.writeLog(" ");
+        myfile.writeLog("****Rejcted****");
+        myfile.writeLog("noAlreadyPathNCombine : " + to_string(noAlreadyPathNCombine));
+        myfile.writeLog("bLpNotFound :" + to_string(bLpNotFound));
+        myfile.writeLog("plpNotFound : " + to_string(plpNotFound));
+        myfile.writeLog(" ");
+        myfile.writeLog("****No already path eshtablished counts****");
+        myfile.writeLog("newLPnNewLP : " + to_string(newLPnNewLP));
+        myfile.writeLog("newLPnCombineLP : " + to_string(newLPnCombineLP));
+        myfile.writeLog("combineLPnCombineLP : " + to_string(combineLPnCombineLP));
 
     }
 
+    //path can create
+    int newLPnNewLP = 0;
+    int newLPnCombineLP = 0;
+    int combineLPnCombineLP = 0;
 
    
     cout << "\nPress ENTER to exit\n";
