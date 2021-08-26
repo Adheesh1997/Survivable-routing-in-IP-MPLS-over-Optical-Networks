@@ -133,11 +133,11 @@ void waveLengthNetworks::removeLink(int src, int dst)
     
 }
 
-void waveLengthNetworks::addLInk(int src, int dst, int bandwidth)
+void waveLengthNetworks::addLInk(int src, int dst)
 {
     
-    waveAdjacancyMatrix[src][dst] = bandwidth;
-    waveAdjacancyMatrix[dst][src] = bandwidth;
+    waveAdjacancyMatrix[src][dst] = 40;
+    waveAdjacancyMatrix[dst][src] = 40;
 
     //waveAdjacancyMatrix[13] = vector<int>{ 0,0,0,0,0,0,0,0,0,0,0,0,0 };
     

@@ -130,7 +130,7 @@ public:
 	void setANewLSP(vector<int> shortestPathLSP, vector<int> wholePath, vector<int> wavelengthVec, lightpathNetwork &obj, string type, int identifier, bool protectionType, thresholds thresholdVals); //Call a function of LSP class to establish a LSP
 
 	vector<vector<int>> lpPAdjacencyMetrix(int bandwidth, int numOfNodes);
-	vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
+	//vector<vector<int>> lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes);
 	vector<vector<int>> getWaveNumbers(int source, int dst,int numOfNodes, int bandwidth, int pathSize = 14);
 	vector<int> getBWaveNumber(int source, int dst,int numOfNodes, int bandwidth,vector<int> primaryPath);
 

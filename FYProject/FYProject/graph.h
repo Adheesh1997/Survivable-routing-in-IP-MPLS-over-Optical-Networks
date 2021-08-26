@@ -72,7 +72,7 @@ public:
     void removeLink(int src, int dst);
 
     //Add a new link to adjacency matrix
-    void addLInk(int src, int dst, int bandwidth = 40);
+    void addLInk(int src, int dst);
 };
 
 vector<waveLengthNetworks> setupWaveLengthNetworks(vector<vector<int>> initAdjacencyMatrix,int maxWaveLengths);

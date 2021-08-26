@@ -72,8 +72,8 @@ int main()
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 10000;           //The number of LSP requests
-    double erlang = 130;                      //Erlang value
+    int numberOfLSPrequests = 100;           //The number of LSP requests
+    double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
 
@@ -89,12 +89,11 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     //vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq_last.txt", listOfEvents); 
+    //myfile.wrteALSP("rqst_inputs/rq.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
     vector<events> listOfEvents;
-    ////myfile.readlsps("rqst_inputs/rq4.txt",listofevents);
     myfile.readLSPs("rqst_inputs/rq_last.txt", listOfEvents);
     /*************** end of (2) *******************/
 
@@ -185,7 +184,7 @@ int main()
             if(action)
             {   
                 
-                cout << "\nCreatein lsp : " << id << endl;
+                cout <<"\nRqst : " << id << endl;
                 totalCount++;
                 myfile.writeLog(("New request. Bandwidth = "+to_string(bandwidth)+",source = "+to_string(source)+", Dst = "
                                 +to_string(destination)+", id = "+to_string(id)+", request = "+to_string(action)));
@@ -226,10 +225,21 @@ int main()
                         lspPathDetails[id][0][1] = wavesP;
                         lspPathDetails[id][1][0] = pathForBLSP;
                         lspPathDetails[id][1][1] = wavesB;
-
+                        
                         myfile.writeLog("New lsp established with new single LP. ["+to_string(pathDetails.wavelengthNoPP)+"] ["+to_string(pathDetails.wavelengthNoBP)+"]");
                         isLSPestablish = true;
                         newLP++;
+
+                        cout << "\nPrimay_";
+                        cout << "\nP.whole path >> ";
+                        printVector(wholePathP);
+                        cout << "\nP.pathforlsp >> ";
+                        printVector(pathForPLSP);
+                        cout << "\nB. whole path >> ";
+                        printVector(wholePathB);
+                        cout << "\nB. pathforlsp >> ";
+                        printVector(pathForBLSP);
+                       
                     }
 
                     map<int,vector<vector<int>>> arr = waveLengthNetwork.mapFromsource(source,numOfNodes, bandwidth,numOfWaves);
@@ -294,6 +304,16 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
+
+                            cout << "\nPrimay_";
+                            cout << "\nP.whole path >> ";
+                            printVector(wholePathP);
+                            cout << "\nP.pathforlsp >> ";
+                            printVector(pathForPLSP);
+                            cout << "\nB. whole path >> ";
+                            printVector(wholePathB);
+                            cout << "\nB. pathforlsp >> ";
+                            printVector(pathForBLSP);
 
                         }
                     }
@@ -373,6 +393,16 @@ int main()
 
                             isLSPestablish = true;
                             newLP++;
+
+                            cout << "\nPrimay_";
+                            cout << "\nP.whole path >> ";
+                            printVector(wholePathP);
+                            cout << "\nP.pathforlsp >> ";
+                            printVector(pathForPLSP);
+                            cout << "\nB. whole path >> ";
+                            printVector(wholePathB);
+                            cout << "\nB. pathforlsp >> ";
+                            printVector(pathForBLSP);
                         }
                     }
 
@@ -419,6 +449,16 @@ int main()
                                 myfile.writeLog("New lsp establish with new LP and old LP. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                                 newLPnoldLP++;
                                 isLSPestablish = true;
+
+                                cout << "\nPrimay_";
+                                cout << "\nP.whole path >> ";
+                                printVector(wholePathP);
+                                cout << "\nP.pathforlsp >> ";
+                                printVector(pathForLSP);
+                                cout << "\nB. whole path >> ";
+                                printVector(wholePathB);
+                                cout << "\nB. pathforlsp >> ";
+                                printVector(pathForLSP);
                             }
                         }
                         else
@@ -444,6 +484,16 @@ int main()
                             myfile.writeLog("New lsp established with 2 old LPs. [" +to_string(wavesP[0])+"] ["+to_string(wavesB[0])+"]");
                             oldLP++;
                             isLSPestablish = true;
+
+                            cout << "\nPrimay_";
+                            cout << "\nP.whole path >> ";
+                            printVector(wholePathP);
+                            cout << "\nP.pathforlsp >> ";
+                            printVector(pathForLSP);
+                            cout << "\nB. whole path >> ";
+                            printVector(wholePathB);
+                            cout << "\nB. pathforlsp >> ";
+                            printVector(pathForLSP);
                         }
                     }                
                 }

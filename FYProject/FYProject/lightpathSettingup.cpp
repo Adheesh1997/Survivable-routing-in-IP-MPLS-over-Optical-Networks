@@ -675,7 +675,7 @@ vector<int> lightpathNetwork::getBWaveNumber(int source, int dst,int numOfNodes,
 
 
 //Generate adjacency metrix to find shortest path for backup LSP
-vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes)
+/* vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath, int numOfNodes)
 {
     vector<vector<int>> arr(numOfNodes,vector<int>(numOfNodes,0));
 
@@ -700,7 +700,7 @@ vector<vector<int>> lightpathNetwork::lpBAdjacencyMetrix(vector<int> primaryPath
 	return arr;
 
 	
-}
+} */
 
 
 map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOfNodes, int bandwidth, int numOfWaves)
