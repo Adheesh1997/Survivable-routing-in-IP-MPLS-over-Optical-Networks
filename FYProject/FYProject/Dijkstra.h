@@ -45,6 +45,9 @@ struct findPathDetails {
     vector<int> tempPrimaryShortPath;
     bool tempCanCreatPP;
     int tempWavelengthNoPP;
+    vector<int> tempBackUpShortPath;
+    bool tempCanCreatBP;
+    int tempWavelengthNoBP;
     vector<int> backUpShortPath;
     bool canCreatBP;
     int wavelengthNoBP;
@@ -98,10 +101,10 @@ public:
 };
 
 
-forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD, vector<int> PPD);
+forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD, vector<int> PPD);
 
-findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);
+findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);
 
-combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> arr1, map<int, vector<vector<int>>> arr2);
+combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> arr1, map<int, vector<vector<int>>> arr2);
 
-forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination);
+forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination);
