@@ -35,6 +35,10 @@ struct forBackupLightpath {
     int wavelengthBLPNo;
     vector<int> wavelengthBLPath;
     bool canCreatBLPath;
+
+    forBackupLightpath() {
+        canCreatBLPath = false;
+    }
 };
 
 struct findPathDetails {
@@ -54,11 +58,11 @@ struct findPathDetails {
 
     findPathDetails()
     {
-        this->alreadyPPhave = false;
-        this->canCreatPP = false;
-        this->tempCanCreatPP = false;
-        this->tempCanCreatBP = false;
-        this->canCreatBP = false;
+        alreadyPPhave = false;
+        canCreatPP = false;
+        tempCanCreatPP = false;
+        tempCanCreatBP = false;
+        canCreatBP = false;
     }
  };
 
@@ -75,6 +79,11 @@ struct combineWavelength {
     vector<int> w1ShortPathBP;
     vector<int> w2ShortPathBP;
     int connectingNodeBP;
+
+    combineWavelength() {
+        canCreatCombinationBP = false;
+        canCreatCombinationPP = false;
+    }
 };
 
 struct forRemainingBackUpPath {
@@ -84,6 +93,25 @@ struct forRemainingBackUpPath {
     vector<int> w1ShortPathBP;
     vector<int> w2ShortPathBP;
     int connectingNodeBP;
+
+    forRemainingBackUpPath() {
+        canCreatCombinationBP = false;
+    }
+};
+
+struct moreOEOConvertion {
+    vector<vector<int>> allPathDetailsPP;
+    vector<int> wavelengthNumberPP;
+    vector<vector<int>> allPathDetailsBP;
+    vector<int> wavelengthNumberBP;
+    bool canCreatePP;
+    bool canCreateBP;
+
+    moreOEOConvertion() {
+        canCreatePP = false;
+        canCreateBP = false;
+    }
+
 };
 
 class Graph_DG {
@@ -117,3 +145,5 @@ findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks>waveLengthNe
 combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> arr1, map<int, vector<vector<int>>> arr2);
 
 forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination);
+
+moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD);
