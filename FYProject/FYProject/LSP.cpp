@@ -119,10 +119,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 					if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].wavelength == LSPwavelengthVec[0]
 						&& (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].path == wholePath || obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].path == tempVVec))
 					{
-						if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier == 279)
-						{
-							cout << "\nLSP ID : " << identifier << endl;
-						}
+						
 						int remainingBandwidth = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].availableBandwidth;
 						//cout<<"bandwidth before = "<<obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].availableBandwidth<<endl;
 						remainingBandwidth = remainingBandwidth - LSPbandwidth;
@@ -922,14 +919,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								type = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype;
 								if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier == identifier && type == typeOfLSP) {
 
-
-
-									if (type == "pLSP") {
-									//	cout << "\n\t\t\tPrimary LSP Deleted (which builed on multiple LP) " << identifier << endl;
-									}
-									else {
-									//	cout << "\n\t\t\tBackup LSP Deleted (which builed on multiple LP) " << identifier << endl;
-									}
 									if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype == "pLSP") {
 										obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath--;
 										obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth + obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].bandwidthOfLSP;
@@ -961,14 +950,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								type = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype;
 								if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier == identifier && type == typeOfLSP) {
 
-
-
-									if (type == "pLSP") {
-									//	cout << "\n\t\t\tPrimary LSP Deleted (which builed on multiple LP) " << identifier << endl;
-									}
-									else {
-										//cout << "\n\t\t\tBackup LSP Deleted (which builed on multiple LP) " << identifier << endl;
-									}
 									if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype == "pLSP") {
 										obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath--;
 										obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth + obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LSPvec[k].bandwidthOfLSP;
@@ -1038,14 +1019,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 							//cout << "\n\t\tidentifier : " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier << "\t\tidentifier 2 : " << identifier;
 							type = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype;
 							if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier == identifier && type == typeOfLSP) {
-
-
-								if (type == "pLSP" ) {
-								//	cout << "\n\t\t\tPrimary LSP Deleted (which builed on multiple LP) " << identifier << endl;
-								}
-								else {
-								//	cout << "\n\t\t\tBackup LSP Deleted (which builed on multiple LP) " << identifier << endl;
-								}
 
 								if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype == "pLSP") {
 									obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath--;
