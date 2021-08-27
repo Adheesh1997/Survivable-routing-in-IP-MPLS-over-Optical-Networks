@@ -706,7 +706,7 @@ forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, 
     }
 }
 
-moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD) {
+moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph) {
 
     moreOEOConvertion outputDetails;
     map<int, vector<vector<int>>> fromSource;
@@ -720,6 +720,8 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
         }
     }
 
+    mapDetails.insert(mapFromLPGraph.begin(), mapFromLPGraph.end());
+
     vector<vector<int>> djGraph;
     for (int i = 0; i < vexnum; i++) {
         vector<int> v1;
@@ -729,11 +731,11 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
         }
         djGraph.push_back(v1);
     }
-    for (int i = 0; i < djGraph.size(); i++) {
+    /*for (int i = 0; i < djGraph.size(); i++) {
         for (int j = 0; j < djGraph[i].size(); j++)
             cout << djGraph[i][j] << " ";
         cout << endl;
-    }
+    }*/
 
     for (auto sourceCount = 0; sourceCount < vexnum; sourceCount++) {
         for (auto destinationCount = 0; destinationCount < vexnum; destinationCount++) {
@@ -781,7 +783,8 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
                 waveLengthNetwork[start].removeLink(primaryPathDetailsPP[j], primaryPathDetailsPP[j + 1]);
             }
         }
-        mapDetails.clear();
+
+        //mapDetails.clear();
         for (auto start = 0; start < waveLengthNetwork.size(); start++) {
             for (auto count = 0; count < vexnum; count++) {
                 Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
@@ -800,11 +803,11 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
             }
             djGraph.push_back(v1);
         }
-        for (int i = 0; i < djGraph.size(); i++) {
+        /*for (int i = 0; i < djGraph.size(); i++) {
             for (int j = 0; j < djGraph[i].size(); j++)
                 cout << djGraph[i][j] << " ";
             cout << endl;
-        }
+        }*/
         for (auto sourceCount = 0; sourceCount < vexnum; sourceCount++) {
             for (auto destinationCount = 0; destinationCount < vexnum; destinationCount++) {
                 for (auto start = 0; start < waveLengthNetwork.size(); start++) {

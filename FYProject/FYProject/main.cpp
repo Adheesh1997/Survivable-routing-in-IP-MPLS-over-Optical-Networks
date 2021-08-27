@@ -74,7 +74,7 @@ int main()
     int numberOfLSPrequests = 1000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 40;
+    int numOfWaves = 16;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
@@ -312,7 +312,6 @@ int main()
                         }
                     }
                                      
-
                     if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
                     {
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
@@ -391,6 +390,29 @@ int main()
                             isLSPestablish = true;
                             combineLPnCombineLP++;
                             
+                        }
+                    }
+
+                    if (!isLSPestablish)
+                    {
+                        map<int, map<int, vector<vector<int>>>> mapFromLPGraph = waveLengthNetwork.mapFromLpGraph(numOfWaves, numOfNodes, bandwidth);
+
+                        moreOEOConvertion moreCovertions = createMainGraph(vexnum, subWaveNetworks, source, destination, mapFromLPGraph);
+
+                        if (moreCovertions.canCreateBP && moreCovertions.canCreatePP)
+                        {
+                            cout << "\nMore covertions\n";
+                            cout << "*Backu paths.\n";
+                            print2dVector(moreCovertions.allPathDetailsBP);
+                            cout << "\nBackup waves_";
+                            printVector(moreCovertions.wavelengthNumberBP);
+
+                            cout << "\n*Primary paths.\n";
+                            print2dVector(moreCovertions.allPathDetailsPP);
+                            cout << "\nPrimary waves_";
+                            printVector(moreCovertions.wavelengthNumberPP);
+
+                            int qqqq = 0;
                         }
                     }
                     

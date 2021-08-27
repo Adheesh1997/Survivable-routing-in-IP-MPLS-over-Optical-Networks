@@ -764,89 +764,89 @@ map<int, vector<vector<int>>> lightpathNetwork::mapFromsource(int src, int numOf
 	return temp;
 }
 
-//
-//map<int, map<int, vector<vector<int>>>> lightpathNetwork::mapFromLpGraph(int numOfWaves, int numOfNodes, int bandwidth)
-//{
-//   if(numOfWaves <= 0 || numOfNodes <= 0)
-//   {
-//      cerr<< "Err:lightpathSettingup.cpp mapFromLpGraph parameters are negetavie.";
-//   }
-//	map<int,vector<vector<int>>> mapToReturnMap;
-//
-//	for(int i = 0; i < numOfNodes; i++)
-//	{
-//		mapToReturnMap[i] = vector<vector<int>> (numOfNodes,vector<int> (1,0));
-//	}
-//
-//   map<int,map<int,vector<vector<int>>>> mapToReturn;
-//
-//   for(int i = 0; i < numOfWaves; i++)
-//   {
-//      mapToReturn[i+numOfWaves] = mapToReturnMap;
-//   }
-//
-//   for(int i = 0; i < lighpaths.size(); i++)
-//   {
-//	   int source = lighpaths[i].id;
-//
-//	   for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
-//	   {
-//		   int destination = lighpaths[i].linkVector[j].destinationID;
-//
-//		   for(int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++)
-//		   {
-//			   if(lighpaths[i].linkVector[j].wavelengthAndLSP[k].availableBandwidth >= bandwidth && lighpaths[i].linkVector[j].wavelengthAndLSP[k].lightpathType == "pp" )
-//			   {
-//				   int wave = lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength;
-//					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[k].path;
-//
-//					if(path[0] != source)
-//					{
-//						reverse(path.begin(),path.end());
-//					}
-//
-//					if(mapToReturn[wave+numOfWaves][source][destination][0] == 0)
-//					{
-//						mapToReturn[wave+numOfWaves][source][destination][0] = 1;
-//
-//						mapToReturn[wave+numOfWaves][source][destination].insert(mapToReturn[wave+numOfWaves][source][destination].end(),path.begin(), path.end());
-//					}
-//					else
-//					{
-//						if(path.size() < mapToReturn[wave+numOfWaves][source][destination].size()-1)
-//						{
-//							mapToReturn[wave+numOfWaves][source][destination].clear();
-//							mapToReturn[wave+numOfWaves][source][destination].push_back(1);
-//
-//							mapToReturn[wave+numOfWaves][source][destination].insert(mapToReturn[wave+numOfWaves][source][destination].end(),path.begin(), path.end());
-//						}
-//					}
-//			   }
-//		   }
-//	   }
-//   }
-//
-//   return mapToReturn;
-//
-//   /* for(vector<int> i:mapToReturn[1+numOfWaves][2])
-//   {
-//      for(int j:i)
-//      {
-//         cout<<j<<" ";
-//      }cout<<endl;
-//   }
-//   cout<< "\nNext...\n";
-//   for(vector<int> i:mapToReturn[39+numOfWaves][13])
-//   {
-//      for(int j:i)
-//      {
-//         cout<<j<<" ";
-//      }cout<<endl;
-//   } */
-//
-//   
-//
-//}
+
+map<int, map<int, vector<vector<int>>>> lightpathNetwork::mapFromLpGraph(int numofwaves, int numofnodes, int bandwidth)
+{
+   if(numofwaves <= 0 || numofnodes <= 0)
+   {
+      cerr<< "err:lightpathsettingup.cpp mapfromlpgraph parameters are negetavie.";
+   }
+	map<int,vector<vector<int>>> maptoreturnmap;
+
+	for(int i = 0; i < numofnodes; i++)
+	{
+		maptoreturnmap[i] = vector<vector<int>> (numofnodes,vector<int> (1,0));
+	}
+
+   map<int,map<int,vector<vector<int>>>> maptoreturn;
+
+   for(int i = 0; i < numofwaves; i++)
+   {
+      maptoreturn[i+numofwaves] = maptoreturnmap;
+   }
+
+   for(int i = 0; i < lighpaths.size(); i++)
+   {
+	   int source = lighpaths[i].id;
+
+	   for(int j = 0; j < lighpaths[i].linkVector.size(); j++)
+	   {
+		   int destination = lighpaths[i].linkVector[j].destinationID;
+		   
+		   for(int k = 0; k < lighpaths[i].linkVector[j].wavelengthAndLSP.size(); k++)
+		   {
+			   if(lighpaths[i].linkVector[j].wavelengthAndLSP[k].availableBandwidth >= bandwidth && lighpaths[i].linkVector[j].wavelengthAndLSP[k].lightpathType == "pp" )
+			   {
+				   int wave = lighpaths[i].linkVector[j].wavelengthAndLSP[k].wavelength;
+					vector<int> path = lighpaths[i].linkVector[j].wavelengthAndLSP[k].path;
+
+					if(path[0] != source)
+					{
+						reverse(path.begin(),path.end());
+					}
+
+					if(maptoreturn[wave+numofwaves][source][destination][0] == 0)
+					{
+						maptoreturn[wave+numofwaves][source][destination][0] = 1;
+
+						maptoreturn[wave+numofwaves][source][destination].insert(maptoreturn[wave+numofwaves][source][destination].end(),path.begin(), path.end());
+					}
+					else
+					{
+						if(path.size() < maptoreturn[wave+numofwaves][source][destination].size()-1)
+						{
+							maptoreturn[wave+numofwaves][source][destination].clear();
+							maptoreturn[wave+numofwaves][source][destination].push_back(1);
+
+							maptoreturn[wave+numofwaves][source][destination].insert(maptoreturn[wave+numofwaves][source][destination].end(),path.begin(), path.end());
+						}
+					}
+			   }
+		   }
+	   }
+   }
+
+   return maptoreturn;
+
+   /* for(vector<int> i:maptoreturn[1+numofwaves][2])
+   {
+      for(int j:i)
+      {
+         cout<<j<<" ";
+      }cout<<endl;
+   }
+   cout<< "\nnext...\n";
+   for(vector<int> i:maptoreturn[39+numofwaves][13])
+   {
+      for(int j:i)
+      {
+         cout<<j<<" ";
+      }cout<<endl;
+   } */
+
+   
+
+}
 
 /***************************** REMOVE LIGHTPAH ******************************/
 
