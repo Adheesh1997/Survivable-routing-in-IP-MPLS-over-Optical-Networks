@@ -65,7 +65,6 @@ int main()
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
 
-    
     int _couter = 0;
 
     thresholds thresholdObj;
@@ -75,7 +74,7 @@ int main()
     int numberOfLSPrequests = 1000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 16;
+    int numOfWaves = 40;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
@@ -441,6 +440,7 @@ int main()
                                 }
                                 else
                                 {
+
                                     if (pathDetails.tempCanCreatBP)
                                     {
                                         checkWhetherLPidfinished(LPids, countForLPids);
