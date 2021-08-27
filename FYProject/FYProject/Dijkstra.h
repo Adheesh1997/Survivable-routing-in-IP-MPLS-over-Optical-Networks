@@ -54,10 +54,11 @@ struct findPathDetails {
 
     findPathDetails()
     {
-        alreadyPPhave = false;
-        canCreatPP = false;
-        tempCanCreatPP = false;
-        canCreatBP = false;
+        this->alreadyPPhave = false;
+        this->canCreatPP = false;
+        this->tempCanCreatPP = false;
+        this->tempCanCreatBP = false;
+        this->canCreatBP = false;
     }
  };
 
