@@ -1,0 +1,118 @@
+[22:07:32] Log file is created
+[22:07:32] graph_inputs/05/graph05.csv Graph is imported.
+[22:07:32] Physical network is created.
+[22:07:32] New request. Bandwidth = 3,source = 11, Dst = 4, id = 0, request = 1
+[22:07:32] New lsp established with 2 new LPs. [0] [0]
+[22:07:32] New request. Bandwidth = 9,source = 4, Dst = 12, id = 1, request = 1
+[22:07:32] New lsp established with 2 new LPs. [1] [1]
+[22:07:32] New request. Bandwidth = 7,source = 13, Dst = 10, id = 2, request = 1
+[22:07:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [0,2]
+[22:07:32] New request. Bandwidth = 10,source = 4, Dst = 6, id = 3, request = 1
+[22:07:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [2,0]
+[22:07:32] New request. Bandwidth = 8,source = 2, Dst = 11, id = 4, request = 1
+[22:07:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [2] [0,1]
+[22:07:32] New request. Bandwidth = 10,source = 5, Dst = 3, id = 5, request = 1
+[22:07:32] New lsp established with 2 new LPs. [3] [0]
+[22:07:32] New request. Bandwidth = 4,source = 4, Dst = 5, id = 6, request = 1
+[22:07:32] New lsp established with 2 new LPs. [2] [2]
+[22:07:32] New request. Bandwidth = 10,source = 3, Dst = 10, id = 7, request = 1
+[22:07:32] New lsp established with 2 new LPs. [2] [1]
+[22:07:32] New request. Bandwidth = 2,source = 5, Dst = 1, id = 8, request = 1
+[22:07:32] New lsp established with 2 new LPs. [3] [3]
+[22:07:32] New request. Bandwidth = 9,source = 1, Dst = 4, id = 9, request = 1
+[22:07:32] New lsp established with 2 new LPs. [4] [4]
+[22:07:32] New request. Bandwidth = 3,source = 6, Dst = 0, id = 10, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [1,5]
+[22:07:33] New request. Bandwidth = 10,source = 6, Dst = 2, id = 11, request = 1
+[22:07:33] New lsp established with 2 new LPs. [5] [5]
+[22:07:33] New request. Bandwidth = 5,source = 5, Dst = 7, id = 12, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [3,0]
+[22:07:33] New request. Bandwidth = 8,source = 2, Dst = 11, id = 13, request = 1
+[22:07:33] New lsp established with 2 new LPs. [6] [6]
+[22:07:33] New release. Bandwidth = 2,source = 5, Dst = 1, id = 8, Release = 0
+[22:07:33] New release. Bandwidth = 2,source = 5, Dst = 1, id = 8, Release = 0
+[22:07:33] New request. Bandwidth = 4,source = 11, Dst = 1, id = 14, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [0,3]
+[22:07:33] New request. Bandwidth = 10,source = 13, Dst = 8, id = 15, request = 1
+[22:07:33] New lsp established with 2 new LPs. [3] [6]
+[22:07:33] New request. Bandwidth = 6,source = 9, Dst = 10, id = 16, request = 1
+[22:07:33] New lsp established with 2 new LPs. [2] [4]
+[22:07:33] New request. Bandwidth = 7,source = 1, Dst = 10, id = 17, request = 1
+[22:07:33] New lsp established with 2 new LPs. [7] [7]
+[22:07:33] New request. Bandwidth = 2,source = 9, Dst = 10, id = 18, request = 1
+[22:07:33] New lsp established with 2 old LPs. [4] [2]
+[22:07:33] New request. Bandwidth = 6,source = 9, Dst = 1, id = 19, request = 1
+[22:07:33] New lsp established with 2 new LPs. [8] [3]
+[22:07:33] New request. Bandwidth = 3,source = 12, Dst = 7, id = 20, request = 1
+[22:07:33] New lsp established with 2 new LPs. [4] [4]
+[22:07:33] New request. Bandwidth = 10,source = 1, Dst = 7, id = 21, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [7] [9,5]
+[22:07:33] New request. Bandwidth = 6,source = 3, Dst = 11, id = 22, request = 1
+[22:07:33] New lsp established with 2 new LPs. [5] [7]
+[22:07:33] New request. Bandwidth = 8,source = 2, Dst = 7, id = 23, request = 1
+[22:07:33] New lsp established with 2 new LPs. [8] [8]
+[22:07:33] New request. Bandwidth = 3,source = 4, Dst = 10, id = 24, request = 1
+[22:07:33] New lsp established with 2 new LPs. [9] [8]
+[22:07:33] New request. Bandwidth = 2,source = 4, Dst = 2, id = 25, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [9] [8,6]
+[22:07:33] New request. Bandwidth = 3,source = 7, Dst = 11, id = 26, request = 1
+[22:07:33] New lsp established with 2 new LPs. [9] [5]
+[22:07:33] New request. Bandwidth = 9,source = 10, Dst = 3, id = 27, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [3,10]
+[22:07:33] New release. Bandwidth = 9,source = 10, Dst = 3, id = 27, Release = 0
+[22:07:33] New release. Bandwidth = 9,source = 10, Dst = 3, id = 27, Release = 0
+[22:07:33] New request. Bandwidth = 3,source = 8, Dst = 9, id = 28, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [3,6]
+[22:07:33] New request. Bandwidth = 9,source = 3, Dst = 9, id = 29, request = 1
+[22:07:33] New lsp established with 2 new LPs. [10] [10]
+[22:07:33] New request. Bandwidth = 7,source = 12, Dst = 13, id = 30, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [4,5]
+[22:07:33] New request. Bandwidth = 1,source = 4, Dst = 5, id = 31, request = 1
+[22:07:33] New lsp established with 2 old LPs. [2] [2]
+[22:07:33] New request. Bandwidth = 4,source = 11, Dst = 12, id = 32, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [8] [6,3]
+[22:07:33] New request. Bandwidth = 2,source = 10, Dst = 6, id = 33, request = 1
+[22:07:33] New lsp established with 2 new LPs. [11] [9]
+[22:07:33] New request. Bandwidth = 9,source = 2, Dst = 13, id = 34, request = 1
+[22:07:33] New lsp established with 2 new LPs. [10] [10]
+[22:07:33] New request. Bandwidth = 8,source = 0, Dst = 1, id = 35, request = 1
+[22:07:33] New lsp established with 2 new LPs. [0] [2]
+[22:07:33] New release. Bandwidth = 4,source = 11, Dst = 1, id = 14, Release = 0
+[22:07:33] New release. Bandwidth = 4,source = 11, Dst = 1, id = 14, Release = 0
+[22:07:33] New request. Bandwidth = 1,source = 10, Dst = 3, id = 36, request = 1
+[22:07:33] New lsp established with 2 new LPs. [3] [11]
+[22:07:33] New request. Bandwidth = 5,source = 9, Dst = 6, id = 37, request = 1
+[22:07:33] New lsp established with 2 new LPs. [12] [12]
+[22:07:33] New request. Bandwidth = 7,source = 9, Dst = 6, id = 38, request = 1
+[22:07:33] New lsp established with 2 new LPs. [13] [13]
+[22:07:33] New request. Bandwidth = 3,source = 6, Dst = 7, id = 39, request = 1
+[22:07:33] New lsp established with 2 new LPs. [14] [14]
+[22:07:33] New request. Bandwidth = 9,source = 3, Dst = 5, id = 40, request = 1
+[22:07:33] New lsp established with 2 new LPs. [15] [12]
+[22:07:33] New request. Bandwidth = 10,source = 2, Dst = 3, id = 41, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [9] [11,12]
+[22:07:33] New request. Bandwidth = 6,source = 0, Dst = 4, id = 42, request = 1
+[22:07:33] New request. Bandwidth = 5,source = 5, Dst = 9, id = 43, request = 1
+[22:07:33] New release. Bandwidth = 9,source = 4, Dst = 12, id = 1, Release = 0
+[22:07:33] New release. Bandwidth = 9,source = 4, Dst = 12, id = 1, Release = 0
+[22:07:33] New request. Bandwidth = 5,source = 3, Dst = 5, id = 44, request = 1
+[22:07:33] New lsp established with 2 new LPs. [1] [13]
+[22:07:33] New request. Bandwidth = 2,source = 0, Dst = 1, id = 45, request = 1
+[22:07:33] New lsp established with 2 old LPs. [0] [2]
+[22:07:33] New request. Bandwidth = 5,source = 13, Dst = 11, id = 46, request = 1
+[22:07:33] New lsp established with 2 new LPs. [1] [12]
+[22:07:33] New request. Bandwidth = 8,source = 8, Dst = 4, id = 47, request = 1
+[22:07:33] New lsp established with 2 new LPs. [7] [14]
+[22:07:33] New request. Bandwidth = 10,source = 8, Dst = 0, id = 48, request = 1
+[22:07:33] New lsp established with 2 new LPs. [2] [15]
+[22:07:33] New request. Bandwidth = 5,source = 7, Dst = 5, id = 49, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [0,9]
+[22:07:33] New request. Bandwidth = 1,source = 9, Dst = 4, id = 50, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [6] [0,8]
+[22:07:33] New request. Bandwidth = 7,source = 1, Dst = 7, id = 51, request = 1
+[22:07:33] New LSP establish with combine LPs for both primary and backup LSPs. [14,4] [15,7]
+[22:07:33] New request. Bandwidth = 1,source = 8, Dst = 0, id = 52, request = 1
+[22:07:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [10,5]
+[22:07:33] New request. Bandwidth = 6,source = 11, Dst = 7, id = 53, request = 1
+[22:07:33] New lsp established with 2 old LPs. [9] [5]
+[22:07:33] New request. Bandwidth = 4,source = 8, Dst = 6, id = 54, request = 1

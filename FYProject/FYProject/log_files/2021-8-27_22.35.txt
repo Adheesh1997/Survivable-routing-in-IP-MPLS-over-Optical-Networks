@@ -1,0 +1,12 @@
+[22:35:01] Log file is created
+[22:35:01] graph_inputs/05/graph05.csv Graph is imported.
+[22:35:01] Physical network is created.
+[22:35:01] New request. Bandwidth = 9,source = 6, Dst = 12, id = 0, request = 1
+[22:35:29] Log file is created
+[22:35:29] graph_inputs/05/graph05.csv Graph is imported.
+[22:35:29] Physical network is created.
+[22:35:29] New request. Bandwidth = 6,source = 13, Dst = 7, id = 0, request = 1
+[22:35:49] Log file is created
+[22:35:49] graph_inputs/05/graph05.csv Graph is imported.
+[22:35:49] Physical network is created.
+[22:35:49] New request. Bandwidth = 2,source = 9, Dst = 5, id = 0, request = 1

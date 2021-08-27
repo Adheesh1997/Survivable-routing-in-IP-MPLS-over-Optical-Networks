@@ -111,7 +111,7 @@ vector<int> Graph_DG::print_path(int begin, int end) {
     //    }
     //}
 
-    if (dis[end].value != intMAX) {
+    if (dis[end].value != intMAX && dis[end].value != 0) {
         return dis[end].path;
     }
     else {
@@ -131,7 +131,7 @@ void Graph_DG::delete_edge(int end) {
 vector<vector<int>> Graph_DG::conditionAppling() {
     vector<vector<int>> totalPathDetails;
     for (int i = 0; i != this->vexnum; i++) {
-        if (dis[i].value != intMAX) { //path exist
+        if (dis[i].value != intMAX && dis[i].value != 0) { //path exist
             dis[i].path.insert(dis[i].path.begin(), 1);
         }
         else { // path not exist
@@ -731,15 +731,11 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
         }
         djGraph.push_back(v1);
     }
-    /*for (int i = 0; i < djGraph.size(); i++) {
-        for (int j = 0; j < djGraph[i].size(); j++)
-            cout << djGraph[i][j] << " ";
-        cout << endl;
-    }*/
+
 
     for (auto sourceCount = 0; sourceCount < vexnum; sourceCount++) {
         for (auto destinationCount = 0; destinationCount < vexnum; destinationCount++) {
-            for (auto start = 0; start < waveLengthNetwork.size(); start++) {
+            for (auto start = 0; start < mapDetails.size(); start++) {
                 if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
                     completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
                     int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
@@ -753,7 +749,13 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
             }
         }
     }
-
+    //cout << endl;
+    //for (int i = 0; i < djGraph.size(); i++) {
+    //    for (int j = 0; j < djGraph[i].size(); j++) {
+    //        cout << djGraph[i][j] << " ";
+    //    }
+    // cout << endl;
+    //}
     vector<int> primaryPathDetailsPP;
     Graph_DG graph(vexnum, djGraph);//graph.print();
     graph.Dijkstra(source);
@@ -772,11 +774,12 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
                 mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)].push_back(0);
             }
             
-            //temp.pop_back();
+            temp.pop_back();
             vector<int>::iterator it;
-            it = primaryPathDetailsPP.begin();
+            it = primaryPathDetailsPP.end();
             primaryPathDetailsPP.insert(it, temp.begin(), temp.end());
         }
+        primaryPathDetailsPP.push_back(destination);
         for (auto start = 0; start < waveLengthNetwork.size(); start++) {
             for (auto j = 0; j < primaryPathDetailsPP.size() - 1; j++)
             {
@@ -796,21 +799,18 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
         completeMapDetails.clear();
 
         for (int i = 0; i < vexnum; i++) {
-            vector<int> v1;
-
             for (int j = 0; j < vexnum; j++) {
-                v1.push_back(0);
+                djGraph[i][j] = 0;
             }
-            djGraph.push_back(v1);
         }
-        /*for (int i = 0; i < djGraph.size(); i++) {
-            for (int j = 0; j < djGraph[i].size(); j++)
-                cout << djGraph[i][j] << " ";
-            cout << endl;
-        }*/
+        //for (int i = 0; i < djGraph.size(); i++) {
+        //    for (int j = 0; j < djGraph[i].size(); j++)
+        //        cout << djGraph[i][j] << " ";
+        //    cout << endl;
+        //}
         for (auto sourceCount = 0; sourceCount < vexnum; sourceCount++) {
             for (auto destinationCount = 0; destinationCount < vexnum; destinationCount++) {
-                for (auto start = 0; start < waveLengthNetwork.size(); start++) {
+                for (auto start = 0; start < mapDetails.size(); start++) {
                     if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
 
                         bool validate = true;
