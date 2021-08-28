@@ -661,7 +661,7 @@ combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> wa
     }
 }
 
-forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination) {
+forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination) {
     auto minVal = 1000;
     int waveLengthNumber = -1;
     forBackupLightpath shortestPathsDetails;

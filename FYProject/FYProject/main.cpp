@@ -88,12 +88,12 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
+    //myfile.wrteALSP("rqst_inputs/rq6.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
     //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq4.txt", listOfEvents);
+    //myfile.readLSPs("rqst_inputs/rq6.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -143,6 +143,7 @@ int main()
             int newLPnNewLP = 0;
             int newLPnCombineLP = 0;
             int combineLPnCombineLP = 0;
+            int newMethod = 0;
 
 
         int AlreadyPathEstablish = 0;
@@ -153,6 +154,9 @@ int main()
             int oldNold = 0;
             int oldNnew = 0;
             int oldNcombine = 0;
+
+            vector<int> bandwidthEstablishCount(11, 0);
+            vector<int> bandwidthRejectCount(11, 0);
         
         vector<int> LPids(100000); // vector with 100000 ints.
         iota(begin(LPids), end(LPids), 1); // Fill with 1, 2, ..., 100000.
@@ -195,6 +199,7 @@ int main()
             lspPathDetails[id][1].push_back(vector<int>{-1});
             lspPathDetails[id][1].push_back(vector<int>{-1});
             
+            /*
             if(action)
             {   
                 
@@ -311,8 +316,9 @@ int main()
 
                         }
                     }
-                                     
-                    if(!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
+                     
+                    
+                    if (!pathDetails.canCreatPP && !pathDetails.canCreatBP && !isLSPestablish)
                     {
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
@@ -389,15 +395,22 @@ int main()
                             
                         }
                     }
-
+                    
                     if (!isLSPestablish)
                     {
+                        cout << "\n0000000000000000000000000000000000000000000000000000000000000000000000";
                         map<int, map<int, vector<vector<int>>>> mapFromLPGraph = waveLengthNetwork.mapFromLpGraph(numOfWaves, numOfNodes, bandwidth);
 
                         moreOEOConvertion moreCovertions = createMainGraph(vexnum, subWaveNetworks, source, destination, mapFromLPGraph);
 
                         if (moreCovertions.canCreateBP && moreCovertions.canCreatePP)
                         {
+                            cout << "\n11111111111111111111111111111111111111111111111111111111111111111111111";
+                            cout << "\nPrimary\ waves : ";
+                            printVector(moreCovertions.wavelengthNumberPP);
+
+                            cout << "\nBackup waves : ";
+                            printVector(moreCovertions.wavelengthNumberBP);
 
                             // Creating LPs for primary and backup paths
                             for (int primaryPart = 0; primaryPart < moreCovertions.wavelengthNumberPP.size(); primaryPart++)
@@ -440,7 +453,7 @@ int main()
                             {
                                 wholePathP.insert(wholePathP.end(), moreCovertions.allPathDetailsPP[primaryPart].begin(), moreCovertions.allPathDetailsPP[primaryPart].end());
                                 pathForPLSP.push_back(moreCovertions.allPathDetailsPP[primaryPart].back());
-                               
+
                             }
 
                             vector<int> wholePathB;
@@ -451,22 +464,23 @@ int main()
                             {
                                 wholePathB.insert(wholePathB.end(), moreCovertions.allPathDetailsBP[backupPart].begin(), moreCovertions.allPathDetailsBP[backupPart].end());
                                 pathForBLSP.push_back(moreCovertions.allPathDetailsBP[backupPart].back());
-                                
+
                             }
 
                             lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsPP);
                             lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsBP);
 
                             isLSPestablish = true;
-                            combineLPnCombineLP++;
+                            newMethod++;
 
                             lspPathDetails[id][0][0] = pathForPLSP;
                             lspPathDetails[id][0][1] = wavesP;
                             lspPathDetails[id][1][0] = pathForBLSP;
                             lspPathDetails[id][1][1] = wavesB;
 
-                            
+
                         }
+                        else int a = 9;
                     }
                     
                         
@@ -844,21 +858,108 @@ int main()
                 }
 
                 
-                if(!isLSPestablish) 
+                if (!isLSPestablish)
                 {
-
+                    bandwidthRejectCount[bandwidth]++;
                     rejectedEvents.push_back(listOfEvents[0].identifier);
                     rejected++;
                     myfile.writeLog("LSP is REJECTED.");
                 }
+                else bandwidthEstablishCount[bandwidth]++;
+            }
+            */
+            
+            
+            if(action)
+            {
+                cout << "\nRqst : " << id;
+                
+                map<int, map<int, vector<vector<int>>>> mapFromLPGraph = waveLengthNetwork.mapFromLpGraph(numOfWaves, numOfNodes, bandwidth);
+
+                moreOEOConvertion moreCovertions = createMainGraph(vexnum, subWaveNetworks, source, destination, mapFromLPGraph);
+
+                if (moreCovertions.canCreateBP && moreCovertions.canCreatePP)
+                {
+                    
+                    // Creating LPs for primary and backup paths
+                    for (int primaryPart = 0; primaryPart < moreCovertions.wavelengthNumberPP.size(); primaryPart++)
+                    {
+                        if (moreCovertions.wavelengthNumberPP[primaryPart] < numOfWaves)
+                        {
+                            checkWhetherLPidfinished(LPids, countForLPids);
+                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsPP[primaryPart], moreCovertions.wavelengthNumberPP[primaryPart], "pp", LPids[0]);
+                            removeLink(moreCovertions.wavelengthNumberPP[primaryPart], moreCovertions.allPathDetailsPP[primaryPart], subWaveNetworks);
+                            removeLPidFromVec(LPids);
+                        }
+                        else
+                        {
+                            moreCovertions.wavelengthNumberPP[primaryPart] -= numOfWaves;
+                        }
+                    }
+
+                    for (int backupPart = 0; backupPart < moreCovertions.wavelengthNumberBP.size(); backupPart++)
+                    {
+                        if (moreCovertions.wavelengthNumberBP[backupPart] < numOfWaves)
+                        {
+                            checkWhetherLPidfinished(LPids, countForLPids);
+                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsBP[backupPart], moreCovertions.wavelengthNumberBP[backupPart], "pp", LPids[0]);
+                            removeLink(moreCovertions.wavelengthNumberBP[backupPart], moreCovertions.allPathDetailsBP[backupPart], subWaveNetworks);
+                            removeLPidFromVec(LPids);
+                        }
+                        else
+                        {
+                            moreCovertions.wavelengthNumberBP[backupPart] -= numOfWaves;
+                        }
+                    }
+
+                    // Creating LSPs for primary and backup
+                    vector<int> wholePathP = { moreCovertions.allPathDetailsPP[0][0] };
+                    vector<int> pathForPLSP = { moreCovertions.allPathDetailsPP[0][0] };
+                    vector<int> wavesP = moreCovertions.wavelengthNumberPP;
+
+                    for (int primaryPart = 0; primaryPart < moreCovertions.allPathDetailsPP.size(); primaryPart++)
+                    {
+                        wholePathP.insert(wholePathP.end(), moreCovertions.allPathDetailsPP[primaryPart].begin() + 1, moreCovertions.allPathDetailsPP[primaryPart].end());
+                        pathForPLSP.push_back(moreCovertions.allPathDetailsPP[primaryPart].back());
+
+                    }
+
+                    vector<int> wholePathB = { moreCovertions.allPathDetailsBP[0][0] };
+                    vector<int> pathForBLSP = { moreCovertions.allPathDetailsBP[0][0] };
+                    vector<int> wavesB = moreCovertions.wavelengthNumberBP;
+
+                    for (int backupPart = 0; backupPart < moreCovertions.allPathDetailsBP.size(); backupPart++)
+                    {
+                        wholePathB.insert(wholePathB.end(), moreCovertions.allPathDetailsBP[backupPart].begin() + 1, moreCovertions.allPathDetailsBP[backupPart].end());
+                        pathForBLSP.push_back(moreCovertions.allPathDetailsBP[backupPart].back());
+
+                    }
+
+                    
+                    lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsPP);
+                    lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsBP);
+
+                    isLSPestablish = true;
+                    combineLPnCombineLP++;
+
+                    lspPathDetails[id][0][0] = pathForPLSP;
+                    lspPathDetails[id][0][1] = wavesP;
+                    lspPathDetails[id][1][0] = pathForBLSP;
+                    lspPathDetails[id][1][1] = wavesB;
+
+
+                }
+
+                if (isLSPestablish) noAlreadyPathEstablish++;
+                else noAlreadyPathReject++;
             }
             
 
             else if(!action)
             {
 
-                 myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
-                    + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
+                 //myfile.writeLog(("New release. Bandwidth = " + to_string(bandwidth) + ",source = " + to_string(source) + ", Dst = "
+                   // + to_string(destination) + ", id = " + to_string(id) + ", Release = " + to_string(action)));
 
 
                  vector<int> pathP = lspPathDetails[id][0][0];
@@ -897,6 +998,17 @@ int main()
         cout << "\n\n**Remain LSPs_\n";
         lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
+        cout << "\nEstablish count_";
+        for (int qq = 0; qq < bandwidthEstablishCount.size(); qq++)
+        {
+            cout << qq << "\t: " << bandwidthEstablishCount[qq] << endl;
+        }
+        cout << "\nReject count_";
+        for (int qq = 0; qq < bandwidthRejectCount.size(); qq++)
+        {
+            cout << qq << "\t: " << bandwidthRejectCount[qq] << endl;
+        }
+
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
         myfile.writeLog("*****************");
@@ -928,6 +1040,7 @@ int main()
         myfile.writeLog("newLPnNewLP = " + to_string(newLPnNewLP));
         myfile.writeLog("newLPnCombineLP = " + to_string(newLPnCombineLP));
         myfile.writeLog("combineLPnCombineLP = " + to_string(combineLPnCombineLP));
+        myfile.writeLog("newMethod = " + to_string(newMethod));
         myfile.writeLog("Established = " + to_string(noAlreadyPathEstablish));
         myfile.writeLog("Rejected = " + to_string(noAlreadyPathReject));
         
@@ -946,10 +1059,6 @@ int main()
         
     }
 
-    //path can create
-    int newLPnNewLP = 0;
-    int newLPnCombineLP = 0;
-    int combineLPnCombineLP = 0;
 
    
     cout << "\nPress ENTER to exit\n";

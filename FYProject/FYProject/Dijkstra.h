@@ -144,6 +144,6 @@ findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks>waveLengthNe
 
 combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> arr1, map<int, vector<vector<int>>> arr2);
 
-forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination);
+forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination);
 
 moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph);
