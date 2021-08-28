@@ -88,7 +88,7 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
+    myfile.wrteALSP("rqst_inputs/rq5.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
@@ -316,9 +316,6 @@ int main()
                     {
                         combineWavelength combineWavelengthDetails = pathCombinationCreat(vexnum, subWaveNetworks, source, destination, arr, arr1);
                         
-                        //cout << "\n****Combine path******\n";
-
-
                         if(combineWavelengthDetails.canCreatCombinationPP && combineWavelengthDetails.canCreatCombinationBP)
                         {
                             if (combineWavelengthDetails.wavelengthNo1PP < numOfWaves)
@@ -401,18 +398,74 @@ int main()
 
                         if (moreCovertions.canCreateBP && moreCovertions.canCreatePP)
                         {
-                            cout << "\nMore covertions\n";
-                            cout << "*Backu paths.\n";
-                            print2dVector(moreCovertions.allPathDetailsBP);
-                            cout << "\nBackup waves_";
-                            printVector(moreCovertions.wavelengthNumberBP);
 
-                            cout << "\n*Primary paths.\n";
-                            print2dVector(moreCovertions.allPathDetailsPP);
-                            cout << "\nPrimary waves_";
-                            printVector(moreCovertions.wavelengthNumberPP);
+                            // Creating LPs for primary and backup paths
+                            for (int primaryPart = 0; primaryPart < moreCovertions.wavelengthNumberPP.size(); primaryPart++)
+                            {
+                                if (moreCovertions.wavelengthNumberPP[primaryPart] < numOfWaves)
+                                {
+                                    checkWhetherLPidfinished(LPids, countForLPids);
+                                    waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsPP[primaryPart], moreCovertions.wavelengthNumberPP[primaryPart], "pp", LPids[0]);
+                                    removeLink(moreCovertions.wavelengthNumberPP[primaryPart], moreCovertions.allPathDetailsPP[primaryPart], subWaveNetworks);
+                                    removeLPidFromVec(LPids);
+                                }
+                                else
+                                {
+                                    moreCovertions.wavelengthNumberPP[primaryPart] -= numOfWaves;
+                                }
+                            }
 
-                            int qqqq = 0;
+                            for (int backupPart = 0; backupPart < moreCovertions.wavelengthNumberBP.size(); backupPart++)
+                            {
+                                if (moreCovertions.wavelengthNumberBP[backupPart] < numOfWaves)
+                                {
+                                    checkWhetherLPidfinished(LPids, countForLPids);
+                                    waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsBP[backupPart], moreCovertions.wavelengthNumberBP[backupPart], "pp", LPids[0]);
+                                    removeLink(moreCovertions.wavelengthNumberBP[backupPart], moreCovertions.allPathDetailsBP[backupPart], subWaveNetworks);
+                                    removeLPidFromVec(LPids);
+                                }
+                                else
+                                {
+                                    moreCovertions.wavelengthNumberBP[backupPart] -= numOfWaves;
+                                }
+                            }
+
+
+                            // Creating LSPs for primary and backup
+                            vector<int> wholePathP;
+                            vector<int> pathForPLSP = { moreCovertions.allPathDetailsPP[0][0] };
+                            vector<int> wavesP = moreCovertions.wavelengthNumberPP;
+
+                            for (int primaryPart = 0; primaryPart < moreCovertions.allPathDetailsPP.size(); primaryPart++)
+                            {
+                                wholePathP.insert(wholePathP.end(), moreCovertions.allPathDetailsPP[primaryPart].begin(), moreCovertions.allPathDetailsPP[primaryPart].end());
+                                pathForPLSP.push_back(moreCovertions.allPathDetailsPP[primaryPart].back());
+                               
+                            }
+
+                            vector<int> wholePathB;
+                            vector<int> pathForBLSP = { moreCovertions.allPathDetailsBP[0][0] };
+                            vector<int> wavesB = moreCovertions.wavelengthNumberBP;
+
+                            for (int backupPart = 0; backupPart < moreCovertions.allPathDetailsBP.size(); backupPart++)
+                            {
+                                wholePathB.insert(wholePathB.end(), moreCovertions.allPathDetailsBP[backupPart].begin(), moreCovertions.allPathDetailsBP[backupPart].end());
+                                pathForBLSP.push_back(moreCovertions.allPathDetailsBP[backupPart].back());
+                                
+                            }
+
+                            lspObj.makeLSP(bandwidth, pathForPLSP, wholePathP, wavesP, waveLengthNetwork, "pLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsPP);
+                            lspObj.makeLSP(bandwidth, pathForBLSP, wholePathB, wavesB, waveLengthNetwork, "bLSP", id, protectionType, thresholdObj, moreCovertions.allPathDetailsBP);
+
+                            isLSPestablish = true;
+                            combineLPnCombineLP++;
+
+                            lspPathDetails[id][0][0] = pathForPLSP;
+                            lspPathDetails[id][0][1] = wavesP;
+                            lspPathDetails[id][1][0] = pathForBLSP;
+                            lspPathDetails[id][1][1] = wavesB;
+
+                            
                         }
                     }
                     
@@ -838,6 +891,11 @@ int main()
             }
             
         }
+
+        cout << "\n**Remain LPs_\n";
+        waveLengthNetwork.viewAllLighpaths();
+        cout << "\n\n**Remain LSPs_\n";
+        lspObj.viewLSPsInALightpath(waveLengthNetwork);
 
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
