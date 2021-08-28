@@ -133,7 +133,7 @@ void files::wrteALSP(string fileLocation, vector<events>& listOfEvents)
     {
         for(events event:listOfEvents)
         {
-            lspRequests<<event.sourceNode<<","<<event.destinationNode<<","<<event.identifier<<","<<event.action<<endl;
+            lspRequests << event.sourceNode << "," << event.destinationNode << "," << event.identifier << "," << event.action << "," << event.bandwidth << endl;
         }
     }
     else cout<<"LSP file not open to write\n";
@@ -166,7 +166,9 @@ void files::readLSPs(string fileLocation, vector<events>& listOfEvents)
 
             getline(line,num,','); 
             temp.action = stoi(num);
-            temp.bandwidth = 10;
+
+            getline(line, num, ',');
+            temp.bandwidth = stoi(num);
 
             listOfEvents.push_back(temp); //Push temprary vector that contain a row of adjacency metrix to final vector
         }

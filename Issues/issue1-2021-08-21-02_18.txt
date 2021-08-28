@@ -1,0 +1,5 @@
+id 714 main 268 LSP 345 (LSP bandwidth 10, LP bandwidth 40)
+id 912 main 412 LSP 162 (LSP bandwidth 1, LP 1000)
+
+In both cases, pointer points to a null place
+When LSP release is commented, then no error

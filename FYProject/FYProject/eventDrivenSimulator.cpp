@@ -35,7 +35,7 @@ void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, d
 		{
 			obj.destinationNode = rand() % 14;
 		} while (obj.destinationNode == obj.sourceNode);
-		obj.bandwidth = 1 + rand() % 10;
+		obj.bandwidth = 1 +rand() % 10;
 		obj.interArrivalTime = exp.operator() (rng); // generates the next random number in the distribution 
 		obj.holdingTime = exp2.operator() (rng2);    // generates the next random number in the distribution 
 		obj.remainingTime = obj.holdingTime;
