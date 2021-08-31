@@ -1,0 +1,48 @@
+[12:32:51] Log file is created
+[12:32:51] graph_inputs/05/graph05.csv Graph is imported.
+[12:32:51] Physical network is created.
+[12:32:51] New request. Bandwidth = 15,source = 1, Dst = 4, id = 0, request = 1
+[12:32:52] New lsp established with new single LP. [0] [0]
+[12:32:52] New request. Bandwidth = 11,source = 1, Dst = 4, id = 1, request = 1
+[12:32:52] New lsp established with 2 old LPs. [0] [0]
+[12:32:52] New request. Bandwidth = 10,source = 1, Dst = 4, id = 2, request = 1
+[12:32:53] New lsp established with 2 old LPs. [0] [0]
+[12:32:53] New request. Bandwidth = 10,source = 1, Dst = 4, id = 3, request = 1
+[12:32:53] New lsp establish with new LP and old LP. [0] [0]
+[12:32:53] New request. Bandwidth = 12,source = 1, Dst = 4, id = 4, request = 1
+[12:32:53] New lsp established with 2 old LPs. [0] [0]
+[12:32:53] New request. Bandwidth = 13,source = 1, Dst = 4, id = 5, request = 1
+[12:32:53] LSP is REJECTED.
+[12:32:53] New request. Bandwidth = 11,source = 1, Dst = 4, id = 6, request = 1
+[12:32:53] LSP is REJECTED.
+[12:32:53] New request. Bandwidth = 12,source = 1, Dst = 4, id = 7, request = 1
+[12:32:53] LSP is REJECTED.
+[12:32:53] New request. Bandwidth = 15,source = 1, Dst = 4, id = 8, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 11,source = 1, Dst = 4, id = 9, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 15,source = 1, Dst = 4, id = 10, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 12,source = 1, Dst = 4, id = 11, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 15,source = 1, Dst = 4, id = 12, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 13,source = 1, Dst = 4, id = 13, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 14,source = 1, Dst = 4, id = 14, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 14,source = 1, Dst = 4, id = 15, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 13,source = 1, Dst = 4, id = 17, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54] New request. Bandwidth = 12,source = 1, Dst = 4, id = 19, request = 1
+[12:32:54] LSP is REJECTED.
+[12:32:54]                  
+[12:32:54] ****Counts****
+[12:32:54] Num of lsp rqst = 20
+[12:32:54] new LP & old LP = 1
+[12:32:54] new LP = 1
+[12:32:54] old LP = 3
+[12:32:54]                  
+[12:32:54] **Num.of LSP established = 5
+[12:32:54] **Num.of LSP rejected = 13

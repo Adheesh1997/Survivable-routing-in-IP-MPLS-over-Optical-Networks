@@ -1,0 +1,8 @@
+release LSP, 
+   backup lightpath eka deete karaddi having backup eka false karanna
+   releaseEshtablishedLightpath ekae pp, bp check karanna attribute ekak daanna	
+
+if (type == "pLSP" && obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].havingBackup)
+   meka primary lightpath ekakda nAdda kiyala check karala balanna one(LSP size eka 2 nam part eke)
+
+Another iVector, jvector

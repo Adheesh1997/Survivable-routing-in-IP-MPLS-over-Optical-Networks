@@ -1,0 +1,27 @@
+[10:47:03] Log file is created
+[10:47:03] graph_inputs/05/graph05.csv Graph is imported.
+[10:47:03] Physical network is created.
+[10:47:04] LSP is REJECTED.
+[10:47:08] LSP is REJECTED.
+[10:47:12] LSP is REJECTED.
+[10:47:12] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] LSP is REJECTED.
+[10:47:14] 
+[10:47:14] *****************
+[10:47:14] Protection type = Number of LSP based
+[10:47:14] Threshold value = 1
+[10:47:14] Erlang = 130.000000
+[10:47:14] Mean holding time = 1.000000
+[10:47:14]                  
+[10:47:14] ****Counts****
+[10:47:14] Num of lsp rqst = 100
+[10:47:14] old LP = 24
+[10:47:14]                  
+[10:47:14] **Num.of LSP established = 90
+[10:47:14] **Num.of LSP rejected = 10
+[10:47:14] **Total count = 100

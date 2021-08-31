@@ -70,7 +70,7 @@ int main()
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 90;                      //Erlang value
+    double erlang = 100;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
 
@@ -92,7 +92,7 @@ int main()
     //tempObject.printEvents(); 
     /**************** LSP requests read from file ********** -------------------------(2) */
     //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq6.txt", listOfEvents);
+    //myfile.readLSPs("rqst_inputs/rq8.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork

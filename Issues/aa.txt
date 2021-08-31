@@ -1,0 +1,8 @@
+if having a backup lightpath, LSP.cpp 596
+primary LSP bandwidth 739
+primary LSP count
+consider wavelength in deleteLpLink lightpathSettingUp.cpp, 927
+erase backup lightpath, lightpathSettingup.cpp. 937
+delete the correct lightpath lightpathSettingup.cpp 948, 954
+  delete from wavelengthAndLSP, after that if(wavelenthAndLSP.size()==0), then delete the linkVector element
+it has to be a primary lightpath LSP.cpp, 842

@@ -1,0 +1,21 @@
+[01:07:16] Log file is created
+[01:07:16] graph_inputs/05/graph05.csv Graph is imported.
+[01:07:16] Physical network is created.
+[01:10:29] 
+[01:10:29] *****************
+[01:10:29] Protection type = Number of LSP based
+[01:10:29] Threshold value = 1
+[01:10:29] Erlang = 100.000000
+[01:10:29] Mean holding time = 1.000000
+[01:10:29] Capacity of a LP = 10
+[01:10:29] Mean holding time = 1.000000
+[01:10:29] Num.of wave lengths per fiber = 16
+[01:10:29]                  
+[01:10:29] ****Counts****
+[01:10:29] Num.of lsp rqst = 1000
+[01:10:29]  
+[01:10:29] *Num.of lspEstablished LSPs = 744
+[01:10:29] *Num.of lspRejected LSPs = 256
+[01:10:29]  
+[01:10:29] Num.of backup LPs established = 2
+[01:10:29] Num.of backup LPs rejected = 116

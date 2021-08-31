@@ -1,0 +1,2650 @@
+[18:28:24] Log file is created
+[18:28:24] graph_inputs/05/graph05.csv Graph is imported.
+[18:28:24] Physical network is created.
+[18:28:24] New request. Bandwidth = 10,source = 8, Dst = 12, id = 0, request = 1
+[18:28:25] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [0,0]
+[18:28:25] New request. Bandwidth = 10,source = 7, Dst = 12, id = 1, request = 1
+[18:28:25] New lsp established with new single LP. [1] [0]
+[18:28:25] New request. Bandwidth = 10,source = 2, Dst = 3, id = 2, request = 1
+[18:28:25] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [1,0]
+[18:28:25] New request. Bandwidth = 10,source = 5, Dst = 10, id = 3, request = 1
+[18:28:25] New LSP establish with single LP for primary, and 2 combine LPs for backup. [2] [2,0]
+[18:28:25] New request. Bandwidth = 10,source = 13, Dst = 8, id = 4, request = 1
+[18:28:25] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [0,0]
+[18:28:25] New request. Bandwidth = 10,source = 13, Dst = 3, id = 5, request = 1
+[18:28:26] New LSP establish with single LP for primary, and 2 combine LPs for backup. [1] [1,1]
+[18:28:26] New request. Bandwidth = 10,source = 12, Dst = 1, id = 6, request = 1
+[18:28:26] New lsp established with new single LP. [2] [1]
+[18:28:26] New request. Bandwidth = 10,source = 4, Dst = 12, id = 7, request = 1
+[18:28:26] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [3,0]
+[18:28:26] New request. Bandwidth = 10,source = 13, Dst = 3, id = 8, request = 1
+[18:28:26] LSP is REJECTED.
+[18:28:26] New request. Bandwidth = 10,source = 4, Dst = 7, id = 9, request = 1
+[18:28:26] New lsp established with new single LP. [0] [3]
+[18:28:26] New request. Bandwidth = 10,source = 11, Dst = 6, id = 10, request = 1
+[18:28:27] New LSP establish with single LP for primary, and 2 combine LPs for backup. [2] [1,4]
+[18:28:27] New request. Bandwidth = 10,source = 4, Dst = 6, id = 11, request = 1
+[18:28:27] New lsp established with new single LP. [1] [4]
+[18:28:27] New request. Bandwidth = 10,source = 11, Dst = 6, id = 12, request = 1
+[18:28:27] LSP is REJECTED.
+[18:28:27] New request. Bandwidth = 10,source = 11, Dst = 5, id = 13, request = 1
+[18:28:27] New lsp establish with new LP and old LP. [3] [2]
+[18:28:27] New request. Bandwidth = 10,source = 13, Dst = 2, id = 14, request = 1
+[18:28:28] New lsp established with new single LP. [4] [2]
+[18:28:28] New request. Bandwidth = 10,source = 13, Dst = 2, id = 15, request = 1
+[18:28:28] New lsp established with 2 old LPs. [4] [2]
+[18:28:28] New request. Bandwidth = 10,source = 9, Dst = 1, id = 16, request = 1
+[18:28:28] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [0,0]
+[18:28:28] New request. Bandwidth = 10,source = 9, Dst = 2, id = 17, request = 1
+[18:28:28] New lsp establish with new LP and old LP. [4] [0]
+[18:28:28] New request. Bandwidth = 10,source = 0, Dst = 2, id = 18, request = 1
+[18:28:28] New lsp established with new single LP. [1] [0]
+[18:28:28] New request. Bandwidth = 10,source = 9, Dst = 8, id = 19, request = 1
+[18:28:28] New lsp established with new single LP. [5] [3]
+[18:28:28] New request. Bandwidth = 10,source = 11, Dst = 12, id = 20, request = 1
+[18:28:28] LSP is REJECTED.
+[18:28:28] New request. Bandwidth = 10,source = 2, Dst = 3, id = 21, request = 1
+[18:28:28] LSP is REJECTED.
+[18:28:28] New request. Bandwidth = 10,source = 13, Dst = 6, id = 23, request = 1
+[18:28:28] New lsp established with new single LP. [6] [5]
+[18:28:28] New request. Bandwidth = 10,source = 10, Dst = 5, id = 24, request = 1
+[18:28:28] New lsp establish with new LP and old LP. [5] [2]
+[18:28:28] New request. Bandwidth = 10,source = 8, Dst = 4, id = 25, request = 1
+[18:28:28] New lsp establish with new LP and old LP. [0] [0]
+[18:28:28] New request. Bandwidth = 10,source = 7, Dst = 4, id = 26, request = 1
+[18:28:29] New lsp established with 2 old LPs. [0] [3]
+[18:28:29] New request. Bandwidth = 10,source = 1, Dst = 0, id = 27, request = 1
+[18:28:29] New lsp established with new single LP. [0] [3]
+[18:28:29] New request. Bandwidth = 10,source = 2, Dst = 10, id = 28, request = 1
+[18:28:29] New lsp established with new single LP. [1] [2]
+[18:28:29] New request. Bandwidth = 10,source = 9, Dst = 13, id = 30, request = 1
+[18:28:29] New LSP establish with single LP for primary, and 2 combine LPs for backup. [1] [1,2]
+[18:28:29] New request. Bandwidth = 10,source = 10, Dst = 8, id = 31, request = 1
+[18:28:29] New lsp established with new single LP. [7] [6]
+[18:28:29] New request. Bandwidth = 10,source = 7, Dst = 4, id = 32, request = 1
+[18:28:29] New lsp established with 2 old LPs. [0] [3]
+[18:28:29] New request. Bandwidth = 10,source = 4, Dst = 9, id = 33, request = 1
+[18:28:29] New lsp established with new single LP. [1] [2]
+[18:28:29] New request. Bandwidth = 10,source = 3, Dst = 10, id = 34, request = 1
+[18:28:29] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [1,6]
+[18:28:29] New request. Bandwidth = 10,source = 1, Dst = 10, id = 35, request = 1
+[18:28:29] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [1,0]
+[18:28:29] New request. Bandwidth = 10,source = 6, Dst = 1, id = 36, request = 1
+[18:28:30] New LSP establish with single LP for primary, and 2 combine LPs for backup. [5] [1,2]
+[18:28:30] New request. Bandwidth = 10,source = 7, Dst = 2, id = 37, request = 1
+[18:28:30] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [3,4]
+[18:28:30] New request. Bandwidth = 10,source = 0, Dst = 6, id = 38, request = 1
+[18:28:30] New lsp established with new single LP. [5] [6]
+[18:28:30] New request. Bandwidth = 10,source = 5, Dst = 4, id = 39, request = 1
+[18:28:30] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [5,5]
+[18:28:30] New request. Bandwidth = 10,source = 6, Dst = 4, id = 40, request = 1
+[18:28:30] New lsp established with 2 old LPs. [1] [1]
+[18:28:30] New request. Bandwidth = 10,source = 12, Dst = 7, id = 41, request = 1
+[18:28:30] New lsp established with 2 old LPs. [1] [0]
+[18:28:30] New request. Bandwidth = 10,source = 9, Dst = 6, id = 43, request = 1
+[18:28:30] New lsp established with new single LP. [8] [7]
+[18:28:30] New request. Bandwidth = 10,source = 5, Dst = 13, id = 44, request = 1
+[18:28:30] New lsp establish with new LP and old LP. [4] [1]
+[18:28:30] New request. Bandwidth = 10,source = 9, Dst = 4, id = 45, request = 1
+[18:28:30] New lsp established with 2 old LPs. [2] [1]
+[18:28:30] New request. Bandwidth = 10,source = 2, Dst = 9, id = 46, request = 1
+[18:28:30] New lsp established with 2 old LPs. [4] [0]
+[18:28:30] New request. Bandwidth = 10,source = 4, Dst = 13, id = 47, request = 1
+[18:28:30] New lsp establish with new LP and old LP. [5] [0]
+[18:28:30] New request. Bandwidth = 10,source = 0, Dst = 10, id = 48, request = 1
+[18:28:30] New lsp established with new single LP. [7] [5]
+[18:28:30] New request. Bandwidth = 10,source = 10, Dst = 2, id = 49, request = 1
+[18:28:30] New lsp established with 2 old LPs. [1] [2]
+[18:28:30] New request. Bandwidth = 10,source = 3, Dst = 7, id = 50, request = 1
+[18:28:30] New lsp established with new single LP. [7] [6]
+[18:28:30] New request. Bandwidth = 10,source = 1, Dst = 8, id = 51, request = 1
+[18:28:31] New LSP establish with single LP for primary, and 2 combine LPs for backup. [2] [2,3]
+[18:28:31] New request. Bandwidth = 10,source = 2, Dst = 6, id = 52, request = 1
+[18:28:31] New lsp established with new single LP. [7] [8]
+[18:28:31] New request. Bandwidth = 10,source = 1, Dst = 7, id = 53, request = 1
+[18:28:31] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [8,4]
+[18:28:31] New request. Bandwidth = 10,source = 9, Dst = 0, id = 54, request = 1
+[18:28:31] New lsp established with new single LP. [9] [8]
+[18:28:31] New request. Bandwidth = 10,source = 10, Dst = 9, id = 55, request = 1
+[18:28:31] New lsp establish with new LP and old LP. [0] [0]
+[18:28:31] New request. Bandwidth = 10,source = 1, Dst = 7, id = 56, request = 1
+[18:28:31] LSP is REJECTED.
+[18:28:31] New request. Bandwidth = 10,source = 1, Dst = 5, id = 57, request = 1
+[18:28:31] New lsp establish with new LP and old LP. [6] [5]
+[18:28:31] New request. Bandwidth = 10,source = 10, Dst = 5, id = 58, request = 1
+[18:28:31] New lsp established with 2 old LPs. [5] [2]
+[18:28:31] New request. Bandwidth = 10,source = 3, Dst = 1, id = 59, request = 1
+[18:28:31] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [8,7]
+[18:28:31] New request. Bandwidth = 10,source = 0, Dst = 7, id = 60, request = 1
+[18:28:31] New LSP establish with single LP for primary, and 2 combine LPs for backup. [3] [0,10]
+[18:28:31] New request. Bandwidth = 10,source = 8, Dst = 12, id = 61, request = 1
+[18:28:31] LSP is REJECTED.
+[18:28:31] New request. Bandwidth = 10,source = 5, Dst = 6, id = 62, request = 1
+[18:28:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [9] [1,6]
+[18:28:32] New request. Bandwidth = 10,source = 7, Dst = 11, id = 63, request = 1
+[18:28:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [4] [2,6]
+[18:28:32] New request. Bandwidth = 10,source = 9, Dst = 12, id = 64, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [2] [1]
+[18:28:32] New request. Bandwidth = 10,source = 0, Dst = 1, id = 65, request = 1
+[18:28:32] New lsp established with 2 old LPs. [0] [3]
+[18:28:32] New request. Bandwidth = 10,source = 3, Dst = 0, id = 66, request = 1
+[18:28:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [5] [9,7]
+[18:28:32] New request. Bandwidth = 10,source = 2, Dst = 10, id = 67, request = 1
+[18:28:32] New lsp established with 2 old LPs. [1] [2]
+[18:28:32] New request. Bandwidth = 10,source = 8, Dst = 1, id = 68, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [2] [2]
+[18:28:32] New request. Bandwidth = 10,source = 3, Dst = 5, id = 69, request = 1
+[18:28:32] New lsp established with 2 old LPs. [9] [1]
+[18:28:32] New request. Bandwidth = 10,source = 13, Dst = 4, id = 70, request = 1
+[18:28:32] New lsp established with 2 old LPs. [5] [0]
+[18:28:32] New request. Bandwidth = 10,source = 8, Dst = 0, id = 71, request = 1
+[18:28:32] New lsp established with 2 old LPs. [0] [0]
+[18:28:32] New request. Bandwidth = 10,source = 7, Dst = 0, id = 72, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [6] [3]
+[18:28:32] New request. Bandwidth = 10,source = 10, Dst = 2, id = 73, request = 1
+[18:28:32] New lsp established with 2 old LPs. [1] [2]
+[18:28:32] New request. Bandwidth = 10,source = 0, Dst = 13, id = 74, request = 1
+[18:28:32] New lsp established with new single LP. [9] [7]
+[18:28:32] New request. Bandwidth = 10,source = 13, Dst = 11, id = 75, request = 1
+[18:28:32] New lsp established with new single LP. [3] [4]
+[18:28:32] New request. Bandwidth = 10,source = 12, Dst = 3, id = 76, request = 1
+[18:28:32] New lsp established with new single LP. [6] [7]
+[18:28:32] New request. Bandwidth = 10,source = 0, Dst = 11, id = 77, request = 1
+[18:28:32] New lsp established with new single LP. [11] [8]
+[18:28:32] New request. Bandwidth = 10,source = 6, Dst = 10, id = 78, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [9] [4]
+[18:28:32] New request. Bandwidth = 10,source = 2, Dst = 6, id = 79, request = 1
+[18:28:32] New lsp established with 2 old LPs. [8] [7]
+[18:28:32] New request. Bandwidth = 10,source = 8, Dst = 13, id = 80, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [4] [0]
+[18:28:32] New request. Bandwidth = 10,source = 12, Dst = 6, id = 82, request = 1
+[18:28:32] New LSP establish with single LP for primary, and 2 combine LPs for backup. [10] [0,6]
+[18:28:32] New request. Bandwidth = 10,source = 5, Dst = 6, id = 83, request = 1
+[18:28:32] LSP is REJECTED.
+[18:28:32] New request. Bandwidth = 10,source = 12, Dst = 4, id = 84, request = 1
+[18:28:32] New lsp establish with new LP and old LP. [11] [3]
+[18:28:32] New request. Bandwidth = 10,source = 10, Dst = 13, id = 85, request = 1
+[18:28:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [0] [1,5]
+[18:28:33] New request. Bandwidth = 10,source = 1, Dst = 10, id = 86, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 13, Dst = 0, id = 87, request = 1
+[18:28:33] New lsp established with 2 old LPs. [9] [7]
+[18:28:33] New request. Bandwidth = 10,source = 6, Dst = 12, id = 88, request = 1
+[18:28:33] New lsp establish with new LP and old LP. [10] [10]
+[18:28:33] New request. Bandwidth = 10,source = 3, Dst = 10, id = 89, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 1, Dst = 3, id = 90, request = 1
+[18:28:33] New lsp establish with new LP and old LP. [3] [0]
+[18:28:33] New request. Bandwidth = 10,source = 10, Dst = 2, id = 91, request = 1
+[18:28:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [8] [1,9]
+[18:28:33] New request. Bandwidth = 10,source = 6, Dst = 13, id = 92, request = 1
+[18:28:33] New lsp established with 2 old LPs. [6] [5]
+[18:28:33] New request. Bandwidth = 10,source = 9, Dst = 11, id = 94, request = 1
+[18:28:33] New lsp established with new single LP. [5] [11]
+[18:28:33] New request. Bandwidth = 10,source = 5, Dst = 6, id = 95, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 8, Dst = 9, id = 96, request = 1
+[18:28:33] New lsp established with 2 old LPs. [5] [3]
+[18:28:33] New request. Bandwidth = 10,source = 6, Dst = 2, id = 97, request = 1
+[18:28:33] New lsp established with 2 old LPs. [8] [7]
+[18:28:33] New request. Bandwidth = 10,source = 1, Dst = 0, id = 98, request = 1
+[18:28:33] New lsp established with 2 old LPs. [0] [3]
+[18:28:33] New request. Bandwidth = 10,source = 0, Dst = 12, id = 99, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 0, Dst = 6, id = 100, request = 1
+[18:28:33] New lsp established with 2 old LPs. [6] [6]
+[18:28:33] New request. Bandwidth = 10,source = 6, Dst = 1, id = 101, request = 1
+[18:28:33] New lsp establish with new LP and old LP. [7] [5]
+[18:28:33] New request. Bandwidth = 10,source = 0, Dst = 3, id = 102, request = 1
+[18:28:33] New lsp establish with new LP and old LP. [9] [5]
+[18:28:33] New request. Bandwidth = 10,source = 11, Dst = 3, id = 103, request = 1
+[18:28:33] New LSP establish with single LP for primary, and 2 combine LPs for backup. [9] [2,11]
+[18:28:33] New request. Bandwidth = 10,source = 11, Dst = 12, id = 105, request = 1
+[18:28:33] New lsp established with 2 old LPs. [2] [0]
+[18:28:33] New request. Bandwidth = 10,source = 10, Dst = 9, id = 106, request = 1
+[18:28:33] New lsp established with 2 old LPs. [0] [0]
+[18:28:33] New request. Bandwidth = 10,source = 9, Dst = 5, id = 107, request = 1
+[18:28:33] New lsp established with new single LP. [5] [7]
+[18:28:33] New request. Bandwidth = 10,source = 10, Dst = 12, id = 108, request = 1
+[18:28:33] New lsp established with new single LP. [6] [9]
+[18:28:33] New request. Bandwidth = 10,source = 12, Dst = 9, id = 109, request = 1
+[18:28:33] New lsp established with 2 old LPs. [2] [1]
+[18:28:33] New request. Bandwidth = 10,source = 10, Dst = 2, id = 110, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 3, Dst = 4, id = 111, request = 1
+[18:28:33] New lsp established with 2 old LPs. [1] [0]
+[18:28:33] New request. Bandwidth = 10,source = 11, Dst = 5, id = 112, request = 1
+[18:28:33] New lsp established with 2 old LPs. [6] [3]
+[18:28:33] New request. Bandwidth = 10,source = 1, Dst = 5, id = 113, request = 1
+[18:28:33] New lsp established with 2 old LPs. [7] [6]
+[18:28:33] New request. Bandwidth = 10,source = 3, Dst = 12, id = 114, request = 1
+[18:28:33] New lsp established with 2 old LPs. [11] [7]
+[18:28:33] New request. Bandwidth = 10,source = 13, Dst = 6, id = 115, request = 1
+[18:28:33] New lsp established with 2 old LPs. [6] [5]
+[18:28:33] New request. Bandwidth = 10,source = 8, Dst = 10, id = 116, request = 1
+[18:28:33] New lsp established with 2 old LPs. [7] [6]
+[18:28:33] New request. Bandwidth = 10,source = 11, Dst = 3, id = 117, request = 1
+[18:28:33] LSP is REJECTED.
+[18:28:33] New request. Bandwidth = 10,source = 8, Dst = 5, id = 118, request = 1
+[18:28:34] New LSP establish with single LP for primary, and 2 combine LPs for backup. [10] [1,12]
+[18:28:34] New request. Bandwidth = 10,source = 5, Dst = 10, id = 119, request = 1
+[18:28:34] New lsp established with 2 old LPs. [5] [2]
+[18:28:34] New request. Bandwidth = 10,source = 10, Dst = 2, id = 120, request = 1
+[18:28:34] LSP is REJECTED.
+[18:28:34] New request. Bandwidth = 10,source = 3, Dst = 10, id = 122, request = 1
+[18:28:34] LSP is REJECTED.
+[18:28:34] New request. Bandwidth = 10,source = 13, Dst = 1, id = 123, request = 1
+[18:28:34] New lsp established with new single LP. [10] [11]
+[18:28:34] New request. Bandwidth = 10,source = 11, Dst = 5, id = 124, request = 1
+[18:28:34] New lsp established with 2 old LPs. [6] [3]
+[18:28:34] New request. Bandwidth = 10,source = 3, Dst = 5, id = 125, request = 1
+[18:28:34] New lsp established with 2 old LPs. [9] [1]
+[18:28:34] New request. Bandwidth = 10,source = 9, Dst = 6, id = 126, request = 1
+[18:28:34] New lsp established with 2 old LPs. [8] [7]
+[18:28:34] New request. Bandwidth = 10,source = 3, Dst = 7, id = 127, request = 1
+[18:28:34] New lsp established with 2 old LPs. [7] [6]
+[18:28:34] New request. Bandwidth = 10,source = 1, Dst = 13, id = 128, request = 1
+[18:28:34] New lsp established with 2 old LPs. [10] [11]
+[18:28:34] New request. Bandwidth = 10,source = 1, Dst = 13, id = 129, request = 1
+[18:28:34] New lsp established with 2 old LPs. [10] [11]
+[18:28:34] New request. Bandwidth = 10,source = 10, Dst = 3, id = 130, request = 1
+[18:28:34] New lsp establish with new LP and old LP. [11] [0]
+[18:28:34] New request. Bandwidth = 10,source = 10, Dst = 2, id = 131, request = 1
+[18:28:34] LSP is REJECTED.
+[18:28:34] New request. Bandwidth = 10,source = 5, Dst = 8, id = 132, request = 1
+[18:28:34] New lsp establish with new LP and old LP. [10] [10]
+[18:28:34] New request. Bandwidth = 10,source = 13, Dst = 2, id = 133, request = 1
+[18:28:34] New lsp established with 2 old LPs. [9] [2]
+[18:28:34] New request. Bandwidth = 10,source = 6, Dst = 3, id = 134, request = 1
+[18:28:34] New lsp established with new single LP. [8] [12]
+[18:28:34] New request. Bandwidth = 10,source = 0, Dst = 2, id = 135, request = 1
+[18:28:34] New lsp established with 2 old LPs. [1] [0]
+[18:28:34] New request. Bandwidth = 10,source = 2, Dst = 6, id = 136, request = 1
+[18:28:34] New lsp established with 2 old LPs. [8] [7]
+[18:28:34] New request. Bandwidth = 10,source = 5, Dst = 13, id = 137, request = 1
+[18:28:34] New lsp established with 2 old LPs. [4] [1]
+[18:28:34] New request. Bandwidth = 10,source = 3, Dst = 7, id = 139, request = 1
+[18:28:34] New lsp established with 2 old LPs. [7] [6]
+[18:28:34] New request. Bandwidth = 10,source = 11, Dst = 7, id = 140, request = 1
+[18:28:34] New lsp establish with new LP and old LP. [9] [4]
+[18:28:34] New request. Bandwidth = 10,source = 4, Dst = 0, id = 141, request = 1
+[18:28:34] New lsp established with new single LP. [11] [12]
+[18:28:34] New request. Bandwidth = 10,source = 9, Dst = 7, id = 142, request = 1
+[18:28:34] New lsp established with 2 old LPs. [4] [3]
+[18:28:34] New request. Bandwidth = 10,source = 5, Dst = 2, id = 143, request = 1
+[18:28:34] New LSP establish with single LP for primary, and 2 combine LPs for backup. [12] [3,10]
+[18:28:34] New request. Bandwidth = 10,source = 4, Dst = 2, id = 144, request = 1
+[18:28:34] New lsp established with 2 old LPs. [1] [10]
+[18:28:34] New request. Bandwidth = 10,source = 7, Dst = 1, id = 145, request = 1
+[18:28:34] New lsp establish with new LP and old LP. [13] [4]
+[18:28:34] New request. Bandwidth = 10,source = 8, Dst = 1, id = 146, request = 1
+[18:28:34] New lsp established with 2 old LPs. [2] [2]
+[18:28:34] New request. Bandwidth = 10,source = 0, Dst = 9, id = 147, request = 1
+[18:28:34] New lsp established with 2 old LPs. [9] [8]
+[18:28:34] New request. Bandwidth = 10,source = 5, Dst = 6, id = 148, request = 1
+[18:28:34] New lsp established with 2 old LPs. [12] [9]
+[18:28:34] New request. Bandwidth = 10,source = 6, Dst = 13, id = 149, request = 1
+[18:28:34] New lsp established with 2 old LPs. [6] [5]
+[18:28:34] New request. Bandwidth = 10,source = 9, Dst = 5, id = 150, request = 1
+[18:28:34] New lsp established with 2 old LPs. [5] [7]
+[18:28:34] New request. Bandwidth = 10,source = 7, Dst = 11, id = 151, request = 1
+[18:28:35] New lsp established with 2 old LPs. [9] [4]
+[18:28:35] New request. Bandwidth = 10,source = 8, Dst = 4, id = 152, request = 1
+[18:28:35] New lsp established with 2 old LPs. [3] [0]
+[18:28:35] New request. Bandwidth = 10,source = 9, Dst = 1, id = 153, request = 1
+[18:28:35] New lsp established with 2 old LPs. [8] [3]
+[18:28:35] New request. Bandwidth = 10,source = 4, Dst = 2, id = 154, request = 1
+[18:28:35] New lsp established with 2 old LPs. [1] [10]
+[18:28:35] New request. Bandwidth = 10,source = 0, Dst = 4, id = 155, request = 1
+[18:28:35] New lsp established with 2 old LPs. [12] [11]
+[18:28:35] New request. Bandwidth = 10,source = 5, Dst = 9, id = 156, request = 1
+[18:28:35] New lsp established with 2 old LPs. [5] [7]
+[18:28:35] New request. Bandwidth = 10,source = 9, Dst = 6, id = 157, request = 1
+[18:28:35] New lsp established with 2 old LPs. [8] [7]
+[18:28:35] New request. Bandwidth = 10,source = 10, Dst = 13, id = 158, request = 1
+[18:28:35] LSP is REJECTED.
+[18:28:35] New request. Bandwidth = 10,source = 12, Dst = 10, id = 160, request = 1
+[18:28:35] New lsp established with 2 old LPs. [9] [6]
+[18:28:35] New request. Bandwidth = 10,source = 2, Dst = 4, id = 161, request = 1
+[18:28:35] New lsp established with 2 old LPs. [1] [10]
+[18:28:35] New request. Bandwidth = 10,source = 5, Dst = 11, id = 162, request = 1
+[18:28:35] New lsp established with 2 old LPs. [6] [3]
+[18:28:35] New request. Bandwidth = 10,source = 4, Dst = 7, id = 163, request = 1
+[18:28:35] New lsp established with 2 old LPs. [0] [3]
+[18:28:35] New request. Bandwidth = 10,source = 5, Dst = 8, id = 164, request = 1
+[18:28:35] New lsp established with 2 old LPs. [10] [10]
+[18:28:35] New request. Bandwidth = 10,source = 12, Dst = 2, id = 165, request = 1
+[18:28:35] New lsp established with new single LP. [14] [13]
+[18:28:35] New request. Bandwidth = 10,source = 9, Dst = 2, id = 166, request = 1
+[18:28:35] New lsp established with 2 old LPs. [4] [0]
+[18:28:35] New request. Bandwidth = 10,source = 5, Dst = 0, id = 167, request = 1
+[18:28:35] LSP is REJECTED.
+[18:28:35] New request. Bandwidth = 10,source = 1, Dst = 3, id = 168, request = 1
+[18:28:35] New lsp established with 2 old LPs. [3] [0]
+[18:28:35] New request. Bandwidth = 10,source = 6, Dst = 3, id = 169, request = 1
+[18:28:35] New lsp established with 2 old LPs. [8] [12]
+[18:28:35] New request. Bandwidth = 10,source = 5, Dst = 1, id = 171, request = 1
+[18:28:35] New lsp established with 2 old LPs. [7] [6]
+[18:28:35] New request. Bandwidth = 10,source = 12, Dst = 2, id = 172, request = 1
+[18:28:35] New lsp established with 2 old LPs. [14] [13]
+[18:28:35] New request. Bandwidth = 10,source = 11, Dst = 3, id = 173, request = 1
+[18:28:35] LSP is REJECTED.
+[18:28:35] New request. Bandwidth = 10,source = 10, Dst = 12, id = 174, request = 1
+[18:28:35] New lsp established with 2 old LPs. [9] [6]
+[18:28:35] New request. Bandwidth = 10,source = 1, Dst = 8, id = 175, request = 1
+[18:28:36] New lsp established with 2 old LPs. [2] [2]
+[18:28:36] New request. Bandwidth = 10,source = 0, Dst = 2, id = 176, request = 1
+[18:28:36] New lsp established with 2 old LPs. [1] [0]
+[18:28:36] New request. Bandwidth = 10,source = 10, Dst = 8, id = 177, request = 1
+[18:28:36] New lsp established with 2 old LPs. [7] [6]
+[18:28:36] New request. Bandwidth = 10,source = 9, Dst = 12, id = 178, request = 1
+[18:28:36] New lsp established with 2 old LPs. [2] [1]
+[18:28:36] New request. Bandwidth = 10,source = 11, Dst = 6, id = 179, request = 1
+[18:28:36] LSP is REJECTED.
+[18:28:36] New request. Bandwidth = 10,source = 3, Dst = 8, id = 180, request = 1
+[18:28:36] New lsp established with new single LP. [11] [13]
+[18:28:36] New request. Bandwidth = 10,source = 9, Dst = 12, id = 181, request = 1
+[18:28:36] New lsp establish with new LP and old LP. [6] [2]
+[18:28:36] New request. Bandwidth = 10,source = 10, Dst = 3, id = 183, request = 1
+[18:28:36] New lsp established with 2 old LPs. [11] [0]
+[18:28:36] New request. Bandwidth = 10,source = 12, Dst = 10, id = 184, request = 1
+[18:28:36] New lsp established with 2 old LPs. [9] [6]
+[18:28:36] New request. Bandwidth = 10,source = 6, Dst = 3, id = 185, request = 1
+[18:28:36] New lsp established with 2 old LPs. [8] [12]
+[18:28:36] New request. Bandwidth = 10,source = 11, Dst = 2, id = 186, request = 1
+[18:28:36] New lsp established with new single LP. [15] [14]
+[18:28:36] New request. Bandwidth = 10,source = 6, Dst = 5, id = 187, request = 1
+[18:28:36] New lsp established with 2 old LPs. [12] [9]
+[18:28:36] New request. Bandwidth = 10,source = 10, Dst = 2, id = 188, request = 1
+[18:28:36] LSP is REJECTED.
+[18:28:36] New request. Bandwidth = 10,source = 4, Dst = 8, id = 189, request = 1
+[18:28:36] New lsp established with 2 old LPs. [3] [0]
+[18:28:36] New request. Bandwidth = 10,source = 6, Dst = 2, id = 190, request = 1
+[18:28:36] New lsp established with new single LP. [6] [14]
+[18:28:36] New request. Bandwidth = 10,source = 8, Dst = 6, id = 191, request = 1
+[18:28:36] LSP is REJECTED.
+[18:28:36] New request. Bandwidth = 10,source = 11, Dst = 5, id = 192, request = 1
+[18:28:36] New lsp establish with new LP and old LP. [8] [2]
+[18:28:36] New request. Bandwidth = 10,source = 12, Dst = 6, id = 194, request = 1
+[18:28:36] New lsp established with 2 old LPs. [10] [10]
+[18:28:36] New request. Bandwidth = 10,source = 7, Dst = 9, id = 195, request = 1
+[18:28:36] New lsp established with 2 old LPs. [4] [3]
+[18:28:36] New request. Bandwidth = 10,source = 10, Dst = 1, id = 196, request = 1
+[18:28:36] New lsp establish with new LP and old LP. [15] [4]
+[18:28:36] New request. Bandwidth = 10,source = 3, Dst = 8, id = 197, request = 1
+[18:28:36] New lsp established with 2 old LPs. [13] [11]
+[18:28:36] New request. Bandwidth = 10,source = 0, Dst = 9, id = 198, request = 1
+[18:28:36] New lsp established with 2 old LPs. [9] [8]
+[18:28:36] New request. Bandwidth = 10,source = 0, Dst = 11, id = 199, request = 1
+[18:28:36] New lsp established with 2 old LPs. [11] [8]
+[18:28:36] New request. Bandwidth = 10,source = 8, Dst = 0, id = 200, request = 1
+[18:28:36] New lsp established with 2 old LPs. [0] [0]
+[18:28:36] New request. Bandwidth = 10,source = 9, Dst = 0, id = 201, request = 1
+[18:28:36] New lsp established with 2 old LPs. [9] [8]
+[18:28:36] New request. Bandwidth = 10,source = 12, Dst = 7, id = 202, request = 1
+[18:28:36] New lsp established with 2 old LPs. [1] [0]
+[18:28:36] New request. Bandwidth = 10,source = 7, Dst = 1, id = 203, request = 1
+[18:28:36] New lsp established with 2 old LPs. [13] [4]
+[18:28:36] New request. Bandwidth = 10,source = 7, Dst = 10, id = 204, request = 1
+[18:28:36] New lsp established with new single LP. [6] [11]
+[18:28:36] New request. Bandwidth = 10,source = 5, Dst = 13, id = 205, request = 1
+[18:28:36] New lsp established with 2 old LPs. [4] [1]
+[18:28:36] New request. Bandwidth = 10,source = 8, Dst = 6, id = 206, request = 1
+[18:28:36] LSP is REJECTED.
+[18:28:36] New request. Bandwidth = 10,source = 8, Dst = 11, id = 207, request = 1
+[18:28:37] New LSP establish with single LP for primary, and 2 combine LPs for backup. [12] [3,12]
+[18:28:37] New request. Bandwidth = 10,source = 11, Dst = 1, id = 208, request = 1
+[18:28:37] New lsp established with new single LP. [16] [15]
+[18:28:37] New request. Bandwidth = 10,source = 8, Dst = 5, id = 209, request = 1
+[18:28:37] New lsp established with 2 old LPs. [10] [10]
+[18:28:37] New request. Bandwidth = 10,source = 3, Dst = 13, id = 210, request = 1
+[18:28:37] New lsp establish with new LP and old LP. [10] [1]
+[18:28:37] New request. Bandwidth = 10,source = 10, Dst = 2, id = 211, request = 1
+[18:28:37] LSP is REJECTED.
+[18:28:37] New request. Bandwidth = 10,source = 8, Dst = 1, id = 212, request = 1
+[18:28:37] LSP is REJECTED.
+[18:28:37] New request. Bandwidth = 10,source = 2, Dst = 6, id = 213, request = 1
+[18:28:37] New lsp established with 2 old LPs. [6] [14]
+[18:28:37] New request. Bandwidth = 10,source = 8, Dst = 2, id = 214, request = 1
+[18:28:37] New LSP establish with single LP for primary, and 2 combine LPs for backup. [8] [5,9]
+[18:28:37] New request. Bandwidth = 10,source = 9, Dst = 6, id = 216, request = 1
+[18:28:37] New lsp established with 2 old LPs. [8] [7]
+[18:28:37] New request. Bandwidth = 10,source = 10, Dst = 1, id = 217, request = 1
+[18:28:37] New lsp established with 2 old LPs. [15] [4]
+[18:28:37] New request. Bandwidth = 10,source = 13, Dst = 8, id = 218, request = 1
+[18:28:37] New lsp established with 2 old LPs. [4] [0]
+[18:28:37] New request. Bandwidth = 10,source = 9, Dst = 11, id = 219, request = 1
+[18:28:37] New lsp established with 2 old LPs. [5] [11]
+[18:28:37] New request. Bandwidth = 10,source = 4, Dst = 2, id = 220, request = 1
+[18:28:37] New LSP establish with single LP for primary, and 2 combine LPs for backup. [16] [13,10]
+[18:28:37] New request. Bandwidth = 10,source = 6, Dst = 9, id = 221, request = 1
+[18:28:37] New lsp established with new single LP. [7] [5]
+[18:28:37] New request. Bandwidth = 10,source = 7, Dst = 13, id = 222, request = 1
+[18:28:37] New LSP establish with single LP for primary, and 2 combine LPs for backup. [7] [4,12]
+[18:28:37] New request. Bandwidth = 10,source = 7, Dst = 1, id = 223, request = 1
+[18:28:37] New lsp established with 2 old LPs. [13] [4]
+[18:28:37] New request. Bandwidth = 10,source = 1, Dst = 4, id = 224, request = 1
+[18:28:37] New lsp established with 2 old LPs. [2] [2]
+[18:28:37] New request. Bandwidth = 10,source = 9, Dst = 10, id = 225, request = 1
+[18:28:37] New lsp established with 2 old LPs. [0] [0]
+[18:28:37] New request. Bandwidth = 10,source = 13, Dst = 12, id = 226, request = 1
+[18:28:37] New lsp establish with new LP and old LP. [5] [2]
+[18:28:37] New request. Bandwidth = 10,source = 11, Dst = 6, id = 227, request = 1
+[18:28:37] LSP is REJECTED.
+[18:28:37] New request. Bandwidth = 10,source = 3, Dst = 4, id = 228, request = 1
+[18:28:37] New lsp established with 2 old LPs. [13] [1]
+[18:28:37] New request. Bandwidth = 10,source = 0, Dst = 7, id = 229, request = 1
+[18:28:37] New lsp established with 2 old LPs. [6] [3]
+[18:28:37] New request. Bandwidth = 10,source = 8, Dst = 3, id = 230, request = 1
+[18:28:37] New lsp established with 2 old LPs. [13] [11]
+[18:28:37] New request. Bandwidth = 10,source = 0, Dst = 10, id = 231, request = 1
+[18:28:37] New lsp established with 2 old LPs. [7] [5]
+[18:28:37] New request. Bandwidth = 10,source = 6, Dst = 4, id = 232, request = 1
+[18:28:37] New lsp established with 2 old LPs. [1] [1]
+[18:28:37] New request. Bandwidth = 10,source = 11, Dst = 3, id = 233, request = 1
+[18:28:37] LSP is REJECTED.
+[18:28:37] New request. Bandwidth = 10,source = 3, Dst = 1, id = 234, request = 1
+[18:28:37] New lsp established with 2 old LPs. [3] [0]
+[18:28:37] New request. Bandwidth = 10,source = 3, Dst = 12, id = 235, request = 1
+[18:28:37] New lsp established with 2 old LPs. [11] [7]
+[18:28:37] New request. Bandwidth = 10,source = 13, Dst = 5, id = 236, request = 1
+[18:28:37] New lsp establish with new LP and old LP. [12] [4]
+[18:28:37] New request. Bandwidth = 10,source = 11, Dst = 6, id = 237, request = 1
+[18:28:37] LSP is REJECTED.
+[18:28:37] New request. Bandwidth = 10,source = 3, Dst = 4, id = 238, request = 1
+[18:28:37] New lsp established with 2 old LPs. [13] [1]
+[18:28:37] New request. Bandwidth = 10,source = 2, Dst = 12, id = 239, request = 1
+[18:28:38] New lsp established with 2 old LPs. [14] [13]
+[18:28:38] New request. Bandwidth = 10,source = 13, Dst = 3, id = 240, request = 1
+[18:28:38] New lsp established with 2 old LPs. [10] [1]
+[18:28:38] New request. Bandwidth = 10,source = 13, Dst = 0, id = 241, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [7]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 11, id = 242, request = 1
+[18:28:38] New lsp established with 2 old LPs. [11] [8]
+[18:28:38] New request. Bandwidth = 10,source = 4, Dst = 3, id = 243, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 10, id = 244, request = 1
+[18:28:38] New lsp established with 2 old LPs. [7] [6]
+[18:28:38] New request. Bandwidth = 10,source = 6, Dst = 10, id = 245, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [4]
+[18:28:38] New request. Bandwidth = 10,source = 5, Dst = 1, id = 246, request = 1
+[18:28:38] New lsp established with 2 old LPs. [7] [6]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 9, id = 247, request = 1
+[18:28:38] New lsp established with new single LP. [14] [9]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 9, id = 248, request = 1
+[18:28:38] New lsp established with 2 old LPs. [4] [3]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 9, id = 249, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [11] [9]
+[18:28:38] New request. Bandwidth = 10,source = 13, Dst = 11, id = 250, request = 1
+[18:28:38] New lsp established with 2 old LPs. [5] [3]
+[18:28:38] New request. Bandwidth = 10,source = 6, Dst = 12, id = 251, request = 1
+[18:28:38] New lsp established with 2 old LPs. [10] [10]
+[18:28:38] New request. Bandwidth = 10,source = 9, Dst = 8, id = 252, request = 1
+[18:28:38] New lsp established with 2 old LPs. [5] [5]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 13, id = 253, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 11, Dst = 7, id = 254, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [4]
+[18:28:38] New request. Bandwidth = 10,source = 9, Dst = 7, id = 255, request = 1
+[18:28:38] New LSP establish with single LP for primary, and 2 combine LPs for backup. [1] [8,14]
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 11, id = 256, request = 1
+[18:28:38] New lsp established with 2 old LPs. [2] [0]
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 13, id = 257, request = 1
+[18:28:38] New lsp established with 2 old LPs. [5] [2]
+[18:28:38] New request. Bandwidth = 10,source = 10, Dst = 12, id = 258, request = 1
+[18:28:38] New lsp established with new single LP. [7] [10]
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 7, id = 259, request = 1
+[18:28:38] New lsp established with 2 old LPs. [14] [1]
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 1, id = 260, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 3, id = 261, request = 1
+[18:28:38] New lsp established with 2 old LPs. [11] [7]
+[18:28:38] New request. Bandwidth = 10,source = 6, Dst = 8, id = 262, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [1] [1]
+[18:28:38] New request. Bandwidth = 10,source = 4, Dst = 5, id = 263, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [2] [0]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 12, id = 264, request = 1
+[18:28:38] New lsp established with 2 old LPs. [14] [13]
+[18:28:38] New request. Bandwidth = 10,source = 9, Dst = 13, id = 265, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 10, Dst = 6, id = 266, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [4]
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 1, id = 267, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 9, id = 268, request = 1
+[18:28:38] New lsp established with 2 old LPs. [11] [9]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 8, id = 269, request = 1
+[18:28:38] New lsp established with 2 old LPs. [0] [0]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 12, id = 270, request = 1
+[18:28:38] New lsp established with 2 old LPs. [14] [0]
+[18:28:38] New request. Bandwidth = 10,source = 10, Dst = 1, id = 271, request = 1
+[18:28:38] New lsp established with 2 old LPs. [15] [4]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 6, id = 272, request = 1
+[18:28:38] New lsp established with 2 old LPs. [6] [14]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 5, id = 273, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [12] [12]
+[18:28:38] New request. Bandwidth = 10,source = 1, Dst = 9, id = 274, request = 1
+[18:28:38] New lsp established with 2 old LPs. [8] [3]
+[18:28:38] New request. Bandwidth = 10,source = 1, Dst = 2, id = 275, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [1] [0]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 3, id = 276, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [5]
+[18:28:38] New request. Bandwidth = 10,source = 5, Dst = 1, id = 277, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 11, Dst = 12, id = 278, request = 1
+[18:28:38] New lsp established with 2 old LPs. [2] [0]
+[18:28:38] New request. Bandwidth = 10,source = 9, Dst = 1, id = 279, request = 1
+[18:28:38] New lsp established with 2 old LPs. [8] [3]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 3, id = 280, request = 1
+[18:28:38] New lsp established with 2 old LPs. [7] [6]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 11, id = 281, request = 1
+[18:28:38] New lsp established with 2 old LPs. [11] [8]
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 11, id = 282, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 6, id = 283, request = 1
+[18:28:38] New lsp established with new single LP. [10] [12]
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 10, id = 286, request = 1
+[18:28:38] New lsp established with 2 old LPs. [10] [7]
+[18:28:38] New request. Bandwidth = 10,source = 13, Dst = 2, id = 287, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [2]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 5, id = 288, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [15] [1]
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 13, id = 289, request = 1
+[18:28:38] New lsp established with 2 old LPs. [4] [0]
+[18:28:38] New request. Bandwidth = 10,source = 8, Dst = 6, id = 290, request = 1
+[18:28:38] New lsp established with 2 old LPs. [1] [1]
+[18:28:38] New request. Bandwidth = 10,source = 11, Dst = 10, id = 291, request = 1
+[18:28:38] New lsp established with 2 old LPs. [1] [0]
+[18:28:38] New request. Bandwidth = 10,source = 1, Dst = 2, id = 292, request = 1
+[18:28:38] New lsp established with 2 old LPs. [1] [0]
+[18:28:38] New request. Bandwidth = 10,source = 12, Dst = 4, id = 293, request = 1
+[18:28:38] New lsp established with 2 old LPs. [11] [3]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 10, id = 294, request = 1
+[18:28:38] New lsp established with 2 old LPs. [6] [11]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 13, id = 295, request = 1
+[18:28:38] New lsp established with 2 old LPs. [9] [7]
+[18:28:38] New request. Bandwidth = 10,source = 10, Dst = 9, id = 296, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [2] [0]
+[18:28:38] New request. Bandwidth = 10,source = 5, Dst = 2, id = 297, request = 1
+[18:28:38] New lsp established with 2 old LPs. [12] [12]
+[18:28:38] New request. Bandwidth = 10,source = 3, Dst = 8, id = 298, request = 1
+[18:28:38] New lsp established with 2 old LPs. [13] [11]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 13, id = 299, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [13] [4]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 7, id = 300, request = 1
+[18:28:38] New lsp established with 2 old LPs. [6] [3]
+[18:28:38] New request. Bandwidth = 10,source = 1, Dst = 12, id = 301, request = 1
+[18:28:38] New lsp established with 2 old LPs. [2] [1]
+[18:28:38] New request. Bandwidth = 10,source = 2, Dst = 13, id = 302, request = 1
+[18:28:38] New lsp established with 2 old LPs. [13] [4]
+[18:28:38] New request. Bandwidth = 10,source = 7, Dst = 2, id = 303, request = 1
+[18:28:38] LSP is REJECTED.
+[18:28:38] New request. Bandwidth = 10,source = 13, Dst = 12, id = 305, request = 1
+[18:28:38] New lsp established with 2 old LPs. [5] [2]
+[18:28:38] New request. Bandwidth = 10,source = 1, Dst = 7, id = 306, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [16] [13]
+[18:28:38] New request. Bandwidth = 10,source = 0, Dst = 4, id = 307, request = 1
+[18:28:38] New lsp established with 2 old LPs. [12] [11]
+[18:28:38] New request. Bandwidth = 10,source = 11, Dst = 4, id = 308, request = 1
+[18:28:38] New lsp establish with new LP and old LP. [12] [3]
+[18:28:38] New request. Bandwidth = 10,source = 11, Dst = 6, id = 309, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 6, id = 310, request = 1
+[18:28:39] New lsp established with 2 old LPs. [1] [1]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 5, id = 311, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [13] [5]
+[18:28:39] New request. Bandwidth = 10,source = 1, Dst = 11, id = 312, request = 1
+[18:28:39] New lsp established with 2 old LPs. [16] [15]
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 5, id = 313, request = 1
+[18:28:39] New lsp established with new single LP. [0] [14]
+[18:28:39] New request. Bandwidth = 10,source = 7, Dst = 6, id = 314, request = 1
+[18:28:39] New lsp established with 2 old LPs. [12] [10]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 0, id = 316, request = 1
+[18:28:39] New lsp established with 2 old LPs. [9] [5]
+[18:28:39] New request. Bandwidth = 10,source = 6, Dst = 0, id = 317, request = 1
+[18:28:39] New lsp established with 2 old LPs. [6] [6]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 13, id = 318, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 1, Dst = 9, id = 319, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 0, Dst = 4, id = 320, request = 1
+[18:28:39] New lsp established with 2 old LPs. [12] [11]
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 1, id = 321, request = 1
+[18:28:39] New lsp established with 2 old LPs. [10] [11]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 8, id = 322, request = 1
+[18:28:39] New lsp established with new single LP. [12] [14]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 1, id = 324, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [16] [1]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 11, id = 325, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [13] [9]
+[18:28:39] New request. Bandwidth = 10,source = 7, Dst = 13, id = 326, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 7, id = 327, request = 1
+[18:28:39] New lsp established with new single LP. [15] [16]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 12, id = 328, request = 1
+[18:28:39] New lsp established with 2 old LPs. [10] [7]
+[18:28:39] New request. Bandwidth = 10,source = 0, Dst = 13, id = 330, request = 1
+[18:28:39] New lsp established with new single LP. [15] [14]
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 1, id = 331, request = 1
+[18:28:39] New lsp established with 2 old LPs. [16] [15]
+[18:28:39] New request. Bandwidth = 10,source = 0, Dst = 13, id = 332, request = 1
+[18:28:39] New lsp established with 2 old LPs. [15] [14]
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 10, id = 333, request = 1
+[18:28:39] New lsp established with 2 old LPs. [1] [0]
+[18:28:39] New request. Bandwidth = 10,source = 1, Dst = 7, id = 334, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 5, id = 335, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [13] [13]
+[18:28:39] New request. Bandwidth = 10,source = 2, Dst = 9, id = 336, request = 1
+[18:28:39] New lsp established with 2 old LPs. [11] [9]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 7, id = 337, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 0, id = 338, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [17] [0]
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 10, id = 339, request = 1
+[18:28:39] New lsp established with 2 old LPs. [12] [14]
+[18:28:39] New request. Bandwidth = 10,source = 7, Dst = 5, id = 340, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 8, id = 342, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [17] [4]
+[18:28:39] New request. Bandwidth = 10,source = 4, Dst = 2, id = 343, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 2, Dst = 8, id = 344, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [12] [8]
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 7, id = 345, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [13] [7]
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 6, id = 346, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [16] [10]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 2, id = 347, request = 1
+[18:28:39] New lsp established with 2 old LPs. [10] [0]
+[18:28:39] New request. Bandwidth = 10,source = 1, Dst = 11, id = 348, request = 1
+[18:28:39] New lsp established with 2 old LPs. [16] [15]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 2, id = 349, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 0, id = 350, request = 1
+[18:28:39] New lsp established with 2 old LPs. [14] [9]
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 6, id = 352, request = 1
+[18:28:39] New lsp established with new single LP. [18] [17]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 11, id = 353, request = 1
+[18:28:39] New lsp established with 2 old LPs. [13] [9]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 12, id = 354, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [11] [6]
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 0, id = 355, request = 1
+[18:28:39] New lsp established with new single LP. [19] [18]
+[18:28:39] New request. Bandwidth = 10,source = 6, Dst = 2, id = 356, request = 1
+[18:28:39] New lsp established with 2 old LPs. [6] [14]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 4, id = 357, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [3] [0]
+[18:28:39] New request. Bandwidth = 10,source = 2, Dst = 9, id = 358, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [16] [11]
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 5, id = 359, request = 1
+[18:28:39] New lsp established with 2 old LPs. [0] [14]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 3, id = 360, request = 1
+[18:28:39] New lsp established with 2 old LPs. [11] [0]
+[18:28:39] New request. Bandwidth = 10,source = 5, Dst = 3, id = 361, request = 1
+[18:28:39] New lsp established with 2 old LPs. [9] [1]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 3, id = 362, request = 1
+[18:28:39] New lsp established with new single LP. [19] [15]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 5, id = 363, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 13, id = 364, request = 1
+[18:28:39] New lsp established with 2 old LPs. [5] [3]
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 8, id = 365, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [20] [12]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 5, id = 366, request = 1
+[18:28:39] New lsp established with 2 old LPs. [5] [7]
+[18:28:39] New request. Bandwidth = 10,source = 5, Dst = 1, id = 367, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 2, Dst = 7, id = 368, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [17] [3]
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 4, id = 369, request = 1
+[18:28:39] New lsp established with 2 old LPs. [3] [0]
+[18:28:39] New request. Bandwidth = 10,source = 7, Dst = 0, id = 370, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 7, id = 371, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 9, id = 372, request = 1
+[18:28:39] New lsp established with 2 old LPs. [5] [5]
+[18:28:39] New request. Bandwidth = 10,source = 11, Dst = 8, id = 373, request = 1
+[18:28:39] New lsp established with 2 old LPs. [20] [12]
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 11, id = 374, request = 1
+[18:28:39] New lsp established with 2 old LPs. [20] [12]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 11, id = 375, request = 1
+[18:28:39] New lsp established with 2 old LPs. [1] [0]
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 0, id = 376, request = 1
+[18:28:39] New lsp established with 2 old LPs. [17] [0]
+[18:28:39] New request. Bandwidth = 10,source = 1, Dst = 8, id = 377, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [17] [2]
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 6, id = 379, request = 1
+[18:28:39] New lsp established with 2 old LPs. [18] [17]
+[18:28:39] New request. Bandwidth = 10,source = 0, Dst = 12, id = 380, request = 1
+[18:28:39] New lsp established with 2 old LPs. [17] [0]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 5, id = 382, request = 1
+[18:28:39] New lsp established with 2 old LPs. [13] [13]
+[18:28:39] New request. Bandwidth = 10,source = 4, Dst = 13, id = 383, request = 1
+[18:28:39] New lsp established with 2 old LPs. [5] [0]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 1, id = 384, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 11, id = 385, request = 1
+[18:28:39] New lsp established with 2 old LPs. [5] [3]
+[18:28:39] New request. Bandwidth = 10,source = 6, Dst = 8, id = 386, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 7, Dst = 9, id = 388, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [8] [1]
+[18:28:39] New request. Bandwidth = 10,source = 6, Dst = 5, id = 389, request = 1
+[18:28:39] New lsp established with 2 old LPs. [12] [9]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 2, id = 390, request = 1
+[18:28:39] New lsp established with 2 old LPs. [10] [0]
+[18:28:39] New request. Bandwidth = 10,source = 8, Dst = 0, id = 391, request = 1
+[18:28:39] New lsp established with new single LP. [7] [19]
+[18:28:39] New request. Bandwidth = 10,source = 10, Dst = 6, id = 392, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [20] [9]
+[18:28:39] New request. Bandwidth = 10,source = 13, Dst = 12, id = 393, request = 1
+[18:28:39] LSP is REJECTED.
+[18:28:39] New request. Bandwidth = 10,source = 12, Dst = 13, id = 394, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [0] [5]
+[18:28:39] New request. Bandwidth = 10,source = 3, Dst = 10, id = 395, request = 1
+[18:28:39] New lsp establish with new LP and old LP. [15] [11]
+[18:28:39] New request. Bandwidth = 10,source = 9, Dst = 6, id = 396, request = 1
+[18:28:40] New lsp established with 2 old LPs. [7] [5]
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 3, id = 397, request = 1
+[18:28:40] New lsp established with new single LP. [16] [17]
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 5, id = 398, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [17] [10]
+[18:28:40] New request. Bandwidth = 10,source = 3, Dst = 11, id = 399, request = 1
+[18:28:40] New lsp established with 2 old LPs. [13] [9]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 7, id = 400, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [18] [6]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 7, id = 401, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [18] [18]
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 5, id = 402, request = 1
+[18:28:40] New lsp established with 2 old LPs. [12] [12]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 10, id = 403, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [17] [6]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 1, id = 404, request = 1
+[18:28:40] New lsp established with 2 old LPs. [2] [2]
+[18:28:40] New request. Bandwidth = 10,source = 1, Dst = 4, id = 405, request = 1
+[18:28:40] New lsp established with 2 old LPs. [2] [2]
+[18:28:40] New request. Bandwidth = 10,source = 12, Dst = 1, id = 406, request = 1
+[18:28:40] New lsp established with 2 old LPs. [2] [1]
+[18:28:40] New request. Bandwidth = 10,source = 12, Dst = 11, id = 407, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [4] [0]
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 2, id = 408, request = 1
+[18:28:40] New lsp established with 2 old LPs. [12] [8]
+[18:28:40] New request. Bandwidth = 10,source = 9, Dst = 7, id = 409, request = 1
+[18:28:40] New lsp established with 2 old LPs. [8] [1]
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 2, id = 410, request = 1
+[18:28:40] New lsp established with 2 old LPs. [13] [9]
+[18:28:40] New request. Bandwidth = 10,source = 3, Dst = 9, id = 411, request = 1
+[18:28:40] New lsp established with 2 old LPs. [19] [15]
+[18:28:40] New request. Bandwidth = 10,source = 10, Dst = 3, id = 412, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [21] [15]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 11, id = 413, request = 1
+[18:28:40] New lsp established with 2 old LPs. [12] [3]
+[18:28:40] New request. Bandwidth = 10,source = 5, Dst = 2, id = 414, request = 1
+[18:28:40] New lsp established with 2 old LPs. [12] [12]
+[18:28:40] New request. Bandwidth = 10,source = 6, Dst = 10, id = 415, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [18] [20]
+[18:28:40] New request. Bandwidth = 10,source = 11, Dst = 6, id = 416, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 10, id = 417, request = 1
+[18:28:40] New lsp established with 2 old LPs. [7] [5]
+[18:28:40] New request. Bandwidth = 10,source = 6, Dst = 5, id = 418, request = 1
+[18:28:40] New lsp established with new single LP. [4] [17]
+[18:28:40] New request. Bandwidth = 10,source = 12, Dst = 0, id = 419, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 12, id = 421, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 13, id = 422, request = 1
+[18:28:40] New lsp established with 2 old LPs. [15] [14]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 3, id = 424, request = 1
+[18:28:40] New lsp established with 2 old LPs. [3] [0]
+[18:28:40] New request. Bandwidth = 10,source = 3, Dst = 10, id = 425, request = 1
+[18:28:40] New lsp established with 2 old LPs. [21] [15]
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 6, id = 426, request = 1
+[18:28:40] New lsp established with 2 old LPs. [18] [17]
+[18:28:40] New request. Bandwidth = 10,source = 5, Dst = 4, id = 427, request = 1
+[18:28:40] New lsp established with 2 old LPs. [2] [0]
+[18:28:40] New request. Bandwidth = 10,source = 7, Dst = 11, id = 428, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [13] [9]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 6, id = 429, request = 1
+[18:28:40] New lsp established with 2 old LPs. [6] [6]
+[18:28:40] New request. Bandwidth = 10,source = 11, Dst = 12, id = 430, request = 1
+[18:28:40] New lsp established with 2 old LPs. [4] [0]
+[18:28:40] New request. Bandwidth = 10,source = 1, Dst = 5, id = 431, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [19] [5]
+[18:28:40] New request. Bandwidth = 10,source = 6, Dst = 9, id = 432, request = 1
+[18:28:40] New lsp established with 2 old LPs. [7] [5]
+[18:28:40] New request. Bandwidth = 10,source = 6, Dst = 12, id = 433, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [20] [16]
+[18:28:40] New request. Bandwidth = 10,source = 5, Dst = 10, id = 434, request = 1
+[18:28:40] New lsp established with 2 old LPs. [13] [13]
+[18:28:40] New request. Bandwidth = 10,source = 10, Dst = 3, id = 435, request = 1
+[18:28:40] New lsp established with 2 old LPs. [21] [15]
+[18:28:40] New request. Bandwidth = 10,source = 12, Dst = 5, id = 436, request = 1
+[18:28:40] New lsp established with 2 old LPs. [0] [14]
+[18:28:40] New request. Bandwidth = 10,source = 7, Dst = 11, id = 437, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 5, Dst = 1, id = 438, request = 1
+[18:28:40] New lsp established with 2 old LPs. [19] [5]
+[18:28:40] New request. Bandwidth = 10,source = 2, Dst = 13, id = 439, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 10, Dst = 11, id = 440, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [2] [1]
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 10, id = 441, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [3] [0]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 1, id = 442, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [20] [5]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 7, id = 443, request = 1
+[18:28:40] New LSP establish with single LP for primary, and 2 combine LPs for backup. [19] [13,12]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 7, id = 444, request = 1
+[18:28:40] New lsp established with 2 old LPs. [18] [18]
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 0, id = 445, request = 1
+[18:28:40] New lsp established with 2 old LPs. [7] [19]
+[18:28:40] New request. Bandwidth = 10,source = 9, Dst = 4, id = 446, request = 1
+[18:28:40] New lsp established with 2 old LPs. [13] [1]
+[18:28:40] New request. Bandwidth = 10,source = 11, Dst = 5, id = 448, request = 1
+[18:28:40] New lsp established with 2 old LPs. [8] [2]
+[18:28:40] New request. Bandwidth = 10,source = 9, Dst = 10, id = 449, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [8] [2]
+[18:28:40] New request. Bandwidth = 10,source = 8, Dst = 12, id = 450, request = 1
+[18:28:40] LSP is REJECTED.
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 4, id = 451, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [18] [5]
+[18:28:40] New request. Bandwidth = 10,source = 13, Dst = 7, id = 452, request = 1
+[18:28:40] New lsp established with 2 old LPs. [13] [7]
+[18:28:40] New request. Bandwidth = 10,source = 7, Dst = 6, id = 453, request = 1
+[18:28:40] New lsp established with 2 old LPs. [12] [10]
+[18:28:40] New request. Bandwidth = 10,source = 9, Dst = 11, id = 454, request = 1
+[18:28:40] New lsp established with 2 old LPs. [5] [11]
+[18:28:40] New request. Bandwidth = 10,source = 11, Dst = 10, id = 455, request = 1
+[18:28:40] New lsp established with 2 old LPs. [2] [1]
+[18:28:40] New request. Bandwidth = 10,source = 3, Dst = 8, id = 456, request = 1
+[18:28:40] New lsp established with 2 old LPs. [17] [16]
+[18:28:40] New request. Bandwidth = 10,source = 4, Dst = 8, id = 457, request = 1
+[18:28:40] New lsp established with 2 old LPs. [3] [0]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 5, id = 458, request = 1
+[18:28:40] New lsp established with 2 old LPs. [15] [1]
+[18:28:40] New request. Bandwidth = 10,source = 5, Dst = 3, id = 459, request = 1
+[18:28:40] New lsp establish with new LP and old LP. [21] [8]
+[18:28:40] New request. Bandwidth = 10,source = 0, Dst = 1, id = 460, request = 1
+[18:28:40] New lsp established with 2 old LPs. [0] [3]
+[18:28:40] New request. Bandwidth = 10,source = 1, Dst = 11, id = 461, request = 1
+[18:28:41] New LSP establish with single LP for primary, and 2 combine LPs for backup. [19] [5,19]
+[18:28:41] New request. Bandwidth = 10,source = 10, Dst = 8, id = 462, request = 1
+[18:28:41] New lsp established with 2 old LPs. [12] [14]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 1, id = 463, request = 1
+[18:28:41] New lsp established with new single LP. [22] [19]
+[18:28:41] New request. Bandwidth = 10,source = 7, Dst = 6, id = 464, request = 1
+[18:28:41] New lsp established with 2 old LPs. [12] [10]
+[18:28:41] New request. Bandwidth = 10,source = 0, Dst = 1, id = 465, request = 1
+[18:28:41] New lsp established with new single LP. [4] [11]
+[18:28:41] New request. Bandwidth = 10,source = 3, Dst = 13, id = 466, request = 1
+[18:28:41] New lsp established with 2 old LPs. [10] [1]
+[18:28:41] New request. Bandwidth = 10,source = 12, Dst = 10, id = 467, request = 1
+[18:28:41] New lsp established with 2 old LPs. [10] [7]
+[18:28:41] New request. Bandwidth = 10,source = 11, Dst = 13, id = 468, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [3] [4]
+[18:28:41] New request. Bandwidth = 10,source = 12, Dst = 7, id = 469, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 11, id = 470, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [20] [2]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 11, id = 471, request = 1
+[18:28:41] New lsp established with 2 old LPs. [20] [2]
+[18:28:41] New request. Bandwidth = 10,source = 1, Dst = 7, id = 472, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 1, Dst = 7, id = 473, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 5, Dst = 4, id = 474, request = 1
+[18:28:41] New lsp established with 2 old LPs. [2] [0]
+[18:28:41] New request. Bandwidth = 10,source = 9, Dst = 11, id = 475, request = 1
+[18:28:41] New lsp established with 2 old LPs. [5] [11]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 11, id = 478, request = 1
+[18:28:41] New lsp established with 2 old LPs. [3] [4]
+[18:28:41] New request. Bandwidth = 10,source = 9, Dst = 6, id = 479, request = 1
+[18:28:41] New lsp established with 2 old LPs. [7] [5]
+[18:28:41] New request. Bandwidth = 10,source = 9, Dst = 8, id = 480, request = 1
+[18:28:41] New lsp established with 2 old LPs. [5] [3]
+[18:28:41] New request. Bandwidth = 10,source = 10, Dst = 1, id = 481, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 9, Dst = 10, id = 483, request = 1
+[18:28:41] New lsp established with 2 old LPs. [8] [2]
+[18:28:41] New request. Bandwidth = 10,source = 3, Dst = 8, id = 484, request = 1
+[18:28:41] New lsp established with 2 old LPs. [17] [16]
+[18:28:41] New request. Bandwidth = 10,source = 5, Dst = 4, id = 485, request = 1
+[18:28:41] New lsp established with 2 old LPs. [2] [3]
+[18:28:41] New request. Bandwidth = 10,source = 4, Dst = 2, id = 486, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 3, id = 487, request = 1
+[18:28:41] New lsp established with 2 old LPs. [17] [16]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 11, id = 488, request = 1
+[18:28:41] New lsp established with 2 old LPs. [20] [2]
+[18:28:41] New request. Bandwidth = 10,source = 1, Dst = 13, id = 489, request = 1
+[18:28:41] New lsp established with 2 old LPs. [22] [19]
+[18:28:41] New request. Bandwidth = 10,source = 12, Dst = 10, id = 490, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [8] [7]
+[18:28:41] New request. Bandwidth = 10,source = 11, Dst = 3, id = 491, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [23] [13]
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 10, id = 492, request = 1
+[18:28:41] New lsp established with 2 old LPs. [12] [14]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 1, id = 493, request = 1
+[18:28:41] New lsp established with 2 old LPs. [7] [5]
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 2, id = 494, request = 1
+[18:28:41] New lsp established with 2 old LPs. [12] [8]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 5, id = 495, request = 1
+[18:28:41] New lsp established with 2 old LPs. [4] [17]
+[18:28:41] New request. Bandwidth = 10,source = 4, Dst = 13, id = 496, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [18] [18]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 11, id = 497, request = 1
+[18:28:41] New lsp established with 2 old LPs. [20] [6]
+[18:28:41] New request. Bandwidth = 10,source = 5, Dst = 3, id = 498, request = 1
+[18:28:41] New lsp established with 2 old LPs. [21] [8]
+[18:28:41] New request. Bandwidth = 10,source = 4, Dst = 9, id = 499, request = 1
+[18:28:41] New lsp established with 2 old LPs. [13] [1]
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 9, id = 500, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [6] [3]
+[18:28:41] New request. Bandwidth = 10,source = 2, Dst = 0, id = 501, request = 1
+[18:28:41] New lsp established with 2 old LPs. [1] [0]
+[18:28:41] New request. Bandwidth = 10,source = 7, Dst = 1, id = 502, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [18] [16]
+[18:28:41] New request. Bandwidth = 10,source = 10, Dst = 6, id = 503, request = 1
+[18:28:41] New lsp established with 2 old LPs. [18] [20]
+[18:28:41] New request. Bandwidth = 10,source = 12, Dst = 9, id = 504, request = 1
+[18:28:41] New lsp established with 2 old LPs. [8] [6]
+[18:28:41] New request. Bandwidth = 10,source = 5, Dst = 4, id = 505, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 5, id = 506, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [19] [17]
+[18:28:41] New request. Bandwidth = 10,source = 2, Dst = 1, id = 507, request = 1
+[18:28:41] New lsp established with 2 old LPs. [5] [0]
+[18:28:41] New request. Bandwidth = 10,source = 1, Dst = 7, id = 508, request = 1
+[18:28:41] New lsp established with 2 old LPs. [18] [16]
+[18:28:41] New request. Bandwidth = 10,source = 11, Dst = 0, id = 509, request = 1
+[18:28:41] New lsp established with 2 old LPs. [19] [18]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 2, id = 510, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [20] [13]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 2, id = 511, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 9, Dst = 13, id = 512, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 2, Dst = 1, id = 513, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [3] [1]
+[18:28:41] New request. Bandwidth = 10,source = 3, Dst = 13, id = 514, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 8, Dst = 2, id = 515, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [20] [12]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 12, id = 517, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [10] [0]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 5, id = 518, request = 1
+[18:28:41] New lsp established with 2 old LPs. [12] [12]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 9, id = 520, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [1] [1]
+[18:28:41] New request. Bandwidth = 10,source = 2, Dst = 9, id = 521, request = 1
+[18:28:41] New lsp establish with new LP and old LP. [20] [16]
+[18:28:41] New request. Bandwidth = 10,source = 5, Dst = 9, id = 522, request = 1
+[18:28:41] New lsp established with new single LP. [12] [8]
+[18:28:41] New request. Bandwidth = 10,source = 13, Dst = 1, id = 523, request = 1
+[18:28:41] New lsp established with 2 old LPs. [22] [19]
+[18:28:41] New request. Bandwidth = 10,source = 6, Dst = 8, id = 524, request = 1
+[18:28:41] LSP is REJECTED.
+[18:28:41] New request. Bandwidth = 10,source = 10, Dst = 8, id = 525, request = 1
+[18:28:42] New LSP establish with single LP for primary, and 2 combine LPs for backup. [21] [24,9]
+[18:28:42] New request. Bandwidth = 10,source = 13, Dst = 6, id = 526, request = 1
+[18:28:42] New lsp established with 2 old LPs. [18] [17]
+[18:28:42] New request. Bandwidth = 10,source = 2, Dst = 11, id = 527, request = 1
+[18:28:42] New lsp established with 2 old LPs. [19] [15]
+[18:28:42] New request. Bandwidth = 10,source = 12, Dst = 1, id = 528, request = 1
+[18:28:42] New lsp established with 2 old LPs. [2] [1]
+[18:28:42] New request. Bandwidth = 10,source = 9, Dst = 11, id = 529, request = 1
+[18:28:42] New lsp established with new single LP. [9] [20]
+[18:28:42] New request. Bandwidth = 10,source = 9, Dst = 6, id = 530, request = 1
+[18:28:42] New LSP establish with single LP for primary, and 2 combine LPs for backup. [22] [2,21]
+[18:28:42] New request. Bandwidth = 10,source = 5, Dst = 11, id = 531, request = 1
+[18:28:42] New lsp establish with new LP and old LP. [9] [8]
+[18:28:42] New request. Bandwidth = 10,source = 4, Dst = 11, id = 532, request = 1
+[18:28:42] New lsp established with 2 old LPs. [12] [3]
+[18:28:42] New request. Bandwidth = 10,source = 3, Dst = 10, id = 533, request = 1
+[18:28:42] New lsp establish with new LP and old LP. [20] [21]
+[18:28:42] New request. Bandwidth = 10,source = 1, Dst = 13, id = 534, request = 1
+[18:28:42] New lsp established with 2 old LPs. [22] [19]
+[18:28:42] New request. Bandwidth = 10,source = 12, Dst = 4, id = 535, request = 1
+[18:28:42] New lsp established with 2 old LPs. [11] [3]
+[18:28:42] New request. Bandwidth = 10,source = 7, Dst = 10, id = 536, request = 1
+[18:28:42] New lsp established with 2 old LPs. [6] [11]
+[18:28:42] New request. Bandwidth = 10,source = 2, Dst = 7, id = 537, request = 1
+[18:28:42] New lsp established with 2 old LPs. [17] [3]
+[18:28:42] New request. Bandwidth = 10,source = 13, Dst = 0, id = 538, request = 1
+[18:28:42] New lsp established with 2 old LPs. [15] [14]
+[18:28:42] New request. Bandwidth = 10,source = 12, Dst = 2, id = 539, request = 1
+[18:28:43] New LSP establish with single LP for primary, and 2 combine LPs for backup. [21] [1,2]
+[18:28:43] New request. Bandwidth = 10,source = 7, Dst = 3, id = 540, request = 1
+[18:28:43] New lsp established with 2 old LPs. [15] [16]
+[18:28:43] New request. Bandwidth = 10,source = 5, Dst = 4, id = 541, request = 1
+[18:28:43] LSP is REJECTED.
+[18:28:43] New request. Bandwidth = 10,source = 5, Dst = 10, id = 542, request = 1
+[18:28:43] New lsp establish with new LP and old LP. [14] [13]
+[18:28:43] New request. Bandwidth = 10,source = 12, Dst = 6, id = 543, request = 1
+[18:28:43] New lsp established with 2 old LPs. [20] [16]
+[18:28:43] New request. Bandwidth = 10,source = 5, Dst = 13, id = 544, request = 1
+[18:28:43] New lsp established with 2 old LPs. [12] [12]
+[18:28:43] New request. Bandwidth = 10,source = 11, Dst = 3, id = 545, request = 1
+[18:28:43] LSP is REJECTED.
+[18:28:43] New request. Bandwidth = 10,source = 13, Dst = 0, id = 546, request = 1
+[18:28:43] New lsp established with new single LP. [23] [22]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 12, id = 547, request = 1
+[18:28:44] New lsp established with 2 old LPs. [8] [6]
+[18:28:44] New request. Bandwidth = 10,source = 0, Dst = 1, id = 548, request = 1
+[18:28:44] New lsp established with 2 old LPs. [4] [11]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 2, id = 549, request = 1
+[18:28:44] New lsp established with 2 old LPs. [20] [16]
+[18:28:44] New request. Bandwidth = 10,source = 13, Dst = 12, id = 550, request = 1
+[18:28:44] New lsp established with 2 old LPs. [1] [10]
+[18:28:44] New request. Bandwidth = 10,source = 7, Dst = 2, id = 551, request = 1
+[18:28:44] New lsp established with 2 old LPs. [17] [3]
+[18:28:44] New request. Bandwidth = 10,source = 1, Dst = 13, id = 552, request = 1
+[18:28:44] New LSP establish with single LP for primary, and 2 combine LPs for backup. [21] [7,23]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 10, id = 553, request = 1
+[18:28:44] New lsp established with 2 old LPs. [8] [2]
+[18:28:44] New request. Bandwidth = 10,source = 5, Dst = 4, id = 554, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 13, Dst = 7, id = 555, request = 1
+[18:28:44] New lsp established with 2 old LPs. [13] [7]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 9, id = 556, request = 1
+[18:28:44] New lsp established with 2 old LPs. [8] [6]
+[18:28:44] New request. Bandwidth = 10,source = 0, Dst = 12, id = 557, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [21] [17]
+[18:28:44] New request. Bandwidth = 10,source = 2, Dst = 4, id = 558, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [14] [16]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 1, id = 559, request = 1
+[18:28:44] New lsp established with new single LP. [23] [22]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 13, id = 560, request = 1
+[18:28:44] New lsp established with 2 old LPs. [1] [10]
+[18:28:44] New request. Bandwidth = 10,source = 5, Dst = 12, id = 561, request = 1
+[18:28:44] New lsp established with 2 old LPs. [0] [14]
+[18:28:44] New request. Bandwidth = 10,source = 0, Dst = 13, id = 562, request = 1
+[18:28:44] New lsp established with 2 old LPs. [23] [22]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 13, id = 563, request = 1
+[18:28:44] New lsp established with 2 old LPs. [1] [1]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 7, id = 564, request = 1
+[18:28:44] New lsp established with 2 old LPs. [2] [8]
+[18:28:44] New request. Bandwidth = 10,source = 0, Dst = 12, id = 565, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 2, id = 566, request = 1
+[18:28:44] New lsp established with 2 old LPs. [20] [16]
+[18:28:44] New request. Bandwidth = 10,source = 2, Dst = 8, id = 567, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [19] [20]
+[18:28:44] New request. Bandwidth = 10,source = 1, Dst = 8, id = 568, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 4, Dst = 11, id = 569, request = 1
+[18:28:44] New lsp established with 2 old LPs. [12] [12]
+[18:28:44] New request. Bandwidth = 10,source = 8, Dst = 1, id = 570, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [18] [17]
+[18:28:44] New request. Bandwidth = 10,source = 7, Dst = 3, id = 571, request = 1
+[18:28:44] New lsp established with 2 old LPs. [15] [16]
+[18:28:44] New request. Bandwidth = 10,source = 9, Dst = 12, id = 572, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 4, Dst = 3, id = 573, request = 1
+[18:28:44] New lsp established with 2 old LPs. [3] [13]
+[18:28:44] New request. Bandwidth = 10,source = 3, Dst = 9, id = 574, request = 1
+[18:28:44] New lsp established with 2 old LPs. [19] [15]
+[18:28:44] New request. Bandwidth = 10,source = 3, Dst = 11, id = 575, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [22] [23]
+[18:28:44] New request. Bandwidth = 10,source = 7, Dst = 6, id = 576, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 13, Dst = 11, id = 577, request = 1
+[18:28:44] New lsp established with 2 old LPs. [3] [4]
+[18:28:44] New request. Bandwidth = 10,source = 0, Dst = 4, id = 578, request = 1
+[18:28:44] New lsp established with new single LP. [10] [21]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 7, id = 579, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 3, Dst = 0, id = 580, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [9] [9]
+[18:28:44] New request. Bandwidth = 10,source = 3, Dst = 1, id = 581, request = 1
+[18:28:44] New lsp establish with new LP and old LP. [1] [3]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 2, id = 582, request = 1
+[18:28:44] LSP is REJECTED.
+[18:28:44] New request. Bandwidth = 10,source = 6, Dst = 1, id = 583, request = 1
+[18:28:44] New lsp established with 2 old LPs. [7] [5]
+[18:28:44] New request. Bandwidth = 10,source = 12, Dst = 3, id = 584, request = 1
+[18:28:44] New lsp established with 2 old LPs. [11] [6]
+[18:28:44] New request. Bandwidth = 10,source = 1, Dst = 2, id = 585, request = 1
+[18:28:45] New lsp established with 2 old LPs. [7] [3]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 13, id = 586, request = 1
+[18:28:45] New lsp established with new single LP. [15] [21]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 13, id = 587, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 7, id = 588, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 2, id = 589, request = 1
+[18:28:45] New lsp established with new single LP. [24] [23]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 6, id = 590, request = 1
+[18:28:45] New lsp established with 2 old LPs. [4] [17]
+[18:28:45] New request. Bandwidth = 10,source = 9, Dst = 4, id = 591, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [20] [2]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 13, id = 592, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [14] [13]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 11, id = 593, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 13, id = 594, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [22]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 3, id = 595, request = 1
+[18:28:45] New lsp established with 2 old LPs. [15] [16]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 1, id = 596, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 9, id = 597, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [21] [22]
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 1, id = 598, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [25] [21]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 12, id = 599, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [22]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 12, id = 600, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [22]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 10, id = 601, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [24] [8]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 0, id = 602, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [25] [5]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 4, id = 603, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [23] [19]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 5, id = 604, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 7, id = 605, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [21] [14]
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 8, id = 606, request = 1
+[18:28:45] New lsp established with 2 old LPs. [3] [3]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 9, id = 608, request = 1
+[18:28:45] New lsp established with 2 old LPs. [19] [15]
+[18:28:45] New request. Bandwidth = 10,source = 9, Dst = 10, id = 609, request = 1
+[18:28:45] New lsp established with 2 old LPs. [8] [2]
+[18:28:45] New request. Bandwidth = 10,source = 11, Dst = 12, id = 610, request = 1
+[18:28:45] New lsp established with 2 old LPs. [4] [0]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 13, id = 611, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [20]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 12, id = 612, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [16] [14]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 0, id = 613, request = 1
+[18:28:45] New lsp established with 2 old LPs. [4] [11]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 9, id = 615, request = 1
+[18:28:45] New lsp established with 2 old LPs. [12] [8]
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 3, id = 616, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [26] [10]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 0, id = 617, request = 1
+[18:28:45] New lsp established with new single LP. [0] [10]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 4, id = 618, request = 1
+[18:28:45] New lsp established with 2 old LPs. [14] [16]
+[18:28:45] New request. Bandwidth = 10,source = 12, Dst = 8, id = 619, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [24] [0]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 13, id = 620, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [23] [26]
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 8, id = 621, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [15] [0]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 10, id = 622, request = 1
+[18:28:45] New lsp established with 2 old LPs. [24] [8]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 8, id = 623, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [25] [10]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 7, id = 624, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 13, id = 625, request = 1
+[18:28:45] New lsp established with 2 old LPs. [21] [14]
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 6, id = 627, request = 1
+[18:28:45] New lsp established with 2 old LPs. [25] [5]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 12, id = 628, request = 1
+[18:28:45] New lsp established with 2 old LPs. [20] [16]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 6, id = 630, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [18] [7]
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 6, id = 631, request = 1
+[18:28:45] New lsp established with 2 old LPs. [1] [1]
+[18:28:45] New request. Bandwidth = 10,source = 8, Dst = 7, id = 632, request = 1
+[18:28:45] New lsp established with 2 old LPs. [25] [10]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 3, id = 633, request = 1
+[18:28:45] New lsp established with 2 old LPs. [10] [0]
+[18:28:45] New request. Bandwidth = 10,source = 12, Dst = 9, id = 634, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [3] [6]
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 9, id = 636, request = 1
+[18:28:45] New lsp established with 2 old LPs. [14] [9]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 3, id = 637, request = 1
+[18:28:45] New lsp established with new single LP. [15] [24]
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 5, id = 638, request = 1
+[18:28:45] New lsp established with 2 old LPs. [15] [21]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 11, id = 639, request = 1
+[18:28:45] New lsp established with 2 old LPs. [9] [8]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 1, id = 640, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [26] [18]
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 5, id = 641, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [14] [3]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 9, id = 642, request = 1
+[18:28:45] New lsp established with 2 old LPs. [21] [22]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 2, id = 643, request = 1
+[18:28:45] New lsp established with 2 old LPs. [15] [24]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 10, id = 644, request = 1
+[18:28:45] New lsp established with 2 old LPs. [24] [18]
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 6, id = 645, request = 1
+[18:28:45] New lsp established with 2 old LPs. [25] [5]
+[18:28:45] New request. Bandwidth = 10,source = 7, Dst = 5, id = 646, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 2, id = 647, request = 1
+[18:28:45] New lsp established with 2 old LPs. [24] [23]
+[18:28:45] New request. Bandwidth = 10,source = 10, Dst = 9, id = 648, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 10, id = 649, request = 1
+[18:28:45] New lsp established with 2 old LPs. [7] [5]
+[18:28:45] New request. Bandwidth = 10,source = 9, Dst = 5, id = 650, request = 1
+[18:28:45] New lsp established with 2 old LPs. [12] [8]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 11, id = 652, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 6, id = 653, request = 1
+[18:28:45] New lsp established with 2 old LPs. [8] [12]
+[18:28:45] New request. Bandwidth = 10,source = 1, Dst = 12, id = 654, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [22]
+[18:28:45] New request. Bandwidth = 10,source = 11, Dst = 3, id = 655, request = 1
+[18:28:45] New lsp established with 2 old LPs. [22] [23]
+[18:28:45] New request. Bandwidth = 10,source = 6, Dst = 10, id = 656, request = 1
+[18:28:45] New lsp established with 2 old LPs. [24] [18]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 10, id = 657, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 12, Dst = 6, id = 658, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [25] [20]
+[18:28:45] New request. Bandwidth = 10,source = 4, Dst = 0, id = 659, request = 1
+[18:28:45] New lsp established with 2 old LPs. [21] [10]
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 1, id = 660, request = 1
+[18:28:45] New lsp established with 2 old LPs. [25] [21]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 12, id = 661, request = 1
+[18:28:45] New lsp established with 2 old LPs. [11] [6]
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 2, id = 662, request = 1
+[18:28:45] New lsp established with 2 old LPs. [0] [10]
+[18:28:45] New request. Bandwidth = 10,source = 0, Dst = 7, id = 663, request = 1
+[18:28:45] New lsp established with 2 old LPs. [18] [18]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 13, id = 664, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [26]
+[18:28:45] New request. Bandwidth = 10,source = 11, Dst = 6, id = 665, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 11, Dst = 12, id = 666, request = 1
+[18:28:45] New lsp establish with new LP and old LP. [4] [4]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 10, id = 668, request = 1
+[18:28:45] LSP is REJECTED.
+[18:28:45] New request. Bandwidth = 10,source = 13, Dst = 2, id = 669, request = 1
+[18:28:45] New lsp established with 2 old LPs. [23] [20]
+[18:28:45] New request. Bandwidth = 10,source = 10, Dst = 12, id = 670, request = 1
+[18:28:45] New lsp established with 2 old LPs. [8] [7]
+[18:28:45] New request. Bandwidth = 10,source = 5, Dst = 4, id = 671, request = 1
+[18:28:45] New lsp established with 2 old LPs. [14] [3]
+[18:28:45] New request. Bandwidth = 10,source = 2, Dst = 0, id = 672, request = 1
+[18:28:45] New lsp established with 2 old LPs. [0] [10]
+[18:28:45] New request. Bandwidth = 10,source = 3, Dst = 7, id = 673, request = 1
+[18:28:45] New lsp established with new single LP. [22] [24]
+[18:28:45] New request. Bandwidth = 10,source = 9, Dst = 13, id = 674, request = 1
+[18:28:46] New lsp established with 2 old LPs. [1] [1]
+[18:28:46] New request. Bandwidth = 10,source = 2, Dst = 9, id = 675, request = 1
+[18:28:46] New lsp established with 2 old LPs. [20] [16]
+[18:28:46] New request. Bandwidth = 10,source = 3, Dst = 2, id = 676, request = 1
+[18:28:46] New lsp established with 2 old LPs. [15] [24]
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 8, id = 677, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 9, Dst = 12, id = 678, request = 1
+[18:28:46] New lsp established with 2 old LPs. [3] [6]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 7, id = 679, request = 1
+[18:28:46] New lsp established with 2 old LPs. [25] [10]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 3, id = 680, request = 1
+[18:28:46] New lsp established with 2 old LPs. [22] [23]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 1, id = 681, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 13, id = 682, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [4] [3]
+[18:28:46] New request. Bandwidth = 10,source = 7, Dst = 1, id = 683, request = 1
+[18:28:46] New lsp established with 2 old LPs. [18] [16]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 1, id = 684, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [27] [19]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 10, id = 685, request = 1
+[18:28:46] New lsp established with 2 old LPs. [2] [1]
+[18:28:46] New request. Bandwidth = 10,source = 12, Dst = 1, id = 687, request = 1
+[18:28:46] New LSP establish with single LP for primary, and 2 combine LPs for backup. [26] [5,25]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 11, id = 688, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [22] [20]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 4, id = 689, request = 1
+[18:28:46] New lsp established with 2 old LPs. [17] [6]
+[18:28:46] New request. Bandwidth = 10,source = 7, Dst = 3, id = 690, request = 1
+[18:28:46] New lsp established with 2 old LPs. [22] [24]
+[18:28:46] New request. Bandwidth = 10,source = 5, Dst = 4, id = 691, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [4] [14]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 5, id = 692, request = 1
+[18:28:46] New lsp established with 2 old LPs. [15] [1]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 5, id = 693, request = 1
+[18:28:46] New lsp established with 2 old LPs. [19] [17]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 7, id = 694, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [23] [25]
+[18:28:46] New request. Bandwidth = 10,source = 3, Dst = 7, id = 695, request = 1
+[18:28:46] New lsp established with 2 old LPs. [22] [24]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 6, id = 696, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [20] [25]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 12, id = 697, request = 1
+[18:28:46] New lsp established with 2 old LPs. [8] [7]
+[18:28:46] New request. Bandwidth = 10,source = 7, Dst = 3, id = 698, request = 1
+[18:28:46] New lsp established with 2 old LPs. [22] [24]
+[18:28:46] New request. Bandwidth = 10,source = 3, Dst = 0, id = 699, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 13, Dst = 12, id = 700, request = 1
+[18:28:46] New lsp established with 2 old LPs. [5] [10]
+[18:28:46] New request. Bandwidth = 10,source = 9, Dst = 4, id = 702, request = 1
+[18:28:46] New lsp established with 2 old LPs. [20] [2]
+[18:28:46] New request. Bandwidth = 10,source = 7, Dst = 4, id = 703, request = 1
+[18:28:46] New lsp established with 2 old LPs. [23] [19]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 11, id = 704, request = 1
+[18:28:46] New lsp established with 2 old LPs. [19] [18]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 9, id = 705, request = 1
+[18:28:46] New lsp established with 2 old LPs. [9] [20]
+[18:28:46] New request. Bandwidth = 10,source = 3, Dst = 0, id = 706, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 5, id = 707, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 13, id = 708, request = 1
+[18:28:46] New lsp established with 2 old LPs. [25] [21]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 13, id = 709, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [25] [17]
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 2, id = 710, request = 1
+[18:28:46] New lsp established with 2 old LPs. [7] [3]
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 0, id = 711, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [27] [20]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 0, id = 712, request = 1
+[18:28:46] New lsp established with 2 old LPs. [19] [18]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 1, id = 713, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 11, id = 714, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [28] [6]
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 9, id = 715, request = 1
+[18:28:46] New lsp established with 2 old LPs. [21] [22]
+[18:28:46] New request. Bandwidth = 10,source = 3, Dst = 10, id = 716, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 2, Dst = 0, id = 717, request = 1
+[18:28:46] New lsp established with 2 old LPs. [0] [10]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 11, id = 718, request = 1
+[18:28:46] New lsp established with new single LP. [26] [25]
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 13, id = 719, request = 1
+[18:28:46] New lsp established with 2 old LPs. [25] [17]
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 10, id = 720, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [26] [15]
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 4, id = 722, request = 1
+[18:28:46] New lsp established with 2 old LPs. [20] [5]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 1, id = 723, request = 1
+[18:28:46] New lsp established with 2 old LPs. [27] [19]
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 13, id = 724, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [27] [25]
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 4, id = 725, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [2] [4]
+[18:28:46] New request. Bandwidth = 10,source = 13, Dst = 0, id = 726, request = 1
+[18:28:46] New lsp established with 2 old LPs. [23] [22]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 8, id = 727, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [26] [22]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 2, id = 728, request = 1
+[18:28:46] New lsp established with new single LP. [2] [13]
+[18:28:46] New request. Bandwidth = 10,source = 0, Dst = 3, id = 729, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [20] [9]
+[18:28:46] New request. Bandwidth = 10,source = 2, Dst = 9, id = 730, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [26] [16]
+[18:28:46] New request. Bandwidth = 10,source = 9, Dst = 11, id = 731, request = 1
+[18:28:46] New lsp established with 2 old LPs. [9] [20]
+[18:28:46] New request. Bandwidth = 10,source = 12, Dst = 5, id = 732, request = 1
+[18:28:46] New lsp established with new single LP. [24] [25]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 4, id = 733, request = 1
+[18:28:46] New lsp established with 2 old LPs. [17] [6]
+[18:28:46] New request. Bandwidth = 10,source = 2, Dst = 7, id = 734, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 8, Dst = 7, id = 735, request = 1
+[18:28:46] LSP is REJECTED.
+[18:28:46] New request. Bandwidth = 10,source = 6, Dst = 12, id = 737, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [24] [25]
+[18:28:46] New request. Bandwidth = 10,source = 1, Dst = 4, id = 738, request = 1
+[18:28:46] New lsp established with 2 old LPs. [20] [5]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 12, id = 739, request = 1
+[18:28:46] New lsp established with 2 old LPs. [8] [7]
+[18:28:46] New request. Bandwidth = 10,source = 10, Dst = 3, id = 740, request = 1
+[18:28:46] New lsp establish with new LP and old LP. [28] [20]
+[18:28:46] New request. Bandwidth = 10,source = 11, Dst = 0, id = 741, request = 1
+[18:28:47] New lsp established with 2 old LPs. [26] [25]
+[18:28:47] New request. Bandwidth = 10,source = 8, Dst = 4, id = 742, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [11] [15]
+[18:28:47] New request. Bandwidth = 10,source = 0, Dst = 13, id = 743, request = 1
+[18:28:47] New lsp established with new single LP. [27] [22]
+[18:28:47] New request. Bandwidth = 10,source = 10, Dst = 5, id = 745, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [27] [14]
+[18:28:47] New request. Bandwidth = 10,source = 10, Dst = 7, id = 746, request = 1
+[18:28:47] New lsp established with 2 old LPs. [6] [11]
+[18:28:47] New request. Bandwidth = 10,source = 11, Dst = 6, id = 747, request = 1
+[18:28:47] New lsp established with 2 old LPs. [28] [6]
+[18:28:47] New request. Bandwidth = 10,source = 6, Dst = 5, id = 748, request = 1
+[18:28:47] New lsp established with 2 old LPs. [4] [17]
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 9, id = 749, request = 1
+[18:28:47] New lsp established with 2 old LPs. [20] [13]
+[18:28:47] New request. Bandwidth = 10,source = 9, Dst = 5, id = 750, request = 1
+[18:28:47] New lsp established with 2 old LPs. [12] [8]
+[18:28:47] New request. Bandwidth = 10,source = 5, Dst = 3, id = 751, request = 1
+[18:28:47] New lsp established with 2 old LPs. [21] [8]
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 7, id = 752, request = 1
+[18:28:47] New lsp established with 2 old LPs. [23] [19]
+[18:28:47] New request. Bandwidth = 10,source = 7, Dst = 1, id = 753, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 9, id = 754, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 6, id = 755, request = 1
+[18:28:47] New lsp established with 2 old LPs. [2] [4]
+[18:28:47] New request. Bandwidth = 10,source = 3, Dst = 11, id = 756, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 10, Dst = 0, id = 757, request = 1
+[18:28:47] New lsp established with new single LP. [29] [28]
+[18:28:47] New request. Bandwidth = 10,source = 8, Dst = 1, id = 759, request = 1
+[18:28:47] New lsp established with 2 old LPs. [18] [17]
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 12, id = 760, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [14] [0]
+[18:28:47] New request. Bandwidth = 10,source = 0, Dst = 13, id = 761, request = 1
+[18:28:47] New lsp established with 2 old LPs. [27] [22]
+[18:28:47] New request. Bandwidth = 10,source = 12, Dst = 8, id = 762, request = 1
+[18:28:47] New lsp established with 2 old LPs. [24] [0]
+[18:28:47] New request. Bandwidth = 10,source = 11, Dst = 0, id = 763, request = 1
+[18:28:47] New lsp established with 2 old LPs. [26] [25]
+[18:28:47] New request. Bandwidth = 10,source = 3, Dst = 9, id = 764, request = 1
+[18:28:47] New lsp established with new single LP. [28] [23]
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 8, id = 765, request = 1
+[18:28:47] New lsp established with 2 old LPs. [11] [15]
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 2, id = 766, request = 1
+[18:28:47] New lsp established with 2 old LPs. [7] [3]
+[18:28:47] New request. Bandwidth = 10,source = 10, Dst = 12, id = 767, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [14] [7]
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 8, id = 768, request = 1
+[18:28:47] New lsp established with 2 old LPs. [11] [15]
+[18:28:47] New request. Bandwidth = 10,source = 7, Dst = 9, id = 769, request = 1
+[18:28:47] New lsp established with 2 old LPs. [2] [8]
+[18:28:47] New request. Bandwidth = 10,source = 2, Dst = 3, id = 770, request = 1
+[18:28:47] New lsp established with 2 old LPs. [15] [24]
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 5, id = 771, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 3, id = 772, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [11] [1]
+[18:28:47] New request. Bandwidth = 10,source = 7, Dst = 2, id = 773, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [24] [17]
+[18:28:47] New request. Bandwidth = 10,source = 7, Dst = 2, id = 774, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 3, Dst = 10, id = 775, request = 1
+[18:28:47] New lsp established with 2 old LPs. [28] [20]
+[18:28:47] New request. Bandwidth = 10,source = 6, Dst = 7, id = 776, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [25] [21]
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 10, id = 777, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 6, Dst = 12, id = 779, request = 1
+[18:28:47] New lsp established with 2 old LPs. [24] [25]
+[18:28:47] New request. Bandwidth = 10,source = 3, Dst = 4, id = 780, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 6, Dst = 7, id = 781, request = 1
+[18:28:47] New lsp established with 2 old LPs. [25] [21]
+[18:28:47] New request. Bandwidth = 10,source = 9, Dst = 11, id = 782, request = 1
+[18:28:47] New lsp established with 2 old LPs. [9] [20]
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 12, id = 783, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [25] [26]
+[18:28:47] New request. Bandwidth = 10,source = 12, Dst = 3, id = 785, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [28] [11]
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 12, id = 786, request = 1
+[18:28:47] New lsp established with 2 old LPs. [14] [0]
+[18:28:47] New request. Bandwidth = 10,source = 11, Dst = 2, id = 787, request = 1
+[18:28:47] New lsp established with 2 old LPs. [19] [15]
+[18:28:47] New request. Bandwidth = 10,source = 1, Dst = 0, id = 788, request = 1
+[18:28:47] New lsp established with 2 old LPs. [4] [11]
+[18:28:47] New request. Bandwidth = 10,source = 6, Dst = 3, id = 789, request = 1
+[18:28:47] New LSP establish with single LP for primary, and 2 combine LPs for backup. [22] [4,28]
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 7, id = 790, request = 1
+[18:28:47] New lsp established with 2 old LPs. [21] [14]
+[18:28:47] New request. Bandwidth = 10,source = 9, Dst = 4, id = 791, request = 1
+[18:28:47] LSP is REJECTED.
+[18:28:47] New request. Bandwidth = 10,source = 9, Dst = 12, id = 792, request = 1
+[18:28:47] New lsp established with 2 old LPs. [3] [6]
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 8, id = 793, request = 1
+[18:28:47] New lsp established with 2 old LPs. [25] [17]
+[18:28:47] New request. Bandwidth = 10,source = 4, Dst = 11, id = 794, request = 1
+[18:28:47] New lsp establish with new LP and old LP. [26] [12]
+[18:28:47] New request. Bandwidth = 10,source = 13, Dst = 6, id = 795, request = 1
+[18:28:47] New LSP establish with single LP for primary, and 2 combine LPs for backup. [27] [7,29]
+[18:28:47] New request. Bandwidth = 10,source = 2, Dst = 13, id = 796, request = 1
+[18:28:48] New lsp established with 2 old LPs. [23] [20]
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 2, id = 797, request = 1
+[18:28:48] New lsp established with 2 old LPs. [24] [23]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 1, id = 798, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [30] [26]
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 5, id = 799, request = 1
+[18:28:48] New LSP establish with single LP for primary, and 2 combine LPs for backup. [27] [8,25]
+[18:28:48] New request. Bandwidth = 10,source = 3, Dst = 4, id = 800, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 2, Dst = 7, id = 801, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [27] [24]
+[18:28:48] New request. Bandwidth = 10,source = 0, Dst = 11, id = 802, request = 1
+[18:28:48] New lsp established with 2 old LPs. [26] [25]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 6, id = 803, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 12, Dst = 0, id = 804, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [29] [21]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 7, id = 806, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 5, Dst = 10, id = 808, request = 1
+[18:28:48] New lsp established with 2 old LPs. [27] [14]
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 1, id = 809, request = 1
+[18:28:48] New lsp established with 2 old LPs. [26] [18]
+[18:28:48] New request. Bandwidth = 10,source = 8, Dst = 12, id = 810, request = 1
+[18:28:48] New lsp established with 2 old LPs. [24] [0]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 11, id = 811, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 13, Dst = 3, id = 812, request = 1
+[18:28:48] New lsp established with 2 old LPs. [23] [26]
+[18:28:48] New request. Bandwidth = 10,source = 8, Dst = 6, id = 813, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [9] [1]
+[18:28:48] New request. Bandwidth = 10,source = 4, Dst = 8, id = 814, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [19] [11]
+[18:28:48] New request. Bandwidth = 10,source = 2, Dst = 11, id = 815, request = 1
+[18:28:48] New lsp established with 2 old LPs. [19] [15]
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 8, id = 816, request = 1
+[18:28:48] New lsp established with 2 old LPs. [9] [9]
+[18:28:48] New request. Bandwidth = 10,source = 8, Dst = 0, id = 817, request = 1
+[18:28:48] New lsp established with 2 old LPs. [7] [19]
+[18:28:48] New request. Bandwidth = 10,source = 4, Dst = 11, id = 819, request = 1
+[18:28:48] New lsp established with 2 old LPs. [26] [12]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 12, id = 820, request = 1
+[18:28:48] New lsp established with 2 old LPs. [3] [6]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 8, id = 821, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [29] [6]
+[18:28:48] New request. Bandwidth = 10,source = 4, Dst = 10, id = 822, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 5, id = 824, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 13, id = 825, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [10] [1]
+[18:28:48] New request. Bandwidth = 10,source = 2, Dst = 0, id = 826, request = 1
+[18:28:48] New lsp established with 2 old LPs. [2] [13]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 3, id = 827, request = 1
+[18:28:48] New lsp established with 2 old LPs. [28] [20]
+[18:28:48] New request. Bandwidth = 10,source = 12, Dst = 11, id = 828, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [10] [4]
+[18:28:48] New request. Bandwidth = 10,source = 0, Dst = 11, id = 829, request = 1
+[18:28:48] New lsp established with new single LP. [29] [28]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 11, id = 830, request = 1
+[18:28:48] New lsp established with new single LP. [10] [29]
+[18:28:48] New request. Bandwidth = 10,source = 0, Dst = 10, id = 831, request = 1
+[18:28:48] New lsp established with 2 old LPs. [29] [28]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 8, id = 832, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 3, Dst = 4, id = 833, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 5, Dst = 10, id = 834, request = 1
+[18:28:48] New lsp established with 2 old LPs. [27] [14]
+[18:28:48] New request. Bandwidth = 10,source = 11, Dst = 8, id = 836, request = 1
+[18:28:48] New lsp established with 2 old LPs. [26] [22]
+[18:28:48] New request. Bandwidth = 10,source = 2, Dst = 5, id = 837, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 1, Dst = 12, id = 838, request = 1
+[18:28:48] New lsp established with 2 old LPs. [25] [26]
+[18:28:48] New request. Bandwidth = 10,source = 6, Dst = 12, id = 839, request = 1
+[18:28:48] New lsp established with 2 old LPs. [24] [25]
+[18:28:48] New request. Bandwidth = 10,source = 11, Dst = 13, id = 840, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [11] [4]
+[18:28:48] New request. Bandwidth = 10,source = 13, Dst = 11, id = 841, request = 1
+[18:28:48] New lsp established with 2 old LPs. [11] [4]
+[18:28:48] New request. Bandwidth = 10,source = 10, Dst = 2, id = 842, request = 1
+[18:28:48] New lsp established with 2 old LPs. [24] [8]
+[18:28:48] New request. Bandwidth = 10,source = 7, Dst = 3, id = 843, request = 1
+[18:28:48] New LSP establish with single LP for primary, and 2 combine LPs for backup. [26] [15,29]
+[18:28:48] New request. Bandwidth = 10,source = 12, Dst = 6, id = 844, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [30] [24]
+[18:28:48] New request. Bandwidth = 10,source = 0, Dst = 2, id = 845, request = 1
+[18:28:48] New lsp established with 2 old LPs. [2] [13]
+[18:28:48] New request. Bandwidth = 10,source = 7, Dst = 5, id = 846, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 11, Dst = 0, id = 847, request = 1
+[18:28:48] New lsp established with 2 old LPs. [29] [28]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 6, id = 848, request = 1
+[18:28:48] New lsp establish with new LP and old LP. [30] [21]
+[18:28:48] New request. Bandwidth = 10,source = 0, Dst = 5, id = 849, request = 1
+[18:28:48] New lsp established with 2 old LPs. [15] [7]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 8, id = 850, request = 1
+[18:28:48] New lsp established with 2 old LPs. [29] [6]
+[18:28:48] New request. Bandwidth = 10,source = 9, Dst = 6, id = 851, request = 1
+[18:28:48] LSP is REJECTED.
+[18:28:48] New request. Bandwidth = 10,source = 13, Dst = 1, id = 852, request = 1
+[18:28:49] New lsp established with 2 old LPs. [27] [25]
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 13, id = 853, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 4, Dst = 6, id = 854, request = 1
+[18:28:49] New lsp established with 2 old LPs. [2] [4]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 13, id = 856, request = 1
+[18:28:49] New lsp established with 2 old LPs. [14] [1]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 4, id = 859, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 7, Dst = 6, id = 860, request = 1
+[18:28:49] New lsp established with 2 old LPs. [25] [21]
+[18:28:49] New request. Bandwidth = 10,source = 1, Dst = 10, id = 861, request = 1
+[18:28:49] New lsp established with 2 old LPs. [30] [26]
+[18:28:49] New request. Bandwidth = 10,source = 6, Dst = 2, id = 862, request = 1
+[18:28:49] New lsp established with 2 old LPs. [24] [23]
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 10, id = 863, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [30] [21]
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 12, id = 864, request = 1
+[18:28:49] New lsp established with 2 old LPs. [10] [4]
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 12, id = 865, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [31] [24]
+[18:28:49] New request. Bandwidth = 10,source = 10, Dst = 8, id = 866, request = 1
+[18:28:49] New lsp established with 2 old LPs. [30] [21]
+[18:28:49] New request. Bandwidth = 10,source = 1, Dst = 3, id = 867, request = 1
+[18:28:49] New lsp established with 2 old LPs. [11] [1]
+[18:28:49] New request. Bandwidth = 10,source = 5, Dst = 4, id = 868, request = 1
+[18:28:49] New lsp established with 2 old LPs. [4] [14]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 5, id = 869, request = 1
+[18:28:49] New lsp established with 2 old LPs. [24] [25]
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 7, id = 870, request = 1
+[18:28:49] New lsp established with 2 old LPs. [15] [1]
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 12, id = 871, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 12, id = 872, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 1, id = 873, request = 1
+[18:28:49] New lsp established with 2 old LPs. [27] [19]
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 3, id = 875, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [31] [22]
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 1, id = 876, request = 1
+[18:28:49] New lsp established with 2 old LPs. [18] [17]
+[18:28:49] New request. Bandwidth = 10,source = 6, Dst = 11, id = 877, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 4, id = 878, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [32] [26]
+[18:28:49] New request. Bandwidth = 10,source = 5, Dst = 9, id = 880, request = 1
+[18:28:49] New lsp established with new single LP. [24] [17]
+[18:28:49] New request. Bandwidth = 10,source = 1, Dst = 3, id = 881, request = 1
+[18:28:49] New lsp established with 2 old LPs. [11] [1]
+[18:28:49] New request. Bandwidth = 10,source = 13, Dst = 5, id = 882, request = 1
+[18:28:49] New lsp established with 2 old LPs. [15] [21]
+[18:28:49] New request. Bandwidth = 10,source = 7, Dst = 12, id = 883, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 6, Dst = 5, id = 884, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 10, Dst = 6, id = 885, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 4, Dst = 11, id = 886, request = 1
+[18:28:49] New lsp established with 2 old LPs. [32] [26]
+[18:28:49] New request. Bandwidth = 10,source = 2, Dst = 9, id = 887, request = 1
+[18:28:49] New lsp established with 2 old LPs. [26] [16]
+[18:28:49] New request. Bandwidth = 10,source = 10, Dst = 1, id = 889, request = 1
+[18:28:49] New lsp established with 2 old LPs. [30] [26]
+[18:28:49] New request. Bandwidth = 10,source = 13, Dst = 3, id = 890, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [33] [23]
+[18:28:49] New request. Bandwidth = 10,source = 13, Dst = 1, id = 891, request = 1
+[18:28:49] New lsp established with 2 old LPs. [27] [25]
+[18:28:49] New request. Bandwidth = 10,source = 3, Dst = 13, id = 892, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [29] [33]
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 0, id = 893, request = 1
+[18:28:49] New lsp established with 2 old LPs. [14] [9]
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 8, id = 894, request = 1
+[18:28:49] New lsp established with 2 old LPs. [29] [6]
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 9, id = 895, request = 1
+[18:28:49] New lsp established with 2 old LPs. [10] [29]
+[18:28:49] New request. Bandwidth = 10,source = 0, Dst = 8, id = 896, request = 1
+[18:28:49] New lsp established with 2 old LPs. [7] [19]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 7, id = 897, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [31] [16]
+[18:28:49] New request. Bandwidth = 10,source = 2, Dst = 8, id = 898, request = 1
+[18:28:49] New lsp established with 2 old LPs. [19] [20]
+[18:28:49] New request. Bandwidth = 10,source = 4, Dst = 13, id = 899, request = 1
+[18:28:49] New lsp established with 2 old LPs. [18] [18]
+[18:28:49] New request. Bandwidth = 10,source = 6, Dst = 9, id = 900, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [32] [30]
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 1, id = 901, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 2, Dst = 4, id = 902, request = 1
+[18:28:49] New lsp established with 2 old LPs. [14] [16]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 0, id = 903, request = 1
+[18:28:49] New lsp established with 2 old LPs. [29] [21]
+[18:28:49] New request. Bandwidth = 10,source = 0, Dst = 12, id = 904, request = 1
+[18:28:49] New lsp established with 2 old LPs. [29] [21]
+[18:28:49] New request. Bandwidth = 10,source = 7, Dst = 12, id = 905, request = 1
+[18:28:49] New lsp established with 2 old LPs. [31] [16]
+[18:28:49] New request. Bandwidth = 10,source = 11, Dst = 3, id = 906, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 2, Dst = 11, id = 907, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [29] [14]
+[18:28:49] New request. Bandwidth = 10,source = 12, Dst = 1, id = 908, request = 1
+[18:28:49] New lsp established with 2 old LPs. [25] [26]
+[18:28:49] New request. Bandwidth = 10,source = 2, Dst = 5, id = 909, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 5, Dst = 13, id = 910, request = 1
+[18:28:49] New lsp established with 2 old LPs. [15] [21]
+[18:28:49] New request. Bandwidth = 10,source = 0, Dst = 5, id = 912, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [30] [7]
+[18:28:49] New request. Bandwidth = 10,source = 6, Dst = 13, id = 914, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [33] [27]
+[18:28:49] New request. Bandwidth = 10,source = 9, Dst = 13, id = 915, request = 1
+[18:28:49] LSP is REJECTED.
+[18:28:49] New request. Bandwidth = 10,source = 8, Dst = 9, id = 916, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [34] [29]
+[18:28:49] New request. Bandwidth = 10,source = 1, Dst = 4, id = 917, request = 1
+[18:28:49] New lsp establish with new LP and old LP. [16] [20]
+[18:28:49] New request. Bandwidth = 10,source = 7, Dst = 10, id = 918, request = 1
+[18:28:49] New LSP establish with single LP for primary, and 2 combine LPs for backup. [16] [10,32]
+[18:28:49] New request. Bandwidth = 10,source = 4, Dst = 13, id = 919, request = 1
+[18:28:50] New lsp established with 2 old LPs. [18] [18]
+[18:28:50] New request. Bandwidth = 10,source = 0, Dst = 12, id = 920, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [31] [29]
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 1, id = 921, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 6, Dst = 12, id = 922, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [30] [30]
+[18:28:50] New request. Bandwidth = 10,source = 0, Dst = 7, id = 923, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [32] [18]
+[18:28:50] New request. Bandwidth = 10,source = 2, Dst = 13, id = 925, request = 1
+[18:28:50] New lsp established with new single LP. [33] [30]
+[18:28:50] New request. Bandwidth = 10,source = 0, Dst = 11, id = 926, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 0, id = 927, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 1, Dst = 7, id = 928, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [34] [18]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 1, id = 929, request = 1
+[18:28:50] New lsp established with 2 old LPs. [16] [1]
+[18:28:50] New request. Bandwidth = 10,source = 4, Dst = 9, id = 930, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [28] [20]
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 2, id = 931, request = 1
+[18:28:50] New lsp established with 2 old LPs. [19] [20]
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 3, id = 932, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 12, id = 933, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [31] [28]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 2, id = 934, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [35] [24]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 11, id = 935, request = 1
+[18:28:50] New lsp established with 2 old LPs. [10] [29]
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 5, id = 936, request = 1
+[18:28:50] New lsp established with 2 old LPs. [25] [17]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 4, id = 937, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 4, id = 938, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 1, Dst = 9, id = 939, request = 1
+[18:28:50] New lsp established with 2 old LPs. [16] [1]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 4, id = 940, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 13, id = 942, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 8, id = 943, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [31] [31]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 7, id = 945, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [33] [26]
+[18:28:50] New request. Bandwidth = 10,source = 4, Dst = 8, id = 946, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 1, Dst = 0, id = 947, request = 1
+[18:28:50] New lsp established with new single LP. [7] [9]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 4, id = 949, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [34] [17]
+[18:28:50] New request. Bandwidth = 10,source = 6, Dst = 12, id = 950, request = 1
+[18:28:50] New lsp established with 2 old LPs. [30] [30]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 13, id = 951, request = 1
+[18:28:50] New lsp established with 2 old LPs. [14] [5]
+[18:28:50] New request. Bandwidth = 10,source = 5, Dst = 0, id = 953, request = 1
+[18:28:50] New lsp established with 2 old LPs. [30] [7]
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 3, id = 954, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 12, id = 955, request = 1
+[18:28:50] New lsp established with 2 old LPs. [31] [28]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 10, id = 956, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 9, id = 957, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 4, id = 958, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [27] [28]
+[18:28:50] New request. Bandwidth = 10,source = 13, Dst = 12, id = 959, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [15] [5]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 1, id = 960, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [28] [34]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 11, id = 961, request = 1
+[18:28:50] New lsp established with 2 old LPs. [10] [29]
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 6, id = 962, request = 1
+[18:28:50] New lsp established with 2 old LPs. [9] [9]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 5, id = 964, request = 1
+[18:28:50] New lsp established with 2 old LPs. [24] [25]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 5, id = 965, request = 1
+[18:28:50] New lsp established with 2 old LPs. [24] [25]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 7, id = 966, request = 1
+[18:28:50] New lsp established with 2 old LPs. [31] [16]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 9, id = 967, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 4, id = 968, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 2, id = 969, request = 1
+[18:28:50] New lsp established with new single LP. [11] [35]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 11, id = 970, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 4, Dst = 5, id = 971, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [21] [4]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 8, id = 972, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [32] [23]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 7, id = 973, request = 1
+[18:28:50] New lsp established with 2 old LPs. [33] [26]
+[18:28:50] New request. Bandwidth = 10,source = 5, Dst = 7, id = 974, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [6] [2]
+[18:28:50] New request. Bandwidth = 10,source = 6, Dst = 1, id = 975, request = 1
+[18:28:50] New lsp established with 2 old LPs. [26] [18]
+[18:28:50] New request. Bandwidth = 10,source = 2, Dst = 3, id = 976, request = 1
+[18:28:50] New lsp established with 2 old LPs. [11] [35]
+[18:28:50] New request. Bandwidth = 10,source = 13, Dst = 0, id = 977, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [22]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 7, id = 978, request = 1
+[18:28:50] New lsp established with 2 old LPs. [33] [26]
+[18:28:50] New request. Bandwidth = 10,source = 0, Dst = 6, id = 980, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [20]
+[18:28:50] New request. Bandwidth = 10,source = 7, Dst = 2, id = 981, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [24]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 2, id = 982, request = 1
+[18:28:50] New lsp established with 2 old LPs. [26] [16]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 0, id = 983, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 5, Dst = 12, id = 984, request = 1
+[18:28:50] New lsp established with new single LP. [27] [30]
+[18:28:50] New request. Bandwidth = 10,source = 6, Dst = 11, id = 985, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 5, id = 986, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [30]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 4, id = 987, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [28]
+[18:28:50] New request. Bandwidth = 10,source = 13, Dst = 6, id = 988, request = 1
+[18:28:50] New lsp established with 2 old LPs. [33] [27]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 7, id = 989, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [26] [16]
+[18:28:50] New request. Bandwidth = 10,source = 0, Dst = 11, id = 991, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 0, id = 992, request = 1
+[18:28:50] New lsp established with new single LP. [33] [32]
+[18:28:50] New request. Bandwidth = 10,source = 1, Dst = 6, id = 993, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [23] [26]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 4, id = 994, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 8, Dst = 5, id = 995, request = 1
+[18:28:50] New lsp established with 2 old LPs. [25] [19]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 6, id = 996, request = 1
+[18:28:50] New lsp established with 2 old LPs. [32] [30]
+[18:28:50] New request. Bandwidth = 10,source = 5, Dst = 8, id = 997, request = 1
+[18:28:50] New lsp established with 2 old LPs. [25] [19]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 8, id = 998, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [34] [34]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 10, id = 1000, request = 1
+[18:28:50] New lsp established with 2 old LPs. [14] [7]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 11, id = 1001, request = 1
+[18:28:50] New lsp established with 2 old LPs. [10] [4]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 4, id = 1002, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [28]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 5, id = 1003, request = 1
+[18:28:50] New lsp established with 2 old LPs. [27] [30]
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 13, id = 1004, request = 1
+[18:28:50] New lsp established with 2 old LPs. [11] [4]
+[18:28:50] New request. Bandwidth = 10,source = 5, Dst = 2, id = 1005, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [25] [12]
+[18:28:50] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1006, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [33]
+[18:28:50] New request. Bandwidth = 10,source = 10, Dst = 5, id = 1007, request = 1
+[18:28:50] New lsp established with 2 old LPs. [32] [27]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 1, id = 1008, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [17] [11]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1009, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [32] [28]
+[18:28:50] New request. Bandwidth = 10,source = 9, Dst = 3, id = 1010, request = 1
+[18:28:50] New lsp established with 2 old LPs. [29] [28]
+[18:28:50] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1011, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 4, id = 1012, request = 1
+[18:28:50] LSP is REJECTED.
+[18:28:50] New request. Bandwidth = 10,source = 11, Dst = 5, id = 1013, request = 1
+[18:28:50] New lsp establish with new LP and old LP. [33] [9]
+[18:28:50] New request. Bandwidth = 10,source = 12, Dst = 13, id = 1014, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [6] [15]
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 5, id = 1015, request = 1
+[18:28:51] New lsp established with new single LP. [29] [35]
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1016, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 7, Dst = 3, id = 1018, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [29] [33]
+[18:28:51] New request. Bandwidth = 10,source = 9, Dst = 8, id = 1019, request = 1
+[18:28:51] New lsp established with 2 old LPs. [34] [34]
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 0, id = 1020, request = 1
+[18:28:51] New lsp established with 2 old LPs. [27] [22]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 11, id = 1021, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [33] [27]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 12, id = 1022, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [36] [21]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 4, id = 1023, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 8, id = 1026, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [35] [25]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 13, id = 1027, request = 1
+[18:28:51] New lsp established with 2 old LPs. [33] [30]
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 2, id = 1028, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 2, id = 1029, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [29] [19]
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 10, id = 1031, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [34] [32]
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 6, id = 1032, request = 1
+[18:28:51] New lsp established with 2 old LPs. [33] [27]
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 7, id = 1033, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [35] [25]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 9, id = 1035, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 2, id = 1036, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1037, request = 1
+[18:28:51] New lsp established with 2 old LPs. [14] [7]
+[18:28:51] New request. Bandwidth = 10,source = 12, Dst = 2, id = 1038, request = 1
+[18:28:51] New lsp established with 2 old LPs. [36] [21]
+[18:28:51] New request. Bandwidth = 10,source = 9, Dst = 0, id = 1039, request = 1
+[18:28:51] New lsp established with new single LP. [36] [30]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 0, id = 1040, request = 1
+[18:28:51] New lsp established with 2 old LPs. [7] [9]
+[18:28:51] New request. Bandwidth = 10,source = 0, Dst = 4, id = 1041, request = 1
+[18:28:51] New lsp established with 2 old LPs. [21] [10]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 6, id = 1042, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1043, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1044, request = 1
+[18:28:51] New lsp established with 2 old LPs. [29] [33]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1045, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [25] [29]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 0, id = 1046, request = 1
+[18:28:51] New lsp established with 2 old LPs. [33] [32]
+[18:28:51] New request. Bandwidth = 10,source = 0, Dst = 4, id = 1047, request = 1
+[18:28:51] New lsp established with 2 old LPs. [21] [10]
+[18:28:51] New request. Bandwidth = 10,source = 7, Dst = 3, id = 1048, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 2, id = 1049, request = 1
+[18:28:51] New lsp established with 2 old LPs. [11] [35]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 1, id = 1050, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [4] [1]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 9, id = 1051, request = 1
+[18:28:51] New lsp established with 2 old LPs. [29] [28]
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 10, id = 1052, request = 1
+[18:28:51] New lsp established with 2 old LPs. [30] [21]
+[18:28:51] New request. Bandwidth = 10,source = 12, Dst = 9, id = 1053, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [9] [6]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 8, id = 1054, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [22] [18]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1055, request = 1
+[18:28:51] New lsp established with 2 old LPs. [14] [7]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 7, id = 1056, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [11] [13]
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 9, id = 1057, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [4] [10]
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1058, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 5, Dst = 10, id = 1059, request = 1
+[18:28:51] New lsp established with 2 old LPs. [34] [32]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1060, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 12, id = 1061, request = 1
+[18:28:51] New lsp established with 2 old LPs. [36] [21]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 0, id = 1063, request = 1
+[18:28:51] New lsp established with 2 old LPs. [2] [13]
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 7, id = 1064, request = 1
+[18:28:51] New lsp established with 2 old LPs. [32] [23]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 8, id = 1065, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 4, Dst = 7, id = 1066, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [36] [23]
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 1, id = 1067, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [21] [22]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1068, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [37] [29]
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 5, id = 1069, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 7, Dst = 6, id = 1070, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [31] [35]
+[18:28:51] New request. Bandwidth = 10,source = 7, Dst = 11, id = 1071, request = 1
+[18:28:51] New lsp established with 2 old LPs. [11] [13]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 1, id = 1073, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [36] [33]
+[18:28:51] New request. Bandwidth = 10,source = 12, Dst = 13, id = 1075, request = 1
+[18:28:51] New lsp established with 2 old LPs. [6] [15]
+[18:28:51] New request. Bandwidth = 10,source = 4, Dst = 0, id = 1076, request = 1
+[18:28:51] New lsp established with new single LP. [31] [34]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 2, id = 1078, request = 1
+[18:28:51] New lsp established with 2 old LPs. [11] [35]
+[18:28:51] New request. Bandwidth = 10,source = 8, Dst = 4, id = 1079, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [13] [19]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 12, id = 1080, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [12] [10]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 1, id = 1081, request = 1
+[18:28:51] New lsp established with 2 old LPs. [36] [33]
+[18:28:51] New request. Bandwidth = 10,source = 9, Dst = 7, id = 1083, request = 1
+[18:28:51] New lsp established with 2 old LPs. [15] [12]
+[18:28:51] New request. Bandwidth = 10,source = 9, Dst = 7, id = 1084, request = 1
+[18:28:51] New lsp established with 2 old LPs. [15] [12]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 8, id = 1085, request = 1
+[18:28:51] New lsp established with 2 old LPs. [21] [22]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 13, id = 1086, request = 1
+[18:28:51] New lsp established with 2 old LPs. [7] [0]
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 2, id = 1087, request = 1
+[18:28:51] New lsp established with new single LP. [31] [34]
+[18:28:51] New request. Bandwidth = 10,source = 7, Dst = 11, id = 1088, request = 1
+[18:28:51] New lsp established with 2 old LPs. [11] [13]
+[18:28:51] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1089, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [37] [29]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 6, id = 1090, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [26] [22]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 4, id = 1091, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [35] [32]
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 11, id = 1092, request = 1
+[18:28:51] LSP is REJECTED.
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 2, id = 1094, request = 1
+[18:28:51] New lsp established with 2 old LPs. [34] [31]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 8, id = 1095, request = 1
+[18:28:51] New lsp established with 2 old LPs. [21] [22]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 2, id = 1096, request = 1
+[18:28:51] New lsp established with 2 old LPs. [4] [5]
+[18:28:51] New request. Bandwidth = 10,source = 9, Dst = 12, id = 1097, request = 1
+[18:28:51] New lsp established with 2 old LPs. [9] [6]
+[18:28:51] New request. Bandwidth = 10,source = 0, Dst = 7, id = 1098, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [36] [32]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 3, id = 1099, request = 1
+[18:28:51] New lsp establish with new LP and old LP. [38] [32]
+[18:28:51] New request. Bandwidth = 10,source = 4, Dst = 8, id = 1100, request = 1
+[18:28:51] New lsp established with 2 old LPs. [13] [19]
+[18:28:51] New request. Bandwidth = 10,source = 10, Dst = 13, id = 1101, request = 1
+[18:28:51] New lsp established with 2 old LPs. [7] [0]
+[18:28:51] New request. Bandwidth = 10,source = 11, Dst = 13, id = 1102, request = 1
+[18:28:51] New lsp established with 2 old LPs. [11] [4]
+[18:28:51] New request. Bandwidth = 10,source = 6, Dst = 2, id = 1103, request = 1
+[18:28:51] New lsp established with 2 old LPs. [34] [31]
+[18:28:51] New request. Bandwidth = 10,source = 0, Dst = 7, id = 1104, request = 1
+[18:28:51] New lsp established with 2 old LPs. [36] [32]
+[18:28:51] New request. Bandwidth = 10,source = 2, Dst = 3, id = 1105, request = 1
+[18:28:51] New lsp established with new single LP. [22] [33]
+[18:28:51] New request. Bandwidth = 10,source = 1, Dst = 7, id = 1106, request = 1
+[18:28:51] New lsp established with 2 old LPs. [28] [34]
+[18:28:51] New request. Bandwidth = 10,source = 3, Dst = 6, id = 1107, request = 1
+[18:28:51] New lsp established with 2 old LPs. [26] [22]
+[18:28:51] New request. Bandwidth = 10,source = 12, Dst = 5, id = 1108, request = 1
+[18:28:51] New lsp established with 2 old LPs. [27] [30]
+[18:28:51] New request. Bandwidth = 10,source = 0, Dst = 9, id = 1109, request = 1
+[18:28:52] New lsp established with 2 old LPs. [36] [30]
+[18:28:52] New request. Bandwidth = 10,source = 5, Dst = 1, id = 1110, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [27] [19]
+[18:28:52] New request. Bandwidth = 10,source = 0, Dst = 1, id = 1111, request = 1
+[18:28:52] New lsp established with 2 old LPs. [7] [9]
+[18:28:52] New request. Bandwidth = 10,source = 4, Dst = 12, id = 1112, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [38] [11]
+[18:28:52] New request. Bandwidth = 10,source = 4, Dst = 7, id = 1113, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 9, Dst = 12, id = 1114, request = 1
+[18:28:52] New lsp established with 2 old LPs. [9] [6]
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 0, id = 1115, request = 1
+[18:28:52] New lsp established with 2 old LPs. [27] [20]
+[18:28:52] New request. Bandwidth = 10,source = 7, Dst = 6, id = 1116, request = 1
+[18:28:52] New lsp established with 2 old LPs. [31] [35]
+[18:28:52] New request. Bandwidth = 10,source = 8, Dst = 9, id = 1117, request = 1
+[18:28:52] New lsp established with 2 old LPs. [34] [34]
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 0, id = 1118, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 7, id = 1119, request = 1
+[18:28:52] New lsp established with 2 old LPs. [31] [35]
+[18:28:52] New request. Bandwidth = 10,source = 10, Dst = 8, id = 1121, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [37] [30]
+[18:28:52] New request. Bandwidth = 10,source = 10, Dst = 5, id = 1122, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [34] [34]
+[18:28:52] New request. Bandwidth = 10,source = 10, Dst = 7, id = 1123, request = 1
+[18:28:52] New lsp established with 2 old LPs. [26] [16]
+[18:28:52] New request. Bandwidth = 10,source = 11, Dst = 1, id = 1124, request = 1
+[18:28:52] New lsp established with 2 old LPs. [36] [33]
+[18:28:52] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1125, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 10, id = 1126, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [35] [20]
+[18:28:52] New request. Bandwidth = 10,source = 10, Dst = 6, id = 1127, request = 1
+[18:28:52] New lsp established with 2 old LPs. [35] [24]
+[18:28:52] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1128, request = 1
+[18:28:52] New lsp established with 2 old LPs. [37] [29]
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 3, id = 1129, request = 1
+[18:28:52] New lsp established with 2 old LPs. [26] [22]
+[18:28:52] New request. Bandwidth = 10,source = 3, Dst = 6, id = 1130, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 1, Dst = 4, id = 1131, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1132, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 8, Dst = 1, id = 1134, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 1, Dst = 10, id = 1136, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [36] [30]
+[18:28:52] New request. Bandwidth = 10,source = 8, Dst = 11, id = 1137, request = 1
+[18:28:52] New lsp established with 2 old LPs. [26] [22]
+[18:28:52] New request. Bandwidth = 10,source = 5, Dst = 13, id = 1139, request = 1
+[18:28:52] New lsp established with new single LP. [34] [38]
+[18:28:52] New request. Bandwidth = 10,source = 11, Dst = 3, id = 1140, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 0, Dst = 11, id = 1141, request = 1
+[18:28:52] New lsp established with 2 old LPs. [33] [32]
+[18:28:52] New request. Bandwidth = 10,source = 2, Dst = 1, id = 1142, request = 1
+[18:28:52] New lsp established with 2 old LPs. [4] [5]
+[18:28:52] New request. Bandwidth = 10,source = 4, Dst = 11, id = 1143, request = 1
+[18:28:52] New lsp established with 2 old LPs. [35] [32]
+[18:28:52] New request. Bandwidth = 10,source = 8, Dst = 13, id = 1144, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [37] [35]
+[18:28:52] New request. Bandwidth = 10,source = 9, Dst = 13, id = 1145, request = 1
+[18:28:52] New lsp established with 2 old LPs. [4] [10]
+[18:28:52] New request. Bandwidth = 10,source = 0, Dst = 1, id = 1146, request = 1
+[18:28:52] New lsp established with 2 old LPs. [7] [9]
+[18:28:52] New request. Bandwidth = 10,source = 12, Dst = 5, id = 1147, request = 1
+[18:28:52] New lsp established with new single LP. [36] [32]
+[18:28:52] New request. Bandwidth = 10,source = 1, Dst = 0, id = 1148, request = 1
+[18:28:52] New lsp established with new single LP. [11] [18]
+[18:28:52] New request. Bandwidth = 10,source = 3, Dst = 9, id = 1149, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [37] [23]
+[18:28:52] New request. Bandwidth = 10,source = 7, Dst = 8, id = 1150, request = 1
+[18:28:52] New lsp established with 2 old LPs. [32] [23]
+[18:28:52] New request. Bandwidth = 10,source = 7, Dst = 0, id = 1151, request = 1
+[18:28:52] New lsp established with 2 old LPs. [36] [32]
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 0, id = 1153, request = 1
+[18:28:52] LSP is REJECTED.
+[18:28:52] New request. Bandwidth = 10,source = 2, Dst = 10, id = 1154, request = 1
+[18:28:52] New lsp establish with new LP and old LP. [38] [35]
+[18:28:52] New request. Bandwidth = 10,source = 6, Dst = 2, id = 1155, request = 1
+[18:28:52] New lsp established with 2 old LPs. [34] [31]
+[18:28:52] New request. Bandwidth = 10,source = 11, Dst = 9, id = 1156, request = 1
+[18:28:52] New lsp established with new single LP. [4] [15]
+[18:28:52] New request. Bandwidth = 10,source = 3, Dst = 6, id = 1157, request = 1
+[18:28:53] LSP is REJECTED.
+[18:28:53] New request. Bandwidth = 10,source = 5, Dst = 12, id = 1158, request = 1
+[18:28:53] New lsp established with 2 old LPs. [36] [32]
+[18:28:53] New request. Bandwidth = 10,source = 8, Dst = 6, id = 1159, request = 1
+[18:28:53] New lsp established with 2 old LPs. [9] [9]
+[18:28:53] New request. Bandwidth = 10,source = 5, Dst = 12, id = 1160, request = 1
+[18:28:53] New lsp established with 2 old LPs. [36] [32]
+[18:28:53] New request. Bandwidth = 10,source = 3, Dst = 12, id = 1161, request = 1
+[18:28:53] New lsp established with 2 old LPs. [31] [28]
+[18:28:53] New request. Bandwidth = 10,source = 11, Dst = 12, id = 1162, request = 1
+[18:28:53] LSP is REJECTED.
+[18:28:53] New request. Bandwidth = 10,source = 12, Dst = 9, id = 1163, request = 1
+[18:28:53] New lsp established with 2 old LPs. [9] [6]
+[18:28:53] New request. Bandwidth = 10,source = 8, Dst = 4, id = 1164, request = 1
+[18:28:53] New lsp established with 2 old LPs. [13] [19]
+[18:28:53] New request. Bandwidth = 10,source = 9, Dst = 11, id = 1165, request = 1
+[18:28:53] New lsp established with 2 old LPs. [4] [15]
+[18:28:53] New request. Bandwidth = 10,source = 8, Dst = 10, id = 1166, request = 1
+[18:28:53] New lsp establish with new LP and old LP. [38] [37]
+[18:28:53] New request. Bandwidth = 10,source = 3, Dst = 9, id = 1168, request = 1
+[18:28:53] New lsp established with 2 old LPs. [37] [23]
+[18:28:53] New request. Bandwidth = 10,source = 8, Dst = 5, id = 1169, request = 1
+[18:28:53] New lsp established with 2 old LPs. [35] [29]
+[18:28:53] New request. Bandwidth = 10,source = 7, Dst = 8, id = 1170, request = 1
+[18:28:53] LSP is REJECTED.
+[18:28:53] New request. Bandwidth = 10,source = 6, Dst = 13, id = 1171, request = 1
+[18:28:53] LSP is REJECTED.
+[18:28:53] New request. Bandwidth = 10,source = 2, Dst = 11, id = 1172, request = 1
+[18:28:53] New lsp established with 2 old LPs. [29] [14]
+[18:28:53] New request. Bandwidth = 10,source = 3, Dst = 9, id = 1173, request = 1
+[18:28:53] New lsp established with 2 old LPs. [37] [23]
+[18:28:53] New request. Bandwidth = 10,source = 0, Dst = 10, id = 1174, request = 1
+[18:28:53] New lsp established with new single LP. [39] [37]
+[18:28:53] New request. Bandwidth = 10,source = 4, Dst = 13, id = 1175, request = 1
+[18:28:53] LSP is REJECTED.
+[18:28:53] New request. Bandwidth = 10,source = 7, Dst = 12, id = 1177, request = 1
+[18:28:53] New lsp establish with new LP and old LP. [35] [31]
+[18:28:53] New request. Bandwidth = 10,source = 4, Dst = 2, id = 1178, request = 1
+[18:28:53] New lsp establish with new LP and old LP. [39] [14]
+[18:28:53] New request. Bandwidth = 10,source = 3, Dst = 1, id = 1179, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 1, Dst = 4, id = 1180, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 11, Dst = 3, id = 1181, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 3, Dst = 4, id = 1182, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 0, Dst = 11, id = 1183, request = 1
+[18:28:54] New lsp established with 2 old LPs. [33] [32]
+[18:28:54] New request. Bandwidth = 10,source = 5, Dst = 11, id = 1184, request = 1
+[18:28:54] New lsp established with 2 old LPs. [33] [9]
+[18:28:54] New request. Bandwidth = 10,source = 0, Dst = 8, id = 1186, request = 1
+[18:28:54] New LSP establish with single LP for primary, and 2 combine LPs for backup. [28] [19,13]
+[18:28:54] New request. Bandwidth = 10,source = 1, Dst = 8, id = 1189, request = 1
+[18:28:54] New lsp establish with new LP and old LP. [30] [21]
+[18:28:54] New request. Bandwidth = 10,source = 7, Dst = 1, id = 1190, request = 1
+[18:28:54] New lsp established with 2 old LPs. [28] [34]
+[18:28:54] New request. Bandwidth = 10,source = 9, Dst = 1, id = 1191, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 13, Dst = 11, id = 1192, request = 1
+[18:28:54] New lsp establish with new LP and old LP. [15] [4]
+[18:28:54] New request. Bandwidth = 10,source = 5, Dst = 6, id = 1193, request = 1
+[18:28:54] New lsp establish with new LP and old LP. [32] [27]
+[18:28:54] New request. Bandwidth = 10,source = 0, Dst = 2, id = 1194, request = 1
+[18:28:54] New lsp established with new single LP. [12] [24]
+[18:28:54] New request. Bandwidth = 10,source = 3, Dst = 0, id = 1195, request = 1
+[18:28:54] New lsp established with 2 old LPs. [20] [9]
+[18:28:54] New request. Bandwidth = 10,source = 8, Dst = 13, id = 1196, request = 1
+[18:28:54] New lsp established with 2 old LPs. [37] [35]
+[18:28:54] New request. Bandwidth = 10,source = 7, Dst = 1, id = 1197, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 11, Dst = 12, id = 1198, request = 1
+[18:28:54] LSP is REJECTED.
+[18:28:54] New request. Bandwidth = 10,source = 0, Dst = 2, id = 1199, request = 1
+[18:28:54] New lsp established with 2 old LPs. [12] [24]
+[18:28:54] New request. Bandwidth = 10,source = 5, Dst = 7, id = 1200, request = 1
+[18:28:54] New lsp established with 2 old LPs. [6] [2]
+[18:28:54] New request. Bandwidth = 10,source = 13, Dst = 5, id = 1201, request = 1
+[18:28:54] New lsp established with 2 old LPs. [34] [38]
+[18:28:54] New request. Bandwidth = 10,source = 9, Dst = 10, id = 1202, request = 1
+[18:28:54] New lsp establish with new LP and old LP. [12] [2]
+[18:28:54] New request. Bandwidth = 10,source = 7, Dst = 10, id = 1203, request = 1
+[18:28:54] New lsp established with 2 old LPs. [26] [16]
+[18:28:54] New request. Bandwidth = 10,source = 4, Dst = 5, id = 1205, request = 1
+[18:28:54] New lsp established with 2 old LPs. [21] [4]
+[18:28:54] New request. Bandwidth = 10,source = 7, Dst = 0, id = 1206, request = 1
+[18:28:54] New lsp establish with new LP and old LP. [36] [36]
+[18:28:54] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1207, request = 1
+[18:28:54] New lsp established with 2 old LPs. [25] [29]
+[18:28:54] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1209, request = 1
+[18:28:55] New lsp established with 2 old LPs. [25] [29]
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 11, id = 1210, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [39] [35]
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 5, id = 1212, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 12, id = 1213, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 1, id = 1214, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 0, Dst = 12, id = 1215, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 7, id = 1216, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 6, Dst = 9, id = 1217, request = 1
+[18:28:55] New lsp established with 2 old LPs. [32] [30]
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 9, id = 1218, request = 1
+[18:28:55] New lsp established with 2 old LPs. [4] [10]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1219, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 6, id = 1220, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [23] [2]
+[18:28:55] New request. Bandwidth = 10,source = 6, Dst = 2, id = 1221, request = 1
+[18:28:55] New lsp established with new single LP. [38] [32]
+[18:28:55] New request. Bandwidth = 10,source = 0, Dst = 12, id = 1222, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 5, id = 1223, request = 1
+[18:28:55] New lsp established with 2 old LPs. [6] [2]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 6, id = 1225, request = 1
+[18:28:55] New lsp established with 2 old LPs. [35] [29]
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 1, id = 1226, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 0, id = 1227, request = 1
+[18:28:55] New lsp established with new single LP. [39] [37]
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 11, id = 1228, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [17] [11]
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 1, id = 1229, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1230, request = 1
+[18:28:55] New lsp established with 2 old LPs. [38] [32]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 5, id = 1231, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [38] [25]
+[18:28:55] New request. Bandwidth = 10,source = 12, Dst = 13, id = 1232, request = 1
+[18:28:55] New lsp established with 2 old LPs. [6] [15]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 4, id = 1234, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 12, Dst = 6, id = 1235, request = 1
+[18:28:55] New lsp established with 2 old LPs. [30] [30]
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1236, request = 1
+[18:28:55] New lsp established with 2 old LPs. [37] [29]
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 10, id = 1237, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [10] [2]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 2, id = 1238, request = 1
+[18:28:55] New lsp established with 2 old LPs. [38] [35]
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 1, id = 1239, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 1, id = 1241, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 2, id = 1242, request = 1
+[18:28:55] New lsp established with 2 old LPs. [22] [33]
+[18:28:55] New request. Bandwidth = 10,source = 1, Dst = 2, id = 1243, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [12] [4]
+[18:28:55] New request. Bandwidth = 10,source = 6, Dst = 11, id = 1244, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [39] [28]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1245, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 13, id = 1246, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [13] [4]
+[18:28:55] New request. Bandwidth = 10,source = 8, Dst = 10, id = 1247, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 8, Dst = 13, id = 1248, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 1, Dst = 9, id = 1250, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 8, id = 1251, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [37] [32]
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1252, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 10, id = 1253, request = 1
+[18:28:55] New lsp established with 2 old LPs. [12] [2]
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 12, id = 1254, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 8, id = 1255, request = 1
+[18:28:55] New lsp established with 2 old LPs. [38] [37]
+[18:28:55] New request. Bandwidth = 10,source = 8, Dst = 5, id = 1256, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 6, Dst = 9, id = 1258, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 12, id = 1259, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [18] [35]
+[18:28:55] New request. Bandwidth = 10,source = 0, Dst = 7, id = 1260, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 9, id = 1262, request = 1
+[18:28:55] New lsp established with 2 old LPs. [12] [2]
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 3, id = 1263, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [25] [3]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 5, id = 1264, request = 1
+[18:28:55] New lsp established with 2 old LPs. [34] [34]
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 11, id = 1265, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 12, Dst = 8, id = 1268, request = 1
+[18:28:55] New lsp established with 2 old LPs. [31] [31]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 8, id = 1269, request = 1
+[18:28:55] New lsp established with 2 old LPs. [38] [37]
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 0, id = 1270, request = 1
+[18:28:55] New lsp established with 2 old LPs. [34] [31]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 11, id = 1271, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [17] [10]
+[18:28:55] New request. Bandwidth = 10,source = 6, Dst = 3, id = 1272, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [36] [26]
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 0, id = 1273, request = 1
+[18:28:55] New lsp established with 2 old LPs. [39] [37]
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 0, id = 1274, request = 1
+[18:28:55] New lsp established with 2 old LPs. [39] [37]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 0, id = 1275, request = 1
+[18:28:55] New lsp established with 2 old LPs. [12] [24]
+[18:28:55] New request. Bandwidth = 10,source = 12, Dst = 8, id = 1276, request = 1
+[18:28:55] New lsp established with 2 old LPs. [31] [31]
+[18:28:55] New request. Bandwidth = 10,source = 12, Dst = 10, id = 1278, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [19] [7]
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 1, id = 1279, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [33] [16]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 5, id = 1280, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 11, Dst = 2, id = 1281, request = 1
+[18:28:55] New lsp established with 2 old LPs. [29] [14]
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 3, id = 1282, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [39] [37]
+[18:28:55] New request. Bandwidth = 10,source = 9, Dst = 8, id = 1283, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 1, Dst = 10, id = 1284, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 8, id = 1285, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [36] [13]
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 5, id = 1286, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 1, id = 1287, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [37] [16]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1288, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 5, Dst = 7, id = 1290, request = 1
+[18:28:55] New lsp established with 2 old LPs. [6] [4]
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 1, id = 1291, request = 1
+[18:28:55] New lsp established with 2 old LPs. [27] [25]
+[18:28:55] New request. Bandwidth = 10,source = 7, Dst = 2, id = 1292, request = 1
+[18:28:55] New lsp established with 2 old LPs. [27] [24]
+[18:28:55] New request. Bandwidth = 10,source = 5, Dst = 8, id = 1293, request = 1
+[18:28:55] New lsp established with 2 old LPs. [35] [29]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 9, id = 1294, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 1, Dst = 5, id = 1295, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 8, Dst = 6, id = 1296, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [12] [4]
+[18:28:55] New request. Bandwidth = 10,source = 4, Dst = 13, id = 1297, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 1, Dst = 0, id = 1298, request = 1
+[18:28:55] New lsp established with 2 old LPs. [19] [11]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 13, id = 1299, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1300, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 5, Dst = 9, id = 1301, request = 1
+[18:28:55] New lsp established with 2 old LPs. [24] [17]
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 6, id = 1302, request = 1
+[18:28:55] New lsp establish with new LP and old LP. [38] [33]
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 2, id = 1303, request = 1
+[18:28:55] New lsp established with 2 old LPs. [33] [30]
+[18:28:55] New request. Bandwidth = 10,source = 2, Dst = 10, id = 1304, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 5, id = 1305, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1307, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 3, Dst = 10, id = 1309, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 10, Dst = 11, id = 1311, request = 1
+[18:28:55] New lsp established with 2 old LPs. [17] [10]
+[18:28:55] New request. Bandwidth = 10,source = 8, Dst = 12, id = 1312, request = 1
+[18:28:55] LSP is REJECTED.
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 2, id = 1314, request = 1
+[18:28:55] New lsp established with 2 old LPs. [33] [30]
+[18:28:55] New request. Bandwidth = 10,source = 13, Dst = 2, id = 1315, request = 1
+[18:28:56] New LSP establish with single LP for primary, and 2 combine LPs for backup. [38] [5,4]
+[18:28:56] New request. Bandwidth = 10,source = 10, Dst = 6, id = 1316, request = 1
+[18:28:56] New lsp established with 2 old LPs. [35] [29]
+[18:28:56] New request. Bandwidth = 10,source = 12, Dst = 5, id = 1317, request = 1
+[18:28:56] New lsp established with 2 old LPs. [36] [32]
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 8, id = 1318, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 6, id = 1319, request = 1
+[18:28:56] New lsp established with 2 old LPs. [28] [39]
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 12, id = 1321, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 12, Dst = 13, id = 1324, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 6, id = 1325, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 12, id = 1327, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 1, id = 1328, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 3, id = 1329, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 9, id = 1330, request = 1
+[18:28:56] New lsp established with 2 old LPs. [4] [15]
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 9, id = 1331, request = 1
+[18:28:56] New lsp established with 2 old LPs. [4] [15]
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 2, id = 1332, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [38] [38]
+[18:28:56] New request. Bandwidth = 10,source = 0, Dst = 10, id = 1333, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 8, id = 1335, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 8, id = 1336, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 13, id = 1337, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [19] [21]
+[18:28:56] New request. Bandwidth = 10,source = 2, Dst = 13, id = 1338, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1339, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 10, Dst = 6, id = 1340, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 10, id = 1341, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 2, id = 1343, request = 1
+[18:28:56] New lsp established with 2 old LPs. [22] [33]
+[18:28:56] New request. Bandwidth = 10,source = 10, Dst = 1, id = 1344, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 2, id = 1345, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 10, id = 1346, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [35] [34]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 9, id = 1347, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 5, id = 1348, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 2, id = 1349, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 4, id = 1352, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [6] [23]
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 5, id = 1353, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 6, id = 1354, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 1, Dst = 0, id = 1355, request = 1
+[18:28:56] New lsp established with 2 old LPs. [19] [11]
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 8, id = 1356, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1357, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 0, id = 1358, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 4, id = 1359, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [5] [21]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 10, id = 1360, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 4, Dst = 3, id = 1362, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 11, id = 1363, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 4, id = 1364, request = 1
+[18:28:56] New lsp established with 2 old LPs. [6] [23]
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 5, id = 1366, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 10, Dst = 4, id = 1367, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [39] [34]
+[18:28:56] New request. Bandwidth = 10,source = 0, Dst = 6, id = 1368, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [31] [27]
+[18:28:56] New request. Bandwidth = 10,source = 1, Dst = 2, id = 1370, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 3, id = 1371, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 9, id = 1372, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 6, id = 1374, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 12, Dst = 11, id = 1375, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [12] [12]
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 2, id = 1377, request = 1
+[18:28:56] New lsp established with 2 old LPs. [22] [33]
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 7, id = 1378, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [29] [17]
+[18:28:56] New request. Bandwidth = 10,source = 4, Dst = 13, id = 1379, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 9, id = 1381, request = 1
+[18:28:56] New lsp established with new single LP. [10] [16]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 2, id = 1382, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [30] [25]
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 13, id = 1383, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 3, id = 1384, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 10, Dst = 7, id = 1385, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 9, id = 1386, request = 1
+[18:28:56] New lsp established with 2 old LPs. [5] [13]
+[18:28:56] New request. Bandwidth = 10,source = 12, Dst = 11, id = 1388, request = 1
+[18:28:56] New lsp established with 2 old LPs. [12] [12]
+[18:28:56] New request. Bandwidth = 10,source = 2, Dst = 5, id = 1390, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 2, id = 1391, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 2, id = 1392, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1395, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 11, id = 1397, request = 1
+[18:28:56] New lsp established with 2 old LPs. [10] [16]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 4, id = 1398, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [15] [36]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 2, id = 1399, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 9, Dst = 4, id = 1400, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1401, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [35] [30]
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 9, id = 1402, request = 1
+[18:28:56] New lsp established with 2 old LPs. [10] [16]
+[18:28:56] New request. Bandwidth = 10,source = 12, Dst = 13, id = 1403, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 13, id = 1404, request = 1
+[18:28:56] New lsp established with 2 old LPs. [15] [4]
+[18:28:56] New request. Bandwidth = 10,source = 1, Dst = 7, id = 1405, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 11, id = 1406, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 6, Dst = 3, id = 1407, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [31] [36]
+[18:28:56] New request. Bandwidth = 10,source = 13, Dst = 7, id = 1408, request = 1
+[18:28:56] New lsp establish with new LP and old LP. [31] [19]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 5, id = 1409, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 0, Dst = 8, id = 1410, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 7, Dst = 6, id = 1412, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 2, Dst = 8, id = 1414, request = 1
+[18:28:56] New lsp established with 2 old LPs. [35] [30]
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 13, id = 1415, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 8, id = 1416, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 4, Dst = 1, id = 1417, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 9, id = 1419, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 3, Dst = 7, id = 1420, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 5, Dst = 6, id = 1421, request = 1
+[18:28:56] New lsp established with 2 old LPs. [32] [27]
+[18:28:56] New request. Bandwidth = 10,source = 8, Dst = 12, id = 1423, request = 1
+[18:28:56] LSP is REJECTED.
+[18:28:56] New request. Bandwidth = 10,source = 11, Dst = 8, id = 1424, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 4, Dst = 5, id = 1425, request = 1
+[18:28:57] New lsp established with 2 old LPs. [5] [21]
+[18:28:57] New request. Bandwidth = 10,source = 5, Dst = 3, id = 1426, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 6, Dst = 0, id = 1427, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 1, Dst = 10, id = 1428, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 0, Dst = 5, id = 1430, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 7, Dst = 9, id = 1431, request = 1
+[18:28:57] New lsp establish with new LP and old LP. [22] [12]
+[18:28:57] New request. Bandwidth = 10,source = 9, Dst = 3, id = 1432, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 6, Dst = 11, id = 1433, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 8, Dst = 13, id = 1435, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 7, Dst = 12, id = 1436, request = 1
+[18:28:57] New lsp established with 2 old LPs. [35] [18]
+[18:28:57] New request. Bandwidth = 10,source = 0, Dst = 11, id = 1438, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 7, Dst = 12, id = 1439, request = 1
+[18:28:57] New lsp established with 2 old LPs. [35] [18]
+[18:28:57] New request. Bandwidth = 10,source = 9, Dst = 4, id = 1440, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1442, request = 1
+[18:28:57] New lsp established with 2 old LPs. [19] [7]
+[18:28:57] New request. Bandwidth = 10,source = 5, Dst = 0, id = 1444, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 5, Dst = 2, id = 1446, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 6, Dst = 10, id = 1447, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 6, Dst = 1, id = 1448, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 9, Dst = 2, id = 1449, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 2, Dst = 5, id = 1450, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 0, Dst = 7, id = 1452, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 3, Dst = 4, id = 1456, request = 1
+[18:28:57] New lsp establish with new LP and old LP. [19] [25]
+[18:28:57] New request. Bandwidth = 10,source = 10, Dst = 12, id = 1457, request = 1
+[18:28:57] New lsp established with 2 old LPs. [19] [7]
+[18:28:57] New request. Bandwidth = 10,source = 5, Dst = 7, id = 1458, request = 1
+[18:28:57] New lsp establish with new LP and old LP. [8] [4]
+[18:28:57] New request. Bandwidth = 10,source = 7, Dst = 2, id = 1460, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 1, Dst = 10, id = 1463, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 8, Dst = 3, id = 1464, request = 1
+[18:28:57] LSP is REJECTED.
+[18:28:57] New request. Bandwidth = 10,source = 7, Dst = 10, id = 1465, request = 1
+[18:28:57] New lsp establish with new LP and old LP. [31] [26]
+[18:28:57] New request. Bandwidth = 10,source = 12, Dst = 5, id = 1466, request = 1

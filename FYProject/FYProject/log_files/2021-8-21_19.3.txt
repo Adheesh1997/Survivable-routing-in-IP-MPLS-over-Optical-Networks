@@ -1,5 +1,0 @@
-[19:03:04] Log file is created
-[19:03:04] graph_inputs/05/graph05.csv Graph is imported.
-[19:03:04] Physical network is created.
-[19:03:04] New request. Bandwidth = 10,source = 9, Dst = 5, id = 0, request = 1
-[19:03:04] New lsp established with new single LP. [0] [0]

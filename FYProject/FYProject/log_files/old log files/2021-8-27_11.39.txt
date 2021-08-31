@@ -1,0 +1,16 @@
+[11:39:24] Log file is created
+[11:39:50] graph_inputs/05/graph05.csv Graph is imported.
+[11:39:50] Physical network is created.
+[11:47:32] Erlang = 180.000000
+[11:47:32] Mean holding time = 1.000000
+[11:47:32] Num.of wave lengths per fiber = 16
+[11:47:32]                  
+[11:47:32] ****Counts****
+[11:47:32] Num.of lsp rqst = 100000
+[11:47:32] New LP & old LP = 128
+[11:47:32] New LP = 1084
+[11:47:32] old LP = 209
+[11:47:32]                  
+[11:47:32] **Num.of LSP established = 1421
+[11:47:32] **Num.of LSP rejected = 98579
+[11:47:32] **Total count = 100000
