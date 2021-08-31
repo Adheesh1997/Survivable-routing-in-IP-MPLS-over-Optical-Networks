@@ -11,6 +11,9 @@ bool compareByLength(const requestDetails& a, const requestDetails& b)
 
 void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime)
 {
+	//To generate source nodes, destination nodes and bandwidths for LSP requests
+	std::default_random_engine generator1, generator2, generator3;
+	std::uniform_int_distribution<int> distribution1(0, 13), distribution2(0, 13), distribution3(1, 9);
 	requestDetails obj;
 	srand(time(NULL));
 	
@@ -30,12 +33,12 @@ void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, d
 	for (size_t i = 0; i < numberOfLSPrequests; i++)
 	{
 		obj.identifier = reqID++;
-		obj.sourceNode = rand() % 14;
+		obj.sourceNode = distribution1(generator1);
 		do
 		{
-			obj.destinationNode = rand() % 14;
+			obj.destinationNode = distribution2(generator2);
 		} while (obj.destinationNode == obj.sourceNode);
-		obj.bandwidth = 1 +rand() % 10;
+		obj.bandwidth = distribution3(generator3);
 		obj.interArrivalTime = exp.operator() (rng); // generates the next random number in the distribution 
 		obj.holdingTime = exp2.operator() (rng2);    // generates the next random number in the distribution 
 		obj.remainingTime = obj.holdingTime;

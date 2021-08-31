@@ -1,7 +1,1 @@
-﻿  main.cpp
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(40,1): warning C4099: 'lighpathWavelength': type name first seen using 'struct' now seen using 'class'
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\lightpathSettingup.h(39): message : see declaration of 'lighpathWavelength'
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(47,23): warning C4018: '<': signed/unsigned mismatch
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(72,42): warning C4305: '=': truncation from 'double' to 'float'
-D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\FYProject\main.cpp(132,20): warning C4101: 'lspReq': unreferenced local variable
-  FYProject.vcxproj -> D:\Final_year\Survivable-routing-in-IP-MPLS-over-Optical-Networks\Survivable-routing-in-IP-MPLS-over-Optical-Networks\FYProject\Debug\FYProject.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(439,5): error MSB8020: The build tools for v143 (Platform Toolset = 'v143') cannot be found. To build using the v143 build tools, please install v143 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".

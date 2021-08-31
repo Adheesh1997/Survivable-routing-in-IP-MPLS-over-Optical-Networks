@@ -70,7 +70,7 @@ int main()
     thresholds thresholdObj;
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
-    thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
+    thresholdObj.numLSPthreshold = 2;        //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
     double erlang = 200;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
@@ -93,7 +93,7 @@ int main()
 
     /**************** LSP requests read from file ********** -------------------------(2) */
     //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq6.txt", listOfEvents);
+    //myfile.readLSPs("rqst_inputs/rq8.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -166,7 +166,8 @@ int main()
         vector<int> pPathFortest;
         vector<int> bPathFortest;
         vector<int> waveVecFortest;
-
+        
+        
         while(!listOfEvents.empty())//for(events event:tempObject.eventVector)
         //for(int pp = 0; pp < listOfEvents.size(); pp++)
         {
@@ -992,7 +993,7 @@ int main()
             }
             
         }
-
+        
         cout << "\n**Remain LPs_\n";
         waveLengthNetwork.viewAllLighpaths();
         cout << "\n\n**Remain LSPs_\n";

@@ -738,7 +738,7 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
             for (auto start = 0; start < mapDetails.size(); start++) {
                 if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
                     completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
-                    int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
+                    int size = mapDetails[start][sourceCount][destinationCount].size();
                     if (djGraph[sourceCount][destinationCount] == 0) {
                         djGraph[sourceCount][destinationCount] = size;
                     }
@@ -823,7 +823,7 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
                         }
                         if (validate == true) {
                             completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
-                            int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
+                            int size = mapDetails[start][sourceCount][destinationCount].size();
                             if (djGraph[sourceCount][destinationCount] == 0) {
                                 djGraph[sourceCount][destinationCount] = size;
                             }
