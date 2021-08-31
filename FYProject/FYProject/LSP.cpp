@@ -585,7 +585,7 @@ void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 
 
 
-void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP , int &_counter) {
+void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP ) {
 	//cout << "\n\t\t NEW DELETE  : " << identifier;
 	/*cout << "path: ";
 	for (int i = 0; i < path.size(); i++)
@@ -1107,7 +1107,7 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 
 		//cout << "\n\t\t AvoidMultiplePushing : " << avoideMultiplePushing;
 		if (posVector2Activated) {
-			_counter++;
+			
 			for (int z = 0; z < posVector2.size(); z++) {
 				for (int x = 0; x < obj.lighpaths[posVector2[z]].linkVector[iVector2[z]].wavelengthAndLSP.size(); x++) {
 					if (obj.lighpaths[posVector2[z]].linkVector[iVector2[z]].wavelengthAndLSP[x].availableBandwidth == obj.lighpaths[posVector2[z]].linkVector[iVector2[z]].wavelengthAndLSP[x].initialBandwidth &&

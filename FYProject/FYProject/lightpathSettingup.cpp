@@ -430,7 +430,10 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 							}
 						}
 					}
+					
+					backupLPestablish++;
 				}
+				else backupLPreject++;
 			}
 		}
 
@@ -465,7 +468,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 							}
 						}
 					}
+					backupLPestablish++;
 				}
+				else backupLPreject++;
 			}
 		}
 	}
@@ -777,6 +782,7 @@ map<int, map<int, vector<vector<int>>>> lightpathNetwork::mapFromLpGraph(int num
 	{
 		maptoreturnmap[i] = vector<vector<int>> (numofnodes,vector<int> (1,0));
 	}
+
 
    map<int,map<int,vector<vector<int>>>> maptoreturn;
 

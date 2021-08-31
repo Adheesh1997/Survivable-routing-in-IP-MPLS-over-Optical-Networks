@@ -41,7 +41,7 @@ public:
 	void viewLSPsInALightpath(lightpathNetwork& obj);    //View the LSPs within a lightpath
 	void traversefLSP(LSP* nextNode);                    //Traverse a LSP from front the end
 	void traversebLSP(LSP* prevNode);                    //Traverse a LSP from back to the front
-	void releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds, bool, string, int &);
+	void releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds, bool,string);
 
 };
 

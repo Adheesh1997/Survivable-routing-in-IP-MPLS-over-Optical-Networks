@@ -56,8 +56,8 @@ void requestCreation::printLSPrequests()
 		cout << "bandwidth = " << requestVector[i].bandwidth << endl;
 		cout << "holdingTime = " << requestVector[i].holdingTime << endl;
 		cout << "interArrivalTime = " << requestVector[i].interArrivalTime << endl;
+;
 	}
-	cout << "***************************\n";
 }
 
 vector<events> requestCreation::eventCreation()
