@@ -36,7 +36,7 @@ private:
 
 public:
 	requestCreation() :reqID(0) {}
-	void requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime);
+	void requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime, int numOfNodes, int lowestLSPcapacity, int highestLSPcapacity);
 	void printLSPrequests();
 	vector<events> eventCreation();
 	void printEvents();

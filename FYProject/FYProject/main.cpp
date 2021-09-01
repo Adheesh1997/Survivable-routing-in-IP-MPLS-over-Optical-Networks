@@ -67,33 +67,17 @@ int main()
 
     thresholds thresholdObj;
     bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
-    thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
+    int lightpathCapacity = 10;               //Lightpath bandwidth
+    int lowestLSPcapacity = 1;                //Lowest bandwidth of a LSP
+    int highestLSPcapacity = 10;              //Highest bandwidth of a LSP
+    thresholdObj.lightpathCapacity = lightpathCapacity; //Assigning the lightpath bandwidth
+    thresholdObj.bandwidthThreshold = 0.2;    //Assigning the threshold values
+    thresholdObj.numLSPthreshold = 1;         //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 70;                      //Erlang value
-    double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 16;
-
-    requestCreation tempObject;
-    tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime);   //Create the LSP requests
-    //tempObject.printLSPrequests();                                             //Print the LSP requests
-    //                                                 //Print the events
-    vector<int> rejectedEvents;                                                  //To capture the lspRejected events
-    vector<events>::iterator itr;
-
-    // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
-
-    /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    //myfile.wrteALSP("rqst_inputs/rq10.txt", listOfEvents); 
-    /*************** end of (1) *******************/ 
+    double erlang = 70;                       //Erlang value
+    double meanHoldingTime = 1;               //Mean holding time
+    int numOfWaves = 16;                      //Number of wavelengths in a lightpath
     
-    //cout << "\n***New events***\n";
-    //tempObject.printEvents(); 
-    /**************** LSP requests read from file ********** -------------------------(2) */
-    //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq8.txt", listOfEvents);
-    /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
@@ -118,7 +102,28 @@ int main()
         myfile.writeLog("Physical network is created.");
         //physicalLinkNetwork.printGraph();
         
-        
+
+        requestCreation tempObject;
+        tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime, numOfNodes, lowestLSPcapacity, highestLSPcapacity);   //Create the LSP requests
+        //tempObject.printLSPrequests();                                             //Print the LSP requests
+        //                                                 //Print the events
+        vector<int> rejectedEvents;                                                  //To capture the lspRejected events
+        vector<events>::iterator itr;
+
+        // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
+
+        /*************** Read event to a file*****************  -------------------------(1)  **/
+        vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
+        //myfile.wrteALSP("rqst_inputs/rq10.txt", listOfEvents); 
+        /*************** end of (1) *******************/
+
+        //cout << "\n***New events***\n";
+        //tempObject.printEvents(); 
+        /**************** LSP requests read from file ********** -------------------------(2) */
+        //vector<events> listOfEvents;
+        //myfile.readLSPs("rqst_inputs/rq8.txt", listOfEvents);
+        /*************** end of (2) *******************/
+
 
         //New counters
         int lspRejected = 0;
@@ -204,7 +209,7 @@ int main()
                         if (moreCovertions.wavelengthNumberPP[primaryPart] < numOfWaves)
                         {
                             checkWhetherLPidfinished(LPids, countForLPids);
-                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsPP[primaryPart], moreCovertions.wavelengthNumberPP[primaryPart], "pp", LPids[0]);
+                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsPP[primaryPart], moreCovertions.wavelengthNumberPP[primaryPart], "pp", LPids[0], lightpathCapacity);
                             removeLink(moreCovertions.wavelengthNumberPP[primaryPart], moreCovertions.allPathDetailsPP[primaryPart], subWaveNetworks);
                             removeLPidFromVec(LPids);
                         }
@@ -219,7 +224,7 @@ int main()
                         if (moreCovertions.wavelengthNumberBP[backupPart] < numOfWaves)
                         {
                             checkWhetherLPidfinished(LPids, countForLPids);
-                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsBP[backupPart], moreCovertions.wavelengthNumberBP[backupPart], "pp", LPids[0]);
+                            waveLengthNetwork.setANewLighpath(moreCovertions.allPathDetailsBP[backupPart], moreCovertions.wavelengthNumberBP[backupPart], "pp", LPids[0], lightpathCapacity);
                             removeLink(moreCovertions.wavelengthNumberBP[backupPart], moreCovertions.allPathDetailsBP[backupPart], subWaveNetworks);
                             removeLPidFromVec(LPids);
                         }
@@ -327,7 +332,9 @@ int main()
         }
         myfile.writeLog("Erlang = "+to_string(erlang));
         myfile.writeLog("Mean holding time = "+to_string(meanHoldingTime));
-        myfile.writeLog("Capacity of a LP = 10");
+        myfile.writeLog("Capacity of a LP = " + to_string(lightpathCapacity));
+        myfile.writeLog("Lowest capacity of a LSP = " + to_string(lowestLSPcapacity));
+        myfile.writeLog("Highest capacity of a LsP = " + to_string(highestLSPcapacity));
         myfile.writeLog("Mean holding time = " + to_string(meanHoldingTime));
         myfile.writeLog("Num.of wave lengths per fiber = "+to_string(numOfWaves));
 

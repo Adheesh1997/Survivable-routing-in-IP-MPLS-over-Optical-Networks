@@ -179,7 +179,7 @@ void lightpathNetwork::viewAllLighpaths()                //The function to print
 	}
 }
 
-void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier)
+void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier, int lightpathCapacity)
 {
 	/*
 	* Parameters
@@ -194,7 +194,7 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 	cout << endl;*/
 
 	int vecSize = shortestPath.size();
-	int bandwidth = 10;
+	int bandwidth = lightpathCapacity;
 
 	int check1 = checkForAvaialableLPNode(shortestPath[0]);            //Check whether the source node, destination node of the lightpath is available in the
 	int check2 = checkForAvaialableLPNode(shortestPath[vecSize - 1]);  //lightpath network(If it is available, the position in the lightpaths vector is returned.
@@ -365,7 +365,7 @@ void lightpathNetwork::checkHeavilyLoadLP(vector<int> posVec, vector<vector<int>
 							tempbackupObj.i = i;
 							tempbackupObj.j = j;
 							tempbackupObj.protectionType = protectionType;
-							tempbackupObj.thresholdVals = thresholdVals;
+							tempbackupObj.thresholdVals = thresholdVals;;
 							establishBackupLightpath(tempbackupObj);
 						}
 						else
@@ -428,7 +428,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 									//Call for lightpath establishment
-									setANewLighpath(backupObj.wavelengthBLPath, backupObj.wavelengthBLPNo, "bp", identifierForBLP);
+									setANewLighpath(backupObj.wavelengthBLPath, backupObj.wavelengthBLPNo, "bp", identifierForBLP, thresholdVals.lightpathCapacity);
 								}
 							}
 						}
@@ -469,7 +469,7 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 									//Call for lightpath establishment
-									setANewLighpath(backupObj.wavelengthBLPath, backupObj.wavelengthBLPNo, "bp", identifierForBLP);
+									setANewLighpath(backupObj.wavelengthBLPath, backupObj.wavelengthBLPNo, "bp", identifierForBLP, thresholdVals.lightpathCapacity);
 								}
 							}
 						}

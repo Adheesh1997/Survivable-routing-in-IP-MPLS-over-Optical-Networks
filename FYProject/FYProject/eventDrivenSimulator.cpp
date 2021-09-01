@@ -9,11 +9,11 @@ bool compareByLength(const requestDetails& a, const requestDetails& b)
 	return a.remainingTime < b.remainingTime;
 }
 
-void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime)
+void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, double meanHoldingTime, int numOfNodes, int lowestLSPcapacity, int highestLSPcapacity)
 {
 	//To generate source nodes, destination nodes and bandwidths for LSP requests
 	std::default_random_engine generator1, generator2, generator3;
-	std::uniform_int_distribution<int> distribution1(0, 13), distribution2(0, 13), distribution3(1, 9);
+	std::uniform_int_distribution<int> distribution1(0, (numOfNodes - 1)), distribution2(0, (numOfNodes - 1)), distribution3(lowestLSPcapacity, highestLSPcapacity);
 	requestDetails obj;
 	srand(time(NULL));
 	

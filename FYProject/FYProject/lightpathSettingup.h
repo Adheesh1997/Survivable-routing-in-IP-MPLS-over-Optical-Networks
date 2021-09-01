@@ -22,6 +22,7 @@ struct thresholds
 	float bandwidthThreshold;
 	int numLSPthreshold;
 	int numOfNodesOfTheNetwork;
+	int lightpathCapacity;
 };
 
 struct backupStruct
@@ -123,7 +124,7 @@ public:
 		lighpaths.reserve(1000);
 	}                                        //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
-	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier); //Establish a new lighpath
+	void setANewLighpath(vector<int> shortestPath, int wavelengthSt, string type, int LPidentifier, int lightpathCapacity); //Establish a new lighpath
 	int checkForAvaialableLPNode(int val);                             //Check whether a node is available within the network
 	bool checkForAvilableLightpath(int node1id, int node2id);          //Check whether a lightpath is established
 	void checkHeavilyLoadLP(vector<int> posVec, vector<vector<int>> partitionedPath, vector<int> wavelngthVec, bool protectionType, thresholds thresholdVals, bool addOrRemoveLP);//Check whether a lightpath is heavily loaded
