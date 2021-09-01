@@ -422,6 +422,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp"
 									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].path == intermediateNodes)
 								{
+									backupLPdetailsCount[0].push_back(lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].numOfPrimaryLSPsInLightpath);
+									backupLPdetailsCount[1].push_back(lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].primaryLSPbandwidth);
+									
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 									//Call for lightpath establishment
@@ -431,9 +434,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 						}
 					}
 					
-					backupLPestablish++;
+					backupLPcount[1]++;
 				}
-				else backupLPreject++;
+				else backupLPcount[0]++;
 			}
 		}
 
@@ -460,6 +463,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].lightpathType == "pp"
 									&& lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].path == intermediateNodes)
 								{
+									backupLPdetailsCount[0].push_back(lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].numOfPrimaryLSPsInLightpath);
+									backupLPdetailsCount[1].push_back(lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].primaryLSPbandwidth);
+
 									int identifierForBLP = lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].LPidentifier;
 									lighpaths[pos2].linkVector[ii].wavelengthAndLSP[jj].havingBackup = true;
 									//Call for lightpath establishment
@@ -468,9 +474,9 @@ void lightpathNetwork::establishBackupLightpath(backupStruct tempbackupObj)
 							}
 						}
 					}
-					backupLPestablish++;
+					backupLPcount[1]++;
 				}
-				else backupLPreject++;
+				else backupLPcount[0]++;
 			}
 		}
 	}

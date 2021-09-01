@@ -70,7 +70,7 @@ int main()
     thresholdObj.bandwidthThreshold = 0.2;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 100;                      //Erlang value
+    double erlang = 70;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
 
@@ -125,14 +125,22 @@ int main()
         int lspEstablished = 0;
 
         int lpRejected = 0;
-        int lpEstablished = 0; 
+        int lpEstablished = 0;
+
+        //backupLpcount[0] = Number of backup LPs rejected;
+        //backupLPcount[1] = Number of backup LPs established
+        vector<int> backupLPcount(2,0);
+
+        //backupLPdetailsCount[0][i] = Number of primary LSPs in 'i'th backup LP
+        //backupLPdetailsCount[1][i] = Bandwidth usage of primary LSPs in 'i'th backup LP
+        vector<vector<int>> backupLPdetailsCount(2,vector<int>()); 
 
         //Generate sub wavelength graphs for establish LPs
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, numOfWaves);
 
         waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
         
-        lightpathNetwork waveLengthNetwork(subWaveNetworks,lpEstablished,lpRejected);
+        lightpathNetwork waveLengthNetwork(subWaveNetworks,backupLPcount,backupLPdetailsCount);
         //lightpathNetwork waveLengthNetwork(subWaveNetworks);
         
         cout << endl << "Generting all LSP requests.\n";
@@ -295,6 +303,15 @@ int main()
         }
         waveLengthNetwork.viewAllLighpaths();
 
+        float totalLSPsInBackupLP = 0;
+        float totalBandwidthInBackuLp = 0;
+
+        for(int i = 0; i < backupLPdetailsCount[0].size(); i++)
+        {
+            totalLSPsInBackupLP += backupLPdetailsCount[0][i];
+            totalBandwidthInBackuLp += backupLPdetailsCount[1][i];
+        }
+
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
         myfile.writeLog("*****************");
@@ -318,11 +335,14 @@ int main()
         myfile.writeLog("****Counts****");
         myfile.writeLog("Num.of lsp rqst = "+to_string(numberOfLSPrequests));
         myfile.writeLog(" ");
-        myfile.writeLog("*Num.of lspEstablished LSPs = " + to_string(lspEstablished));
-        myfile.writeLog("*Num.of lspRejected LSPs = " + to_string(lspRejected));
+        myfile.writeLog("**Num.of lspEstablished LSPs = " + to_string(lspEstablished));
+        myfile.writeLog("**Num.of lspRejected LSPs = " + to_string(lspRejected));
         myfile.writeLog(" ");
         myfile.writeLog("Num.of backup LPs established = "+to_string(lpEstablished));
-        myfile.writeLog("Num.of backup LPs rejected = "+to_string(lpRejected));        
+        myfile.writeLog("Num.of backup LPs rejected = "+to_string(lpRejected));
+        myfile.writeLog(" ");
+        myfile.writeLog("Average num.of LSPs in a backup LP = "+to_string(totalLSPsInBackupLP / backupLPdetailsCount[0].size()));
+        myfile.writeLog("Average bandwidth usage in a backup LP = "+to_string(totalBandwidthInBackuLp/ backupLPdetailsCount[1].size() ));      
 
         
     }

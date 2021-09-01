@@ -115,12 +115,11 @@ protected:
 
 	vector<waveLengthNetworks>& waveLengthNetwork; //parameter for createLightPathBackup function
 
-	int& backupLPestablish ;
-	int& backupLPreject;
+	vector<int>& backupLPcount;
+	vector<vector<int>>& backupLPdetailsCount;
 public:
-	lightpathNetwork(vector<waveLengthNetworks>& vw, int& establish, int& reject):waveLengthNetwork(vw),backupLPestablish(establish), backupLPreject(reject)
-	{
-		totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
+	lightpathNetwork(vector<waveLengthNetworks>& vw, vector<int>& lpCount, vector<vector<int>>& detailsCount):waveLengthNetwork(vw), backupLPcount(lpCount),backupLPdetailsCount(detailsCount)
+	{	totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
 		lighpaths.reserve(1000);
 	}                                        //The number of lightpaths before creating the network is zero
 	void viewAllLighpaths();                                           //Print all the existing lightpaths
