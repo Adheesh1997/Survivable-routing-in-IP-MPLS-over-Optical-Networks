@@ -73,8 +73,8 @@ int main()
     thresholdObj.lightpathCapacity = lightpathCapacity; //Assigning the lightpath bandwidth
     thresholdObj.bandwidthThreshold = 0.2;    //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;         //Assigning the threshold values
-    int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 70;                       //Erlang value
+    int numberOfLSPrequests = 100000;           //The number of LSP requests
+    double erlang = 80;                       //Erlang value
     double meanHoldingTime = 1;               //Mean holding time
     int numOfWaves = 16;                      //Number of wavelengths in a lightpath
     
@@ -129,8 +129,8 @@ int main()
         int lspRejected = 0;
         int lspEstablished = 0;
 
-        int lpRejected = 0;
-        int lpEstablished = 0;
+        //int lpRejected = 0;
+        //int lpEstablished = 0;
 
         //backupLpcount[0] = Number of backup LPs rejected;
         //backupLPcount[1] = Number of backup LPs established
@@ -345,8 +345,8 @@ int main()
         myfile.writeLog("**Num.of lspEstablished LSPs = " + to_string(lspEstablished));
         myfile.writeLog("**Num.of lspRejected LSPs = " + to_string(lspRejected));
         myfile.writeLog(" ");
-        myfile.writeLog("Num.of backup LPs established = "+to_string(lpEstablished));
-        myfile.writeLog("Num.of backup LPs rejected = "+to_string(lpRejected));
+        myfile.writeLog("Num.of backup LPs established = "+to_string(backupLPcount[0]));
+        myfile.writeLog("Num.of backup LPs rejected = "+to_string(backupLPcount[1]));
         myfile.writeLog(" ");
         myfile.writeLog("Average num.of LSPs in a backup LP = "+to_string(totalLSPsInBackupLP / backupLPdetailsCount[0].size()));
         myfile.writeLog("Average bandwidth usage in a backup LP = "+to_string(totalBandwidthInBackuLp/ backupLPdetailsCount[1].size() ));      
