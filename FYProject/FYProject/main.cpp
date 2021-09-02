@@ -345,8 +345,8 @@ int main()
         myfile.writeLog("**Num.of lspEstablished LSPs = " + to_string(lspEstablished));
         myfile.writeLog("**Num.of lspRejected LSPs = " + to_string(lspRejected));
         myfile.writeLog(" ");
-        myfile.writeLog("Num.of backup LPs established = "+to_string(backupLPcount[0]));
-        myfile.writeLog("Num.of backup LPs rejected = "+to_string(backupLPcount[1]));
+        myfile.writeLog("Num.of backup LPs established = "+to_string(backupLPcount[1]));
+        myfile.writeLog("Num.of backup LPs rejected = "+to_string(backupLPcount[0]));
         myfile.writeLog(" ");
         myfile.writeLog("Average num.of LSPs in a backup LP = "+to_string(totalLSPsInBackupLP / backupLPdetailsCount[0].size()));
         myfile.writeLog("Average bandwidth usage in a backup LP = "+to_string(totalBandwidthInBackuLp/ backupLPdetailsCount[1].size() ));      
