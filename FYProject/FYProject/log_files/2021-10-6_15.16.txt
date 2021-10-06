@@ -1,0 +1,37 @@
+[15:16:49] Log file is created
+[15:16:49] 
+[15:16:49] *****************
+[15:16:49] Protection type = Number of LSP based
+[15:16:49] Threshold value = 1
+[15:16:49] Erlang = 30.000000
+[15:16:49] Mean holding time = 1.000000
+[15:16:49] Capacity of a LP = 10
+[15:16:49] Mean holding time = 1.000000
+[15:16:49] Num.of wave lengths per fiber = 16
+[15:16:49]                  
+[15:16:49] ****Counts****
+[15:16:49] Num.of lsp rqst = 1000
+[15:16:49]  
+[15:16:49] *Num.of established LSPs = 1000
+[15:16:49] *Num.of rejected LSPs = 0
+[15:16:49]  
+[15:16:49] **From no already path_
+[15:16:49] newLPnNewLP = 0
+[15:16:49] newLPnCombineLP = 0
+[15:16:49] combineLPnCombineLP = 1000
+[15:16:49] newMethod = 0
+[15:16:49] Established = 1000
+[15:16:49] Rejected = 0
+[15:16:49]  
+[15:16:49] **Calculated values_
+[15:16:49] Average primary LSP bandwidth in backup LP= 8.333333
+[15:16:49] Average primary LSP count in backup LP = 2.000000
+[15:16:49] Possible bakup LP count= 6.000000
+[15:16:49] Rejected backup LP count = 13.000000
+[15:16:49] Established backup LP count = 6.000000
+[15:16:49]  
+[15:16:49] Average Heavy Lightpath Protection Pprobability = 0.278157
+[15:16:49] Average primary LSP count of HLLP = 2.000000
+[15:16:49] Average primary LSP bandwidth of HLLP = 7.983504
+[15:16:49] Average primary LSP bandwidth of all LP = 2.886952
+[15:16:49]  

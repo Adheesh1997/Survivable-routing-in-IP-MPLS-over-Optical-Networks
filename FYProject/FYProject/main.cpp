@@ -66,15 +66,15 @@ int main()
     int numOfNodes; //Variable to store number of nodes in the network
 
     thresholds thresholdObj;
-    bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
+    bool protectionType = true;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
     int lightpathCapacity = 10;               //Lightpath bandwidth
     int lowestLSPcapacity = 1;                //Lowest bandwidth of a LSP
     int highestLSPcapacity = 10;              //Highest bandwidth of a LSP
     thresholdObj.lightpathCapacity = lightpathCapacity; //Assigning the lightpath bandwidth
-    thresholdObj.bandwidthThreshold = 0.2;    //Assigning the threshold values
+    thresholdObj.bandwidthThreshold = 0.1;    //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;         //Assigning the threshold values
     int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 70;                       //Erlang value
+    double erlang = 10;                       //Erlang value
     double meanHoldingTime = 1;               //Mean holding time
     int numOfWaves = 16;                      //Number of wavelengths in a lightpath
     
