@@ -40,11 +40,11 @@ public:
 	LSP() {}
 	//LSP(vector<waveLengthNetworks> *subWaveNetworks) :subWaveNetworksVAR(subWaveNetworks) {}
 	LSP(vector<waveLengthNetworks> *subWaveNetworks) :subWaveNetworksVAR(subWaveNetworks) {}
-	void makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals, vector<vector<int>> partitionedPath = { {},{} });  //Establish a LSP
+	void makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals, bool hybrid, vector<vector<int>> partitionedPath = { {},{} });  //Establish a LSP
 	void viewLSPsInALightpath(lightpathNetwork& obj);    //View the LSPs within a lightpath
 	void traversefLSP(LSP* nextNode);                    //Traverse a LSP from front the end
 	void traversebLSP(LSP* prevNode);                    //Traverse a LSP from back to the front
-	void releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds, bool, string, int &);
+	void releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds, bool, string, int &, bool hybrid);
 	void printVect(vector<int> v1)
 	{
 		for (int i = 0; i < v1.size(); i++)

@@ -10,7 +10,7 @@ class lightNode;                                //Classes declaration
 class lightpathNetwork;
 struct thresholds;
 
-void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals, vector<vector<int>> partitionedPath)
+void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholePath, vector<int> LSPwavelengthVec, lightpathNetwork& obj, string type, int identifier, bool protectionType, thresholds thresholdVals, bool hybrid, vector<vector<int>> partitionedPath)
 {
 	//cout << "\n\t New LSP Request : " << identifier;
 	/*
@@ -162,7 +162,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 		if (type == "pLSP")
 		{
 			partitionedPath.push_back(wholePath);
-			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, true);
+			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, hybrid);
 			obj.heavilyLPprotectionCount(thresholdVals);
 		}
 	}
@@ -474,7 +474,7 @@ void LSP::makeLSP(int bandwidth, vector<int> shortestPathLSP, vector<int> wholeP
 		}
 		if (type == "pLSP")
 		{
-			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, true);
+			obj.checkHeavilyLoadLP(positionVector, partitionedPath, LSPwavelengthVec, protectionType, thresholdVals, hybrid);
 			obj.heavilyLPprotectionCount(thresholdVals);
 		}
 
@@ -601,7 +601,7 @@ void LSP::traversebLSP(LSP* prevNode)     //Traverse  the LSP from backward
 
 
 
-void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP , int &_counter) {
+void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP , int &_counter, bool hybrid) {
 	/*cout << "\n\t\t NEW DELETE  : " << identifier;
 	cout << "path: ";
 	for (int i = 0; i < path.size(); i++)
@@ -634,14 +634,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 							//cout << "\n\t\tidentifier : " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier << "\t identifier : " << identifier;
 							type = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype;
 							if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k].identifier == identifier && type == typeOfLSP) { //check LSP Identifier
-
-
-								/*if (type == "pLSP") {
-									cout << "\n\t\t\tPrimary LSP deleted	: " << identifier << endl;
-								}
-								else {
-									cout << "\n\t\t\tBackup LSP deleted	: " << identifier << endl;
-								}*/
 
 
 								if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LSPvec[k].LSPtype == "pLSP") {	//if LSP is a Primary LSP
@@ -719,17 +711,72 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								//cout << "\n type : " << type << "\t havingBackup : " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].havingBackup;
 								if (type == "pLSP" && obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].havingBackup) {
 									//cout << "\n\t protection type : " << protectionType;
-									if (protectionType) {
-										//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
-										//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
-										
+									if (!hybrid)
+									{
+										if (protectionType) {
+											//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
+											//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
+
+											int tempBD = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth;
+											float bandwithPecentage = static_cast<float>(tempBD) / static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
+											//cout << "\n\t\t bandwidth Percentage : " << bandwithPecentage;
+											//cout << "\n\t\t bandwidthThreshold : " << THval.bandwidthThreshold;
+											if (bandwithPecentage <= THval.bandwidthThreshold) {
+												//delete backup LP (need to find Backup LP)
+												//int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+												for (int m = 0; m < obj.lighpaths.size(); m++) {
+													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																//cout << "Backup LS Is Deleted :" << endl;
+																//cout << "Before wavelength: " << tempWaveL << endl;
+																//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, tempWaveL, "bp");
+																//cout << "After: \n";
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+															}
+														}
+													}
+												}
+											}
+										}
+										else {
+											//cout << "\n\t\t number of LSP in LP : " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath;
+											//cout << "\n\t\t numOfLSP Threshold : " << THval.numLSPthreshold;
+											if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
+												//delete backup LP
+												//tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+												for (int m = 0; m < obj.lighpaths.size(); m++) {
+													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																//cout << "Backup LS Is Deleted :" << endl;
+																//cout << "Before wavelength: " << tempWaveL << endl;
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, tempWaveL, "bp");
+																//cout << "After: \n";
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									else
+									{
+										//cout << "\nHybrid Release\n";
 										int tempBD = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth;
 										float bandwithPecentage = static_cast<float>(tempBD) / static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
 										//cout << "\n\t\t bandwidth Percentage : " << bandwithPecentage;
 										//cout << "\n\t\t bandwidthThreshold : " << THval.bandwidthThreshold;
-										if (bandwithPecentage <= THval.bandwidthThreshold) {
+										if ((bandwithPecentage <= THval.bandwidthThreshold) || (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold))
+										{
 											//delete backup LP (need to find Backup LP)
-											//int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+												//int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
 											for (int m = 0; m < obj.lighpaths.size(); m++) {
 												for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
 													for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
@@ -738,29 +785,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 															//cout << "Backup LS Is Deleted :" << endl;
 															//cout << "Before wavelength: " << tempWaveL << endl;
 															//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
-															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-															obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, tempWaveL, "bp");
-															//cout << "After: \n";
-															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-														}
-													}
-												}
-											}
-										}
-									}
-									else {
-										//cout << "\n\t\t number of LSP in LP : " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfLSPsInLightpath;
-										//cout << "\n\t\t numOfLSP Threshold : " << THval.numLSPthreshold;
-										if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
-											//delete backup LP
-											//tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-											for (int m = 0; m < obj.lighpaths.size(); m++) {
-												for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
-													for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
-														if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
-															int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
-															//cout << "Backup LS Is Deleted :" << endl;
-															//cout << "Before wavelength: " << tempWaveL << endl;
 															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
 															obj.releaseEshtablishedLighpath(pos2, pos1, tempIdOfLP, tempWaveL, "bp");
 															//cout << "After: \n";
@@ -887,12 +911,62 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 									wVector2.push_back(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].wavelength);
 
 									if (type == "pLSP" && obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].havingBackup) {
-										if (protectionType) {
-											//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
-											//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
-											
+										if (!hybrid)
+										{
+											if (protectionType) {
+												//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
+												//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
+
+												float bandwithPecentage = static_cast<float>(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
+												if (bandwithPecentage <= THval.bandwidthThreshold) {
+													//delete backup LP (need to find Backup LP)
+													int long tempIdOfBackupLP = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+													for (int m = 0; m < obj.lighpaths.size(); m++) {
+														for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+															for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+																if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																	int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																	//cout << "\nBackup LS Is Deleted :" << endl;
+																	//cout << "Before wavelength: " << tempWaveL << endl;
+																	//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																	obj.releaseEshtablishedLighpath(pos1, obj.checkForAvaialableLPNode(v1[1]), tempIdOfBackupLP, tempWaveL, "bp");
+																	//cout << "After: \n";
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																}
+															}
+														}
+													}
+												}
+											}
+											else {
+												if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
+													//delete backup LP
+													int long tempIdOfBackupLP = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+													for (int m = 0; m < obj.lighpaths.size(); m++) {
+														for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+															for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+																if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																	int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																	//cout << "\nBackup LS Is Deleted :" << endl;
+																	//cout << "Before wavelength: " << tempWaveL << endl;
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																	obj.releaseEshtablishedLighpath(pos1, obj.checkForAvaialableLPNode(v1[1]), tempIdOfBackupLP, tempWaveL, "bp");
+																	//cout << "After: \n";
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										else
+										{
+											cout << "\nHybrid Release\n";
 											float bandwithPecentage = static_cast<float>(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
-											if (bandwithPecentage <= THval.bandwidthThreshold) {
+											if ((bandwithPecentage <= THval.bandwidthThreshold)|| (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold))
+											{
 												//delete backup LP (need to find Backup LP)
 												int long tempIdOfBackupLP = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier;
 												for (int m = 0; m < obj.lighpaths.size(); m++) {
@@ -903,27 +977,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 																//cout << "\nBackup LS Is Deleted :" << endl;
 																//cout << "Before wavelength: " << tempWaveL << endl;
 																//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
-																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-																obj.releaseEshtablishedLighpath(pos1, obj.checkForAvaialableLPNode(v1[1]) , tempIdOfBackupLP, tempWaveL, "bp");
-																//cout << "After: \n";
-																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-															}
-														}
-													}
-												}
-											}
-										}
-										else {
-											if (obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
-												//delete backup LP
-												int long tempIdOfBackupLP = obj.lighpaths[pos1].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-												for (int m = 0; m < obj.lighpaths.size(); m++) {
-													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
-														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
-															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
-																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
-																//cout << "\nBackup LS Is Deleted :" << endl;
-																//cout << "Before wavelength: " << tempWaveL << endl;
 																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
 																obj.releaseEshtablishedLighpath(pos1, obj.checkForAvaialableLPNode(v1[1]), tempIdOfBackupLP, tempWaveL, "bp");
 																//cout << "After: \n";
@@ -1012,12 +1065,62 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 									j2Vector.push_back(j);
 
 									if (type == "pLSP" && obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].havingBackup) {
-										if (protectionType) {
-											//cout << "primaryLSPbandwidth = " << obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
-											//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
-											
+										if (!hybrid)
+										{
+											if (protectionType) {
+												//cout << "primaryLSPbandwidth = " << obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
+												//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
+
+												float bandwithPecentage = static_cast<float>(obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
+												if (bandwithPecentage <= THval.bandwidthThreshold) {
+													//delete backup LP (need to find Backup LP)
+													int long tempIdOfBackupLP = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+													for (int m = 0; m < obj.lighpaths.size(); m++) {
+														for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+															for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+																if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																	int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																	//cout << "\nBackup LS Is Deleted :" << endl;
+																	//cout << "Before wavelength: " << tempWaveL << endl;
+																	//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																	obj.releaseEshtablishedLighpath(intermediateTemp01, intermediateTemp02, tempIdOfBackupLP, tempWaveL, "bp");
+																	//cout << "After: \n";
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																}
+															}
+														}
+													}
+												}
+											}
+											else {
+												if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
+													//delete backup LP
+													int long tempIdOfBackupLP = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+													for (int m = 0; m < obj.lighpaths.size(); m++) {
+														for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+															for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+																if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																	int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																	//cout << "\nBackup LS Is Deleted :" << endl;
+																	//cout << "Before wavelength: " << tempWaveL << endl;
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																	obj.releaseEshtablishedLighpath(intermediateTemp01, intermediateTemp02, tempIdOfBackupLP, tempWaveL, "bp");
+																	//cout << "After: \n";
+																	//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										else
+										{
+											cout << "\nHybrid Release\n";
 											float bandwithPecentage = static_cast<float>(obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
-											if (bandwithPecentage <= THval.bandwidthThreshold) {
+											if ((bandwithPecentage <= THval.bandwidthThreshold)|| (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold))
+											{
 												//delete backup LP (need to find Backup LP)
 												int long tempIdOfBackupLP = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LPidentifier;
 												for (int m = 0; m < obj.lighpaths.size(); m++) {
@@ -1028,27 +1131,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 																//cout << "\nBackup LS Is Deleted :" << endl;
 																//cout << "Before wavelength: " << tempWaveL << endl;
 																//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
-																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-																obj.releaseEshtablishedLighpath(intermediateTemp01, intermediateTemp02, tempIdOfBackupLP, tempWaveL, "bp");
-																//cout << "After: \n";
-																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-															}
-														}
-													}
-												}
-											}
-										}
-										else {
-											if (obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
-												//delete backup LP
-												int long tempIdOfBackupLP = obj.lighpaths[intermediateTemp01].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-												for (int m = 0; m < obj.lighpaths.size(); m++) {
-													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
-														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
-															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
-																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
-																//cout << "\nBackup LS Is Deleted :" << endl;
-																//cout << "Before wavelength: " << tempWaveL << endl;
 																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
 																obj.releaseEshtablishedLighpath(intermediateTemp01, intermediateTemp02, tempIdOfBackupLP, tempWaveL, "bp");
 																//cout << "After: \n";
@@ -1097,12 +1179,61 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 								posVector.push_back(pos2);
 
 								if (type == "pLSP" && obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].havingBackup) {
-									if (protectionType) {
-										//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
-										//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
-										
+									if (!hybrid)
+									{
+										if (protectionType) {
+											//cout << "primaryLSPbandwidth = " << obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth << endl;
+											//cout << "Bandwidth threshold = " << THval.bandwidthThreshold << endl;
+
+											float bandwithPecentage = static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
+											if (bandwithPecentage <= THval.bandwidthThreshold) {
+												//delete backup LP (need to find Backup LP)
+												int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+												for (int m = 0; m < obj.lighpaths.size(); m++) {
+													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																//cout << "\nBackup LS Is Deleted :" << endl;
+																//cout << "Before wavelength: " << tempWaveL << endl;
+																//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																obj.releaseEshtablishedLighpath(pos2, obj.checkForAvaialableLPNode(v1[v1.size() - 1]), tempIdOfBackupLP, tempWaveL, "bp");
+																//cout << "After: \n";
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+															}
+														}
+													}
+												}
+											}
+										}
+										else {
+											if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
+												//delete backup LP
+												int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
+												for (int m = 0; m < obj.lighpaths.size(); m++) {
+													for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
+														for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
+															if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
+																int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
+																//cout << "\nBackup LS Is Deleted :" << endl;
+																//cout << "Before wavelength: " << tempWaveL << endl;
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+																obj.releaseEshtablishedLighpath(pos2, obj.checkForAvaialableLPNode(v1[v1.size() - 1]), tempIdOfBackupLP, tempWaveL, "bp");
+																//cout << "After: \n";
+																//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									else
+									{
+										cout << "\nHybrid Release\n";
 										float bandwithPecentage = static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].primaryLSPbandwidth) / static_cast<float>(obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].initialBandwidth);
-										if (bandwithPecentage <= THval.bandwidthThreshold) {
+										if ((bandwithPecentage <= THval.bandwidthThreshold) || (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold)) {
 											//delete backup LP (need to find Backup LP)
 											int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
 											for (int m = 0; m < obj.lighpaths.size(); m++) {
@@ -1113,27 +1244,6 @@ void LSP::releaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNe
 															//cout << "\nBackup LS Is Deleted :" << endl;
 															//cout << "Before wavelength: " << tempWaveL << endl;
 															//printVect(obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].path);
-															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-															obj.releaseEshtablishedLighpath(pos2, obj.checkForAvaialableLPNode(v1[v1.size() -1]), tempIdOfBackupLP, tempWaveL, "bp");
-															//cout << "After: \n";
-															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
-														}
-													}
-												}
-											}
-										}
-									}
-									else {
-										if (obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].numOfPrimaryLSPsInLightpath <= THval.numLSPthreshold) {
-											//delete backup LP
-											int long tempIdOfBackupLP = obj.lighpaths[pos2].linkVector[i].wavelengthAndLSP[j].LPidentifier;
-											for (int m = 0; m < obj.lighpaths.size(); m++) {
-												for (int n = 0; n < obj.lighpaths[m].linkVector.size(); n++) {
-													for (int o = 0; o < obj.lighpaths[m].linkVector[n].wavelengthAndLSP.size(); o++) {
-														if (obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].LPidentifier == tempIdOfBackupLP && obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].lightpathType == "bp") {
-															int tempWaveL = obj.lighpaths[m].linkVector[n].wavelengthAndLSP[o].wavelength;
-															//cout << "\nBackup LS Is Deleted :" << endl;
-															//cout << "Before wavelength: " << tempWaveL << endl;
 															//(*subWaveNetworksVAR)[tempWaveL].printAdjacency();
 															obj.releaseEshtablishedLighpath(pos2, obj.checkForAvaialableLPNode(v1[v1.size() - 1]), tempIdOfBackupLP, tempWaveL, "bp");
 															//cout << "After: \n";
