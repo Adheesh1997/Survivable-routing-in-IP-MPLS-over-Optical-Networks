@@ -68,12 +68,12 @@ int main()
     int _couter = 0;
 
     thresholds thresholdObj;
-    bool protectionType = true;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    bool hybrid = true;
+    bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
+    bool hybrid = false;
     thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 1000;           //The number of LSP requests
-    double erlang = 30;                      //Erlang value
+    int numberOfLSPrequests = 2000;           //The number of LSP requests
+    double erlang = 70;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
     int bandwidthCap = 100;
@@ -92,7 +92,7 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq_test_2021_12_01.txt", listOfEvents); 
+    myfile.wrteALSP("rqst_inputs/rq_test_2021_12_29.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
@@ -407,6 +407,8 @@ int main()
         myfile.writeLog("newMethod = " + to_string(newMethod));*/
         myfile.writeLog("Established = " + to_string(noAlreadyPathEstablish));
         myfile.writeLog("Rejected = " + to_string(noAlreadyPathReject));
+        float blockingProbability = static_cast<float>(noAlreadyPathReject) / static_cast<float>(numberOfLSPrequests);
+        myfile.writeLog("Blocking Probability = " + to_string(blockingProbability));
         
         myfile.writeLog(" ");
         myfile.writeLog("**Calculated values_");
@@ -421,6 +423,7 @@ int main()
         myfile.writeLog("Average primary LSP count of HLLP = " + to_string(HLLPvalues[1]));
         myfile.writeLog("Average primary LSP bandwidth of HLLP = " + to_string(HLLPvalues[2]));
         myfile.writeLog("Average primary LSP bandwidth of all LP = " + to_string(HLLPvalues[3]));
+        myfile.writeLog("Percentage of Heavily Loaded Lightpath = " + to_string(HLLPvalues[4]));
         myfile.writeLog(" ");
         
     }

@@ -219,6 +219,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 			lighpaths.push_back(lpNodeD);
 
 			totalnumOfLighpaths++;
+			if (type == "pp")
+				primaryLightpathCount++;
 		}
 
 		else                   //Destination node is available in the lightpath network
@@ -230,6 +232,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 			lighpaths.push_back(lpNodeS);
 
 			totalnumOfLighpaths++;
+			if (type == "pp")
+				primaryLightpathCount++;
 		}
 
 	}
@@ -250,6 +254,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 			lighpaths.push_back(lpNodeD);
 
 			totalnumOfLighpaths++;
+			if (type == "pp")
+				primaryLightpathCount++;
 		}
 
 		else                    //Destination node is available in the lightpath network
@@ -276,6 +282,8 @@ void lightpathNetwork::setANewLighpath(vector<int> shortestPath, int wavelengthS
 			}
 
 			totalnumOfLighpaths++;
+			if (type == "pp")
+				primaryLightpathCount++;
 		}
 	}
 }
@@ -664,6 +672,12 @@ void lightpathNetwork::heavilyLPprotectionCount(thresholds thresholdVals)
 	float forHLLPprobability = static_cast<float>(protectedCount) / static_cast<float>(heavyLPcount);
 	if (heavyLPcount != 0)
 		forAvrgHLLPprobability.push_back(forHLLPprobability);
+
+	if (primaryLightpathCount != 0)
+	{
+		float forGettingHeavyLPpercentage = static_cast<float>(heavyLPcount) / static_cast<float>(primaryLightpathCount);
+		forHeavyLPpercentage.push_back(forGettingHeavyLPpercentage);
+	}
 	
 	//cout << endl << protectedCount << " / " << heavyLPcount << " = " << forHLLPprobability << endl;
 
@@ -686,8 +700,9 @@ vector<float> lightpathNetwork::heavilyLPAndOtherAvgCalc()
 	float primLSPcountAvrgHLLP = accumulate(forAvrgPrimLSPcountInHLLP.begin(), forAvrgPrimLSPcountInHLLP.end(), 0.0) / static_cast<float> (forAvrgPrimLSPcountInHLLP.size());
 	float primLSPbandAvrgHLLP1 = accumulate(forAvrgPrimLSPbandInHLLP.begin(), forAvrgPrimLSPbandInHLLP.end(), 0.0) / static_cast<float> (forAvrgPrimLSPbandInHLLP.size());
 	float primLSPbandAvrgInAllLP = accumulate(forAvrgPrimLSPbandInAllLP.begin(), forAvrgPrimLSPbandInAllLP.end(), 0.0) / static_cast<float> (forAvrgPrimLSPbandInAllLP.size());
+	float percentageOfHLlightpaths = accumulate(forHeavyLPpercentage.begin(), forHeavyLPpercentage.end(), 0.0) / static_cast<float> (forHeavyLPpercentage.size());
 
-	vector<float> calculatedVals{ HLLPprobability, primLSPcountAvrgHLLP, primLSPbandAvrgHLLP1, primLSPbandAvrgInAllLP };
+	vector<float> calculatedVals{ HLLPprobability, primLSPcountAvrgHLLP, primLSPbandAvrgHLLP1, primLSPbandAvrgInAllLP, percentageOfHLlightpaths };
 
 	return calculatedVals;
 }
@@ -1154,6 +1169,8 @@ void lightpathNetwork::releaseEshtablishedLighpath(int source, int destination ,
 							lighpaths[destination].deleteLpLink(LightPathIdentifier, lighpaths[destination].id, lighpaths[source].id, wavelenght, waveLengthNetwork, j, typeOfLP);
 							//lighpaths.erase(lighpaths.begin() + i);
 							totalnumOfLighpaths = totalnumOfLighpaths - 1;
+							if (typeOfLP == "pp")
+								primaryLightpathCount--;
 							break;
 						}
 					}

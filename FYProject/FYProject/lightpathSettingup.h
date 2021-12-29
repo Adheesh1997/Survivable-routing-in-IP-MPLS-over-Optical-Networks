@@ -84,7 +84,6 @@ private:
 		int destinationID;                //Desination ID of the lightpath
 		lightNode* destAddress;           //Address of the destination ID
 		lighpathWavelength vecObj;        //Object to be used for adding elements to wavelengthAndLSP vector
-
 		vector<lighpathWavelength> wavelengthAndLSP;  //Vector whih stores all the wavelengths and LSPs
 	};
 	int numOfLPLinksPerNode;              //Counter to record the number of lightpaths connected per a node
@@ -115,6 +114,8 @@ protected:
 	friend class LSP;
 	vector<lightNode> lighpaths;          //This vector stores all the lightpaths 
 	int totalnumOfLighpaths;              //The total number of lightpaths within the network
+	int primaryLightpathCount;
+	int heavyLightpathCount;
 	bool isLinkDisjoint(vector<int> primaryPath, vector<int> testPath, int numOfNodes);
 
 	vector<waveLengthNetworks>& waveLengthNetwork; //parameter for createLightPathBackup function
@@ -127,11 +128,14 @@ protected:
 	vector<float> forAvrgPrimLSPcountInHLLP;
 	vector<float> forAvrgPrimLSPbandInHLLP;
 	vector<float> forAvrgPrimLSPbandInAllLP;
+	vector<float> forHeavyLPpercentage;
 
 public:
 	lightpathNetwork(vector<waveLengthNetworks>& vw):waveLengthNetwork(vw)
 	{
 		totalnumOfLighpaths = 0;                             //The count of total number of lightpaths at the begining is zero
+		primaryLightpathCount = 0;
+		heavyLightpathCount = 0;
 		lighpaths.reserve(1000);
 		backUpLPavaialablecount = 0;
 		rejectedAvailbackupLPcount = 0;
