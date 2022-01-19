@@ -72,13 +72,14 @@ int main()
     bool hybrid = false;
     thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
     thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 2000;           //The number of LSP requests
+    int numberOfLSPrequests = 5000;           //The number of LSP requests
     double erlang = 70;                      //Erlang value
     double meanHoldingTime = 1;              //Mean holding time
     int numOfWaves = 16;
     int bandwidthCap = 100;
     thresholdObj.bandwidthCap = bandwidthCap;
     thresholdObj.protectionType = protectionType;
+    thresholdObj.hybrid = hybrid;
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime, bandwidthCap);   //Create the LSP requests
@@ -92,12 +93,12 @@ int main()
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
     vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq_test_2021_12_29.txt", listOfEvents); 
+    myfile.wrteALSP("rqst_inputs/rq_test_2022_01_19.txt", listOfEvents); 
     /*************** end of (1) *******************/
 
     /**************** LSP requests read from file ********** -------------------------(2) */
     //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq_test_2021_12_01.txt", listOfEvents);
+    //myfile.readLSPs("rqst_inputs/rq_test_2022_01_17-3.txt", listOfEvents);
     /*************** end of (2) *******************/
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
@@ -333,9 +334,10 @@ int main()
 
                     //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType);
 
-                    lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter, hybrid);
-                    lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter, hybrid);
-                    
+                    //lspObj.releaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", _couter, hybrid);
+                    lspObj.newReleaseLSP(pathP, wavesP, waveLengthNetwork, id, thresholdObj, protectionType, "pLSP", hybrid);
+                    //lspObj.releaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", _couter, hybrid);
+                    lspObj.newReleaseLSP(pathB, wavesB, waveLengthNetwork, id, thresholdObj, protectionType, "bLSP", hybrid);
                 }
 
             }
@@ -372,15 +374,24 @@ int main()
         //waveLengthNetwork.viewAllLighpaths();
         myfile.writeLog("");
         myfile.writeLog("*****************");
-        if(protectionType)
+        if (hybrid)
         {
-            myfile.writeLog("Protection type = Bandwidth based");
-            myfile.writeLog("Threshold value = "+to_string(thresholdObj.bandwidthThreshold));
+            myfile.writeLog("Protection type = Hybrid version");
+            myfile.writeLog("Bandwidth threshold value = " + to_string(thresholdObj.bandwidthThreshold));
+            myfile.writeLog("# of LSP threshold value = " + to_string(thresholdObj.numLSPthreshold));
         }
         else
         {
-            myfile.writeLog("Protection type = Number of LSP based");
-            myfile.writeLog("Threshold value = "+to_string(thresholdObj.numLSPthreshold));
+            if (protectionType)
+            {
+                myfile.writeLog("Protection type = Bandwidth based");
+                myfile.writeLog("Threshold value = " + to_string(thresholdObj.bandwidthThreshold));
+            }
+            else
+            {
+                myfile.writeLog("Protection type = Number of LSP based");
+                myfile.writeLog("Threshold value = " + to_string(thresholdObj.numLSPthreshold));
+            }
         }
         
         myfile.writeLog("Graph = " + fileLocation); 

@@ -14,6 +14,8 @@ void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, d
 	std::default_random_engine generator1, generator2, generator3;
 	std::uniform_int_distribution<int> distribution1(0, 13), distribution2(0, 13), distribution3(1, bandwidthCap);
 
+	
+
 	requestDetails obj;
 	srand(time(NULL));
 	
@@ -30,22 +32,59 @@ void requestCreation::requestGenerator(int numberOfLSPrequests, double erlang, d
 
 	exponential_distribution<double> exp2(meanHoldingTime);
 
+	//int p1[14] = {};
+	//int p2[14] = {};
+	//int p3[100] = {};
+
+	/*for (int i = 0; i < numberOfLSPrequests; ++i) {
+		int number = distribution(generator);
+		++p[number];
+	}*/
+
+	double holdingTimeCount = 0;
+	double interArrivalTimeCount = 0;
+
 	for (size_t i = 0; i < numberOfLSPrequests; i++)
 	{
 		obj.identifier = reqID++;
 		obj.sourceNode = distribution1(generator1);
+		//++p1[obj.sourceNode];
 		do
 		{
 			obj.destinationNode = distribution2(generator2);
 		} while (obj.destinationNode == obj.sourceNode);
+		//++p2[obj.destinationNode];
 		obj.bandwidth = distribution3(generator3);
+		//++p3[obj.bandwidth];
 		obj.interArrivalTime = exp.operator() (rng); // generates the next random number in the distribution 
 		obj.holdingTime = exp2.operator() (rng2);    // generates the next random number in the distribution 
 		obj.remainingTime = obj.holdingTime;
 
-
 		requestVector.push_back(obj);
+		holdingTimeCount += obj.holdingTime;
+		interArrivalTimeCount += obj.interArrivalTime;
 	}
+
+	float nstars = 100;
+	float nstars2 = 1000;
+
+	/*cout << "uniform_int_distribution source (0,13):" << endl;
+	for (int i = 0; i < 14; ++i)
+		cout << i << ": " << string(p1[i] * nstars / static_cast<float>(numberOfLSPrequests), '*') << endl;
+
+	cout << "uniform_int_distribution destination (0,13):" << endl;
+	for (int i = 0; i < 14; ++i)
+		cout << i << ": " << string(p2[i] * nstars / static_cast<float>(numberOfLSPrequests), '*') << endl;
+
+	cout << "uniform_int_distribution bandwidth (0,100):" << endl;
+	for (int i = 0; i < 100; ++i)
+		cout << i << ": " << string(p3[i] * nstars2 / static_cast<float>(numberOfLSPrequests), '*') << endl;
+
+	cout << "Erlang = " << static_cast<float>(numberOfLSPrequests) / interArrivalTimeCount << endl;
+
+	cout << "Mean holding time = " << holdingTimeCount / static_cast<float>(numberOfLSPrequests) << endl;
+	
+	cout << " \n";*/
 }
 
 void requestCreation::printLSPrequests()

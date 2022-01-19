@@ -51,6 +51,8 @@ public:
 			cout << v1[i] << "  ";
 		cout << endl;
 	}
+	void newReleaseLSP(vector<int> path, vector<int> LSPwavelengthVec, lightpathNetwork& obj, int identifier, thresholds THval, bool protectionType, string typeOfLSP, bool hybrid);
+	void newCheckForHeavyBeforeRelease(lightpathNetwork& obj, bool hybrid, bool protectionType, int pos1, int pos2, int i, int j, int long tempIdOfLP, thresholds THval);
 	~LSP() {}
 };
 

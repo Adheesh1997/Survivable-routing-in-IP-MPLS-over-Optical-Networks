@@ -23,6 +23,7 @@ struct thresholds
 	float bandwidthThreshold;
 	int numLSPthreshold;
 	int numOfNodesOfTheNetwork;
+	bool hybrid;
 	bool protectionType;
 	int bandwidthCap;
 };
@@ -105,6 +106,7 @@ public:
 	void checkDestinationAndWavelength(int, int);
 	int verifyDestinationNode(int);
 	void deleteLpLink(long int, int ,int, int, vector<waveLengthNetworks>&, int, string);		// this can be used to  remove item from wavelengthAndLSP vector
+	void newDeleteLPlink(int LinkID, int j, string typeOfLP, vector<waveLengthNetworks>& waveLengthNetwork);
 	~lightNode() {}
 };
 
@@ -164,6 +166,7 @@ public:
 
 	/*********************************************/
 	void releaseEshtablishedLighpath(int, int, long int ,int ,string);	// remove item from lightpath vector
+	void newReleaseEstablishedLightPath(int source, int destination, long int LightPathIdentifier, int wavelenght, string typeOfLP, vector<waveLengthNetworks>& waveLengthNetwork);
 	void getTotalNumberOfLightpaths();				// to get total number of lightpaths (used for testing)
 
 	~lightpathNetwork() {}
