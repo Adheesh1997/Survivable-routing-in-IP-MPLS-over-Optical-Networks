@@ -642,6 +642,7 @@ void lightpathNetwork::heavilyLPprotectionCount(thresholds thresholdVals)
 				{
 					primLSPbandInLP += lighpaths[i].linkVector[j].wavelengthAndLSP[k].primaryLSPbandwidth;
 					counterCount2++;
+					primaryLightpathCount++;
 
 					float primLSPband = static_cast<float>(lighpaths[i].linkVector[j].wavelengthAndLSP[k].primaryLSPbandwidth);
 					float initLPband = static_cast<float>(lighpaths[i].linkVector[j].wavelengthAndLSP[k].initialBandwidth);
@@ -680,27 +681,28 @@ void lightpathNetwork::heavilyLPprotectionCount(thresholds thresholdVals)
 	}
 	
 	float forHLLPprobability = static_cast<float>(protectedCount) / static_cast<float>(heavyLPcount);
-	if (heavyLPcount != 0)
+	if (heavyLPcount > 0)
 		forAvrgHLLPprobability.push_back(forHLLPprobability);
 
-	if (primaryLightpathCount != 0)
+	if (primaryLightpathCount > 0)
 	{
 		float forGettingHeavyLPpercentage = static_cast<float>(heavyLPcount) / static_cast<float>(primaryLightpathCount);
 		forHeavyLPpercentage.push_back(forGettingHeavyLPpercentage);
+		primaryLightpathCount = 0;
 	}
 	
 	//cout << endl << protectedCount << " / " << heavyLPcount << " = " << forHLLPprobability << endl;
 
 	float forPrimLSPcountAvrgHLLP1 = static_cast<float>(primLSPcountInHeavyLP) / static_cast<float>(counterCount1);
-	if (counterCount1 != 0)
+	if (counterCount1 > 0)
 		forAvrgPrimLSPcountInHLLP.push_back(forPrimLSPcountAvrgHLLP1);
 
 	float forPrimLSPbandAvrgHLLP1 = static_cast<float>(primLSPbandInHeavyLP) / static_cast<float>(counterCount1);
-	if (counterCount1 != 0)
+	if (counterCount1 > 0)
 		forAvrgPrimLSPbandInHLLP.push_back(forPrimLSPbandAvrgHLLP1);
 
 	float forPrimLSPbandAvrgLP1 = static_cast<float>(primLSPbandInLP) / static_cast<float>(counterCount2);
-	if (counterCount2 != 0)
+	if (counterCount2 > 0)
 		forAvrgPrimLSPbandInAllLP.push_back(forPrimLSPbandAvrgLP1);
 }
 

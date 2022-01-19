@@ -21,7 +21,7 @@ using namespace std;
 
 void files::createLog()
 {
-    logFile.open(("log_files/" + outputFileName()), ios_base::app);
+    logFile.open((fileLocation + outputFileName()), ios_base::app);
     if (logFile.is_open())
         logFile << currentTime() << " " << "Log file is created\n";
 }

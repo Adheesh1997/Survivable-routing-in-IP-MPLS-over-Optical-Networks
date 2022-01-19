@@ -12,6 +12,7 @@ using namespace std;
 
 class files
 {
+    static string fileLocation;
 private:
     ofstream logFile;
 

@@ -9,11 +9,12 @@
 #include "Dijkstra.h"
 #include "lspRequestGenarator.h"
 #include "eventDrivenSimulator.h"
+#include "config.h"
 
 using namespace std;
 
 //int _couter = 0;
-
+string files::fileLocation = logFileLocation;
 void print2dVector(vector<vector<int>> adjMetrixForPrimaryLSP)
 {
     for(vector<int> x:adjMetrixForPrimaryLSP)
@@ -68,18 +69,12 @@ int main()
     int _couter = 0;
 
     thresholds thresholdObj;
-    bool protectionType = false;              //True for bandwidth based LP protection. False for number of LSPs based LP protection
-    bool hybrid = false;
-    thresholdObj.bandwidthThreshold = 0.5;  //Assigning the threshold values
-    thresholdObj.numLSPthreshold = 1;        //Assigning the threshold values
-    int numberOfLSPrequests = 5000;           //The number of LSP requests
-    double erlang = 70;                      //Erlang value
-    double meanHoldingTime = 1;              //Mean holding time
-    int numOfWaves = 16;
-    int bandwidthCap = 100;
+    thresholdObj.bandwidthThreshold = bandwidthThreshold;  //Assigning the threshold values
+    thresholdObj.numLSPthreshold = numLSPthreshold;        //Assigning the threshold values
     thresholdObj.bandwidthCap = bandwidthCap;
     thresholdObj.protectionType = protectionType;
     thresholdObj.hybrid = hybrid;
+
 
     requestCreation tempObject;
     tempObject.requestGenerator(numberOfLSPrequests, erlang, meanHoldingTime, bandwidthCap);   //Create the LSP requests
@@ -92,25 +87,27 @@ int main()
     // Only (1) or (2) keep uncomment at one time , Dont both or Dont keep both comment!!!!!
 
     /*************** Read event to a file*****************  -------------------------(1)  **/
-    vector<events> listOfEvents = tempObject.eventCreation();                    //Create the events
-    myfile.wrteALSP("rqst_inputs/rq_test_2022_01_19.txt", listOfEvents); 
-    /*************** end of (1) *******************/
-
-    /**************** LSP requests read from file ********** -------------------------(2) */
-    //vector<events> listOfEvents;
-    //myfile.readLSPs("rqst_inputs/rq_test_2022_01_17-3.txt", listOfEvents);
-    /*************** end of (2) *******************/
+    vector<events> listOfEvents;
+    if (writeEventToAFile) {
+        listOfEvents = tempObject.eventCreation();                    //Create the events
+        myfile.wrteALSP(writeEventToAFilePath, listOfEvents);
+        /*************** end of (1) *******************/
+    }
+    if (readEventFromAFile) {
+        /**************** LSP requests read from file ********** -------------------------(2) */
+        myfile.readLSPs(readEventFromAFilePath, listOfEvents);
+        /*************** end of (2) *******************/
+    }
 
     vector<vector<int>> adjacencyMetrix; //Vector to store adjacency metrix that represent netork
 
     map<int, map<int,vector<vector<int>>>> lspPathDetails;
 
     //graph input file location
-    string fileLocation = "graph_inputs/05/graph05.csv"; 
     
     int theCount = 1;
     //Read csv file and assign values to the matrix 
-    if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix,fileLocation,numOfWaves))
+    if(myfile.readGraphInputFile(numOfNodes, adjacencyMetrix, CsvFileLocation,numOfWaves))
     { 
         //myfile.writeLog((fileLocation + " Graph is imported."));
         cout << "Graph imported from csv file.\n";
@@ -127,7 +124,7 @@ int main()
         //Generate sub wavelength graphs for establish LPs
         vector<waveLengthNetworks> subWaveNetworks = setupWaveLengthNetworks(adjacencyMetrix, numOfWaves);
         cout << "subWaveNetworks = " << subWaveNetworks.size() << endl;
-
+        cout << "For events = " << listOfEvents.size() / 2 << endl;
         waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
         
         lightpathNetwork waveLengthNetwork(subWaveNetworks);
@@ -136,7 +133,7 @@ int main()
         cout << endl << "Generting all LSP requests.\n";
         lspRequestGenarator lspReqGen(numOfNodes);
         lspRequest lspReq;
-
+        
         LSP lspObj(&subWaveNetworks);
 
 
@@ -354,6 +351,8 @@ int main()
 
         vector<float> HLLPvalues = waveLengthNetwork.heavilyLPAndOtherAvgCalc();
 
+        //float totalLSPrequests = listOfEvents.size() / 2;
+
         cout << "\n**Remain LPs_\n";
         waveLengthNetwork.viewAllLighpaths();
         cout << "\n\n**Remain LSPs_\n";
@@ -394,7 +393,7 @@ int main()
             }
         }
         
-        myfile.writeLog("Graph = " + fileLocation); 
+        myfile.writeLog("Graph = " + CsvFileLocation);
         myfile.writeLog("Number of nodes = " + to_string(numOfNodes));
         myfile.writeLog("Erlang = "+to_string(erlang));
         myfile.writeLog("Capacity of a LP = " + to_string(bandwidthCap));
