@@ -10,7 +10,8 @@
 #include "lspRequestGenarator.h"
 #include "eventDrivenSimulator.h"
 #include "config.h"
-
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 //int _couter = 0;
@@ -61,7 +62,7 @@ void removeLPidFromVec(vector<int>& LPids)
 
 int main()
 {
-
+    auto start = high_resolution_clock::now();
     cout << "Promgram started___\n";
     files myfile;
     int numOfNodes; //Variable to store number of nodes in the network
@@ -126,7 +127,10 @@ int main()
         cout << "subWaveNetworks = " << subWaveNetworks.size() << endl;
         cout << "For events = " << listOfEvents.size() / 2 << endl;
         waveLengthNetworks defaulSubWaveNetworks = subWaveNetworks[0];
-        
+        map<int, vector<vector<int>>> defaultGraphDetails;
+        dijkstraForDefaultGraph(numOfNodes, defaulSubWaveNetworks, defaultGraphDetails);
+
+        //cout << defaultGraphDetails.size() << endl;
         lightpathNetwork waveLengthNetwork(subWaveNetworks);
         
         
@@ -206,16 +210,16 @@ int main()
             lspPathDetails[id][0].push_back(vector<int>{-1});
             lspPathDetails[id][1].push_back(vector<int>{-1});
             lspPathDetails[id][1].push_back(vector<int>{-1});
-
+            //cout << "\nRqst : " << id << endl;
             if(action)
             {
                 //actiontrueCounter++;
-                cout << "\nRqst : " << id << endl;
+                
                 
                 map<int, map<int, vector<vector<int>>>> mapFromLPGraph = waveLengthNetwork.mapFromLpGraph(numOfWaves, numOfNodes, bandwidth);
 
-                moreOEOConvertion moreCovertions = createMainGraph(vexnum, subWaveNetworks, source, destination, mapFromLPGraph);
-
+                moreOEOConvertion moreCovertions = createMainGraph(vexnum, subWaveNetworks, source, destination, mapFromLPGraph,defaultGraphDetails);
+                cout << "\n after Rqst : " << id << endl;
                 if (moreCovertions.canCreateBP && moreCovertions.canCreatePP)
                 {
                     //establishedLSPcounter++;
@@ -437,8 +441,15 @@ int main()
         myfile.writeLog(" ");
         
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
 
-
+    // To get the value of duration use the count()
+    // member function on the duration object
+    cout << duration.count() << endl;
+    cout << duration.count() / 60000000 << endl;
+     myfile.writeLog("time microseconds = " + to_string(duration.count()));
+    myfile.writeLog("time minutes = " + to_string(duration.count() / 60000000));
    
     cout << "\nPress ENTER to exit\n";
 	cin.get();

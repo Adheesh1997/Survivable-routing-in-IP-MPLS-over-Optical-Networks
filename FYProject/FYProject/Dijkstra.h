@@ -66,38 +66,6 @@ struct findPathDetails {
     }
  };
 
-struct combineWavelength {
-    bool canCreatCombinationPP;
-    int wavelengthNo1PP;
-    int wavelengthNo2PP;
-    vector<int> w1ShortPathPP;
-    vector<int> w2ShortPathPP;
-    int connectingNodePP;
-    bool canCreatCombinationBP;
-    int wavelengthNo1BP;
-    int wavelengthNo2BP;
-    vector<int> w1ShortPathBP;
-    vector<int> w2ShortPathBP;
-    int connectingNodeBP;
-
-    combineWavelength() {
-        canCreatCombinationBP = false;
-        canCreatCombinationPP = false;
-    }
-};
-
-struct forRemainingBackUpPath {
-    bool canCreatCombinationBP;
-    int wavelengthNo1BP;
-    int wavelengthNo2BP;
-    vector<int> w1ShortPathBP;
-    vector<int> w2ShortPathBP;
-    int connectingNodeBP;
-
-    forRemainingBackUpPath() {
-        canCreatCombinationBP = false;
-    }
-};
 
 struct moreOEOConvertion {
     vector<vector<int>> allPathDetailsPP;
@@ -135,15 +103,12 @@ public:
     //delete edge
     void delete_edge(int);
     vector<vector<int>> conditionAppling(); //adding 0 or 1
+    vector<vector<int>> conditionApplingForDefaultGraph();
+    /*void dijkstraForWholeGraph(int& , vector<waveLengthNetworks>& , map<int, map<int, vector<vector<int>>>>& );*/
 };
-
-
-forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD, vector<int> PPD);
-
-findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP);
-
-combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks>waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> arr1, map<int, vector<vector<int>>> arr2);
 
 forBackupLightpath createLightPathBackup(int vexnum, vector<int> heavylightpath, vector<waveLengthNetworks>& waveLengthNetwork, int source, int destination);
 
-moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph);
+moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph, map<int, vector<vector<int>>> &);
+
+void dijkstraForDefaultGraph(int&, waveLengthNetworks&, map<int,vector<vector<int>>>&);

@@ -29,7 +29,7 @@ Graph_DG::~Graph_DG() {
 
 
 void Graph_DG::print() {
-    cout << "The adjacency matrix of the graph is:" << endl;
+    //cout << "The adjacency matrix of the graph is:" << endl;
     int count_row = 0; //Print the label of the line
     int count_col = 0; //Print the label of the column
     //Start printing
@@ -39,10 +39,10 @@ void Graph_DG::print() {
             if (arc[count_row][count_col] == intMAX)
                 cout << "#" << " ";
             else
-                cout << arc[count_row][count_col] << " ";
+                //cout << arc[count_row][count_col] << " ";
             ++count_col;
         }
-        cout << endl;
+        //cout << endl;
         ++count_row;
     }
 }
@@ -74,7 +74,7 @@ void Graph_DG::Dijkstra(int begin) {
                 temp = i;
             }
         }
-        //cout << temp + 1 << "  "<<min << endl;
+        ////cout << temp + 1 << "  "<<min << endl;
         //Add the vertex corresponding to temp to the set of shortest paths that have been found
         dis[temp].visit = true;
         ++count;
@@ -95,22 +95,6 @@ void Graph_DG::Dijkstra(int begin) {
 
 }
 vector<int> Graph_DG::print_path(int begin, int end) {
-
-    //string str;
-    //str = "v" + to_string(begin);
-    //cout << "To"<<str<<"The shortest path of the graph as the starting point is:" << endl;
-    //for (int i = 0; i != this->vexnum; i++) {
-    //    for (std::vector<int>::const_iterator k = dis[i].path.begin(); k != dis[i].path.end(); ++k) {
-    //        std::cout <<"v"<< *k << " --> ";
-    //    }
-    //    if (dis[i].value != intMAX) {
-    //        cout << " = " << dis[i].value << endl;
-    //    }
-    //    else {
-    //        cout << "There is no shortest path" << endl;
-    //    }
-    //}
-
     if (dis[end].value != intMAX && dis[end].value != 0) {
         return dis[end].path;
     }
@@ -122,7 +106,7 @@ vector<int> Graph_DG::print_path(int begin, int end) {
 
 void Graph_DG::delete_edge(int end) {
     for (std::vector<int>::const_iterator k = dis[end].path.begin(); k != dis[end].path.end() - 1; ++k) {
-        //std::cout << "v" << *k << " --> ";
+        //std:://cout << "v" << *k << " --> ";
         this->arc[*k][*(k) - 1] = intMAX;
     }
     delete[] dis;
@@ -135,7 +119,7 @@ vector<vector<int>> Graph_DG::conditionAppling() {
             dis[i].path.insert(dis[i].path.begin(), 1);
         }
         else { // path not exist
-            //cout << "There is no shortest path" << endl;
+            ////cout << "There is no shortest path" << endl;
             dis[i].path.insert(dis[i].path.begin(), 0);
         }
         totalPathDetails.push_back(dis[i].path);
@@ -143,521 +127,149 @@ vector<vector<int>> Graph_DG::conditionAppling() {
     return totalPathDetails;
 }
 
+vector<vector<int>> Graph_DG::conditionApplingForDefaultGraph() {
+    vector<vector<int>> totalPathDetails;
+    for (int i = 0; i != this->vexnum; i++) {
+        totalPathDetails.push_back(dis[i].path);
+    }
+    return totalPathDetails;
+}
 
 
+void dijkstraForAllNodes(int &vexnum, vector<waveLengthNetworks> &waveLengthNetwork, map<int, map<int, vector<vector<int>>>> &mapDetails) {
+     
+        for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
+            for (size_t count = 0; count < vexnum; count++) {
+                Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
+                graph.Dijkstra(count);
+                mapDetails[start][count] = graph.conditionAppling(); // first Shortest path
+            }
+        }
+}
 
-findPathDetails initialize(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination) {
+void dijkstraForDefaultGraph(int& vexnum, waveLengthNetworks &defaulSubWaveNetworks, map<int, vector<vector<int>>>& mapDetails) {
+        for (size_t count = 0; count < vexnum; count++) {
+            Graph_DG graph(vexnum, defaulSubWaveNetworks.waveAdjacancyMatrix);//graph.print();
+            graph.Dijkstra(count);
+            mapDetails[count] = graph.conditionApplingForDefaultGraph(); // first Shortest path
+        }
+}
 
-    size_t minVal = 1000;
-    int waveLengthNumber = -1;
-    findPathDetails shortestPathsDetails;
+void dijkstraForOneNode(int& vexnum,int &source,int & destination, vector<vector<int>>& djGraph, vector<int> &shortest_path) {
+    Graph_DG graph(vexnum, djGraph);//graph.print();
+    graph.Dijkstra(source);
+    shortest_path = graph.print_path(source, destination); // first Shortest path
+}
+void print(vector<int> vec) {
+    for (int i : vec) {
+        cout << i << ' ';
+    }
+    cout << endl;
+}
+void initialize(int& vexnum, vector<waveLengthNetworks>& waveLengthNetwork, int& source, int& destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph, moreOEOConvertion& outputDetails, map<int, vector<vector<int>>>& defaultGraphDetails) {
+    size_t minVal = 10000;
     vector<int> primarySPOutput;
     vector<int> backUpSPOutput;
-    map<int, vector<int>> totalPathDetails;
-
-
-
+    int waveLengthNumber = -1;
+    vector<int> shortest_path;
+    bool foundCheck = true;
     for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
-
-        totalPathDetails[start] = shortest_path;
-
-        if (shortest_path.size() < minVal && shortest_path.size() != 1) {
+        shortest_path = mapFromLPGraph[start + waveLengthNetwork.size()][source][destination];
+        if (shortest_path.size() < minVal && shortest_path[0] == 1) {
+            shortest_path.erase(shortest_path.begin());
             minVal = shortest_path.size();
-            primarySPOutput.clear();
             primarySPOutput = shortest_path;
-            waveLengthNumber = start;
+            waveLengthNumber = start + waveLengthNetwork.size();
+            if (minVal == defaultGraphDetails[source][destination].size()) {
+                foundCheck = false;
+                break;
+            }
         }
     }
-
+    if (foundCheck){
+        for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
+            Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
+                graph.Dijkstra(source);
+                shortest_path = graph.print_path(source, destination);// first Shortest path
+                if (shortest_path.size() < minVal && shortest_path.size() != 1) {
+                    minVal = shortest_path.size();
+                        primarySPOutput = shortest_path;
+                        waveLengthNumber = start;
+                }
+        }
+    }
     if (primarySPOutput.size() == 0) { //if primary LSP can't create
-        shortestPathsDetails.canCreatPP = false;
-        totalPathDetails.clear();
-        return shortestPathsDetails;
+        outputDetails.canCreatePP = false;
+        outputDetails.canCreateBP = false;
     }
-    else { //if primary LSP can create
+    else {
 
-        shortestPathsDetails.canCreatPP = true;
-        shortestPathsDetails.primaryShortPath = primarySPOutput;
-        shortestPathsDetails.wavelengthNoPP = waveLengthNumber;
-        minVal = 1000;
-
-        for (size_t j = 0; j < primarySPOutput.size() - 1; j++)
-        {
-            waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
+        outputDetails.canCreatePP = true;
+        if (waveLengthNumber >= waveLengthNetwork.size()) {
+            mapFromLPGraph[waveLengthNumber][source][destination].clear();
+            mapFromLPGraph[waveLengthNumber][source][destination].push_back(0);
+            mapFromLPGraph[waveLengthNumber][destination][source].clear();
+            mapFromLPGraph[waveLengthNumber][destination][source].push_back(0);
         }
-
-    
-        Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNumber].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
-
-        totalPathDetails[waveLengthNumber] = shortest_path;
-
-        for (map<int, vector<int>>::iterator mapIt = totalPathDetails.begin(); mapIt != totalPathDetails.end(); ++mapIt) {
-            if (mapIt->second.size() < minVal && mapIt->second.size() != 1) {
+        outputDetails.allPathDetailsPP.push_back(primarySPOutput);
+        outputDetails.wavelengthNumberPP.push_back(waveLengthNumber);
+        minVal = 10000;
+        for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
+            for (size_t j = 0; j < primarySPOutput.size() - 1; j++)
+            {
+                waveLengthNetwork[start].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
+            }
+        }
+        for (int start = 2 * (waveLengthNetwork.size()) -1; start >= 0  ; start --) {
+            if (start < waveLengthNetwork.size()){
+                Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNetwork.size() - (start +1)].waveAdjacancyMatrix);//graph.print();
+                graph.Dijkstra(source);
+                shortest_path = graph.print_path(source, destination);
+            }
+            if (start >= waveLengthNetwork.size()) {
+                if (mapFromLPGraph[start][source][destination][0] == 1) {
+                    shortest_path = mapFromLPGraph[start][source][destination];
+                    shortest_path.erase(shortest_path.begin());
+                    //print(shortest_path);
+                }
+                else {
+                    shortest_path.clear();
+                    shortest_path.push_back(-1);
+                }
+            }
+            if (shortest_path.size() < minVal && shortest_path.size() != 1) {
                 bool validate = true;
                 for (vector<int>::iterator itPP = primarySPOutput.begin(); itPP != primarySPOutput.end()-1; ++itPP) {
                     vector<int>::iterator itTemp;
-                    itTemp = search(mapIt->second.begin(), mapIt->second.end(), itPP, itPP+2);
-                    if (itTemp != mapIt->second.end()) {
+                    itTemp = search(shortest_path.begin(), shortest_path.end(), itPP, itPP+2);
+                    if (itTemp != shortest_path.end()) {
                         validate = false;
                     }
                 }
                 if (validate == true) {
-                    backUpSPOutput = mapIt->second;            
-                    waveLengthNumber = mapIt->first;
-                    minVal = mapIt->second.size();
+                    backUpSPOutput = shortest_path;
+                    if (start < waveLengthNetwork.size()) {
+                        waveLengthNumber = waveLengthNetwork.size() -  (start+1);
+                    }
+                    else {
+                        waveLengthNumber = start;
+                    }
+                    minVal = shortest_path.size();
+                    if (minVal == defaultGraphDetails[source][destination].size()) {
+                        foundCheck = false;
+                        break;
+                    }
                 }
             }
         }
         if (backUpSPOutput.size()==0) {
-            shortestPathsDetails.canCreatBP = false;
-            totalPathDetails.clear();
-            return shortestPathsDetails;
+            outputDetails.canCreateBP = false;
         }
         else {
-            for (size_t j = 0; j < backUpSPOutput.size() - 1; j++)
-            {
-                waveLengthNetwork[waveLengthNumber].removeLink(backUpSPOutput[j], backUpSPOutput[j + 1]);
-            }
-            shortestPathsDetails.canCreatBP = true;
-            shortestPathsDetails.backUpShortPath = backUpSPOutput;
-            shortestPathsDetails.wavelengthNoBP = waveLengthNumber;
-            totalPathDetails.clear();
-            return shortestPathsDetails;
-            //return shortest_path_output;
+            outputDetails.canCreateBP = true;
+            outputDetails.allPathDetailsBP.push_back(backUpSPOutput);
+            outputDetails.wavelengthNumberBP.push_back(waveLengthNumber);
         }
-    }
-}
-
-
-
-findPathDetails startingPoint(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, vector<vector<int>> adjMetrixForPrimaryLSP) {
-
-
-    if (adjMetrixForPrimaryLSP[source][destination] == 0 && adjMetrixForPrimaryLSP[destination][source] == 0) {
-        findPathDetails pathDetails = initialize(vexnum, waveLengthNetwork, source, destination);
-        pathDetails.alreadyPPhave = false;
-        return pathDetails;
-    }
-    size_t minVal = 1000;
-    int waveLengthNumber = -1;
-    findPathDetails shortestPathsDetails;
-    vector<int> primarySPOutput;
-    vector<int> backUpSPOutput;
-    map<int, vector<int>> totalPathDetails;
-
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
-
-        totalPathDetails[start] = shortest_path;
-
-        if (shortest_path.size() < minVal && shortest_path.size() != 1) {
-            minVal = shortest_path.size();
-            primarySPOutput.clear();
-            primarySPOutput = shortest_path;
-            waveLengthNumber = start;
-        }
-    }
-
-    if (primarySPOutput.size() == 0) { //if primary LSP can't create
-        shortestPathsDetails.tempCanCreatPP = false;
-        shortestPathsDetails.alreadyPPhave = true;
-        totalPathDetails.clear();
-        return shortestPathsDetails;
-    }
-    else { //if primary LSP can create
-
-        shortestPathsDetails.tempCanCreatPP = true;
-        shortestPathsDetails.alreadyPPhave = true;
-        shortestPathsDetails.tempPrimaryShortPath = primarySPOutput;
-        shortestPathsDetails.tempWavelengthNoPP = waveLengthNumber;
-        minVal = 1000;
-
-        for (size_t j = 0; j < primarySPOutput.size() - 1; j++)
-        {
-            waveLengthNetwork[waveLengthNumber].removeLink(primarySPOutput[j], primarySPOutput[j + 1]);
-        }
-
-
-        Graph_DG graph(vexnum, waveLengthNetwork[waveLengthNumber].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        vector<int> shortest_path = graph.print_path(source, destination); // first Shortest path
-
-        totalPathDetails[waveLengthNumber] = shortest_path;
-
-        for (map<int, vector<int>>::iterator mapIt = totalPathDetails.begin(); mapIt != totalPathDetails.end(); ++mapIt) {
-            if (mapIt->second.size() < minVal && mapIt->second.size() != 1) {
-                bool validate = true;
-                for (vector<int>::iterator itPP = primarySPOutput.begin(); itPP != primarySPOutput.end() - 1; ++itPP) {
-                    vector<int>::iterator itTemp;
-                    itTemp = search(mapIt->second.begin(), mapIt->second.end(), itPP, itPP + 2);
-                    if (itTemp != mapIt->second.end()) {
-                        validate = false;
-                    }
-                }
-                if (validate == true) {
-                    backUpSPOutput = mapIt->second;
-                    waveLengthNumber = mapIt->first;
-                    minVal = mapIt->second.size();
-                }
-            }
-        }
-        if (backUpSPOutput.size() == 0) {
-            shortestPathsDetails.tempCanCreatBP = false;
-            totalPathDetails.clear();
-            return shortestPathsDetails;
-        }
-        else {
-            for (size_t j = 0; j < backUpSPOutput.size() - 1; j++)
-            {
-                waveLengthNetwork[waveLengthNumber].removeLink(backUpSPOutput[j], backUpSPOutput[j + 1]);
-            }
-            shortestPathsDetails.tempCanCreatBP = true;
-            shortestPathsDetails.tempBackUpShortPath = backUpSPOutput;
-            shortestPathsDetails.tempWavelengthNoBP = waveLengthNumber;
-            totalPathDetails.clear();
-            return shortestPathsDetails;
-            //return shortest_path_output;
-        }
-    }
-}
-
-forRemainingBackUpPath createRemaing(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int,vector<vector<int>>> FS, map<int,vector<vector<int>>>TD, vector<int> PPD) {
-    forRemainingBackUpPath combinationDetails;
-    map<int, vector<vector<int>>> fromSource;
-
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        fromSource[start] = graph.conditionAppling(); // first Shortest path
-    }
-    
-    fromSource.insert(FS.begin(), FS.end());
-
-    //for (int start = 0; start != fromSource.size(); start++) {
-    //    cout << " 00000000000000000000000000 " << start << " 0000000000000000000000000" << endl;
-    //    for (int i = 0; i < vexnum; i++) {
-    //        for (std::vector<int>::iterator k = fromSource[start][i].begin(); k != fromSource[start][i].end(); ++k) {
-    //            std::cout << *k << " --> ";
-    //        }
-    //        cout << endl;
-    //    }
-    //}
-
-    map<int, vector<vector<int>>> fromDestination;
-
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(destination);
-        fromDestination[start] = graph.conditionAppling(); // first Shortest path
-    }
-    fromDestination.insert(TD.begin(), TD.end());
-
-    //for (int start = 0; start != fromDestination.size(); start++) {
-    //    cout << " **************************** " << start << " ***************************" << endl;
-    //    for (int i = 0; i < vexnum; i++) {
-    //        for (std::vector<int>::iterator k = fromDestination[start][i].begin(); k != fromDestination[start][i].end(); ++k) {
-    //            std::cout << *k << " --> ";
-    //        }
-    //        cout << endl;
-    //    }
-    //}
-    int minumuVal = 10000;
-   
-    //fromSource[sourceWavelegth][intermediateNode].pop_back();
-        vector<int> sourcePathBP;
-        vector<int> destinationPathPathBP;
-        int w1BP;
-        int w2BP;
-        int intNode;
-        minumuVal = 10000;
-        int xxx = fromSource.size();
-        for (int startsourse = 0; startsourse < fromSource.size(); startsourse++) {
-            for (int startdesti = 0; startdesti < fromSource.size(); startdesti++) {
-                for (int i = 0; i < vexnum; i++) {
-                    if (fromSource[startsourse][i][0] == 1 && fromDestination[startdesti][i][0] == 1) {
-
-                        vector<int> tempVecDes = fromDestination[startdesti][i];
-                        vector<int> tempVecSource = fromSource[startsourse][i];
-                        tempVecDes.erase(tempVecDes.begin());
-                        tempVecSource.erase(tempVecSource.begin());
-                        tempVecDes.pop_back();
-                        reverse(tempVecDes.begin(), tempVecDes.end());
-                        tempVecDes.insert(tempVecDes.begin(), tempVecSource.begin(), tempVecSource.end());
-                        if (tempVecDes.size() < minumuVal) {
-                            bool validate = true;
-                            for (vector<int>::iterator itPP = PPD.begin(); itPP != PPD.end() - 1; ++itPP) {
-                                vector<int>::iterator itTemp;
-                                itTemp = search(tempVecDes.begin(), tempVecDes.end(), itPP, itPP + 2);
-                                if (itTemp != tempVecDes.end()) {
-                                    validate = false;
-                                }
-                            }
-                            if (validate == true) {
-                                destinationPathPathBP = fromDestination[startdesti][i];
-                                sourcePathBP = fromSource[startsourse][i];
-                                intNode = i;
-                                w1BP = startsourse;
-                                w2BP = startdesti;
-                                minumuVal = tempVecDes.size();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (minumuVal != 10000) {
-            destinationPathPathBP.erase(destinationPathPathBP.begin());
-            sourcePathBP.erase(sourcePathBP.begin());
-            reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-
-            combinationDetails.canCreatCombinationBP = true;
-            combinationDetails.connectingNodeBP = intNode;
-            combinationDetails.w1ShortPathBP = sourcePathBP;
-            combinationDetails.w2ShortPathBP = destinationPathPathBP;
-            combinationDetails.wavelengthNo1BP = w1BP;
-            combinationDetails.wavelengthNo2BP = w2BP;
-
-            if (w1BP < waveLengthNetwork.size()) 
-            {
-                for (size_t j = 0; j < sourcePathBP.size() - 1; j++)
-                {
-                    waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
-                }
-            }
-            else {
-                fromSource[w1BP][intNode].clear();
-                fromSource[w1BP][intNode].push_back(0);
-            }
-            if (w2BP < waveLengthNetwork.size()) {
-                for (size_t j = 0; j < destinationPathPathBP.size() - 1; j++)
-                {
-                    waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
-                }
-            }
-            else {
-                fromDestination[w2BP][intNode].clear();
-                fromDestination[w2BP][intNode].push_back(0);
-            }
-            
-
-            return combinationDetails;
-
-        }
-        else {
-            combinationDetails.canCreatCombinationBP = false;
-            return combinationDetails;
-        }
-}
-
-combineWavelength pathCombinationCreat(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, vector<vector<int>>> FS, map<int, vector<vector<int>>>TD) {
-    combineWavelength combinationDetails;
-    map<int, vector<vector<int>>> fromSource;
-
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(source);
-        fromSource[start] = graph.conditionAppling(); // first Shortest path
-    }
-    fromSource.insert(FS.begin(), FS.end());
-
-    /*for (int start = 0; start != fromSource.size(); start++) {
-        cout << " 00000000000000000000000000 " << start << " 0000000000000000000000000" << endl;
-        for (int i = 0; i < vexnum; i++) {
-            for (std::vector<int>::iterator k = fromSource[start][i].begin(); k != fromSource[start][i].end(); ++k) {
-                std::cout << *k << " --> ";
-            }
-            cout << endl;
-        }
-    }*/
-
-    map<int, vector<vector<int>>> fromDestination;
-
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-        graph.Dijkstra(destination);
-        fromDestination[start] = graph.conditionAppling(); // first Shortest path
-    }
-    fromDestination.insert(TD.begin(), TD.end());
-
-    //for (int start = 0; start != fromDestination.size(); start++) {
-    //    cout << " **************************** " << start << " ***************************" << endl;
-    //    for (int i = 0; i < vexnum; i++) {
-    //        for (std::vector<int>::iterator k = fromDestination[start][i].begin(); k != fromDestination[start][i].end(); ++k) {
-    //            std::cout << *k << " --> ";
-    //        }
-    //        cout << endl;
-    //    }
-    //}
-    int minumuVal = 10000;
-    int sourceWavelegth;
-    int destinationwavelength;
-    int intermediateNode;
-
-    int fromSourceSize = fromSource[16][3].size();
-    for (int startsourse = 0; startsourse != fromSource.size(); startsourse++) {
-        for (int startdesti = 0; startdesti != fromSource.size(); startdesti++) {
-            for (int i = 0; i < vexnum; i++) {
-                if (fromSource[startsourse][i][0] == 1 && fromDestination[startdesti][i][0]==1) {
-                    int total = fromSource[startsourse][i].size() + fromDestination[startdesti][i].size();
-                    if (total < minumuVal) {
-                        minumuVal = total;
-                        sourceWavelegth = startsourse;
-                        destinationwavelength = startdesti;
-                        intermediateNode = i;
-                    }
-                }
-            }
-        }
-    }
-
-
-    //fromSource[sourceWavelegth][intermediateNode].pop_back();
-    if (minumuVal != 10000) {
-        fromDestination[destinationwavelength][intermediateNode].erase(fromDestination[destinationwavelength][intermediateNode].begin());
-        fromSource[sourceWavelegth][intermediateNode].erase(fromSource[sourceWavelegth][intermediateNode].begin());
-        reverse(fromDestination[destinationwavelength][intermediateNode].begin(), fromDestination[destinationwavelength][intermediateNode].end());
-        
-        combinationDetails.canCreatCombinationPP = true;
-        combinationDetails.connectingNodePP = intermediateNode;
-        combinationDetails.wavelengthNo1PP = sourceWavelegth;
-        combinationDetails.wavelengthNo2PP = destinationwavelength;
-        combinationDetails.w1ShortPathPP = fromSource[sourceWavelegth][intermediateNode];
-        combinationDetails.w2ShortPathPP = fromDestination[destinationwavelength][intermediateNode];
-        
-        if (sourceWavelegth < waveLengthNetwork.size()) {
-            for (size_t j = 0; j < fromSource[sourceWavelegth][intermediateNode].size() - 1; j++)
-            {
-                waveLengthNetwork[sourceWavelegth].removeLink(fromSource[sourceWavelegth][intermediateNode][j], fromSource[sourceWavelegth][intermediateNode][j + 1]);
-            }
-        }
-        else {
-            fromSource[sourceWavelegth][intermediateNode].clear();
-            fromSource[sourceWavelegth][intermediateNode].push_back(0);
-        }
-        if (destinationwavelength < waveLengthNetwork.size()) {
-            for (size_t j = 0; j < fromDestination[destinationwavelength][intermediateNode].size() - 1; j++)
-            {
-                waveLengthNetwork[destinationwavelength].removeLink(fromDestination[destinationwavelength][intermediateNode][j], fromDestination[destinationwavelength][intermediateNode][j + 1]);
-            }
-        }
-        else {
-            fromDestination[destinationwavelength][intermediateNode].clear();
-            fromDestination[destinationwavelength][intermediateNode].push_back(0);
-        }
-
-        vector<int> PPS = fromSource[sourceWavelegth][intermediateNode];
-        vector<int> PPD = fromDestination[destinationwavelength][intermediateNode];
-        PPS.pop_back();
-        PPD.insert(PPD.begin(), PPS.begin(), PPS.end());
-
-        if(sourceWavelegth < waveLengthNetwork.size())
-        {
-            Graph_DG graph(vexnum, waveLengthNetwork[sourceWavelegth].waveAdjacancyMatrix);//graph.print();
-            graph.Dijkstra(source);
-            fromSource[sourceWavelegth] = graph.conditionAppling();
-        }
-        
-        if(destinationwavelength < waveLengthNetwork.size())
-        {
-            Graph_DG graph1(vexnum, waveLengthNetwork[destinationwavelength].waveAdjacancyMatrix);//graph.print();
-            graph1.Dijkstra(destination);
-            fromDestination[destinationwavelength] = graph1.conditionAppling();
-        }
-        
-
-        vector<int> sourcePathBP;
-        vector<int> destinationPathPathBP;
-        int w1BP;
-        int w2BP;
-        int intNode;
-        minumuVal = 10000;
-        for (int startsourse = 0; startsourse != fromSource.size(); startsourse++) {
-            for (int startdesti = 0; startdesti != fromSource.size(); startdesti++) {
-                for (int i = 0; i < vexnum; i++) {
-                    if (fromSource[startsourse][i][0] == 1 && fromDestination[startdesti][i][0] == 1) {
-
-                        vector<int> tempVecDes = fromDestination[startdesti][i];
-                        vector<int> tempVecSource = fromSource[startsourse][i];
-                        tempVecDes.erase(tempVecDes.begin());
-                        tempVecSource.erase(tempVecSource.begin());
-                        tempVecDes.pop_back();
-                        reverse(tempVecDes.begin(), tempVecDes.end());
-                        tempVecDes.insert(tempVecDes.begin(), tempVecSource.begin(), tempVecSource.end());
-                            if (tempVecDes.size() < minumuVal) {
-                                bool validate = true;
-                                for (vector<int>::iterator itPP = PPD.begin(); itPP != PPD.end() - 1; ++itPP) {
-                                    vector<int>::iterator itTemp;
-                                    itTemp = search(tempVecDes.begin(), tempVecDes.end(), itPP, itPP + 2);
-                                    if (itTemp != tempVecDes.end()) {
-                                        validate = false;
-                                    }
-                                }
-                                if (validate == true) {
-                                    destinationPathPathBP = fromDestination[startdesti][i];
-                                    sourcePathBP = fromSource[startsourse][i];
-                                    intNode = i;
-                                    w1BP = startsourse;
-                                    w2BP = startdesti;
-                                    minumuVal = tempVecDes.size();
-                                }
-                            }
-                    }
-                }
-            }
-        }
-        if (minumuVal != 10000) {
-            destinationPathPathBP.erase(destinationPathPathBP.begin());
-            sourcePathBP.erase(sourcePathBP.begin());
-            reverse(destinationPathPathBP.begin(), destinationPathPathBP.end());
-
-            combinationDetails.canCreatCombinationBP = true;
-            combinationDetails.connectingNodeBP = intNode;
-            combinationDetails.w1ShortPathBP = sourcePathBP;
-            combinationDetails.w2ShortPathBP = destinationPathPathBP;
-            combinationDetails.wavelengthNo1BP = w1BP;
-            combinationDetails.wavelengthNo2BP = w2BP;
-
-            if (w1BP < waveLengthNetwork.size()) {
-                for (size_t j = 0; j < sourcePathBP.size() - 1; j++)
-                {
-                    waveLengthNetwork[w1BP].removeLink(sourcePathBP[j], sourcePathBP[j + 1]);
-                }
-            }
-            else {
-                fromSource[w1BP][intNode].clear();
-                fromSource[w1BP][intNode].push_back(0);
-            }
-            if (w2BP < waveLengthNetwork.size()) {
-                for (size_t j = 0; j < destinationPathPathBP.size() - 1; j++)
-                {
-                    waveLengthNetwork[w2BP].removeLink(destinationPathPathBP[j], destinationPathPathBP[j + 1]);
-                }
-            }
-            else {
-                fromDestination[w2BP][intNode].clear();
-                fromDestination[w2BP][intNode].push_back(0);
-            }
-            
-
-            return combinationDetails;
-        
-        }
-        else {
-            combinationDetails.canCreatCombinationBP = false;
-            return combinationDetails;
-        }
-    }
-    else {
-        combinationDetails.canCreatCombinationPP = false;
-        return combinationDetails;
     }
 }
 
@@ -706,72 +318,117 @@ forBackupLightpath createLightPathBackup(int vexnum,vector<int> heavylightpath, 
     }
 }
 
-moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph) {
+void createBackUpPathMainGraph(int& vexnum, vector<waveLengthNetworks>& waveLengthNetwork, int& source, int& destination, map<int, map<int, vector<vector<int>>>>& mapDetails, vector<int>& primaryPath, moreOEOConvertion& outputDetails, map<int, vector<vector<int>>>& defaultGraphDetails) {
 
-    moreOEOConvertion outputDetails;
-    map<int, vector<vector<int>>> fromSource;
-    map<int, map<int, vector<vector<int>>>> mapDetails;
-    map<int, map<int, multimap <int, int>>> completeMapDetails;
-    for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-        for (size_t count = 0; count < vexnum; count++) {
-            Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-            graph.Dijkstra(count);
-            mapDetails[start][count] = graph.conditionAppling(); // first Shortest path
-        }
-    }
-
-    mapDetails.insert(mapFromLPGraph.begin(), mapFromLPGraph.end());
-
-    vector<vector<int>> djGraph;
-    for (int i = 0; i < vexnum; i++) {
-        vector<int> v1;
-
-        for (int j = 0; j < vexnum; j++) {
-            v1.push_back(0);
-        }
-        djGraph.push_back(v1);
-    }
-
-
+    map<int, map<int, map <int, int>>> completeMapDetails;
+    dijkstraForAllNodes(vexnum, waveLengthNetwork, mapDetails);
+    vector<vector<int> > djGraph(vexnum, vector<int>(vexnum, 0));
     for (size_t sourceCount = 0; sourceCount < vexnum; sourceCount++) {
         for (size_t destinationCount = 0; destinationCount < vexnum; destinationCount++) {
-            for (size_t start = 0; start < mapDetails.size(); start++) {
+            for (int start = mapDetails.size() - 1; start >= 0; start--) {
                 if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
-                    completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
-                    int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
-                    if (djGraph[sourceCount][destinationCount] == 0) {
-                        djGraph[sourceCount][destinationCount] = size;
+                    bool validate = true;
+                    for (vector<int>::iterator itPP = primaryPath.begin(); itPP != primaryPath.end() - 1; ++itPP) {
+                        vector<int>::iterator itTemp;
+                        itTemp = search(mapDetails[start][sourceCount][destinationCount].begin(), mapDetails[start][sourceCount][destinationCount].end(), itPP, itPP + 2);
+                        if (itTemp != mapDetails[start][sourceCount][destinationCount].end()) {
+                            validate = false;
+                        }
                     }
-                    else if (size < djGraph[sourceCount][destinationCount]) {
-                        djGraph[sourceCount][destinationCount] = size;
+                    if (validate == true) {
+                        completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
+                        int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
+                        if (djGraph[sourceCount][destinationCount] == 0) {
+                            djGraph[sourceCount][destinationCount] = size;
+                            if (mapDetails[start][sourceCount][destinationCount].size() - 1 == defaultGraphDetails[sourceCount][destinationCount].size()) {
+                                start = -1;
+                            }
+                        }
+                        else if (size <= djGraph[sourceCount][destinationCount]) {
+                            djGraph[sourceCount][destinationCount] = size;
+                            if (mapDetails[start][sourceCount][destinationCount].size() - 1 == defaultGraphDetails[sourceCount][destinationCount].size()) {
+                                start = -1;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    //cout << endl;
-    //for (int i = 0; i < djGraph.size(); i++) {
-    //    for (int j = 0; j < djGraph[i].size(); j++) {
-    //        cout << djGraph[i][j] << " ";
-    //    }
-    // cout << endl;
-    //}
+    vector<int> shortest_pathBP;
+    dijkstraForOneNode(vexnum, source, destination, djGraph, shortest_pathBP);
+    if (shortest_pathBP.size() != 1) {
+        outputDetails.canCreateBP = true;
+        for (auto ptr = shortest_pathBP.begin(); ptr < shortest_pathBP.end() - 1; ptr++) {
+            vector<int> temp = mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)];
+            temp.erase(temp.begin());
+            outputDetails.allPathDetailsBP.push_back(temp);
+            outputDetails.wavelengthNumberBP.push_back(completeMapDetails[*ptr][*(ptr + 1)].begin()->second);
+        }
+    }
+    else {
+        outputDetails.canCreateBP = false;
+    }
+
+}
+
+
+moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLengthNetwork, int source, int destination, map<int, map<int, vector<vector<int>>>> mapFromLPGraph, map<int, vector<vector<int>>> &defaultGraphDetails) {
+    map<int, map<int, vector<vector<int>>>> mapDetails;
+    moreOEOConvertion outputDetails;
+    map<int, vector<vector<int>>> fromSource;
+    map<int, map<int, map <int, int>>> completeMapDetails;
+    initialize(vexnum, waveLengthNetwork, source, destination, mapFromLPGraph, outputDetails, defaultGraphDetails);
+    if (outputDetails.canCreatePP && outputDetails.canCreateBP) {
+
+        return outputDetails;
+    }
+    if (outputDetails.canCreatePP && !outputDetails.canCreateBP) {
+        vector<int> shortest_path = outputDetails.allPathDetailsPP[0];
+        mapDetails.insert(mapFromLPGraph.begin(), mapFromLPGraph.end());
+        createBackUpPathMainGraph(vexnum, waveLengthNetwork, source, destination, mapDetails, shortest_path, outputDetails, defaultGraphDetails);
+        return outputDetails;
+    }
+    dijkstraForAllNodes(vexnum, waveLengthNetwork, mapDetails);
+    mapDetails.insert(mapFromLPGraph.begin(), mapFromLPGraph.end());
+    vector<vector<int> > djGraph(vexnum, vector<int>(vexnum, 0));
+    for (size_t sourceCount = 0; sourceCount < vexnum; sourceCount++) {
+        for (size_t destinationCount = 0; destinationCount < vexnum; destinationCount++) {
+            for (int start = mapDetails.size() -1; start >= 0; start--) {
+                if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
+                    completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
+                    int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
+                    if (djGraph[sourceCount][destinationCount] == 0) {
+                        djGraph[sourceCount][destinationCount] = size;
+                        if (mapDetails[start][sourceCount][destinationCount].size() - 1 == defaultGraphDetails[sourceCount][destinationCount].size()) {
+                            start = -1;
+                        }
+                    }
+                    else if (size <= djGraph[sourceCount][destinationCount]) {
+                        djGraph[sourceCount][destinationCount] = size;
+                        if (mapDetails[start][sourceCount][destinationCount].size() - 1 == defaultGraphDetails[sourceCount][destinationCount].size()) {
+                            start = -1;
+                        }
+                    }
+                }
+            }
+        }
+    }
     vector<int> primaryPathDetailsPP;
-    Graph_DG graph(vexnum, djGraph);//graph.print();
-    graph.Dijkstra(source);
-    vector<int> shortest_pathPP = graph.print_path(source, destination); // first Shortest path
+    vector<int> shortest_pathPP;
+    dijkstraForOneNode(vexnum, source, destination, djGraph, shortest_pathPP);
     if (shortest_pathPP.size() != 1) {
         outputDetails.canCreatePP = true;
         for (auto ptr = shortest_pathPP.begin(); ptr < shortest_pathPP.end() - 1; ptr++) {
-
             vector<int> temp = mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)];
             temp.erase(temp.begin());
             outputDetails.allPathDetailsPP.push_back(temp);
             outputDetails.wavelengthNumberPP.push_back(completeMapDetails[*ptr][*(ptr + 1)].begin()->second);
-
             if (completeMapDetails[*ptr][*(ptr + 1)].begin()->second >= waveLengthNetwork.size()) {
                 mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)].clear();
                 mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)].push_back(0);
+                mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*(ptr + 1)][*ptr].clear();
+                mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*(ptr + 1)][*ptr].push_back(0);
             }
             
             temp.pop_back();
@@ -786,81 +443,12 @@ moreOEOConvertion createMainGraph(int vexnum, vector<waveLengthNetworks> waveLen
                 waveLengthNetwork[start].removeLink(primaryPathDetailsPP[j], primaryPathDetailsPP[j + 1]);
             }
         }
-
-        //mapDetails.clear();
-        for (size_t start = 0; start < waveLengthNetwork.size(); start++) {
-            for (size_t count = 0; count < vexnum; count++) {
-                Graph_DG graph(vexnum, waveLengthNetwork[start].waveAdjacancyMatrix);//graph.print();
-                graph.Dijkstra(count);
-                mapDetails[start][count] = graph.conditionAppling(); // first Shortest path
-            }
-        }
-
-        completeMapDetails.clear();
-
-        for (int i = 0; i < vexnum; i++) {
-            for (int j = 0; j < vexnum; j++) {
-                djGraph[i][j] = 0;
-            }
-        }
-        //for (int i = 0; i < djGraph.size(); i++) {
-        //    for (int j = 0; j < djGraph[i].size(); j++)
-        //        cout << djGraph[i][j] << " ";
-        //    cout << endl;
-        //}
-        for (size_t sourceCount = 0; sourceCount < vexnum; sourceCount++) {
-            for (size_t destinationCount = 0; destinationCount < vexnum; destinationCount++) {
-                for (size_t start = 0; start < mapDetails.size(); start++) {
-                    if (mapDetails[start][sourceCount][destinationCount][0] == 1) {
-
-                        bool validate = true;
-                        for (vector<int>::iterator itPP = primaryPathDetailsPP.begin(); itPP != primaryPathDetailsPP.end() - 1; ++itPP) {
-                            vector<int>::iterator itTemp;
-                            itTemp = search(mapDetails[start][sourceCount][destinationCount].begin(), mapDetails[start][sourceCount][destinationCount].end(), itPP, itPP + 2);
-                            if (itTemp != mapDetails[start][sourceCount][destinationCount].end()) {
-                                validate = false;
-                            }
-                        }
-                        if (validate == true) {
-                            completeMapDetails[sourceCount][destinationCount].insert(pair <int, int>(mapDetails[start][sourceCount][destinationCount].size(), start));
-                            int size = 200 + mapDetails[start][sourceCount][destinationCount].size();
-                            if (djGraph[sourceCount][destinationCount] == 0) {
-                                djGraph[sourceCount][destinationCount] = size;
-                            }
-                            else if (size < djGraph[sourceCount][destinationCount]) {
-                                djGraph[sourceCount][destinationCount] = size;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        Graph_DG graph(vexnum, djGraph);//graph.print();
-        graph.Dijkstra(source);
-        vector<int> shortest_pathBP = graph.print_path(source, destination); // first Shortest path
-        if (shortest_pathBP.size() != 1) {
-            outputDetails.canCreateBP = true;
-            for (auto ptr = shortest_pathBP.begin(); ptr < shortest_pathBP.end() - 1; ptr++) {
-
-                vector<int> temp = mapDetails[completeMapDetails[*ptr][*(ptr + 1)].begin()->second][*ptr][*(ptr + 1)];
-                temp.erase(temp.begin());
-                outputDetails.allPathDetailsBP.push_back(temp);
-                outputDetails.wavelengthNumberBP.push_back(completeMapDetails[*ptr][*(ptr + 1)].begin()->second);
-            }
-        }
-        else {
-            outputDetails.canCreateBP = false;
-            return outputDetails;
-        }
+        createBackUpPathMainGraph(vexnum, waveLengthNetwork, source, destination, mapDetails, primaryPathDetailsPP, outputDetails, defaultGraphDetails);
         return outputDetails;
     }
     else
     {
         outputDetails.canCreatePP = false;
         return outputDetails;
-
-
-//complete
     }
 }

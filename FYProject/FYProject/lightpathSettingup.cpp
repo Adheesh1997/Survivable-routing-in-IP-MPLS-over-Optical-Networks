@@ -656,7 +656,7 @@ void lightpathNetwork::heavilyLPprotectionCount(thresholds thresholdVals)
 						primLSPbandInHeavyLP += lighpaths[i].linkVector[j].wavelengthAndLSP[k].primaryLSPbandwidth;
 						counterCount1++;
 					}
-					else if (((primLSPband / initLPband) > thresholdVals.bandwidthThreshold) && (thresholdVals.protectionType == true))
+					else if (((primLSPband / initLPband) > thresholdVals.bandwidthThreshold) && (thresholdVals.protectionType == true) && (thresholdVals.hybrid == false))
 					{
 						if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].havingBackup)
 							protectedCount++;
@@ -665,7 +665,7 @@ void lightpathNetwork::heavilyLPprotectionCount(thresholds thresholdVals)
 						primLSPbandInHeavyLP += lighpaths[i].linkVector[j].wavelengthAndLSP[k].primaryLSPbandwidth;
 						counterCount1++;
 					}
-					else if ((primLSPcount > thresholdVals.numLSPthreshold) && (thresholdVals.protectionType == false))
+					else if ((primLSPcount > thresholdVals.numLSPthreshold) && (thresholdVals.protectionType == false) && (thresholdVals.hybrid == false))
 					{
 						if (lighpaths[i].linkVector[j].wavelengthAndLSP[k].havingBackup)
 							protectedCount++;
